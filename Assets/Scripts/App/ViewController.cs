@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
 using Assets.Scripts.Menus;
-using Assets.Scripts.Editors.QuestionBoxes;
 using Assets.Scripts.Game;
 using Assets.Scripts.Settings;
 
@@ -100,30 +99,30 @@ namespace Assets.Scripts.App {
 			}
 		}
 
-		public static QuestionBox QuestionBox(QuestionAnswerType type, Transform parent){
-			QuestionBox box = null;
-			switch(type){
-			case QuestionAnswerType.IMG:
-			case QuestionAnswerType.AUDIO_IMG:
-				box = InstantiatePrefab("QuestionType/imageQuestionBox").GetComponent<QuestionBox>();
-				break;
-			case QuestionAnswerType.AUDIO:
-				box = InstantiatePrefab("QuestionType/soundQuestionBox").GetComponent<QuestionBox>();
-				break;
-			default:
-				box = InstantiatePrefab("QuestionType/txtQuestionBox").GetComponent<QuestionBox>();
-				break;
-			}
-
-			box.transform.SetParent(parent);
-
-			box.transform.localPosition = Vector3.zero;
-			box.GetComponent<RectTransform>().offsetMax = Vector2.zero;
-			box.GetComponent<RectTransform>().offsetMin = Vector2.zero;
-			box.transform.localScale = Vector3.one;
-
-			return box;
-		}
+//		public static QuestionBox QuestionBox(QuestionAnswerType type, Transform parent){
+//			QuestionBox box = null;
+//			switch(type){
+//			case QuestionAnswerType.IMG:
+//			case QuestionAnswerType.AUDIO_IMG:
+//				box = InstantiatePrefab("QuestionType/imageQuestionBox").GetComponent<QuestionBox>();
+//				break;
+//			case QuestionAnswerType.AUDIO:
+//				box = InstantiatePrefab("QuestionType/soundQuestionBox").GetComponent<QuestionBox>();
+//				break;
+//			default:
+//				box = InstantiatePrefab("QuestionType/txtQuestionBox").GetComponent<QuestionBox>();
+//				break;
+//			}
+//
+//			box.transform.SetParent(parent);
+//
+//			box.transform.localPosition = Vector3.zero;
+//			box.GetComponent<RectTransform>().offsetMax = Vector2.zero;
+//			box.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+//			box.transform.localScale = Vector3.one;
+//
+//			return box;
+//		}
 
 		public static GameBox GameBox(Transform parent){
 			GameBox box = InstantiatePrefab("GamesMenu/GameDisplayPrefab").GetComponent<GameBox>();

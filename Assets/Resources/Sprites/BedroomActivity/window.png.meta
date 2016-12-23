@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 10e2bd5c35fdf3841a5b0fd85c075e38
-timeCreated: 1482160065
+guid: db82d487efc43a24cbb1f7213605965f
+timeCreated: 1482162951
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: BedroomAct-09_0
-    21300002: BedroomAct-09_1
+    21300000: BedroomAct-20_0
+    21300002: BedroomAct-20_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -29,7 +29,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -55,28 +55,28 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BedroomAct-09_0
+      name: BedroomAct-20_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 338
-        height: 434
+        width: 53.5
+        height: 852
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-09_1
+      name: BedroomAct-20_1
       rect:
         serializedVersion: 2
-        x: 339
+        x: 53
         y: 0
-        width: 340
-        height: 434
+        width: 53.5
+        height: 852
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

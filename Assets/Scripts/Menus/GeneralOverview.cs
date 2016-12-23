@@ -1,10 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using Assets.Scripts.App;
-using Assets.Scripts.Editors;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using Assets.Scripts.Editors.QuestionBoxes;
 using I18N;
 
 namespace Assets.Scripts.Menus {
@@ -19,12 +17,10 @@ namespace Assets.Scripts.Menus {
 		private ClickGameInfo editGame, createdGame;
 		private string creationScreen;
 
-		private QuestionBox auxBox;
 		private Question auxQuestion;
 
 		private QuestionAnswerType questionType, answerType;
 		private List<Question> questions = new List<Question>();
-		private List<QuestionBox> questionBoxes = new List<QuestionBox>();
 
 		public void Start(){
 			SetTexts();
@@ -41,17 +37,17 @@ namespace Assets.Scripts.Menus {
 			title.text = info.title;
 			author.text = info.author;
 			SetCreationScreen(TextFromEnum(info.questionType) + TextFromEnum(info.answerType) + "Editor");
-			LoadQuestions(info);
+//			LoadQuestions(info);
 			CheckTitleLength();
 		}
 
-		private void LoadQuestions(ClickGameInfo info) {
-			string questionsPath = info.GetPath() + "/" + Common.QUESTIONS_FILE;
-			Debug.Log("Loading questions from " + questionsPath);
-			var aux = Common.Load(questionsPath);
-			List<Question> q = (List<Question>) aux;
-			q.ForEach(AddQuestion);
-		}
+//		private void LoadQuestions(ClickGameInfo info) {
+//			string questionsPath = info.GetPath() + "/" + Common.QUESTIONS_FILE;
+//			Debug.Log("Loading questions from " + questionsPath);
+//			var aux = Common.Load(questionsPath);
+//			List<Question> q = (List<Question>) aux;
+//			q.ForEach(AddQuestion);
+//		}
 
 		private string TextFromEnum(QuestionAnswerType type) {
 			if(type == QuestionAnswerType.AUDIO_IMG) return "SoundImage";
@@ -86,83 +82,83 @@ namespace Assets.Scripts.Menus {
 
 		public void SetInfo(ClickGameInfo info){ editGame = info; }
 
-		public void PlusClick(){
-			SoundController.GetController ().PlayClickSound ();
-			GameObject editor = ViewController.InstantiatePrefab("Editors/" + creationScreen);
-			ViewController.FitObjectTo(editor, gameObject);
-			editor.GetComponent<EditorScreen>().SetParent(this);
-		}
+//		public void PlusClick(){
+//			SoundController.GetController ().PlayClickSound ();
+//			GameObject editor = ViewController.InstantiatePrefab("Editors/" + creationScreen);
+//			ViewController.FitObjectTo(editor, gameObject);
+//			editor.GetComponent<EditorScreen>().SetParent(this);
+//		}
 
 		public void BackClick(){
 			SoundController.GetController ().PlayToggleSound ();
 			warningPanel.SetActive(true);
 		}
 
-		public void AddQuestion(Question q){
-			q.SetQuestionNumber(questions.Count + 1);
-			questions.Add(q);
-			AddQuestionBox(q);
-			CheckTic();
-			noGamesSign.gameObject.SetActive(false);
-		}
+//		public void AddQuestion(Question q){
+//			q.SetQuestionNumber(questions.Count + 1);
+//			questions.Add(q);
+//			AddQuestionBox(q);
+//			CheckTic();
+//			noGamesSign.gameObject.SetActive(false);
+//		}
 
-		public void EditQuestion(Question q){
-			int questionIndex = q.number - 1;
-
-			questions[questionIndex] = q;
-			questionBoxes[questionIndex].SetQuestion(q);
-		}
-
-		public void EditClick(Question q){
-			SoundController.GetController ().PlayClickSound ();
-			GameObject editor = ViewController.InstantiatePrefab("Editors/" + creationScreen);
-			ViewController.FitObjectTo(editor, gameObject);
-			editor.GetComponent<EditorScreen>().SetQuestion(q, this);
-		}
-
-		public void DeleteClick(QuestionBox box, Question question) {
-			SoundController.GetController ().PlayClickSound ();
-			auxBox = box;
-			auxQuestion = question;
-			deletePanel.SetActive(true);
-		}
-
-		public void DeleteYesClick(){
-			SoundController.GetController ().PlayClickSound ();
-			questions.Remove(auxQuestion);
-			questionBoxes.Remove(auxBox);
-			Destroy(auxBox.gameObject);
-			UpdateQuestionBoxes();
-			CheckTic();
-			if(questions.Count == 0) noGamesSign.gameObject.SetActive(true);
-			deletePanel.SetActive(false);
-		}
-
-		public void DeleteNoClick(){
-			SoundController.GetController ().PlayClickSound ();
-			deletePanel.SetActive(false);
-		}
-
-		private void UpdateQuestionBoxes() {
-			for(int i = 0; i < questionBoxes.Count; i++) {
-				questionBoxes[i].UpdateNumber(i + 1);
-				questions[i].SetQuestionNumber(i + 1);
-			}
-		}
-
-		private void AddQuestionBox(Question q) {
-			QuestionBox box;
-
-			if(questionType == QuestionAnswerType.IMG || questionType == QuestionAnswerType.AUDIO_IMG){
-				box = ViewController.QuestionBox(questionType, horizontalScrollView.transform.GetChild(0).GetChild(0));
-			} else {
-				box = ViewController.QuestionBox(questionType, verticalScrollView.transform.GetChild(0).GetChild(0));
-			}
-
-			box.SetOverview(this);
-			box.SetQuestion(q);
-			questionBoxes.Add(box);
-		}
+//		public void EditQuestion(Question q){
+//			int questionIndex = q.number - 1;
+//
+//			questions[questionIndex] = q;
+//			questionBoxes[questionIndex].SetQuestion(q);
+//		}
+//
+//		public void EditClick(Question q){
+//			SoundController.GetController ().PlayClickSound ();
+//			GameObject editor = ViewController.InstantiatePrefab("Editors/" + creationScreen);
+//			ViewController.FitObjectTo(editor, gameObject);
+//			editor.GetComponent<EditorScreen>().SetQuestion(q, this);
+//		}
+//
+//		public void DeleteClick(QuestionBox box, Question question) {
+//			SoundController.GetController ().PlayClickSound ();
+//			auxBox = box;
+//			auxQuestion = question;
+//			deletePanel.SetActive(true);
+//		}
+//
+//		public void DeleteYesClick(){
+//			SoundController.GetController ().PlayClickSound ();
+//			questions.Remove(auxQuestion);
+//			questionBoxes.Remove(auxBox);
+//			Destroy(auxBox.gameObject);
+//			UpdateQuestionBoxes();
+//			CheckTic();
+//			if(questions.Count == 0) noGamesSign.gameObject.SetActive(true);
+//			deletePanel.SetActive(false);
+//		}
+//
+//		public void DeleteNoClick(){
+//			SoundController.GetController ().PlayClickSound ();
+//			deletePanel.SetActive(false);
+//		}
+//
+//		private void UpdateQuestionBoxes() {
+//			for(int i = 0; i < questionBoxes.Count; i++) {
+//				questionBoxes[i].UpdateNumber(i + 1);
+//				questions[i].SetQuestionNumber(i + 1);
+//			}
+//		}
+//
+//		private void AddQuestionBox(Question q) {
+//			QuestionBox box;
+//
+//			if(questionType == QuestionAnswerType.IMG || questionType == QuestionAnswerType.AUDIO_IMG){
+//				box = ViewController.QuestionBox(questionType, horizontalScrollView.transform.GetChild(0).GetChild(0));
+//			} else {
+//				box = ViewController.QuestionBox(questionType, verticalScrollView.transform.GetChild(0).GetChild(0));
+//			}
+//
+//			box.SetOverview(this);
+//			box.SetQuestion(q);
+//			questionBoxes.Add(box);
+//		}
 
 		private void SetQuestion(int number, Image questionPrefab, Question question) {
 			questionPrefab.gameObject.SetActive(true);
