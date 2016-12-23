@@ -1,13 +1,11 @@
 fileFormatVersion: 2
-guid: 5a278157357357d498d2097ef2c30397
-timeCreated: 1482156621
+guid: 10e2bd5c35fdf3841a5b0fd85c075e38
+timeCreated: 1482160065
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: BedroomAct-42_0
-    21300002: BedroomAct-42_1
-    21300004: BedroomAct-42_2
-    21300006: BedroomAct-42_3
+    21300000: BedroomAct-09_0
+    21300002: BedroomAct-09_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -31,7 +29,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -57,54 +55,28 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BedroomAct-42_0
+      name: BedroomAct-09_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 334.5
-        height: 507
+        width: 338
+        height: 434
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-42_1
+      name: BedroomAct-09_1
       rect:
         serializedVersion: 2
-        x: 334
+        x: 339
         y: 0
-        width: 334.5
-        height: 507
+        width: 340
+        height: 434
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BedroomAct-42_2
-      rect:
-        serializedVersion: 2
-        x: 668
-        y: 0
-        width: 334.5
-        height: 507
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BedroomAct-42_3
-      rect:
-        serializedVersion: 2
-        x: 1002
-        y: 0
-        width: 334.5
-        height: 507
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

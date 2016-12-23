@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: d71e7c46a61e2da42b7c7925ff4b3e2f
-timeCreated: 1482235061
-licenseType: Free
+timeCreated: 1482529223
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: BedroomAct-39_0
@@ -16,6 +16,19 @@ TextureImporter:
     21300018: BedroomAct-39_9
     21300020: BedroomAct-39_10
     21300022: BedroomAct-39_11
+    21300024: consignas_0
+    21300026: consignas_1
+    21300028: consignas_2
+    21300030: consignas_3
+    21300032: consignas_4
+    21300034: consignas_5
+    21300036: consignas_6
+    21300038: consignas_7
+    21300040: consignas_8
+    21300042: consignas_9
+    21300044: consignas_10
+    21300046: consignas_11
+    21300048: consignas_12
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -39,7 +52,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -65,156 +78,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BedroomAct-39_0
+      name: consignas_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1305
+        y: 1305.2307
         width: 1208
-        height: 109
+        height: 108.76923
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-39_1
+      name: consignas_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 1196
+        y: 1197.2307
         width: 1208
-        height: 109
+        height: 108.76923
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-39_2
+      name: consignas_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 1087
+        y: 1089.2307
         width: 1208
-        height: 109
+        height: 108.76923
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-39_3
+      name: consignas_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 978
+        y: 981.2308
         width: 1208
-        height: 109
+        height: 108.76923
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-39_4
+      name: consignas_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 869
+        y: 873.2308
         width: 1208
-        height: 109
+        height: 108.76923
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-39_5
+      name: consignas_5
       rect:
         serializedVersion: 2
         x: 0
-        y: 760
+        y: 765.2308
         width: 1208
-        height: 109
+        height: 108.76923
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-39_6
+      name: consignas_6
       rect:
         serializedVersion: 2
         x: 0
-        y: 651
+        y: 657.2308
         width: 1208
-        height: 109
+        height: 108.76923
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-39_7
+      name: consignas_7
       rect:
         serializedVersion: 2
         x: 0
-        y: 542
+        y: 549.2308
         width: 1208
-        height: 109
+        height: 108.76923
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-39_8
+      name: consignas_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 433
+        y: 441.23077
         width: 1208
-        height: 109
+        height: 108.76923
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-39_9
+      name: consignas_9
       rect:
         serializedVersion: 2
         x: 0
-        y: 324
+        y: 333.23077
         width: 1208
-        height: 109
+        height: 108.76923
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-39_10
+      name: consignas_10
       rect:
         serializedVersion: 2
         x: 0
-        y: 215
+        y: 225.23077
         width: 1208
-        height: 109
+        height: 108.76923
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-39_11
+      name: consignas_11
       rect:
         serializedVersion: 2
         x: 0
-        y: 106
+        y: 117.23077
         width: 1208
-        height: 109
+        height: 108.76923
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9.230766
+        width: 1208
+        height: 108.76923
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
