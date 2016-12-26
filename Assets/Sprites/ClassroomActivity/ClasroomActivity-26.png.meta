@@ -1,0 +1,241 @@
+fileFormatVersion: 2
+guid: 96234d411a3d7f84f8fe786c213fe84a
+timeCreated: 1482761897
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ClasroomActivity-26_0
+    21300002: ClasroomActivity-26_1
+    21300004: ClasroomActivity-26_2
+    21300006: ClasroomActivity-26_3
+    21300008: ClasroomActivity-26_4
+    21300010: ClasroomActivity-26_5
+    21300012: ClasroomActivity-26_6
+    21300014: ClasroomActivity-26_7
+    21300016: ClasroomActivity-26_8
+    21300018: ClasroomActivity-26_9
+    21300020: ClasroomActivity-26_10
+    21300022: ClasroomActivity-26_11
+    21300024: ClasroomActivity-26_12
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ClasroomActivity-26_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1261
+        width: 2146
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ClasroomActivity-26_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1158
+        width: 2146
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ClasroomActivity-26_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1064
+        width: 2146
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ClasroomActivity-26_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 941
+        width: 2146
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ClasroomActivity-26_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 754
+        width: 2146
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ClasroomActivity-26_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 745.6923
+        width: 2146
+        height: 106.30769
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ClasroomActivity-26_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 645
+        width: 2146
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ClasroomActivity-26_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 541
+        width: 2146
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ClasroomActivity-26_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 436
+        width: 2146
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ClasroomActivity-26_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 323
+        width: 2146
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ClasroomActivity-26_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 214
+        width: 2146
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ClasroomActivity-26_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 110
+        width: 2146
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ClasroomActivity-26_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2143
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
