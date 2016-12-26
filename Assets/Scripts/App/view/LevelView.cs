@@ -8,8 +8,8 @@ namespace Assets.Scripts.App
 	{
 		public Button hintBtn;
 
-		public abstract void ShowHint ();
-		public abstract void EndGame();
+		//public abstract void ShowHint ();
+		//public abstract void EndGame();
 
 		public void EnableHint(){
 			hintBtn.image.color = Color.white;
@@ -36,7 +36,7 @@ namespace Assets.Scripts.App
 			if (hintBtn.enabled)
 			{
                 PlaySoundClick();
-                ShowHint ();
+                //ShowHint ();
 			}
 		}
 

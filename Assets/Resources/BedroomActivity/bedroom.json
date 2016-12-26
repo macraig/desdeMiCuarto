@@ -1,0 +1,51 @@
+﻿{
+	levels: [{
+		"type": "DRAG",
+		"object": ["crayonesImage"],
+		"target": "muebleButton"
+	}, {
+		"type": "CLICK",
+		"target": ["alfombraButton"]
+	}, {
+		"type": "TOGGLE",
+		"correct": "lampToggle",
+		"wrong": ["littleLamp1", "littleLamp2"],
+		"sound": "lightClick"
+	}, {
+		"type": "TOGGLE",
+		"correct": "doorToggle",
+		"sound": "doorClick"
+	}, {
+		"type": "TOGGLE",
+		"correct": "baulToggle",
+		"sound": "baulClick"
+	}, {
+		"type": "DRAG",
+		"object": ["dinosaurImage", "bearImage"],
+		"target": "baulToggle"
+	}, {
+		"type": "DRAG",
+		"object": ["almohadonAmarilloImage", "almohadonRojoImage"],
+		"target": "bedButton"
+	}, {
+		"type": "CLICK",
+		"target": ["pincel1Button", "pincel2Button", "pincel3Button"],
+		"sound": "blop"
+	}, {
+		"type": "TOGGLE",
+		"correct": "windowToggle",
+		"sound": "windowClick"
+	}, {
+		"type": "DRAG",
+		"object": "bookImage",
+		"target": "muebleButton"
+	}, {
+		"type": "DRAG",
+		"object": ["papel1Image", "papel2Image", "papel3Image"],
+		"target": "tachoImage"
+	}, {
+		"type": "TOGGLE",
+		"correct": "doorToggle",
+		"sound": "doorClick"
+	}]
+}
