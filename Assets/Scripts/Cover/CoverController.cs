@@ -1,52 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Assets.Scripts.App;
 using System;
+using Assets.Scripts.App;
 
-namespace Assets.Scripts.Cover
-{
+namespace Assets.Scripts.Cover{
 
-    public class CoverController : MonoBehaviour
-    {
+    public class CoverController : MonoBehaviour{
+        private static CoverController coverController;
 
-        public static CoverController instance;
-        public CoverView coverView;
-	
-
-        // Use this for initialization
-        void Start()
-        {
-            //Check if instance already exists
-            if (instance == null)
-                //if not, set instance to this
-                instance = this;
-            //If instance already exists and it's not this:
-            else if (instance != this)
-                //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-                Destroy(gameObject);
+        void Awake(){
+            if (coverController == null){ coverController = this; }            
+            else if (coverController != this){ Destroy(gameObject); }               
         }
 
-        // Update is called once per frame
-        void Update()
-        {
 
+        internal void StartGame(){
+            ViewController.GetController().LoadLogin();
         }
 
-        public void ChangeLanguage(int language)
-        {
-            SettingsController.instance.SwitchLanguage(language);
-        }
-
-        internal static void Play()
-        {
-
-			ViewController.instance.LoadNameScreen();
-
-        }
-
-        internal static void PlayClicSound()
-        {
-			SoundController.instance.PlayClickSound();
-        }
+        internal static CoverController GetController(){
+            return coverController;
+        }        
     }
 }

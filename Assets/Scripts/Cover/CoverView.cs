@@ -1,71 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts.Sound;
+using System;
+using Assets.Scripts.Common;
 
-namespace Assets.Scripts.Cover
-{
-    public class CoverView : MonoBehaviour
-    {
-        public Button argentineBtn;
-        public Button britishBtn;
-        public Button startBtn;
-        public Button aboutBtn;
-        public Button oxBtn;
-        public Button aboutScreen;
-        public Button oxScreen;
-        public List<Sprite> aboutScreenSprites;
-        public List<Sprite> oxScreenSprites;
-        public List<Sprite> aboutBtnSprites;
-        public List<Sprite> startBtnSprites;
+namespace Assets.Scripts.Cover{
 
-        public void OnClicFlagBtn(int toLanguage)
+    public class CoverView : MonoBehaviour{      
+
+        public GameObject coverScreen;
+        public GameObject oxScreen;
+        public GameObject aboutScreen;
+
+        void Update()
         {
-            PlayClicSound();
-            CoverController.instance.ChangeLanguage(toLanguage);
-            ChangeLanguage(toLanguage);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (aboutScreen.activeSelf)
+                {
+                    ClickSound();
+                    ShowCoverScreen();
+                    aboutScreen.SetActive(false);
+                } else if (oxScreen.activeSelf)
+                {
+                    ClickSound();
+                    ShowCoverScreen();
+                    oxScreen.SetActive(false);
+                }
+                else
+                {
+                    Utils.MinimizeApp();
+                }
+            }
         }
 
-        public void OnClicStartBtn()
+        internal void ShowCoverScreen(){
+            coverScreen.SetActive(true);
+        }     
+
+		public void ShowOx()
         {
-            PlayClicSound();
-            CoverController.Play();
+            oxScreen.SetActive(true);
         }
 
-        public void OnClicOxBtn()
+		public void OnClickStartBtn()
+		{
+			SoundController.GetController ().PlayClickSound ();
+			CoverController.GetController().StartGame();
+		}
+
+		public void ShowAbout()
         {
-            PlayClicSound();
-            ShowOx();
+            aboutScreen.SetActive(true);
         }
 
-        public void OnClicAboutBtn()
+        internal void ClickSound()
         {
-            PlayClicSound();
-            ShowAbout();
-        }
-
-        private void ShowOx()
-        {
-            oxScreen.gameObject.SetActive(true);
-        }
-
-        private void ShowAbout()
-        {
-            aboutScreen.gameObject.SetActive(true);
-        }
-
-        private void ChangeLanguage(int language)
-        {
-            argentineBtn.gameObject.SetActive(language == 0 ? false : true);
-            britishBtn.gameObject.SetActive(language == 1 ? false : true);
-            oxScreen.image.sprite = oxScreenSprites[language];
-            aboutBtn.image.sprite = aboutBtnSprites[language];
-            aboutScreen.image.sprite = aboutScreenSprites[language];
-            startBtn.image.sprite = startBtnSprites[language];
-        }
-
-        public void PlayClicSound() {
-            CoverController.PlayClicSound();
+            SoundController.GetController().PlayClickSound();
         }
     }
 }

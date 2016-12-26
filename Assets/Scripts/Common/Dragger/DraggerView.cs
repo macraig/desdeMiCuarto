@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using Assets.Scripts.App;
+using Assets.Scripts.Games;
 
 namespace Assets.Scripts.Common.Dragger {
 	abstract public class DraggerView : LevelView {

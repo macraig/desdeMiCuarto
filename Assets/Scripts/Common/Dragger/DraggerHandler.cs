@@ -3,6 +3,7 @@
 //It's a dragger lie because it's dragging, but then it returns to the old position magically setting text in the dropped slot.
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Assets.Scripts.Sound;
 using Assets.Scripts.App;
 
 
@@ -34,7 +35,7 @@ namespace Assets.Scripts.Common.Dragger {
 
 		public void OnEndDrag(PointerEventData eventData) {
 			if (active) {
-				SoundController.instance.PlayClickSound ();
+				SoundController.GetController().PlayClickSound ();
 				itemBeingDragged = null;
 				GetComponent<CanvasGroup> ().blocksRaycasts = true;
 

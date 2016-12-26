@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts.App;
+using Assets.Scripts.Games;
 using UnityEngine.UI;
 using UnityEngine;
 using SimpleJSON;
@@ -35,6 +36,19 @@ namespace Assets.Scripts.Games.BedroomActivity {
 			case StageType.CLICK:
 				break;
 			}
+		}
+
+		public override void RestartGame(){
+			
+		}
+
+		public override void OnCorrectAnswerAnimationEnd(){
+
+		
+		}
+
+		public override void OnWrongAnswerAnimationEnd(){
+			
 		}
 	}
 }
