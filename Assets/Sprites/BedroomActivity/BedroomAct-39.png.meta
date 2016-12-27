@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: 74a5a38b809e1cd4880bf7a0dc60a25e
-timeCreated: 1482864318
+guid: d48b6c962d91d894aaa351a473cc4797
+timeCreated: 1482865907
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: BedroomAct-32_0
-    21300002: BedroomAct-32_1
+    21300000: BedroomAct-39_0
+    21300002: BedroomAct-39_1
+    21300004: BedroomAct-39_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -55,26 +56,39 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BedroomAct-32_0
+      name: BedroomAct-39_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 224
-        height: 229
+        width: 414.33334
+        height: 367
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-32_1
+      name: BedroomAct-39_1
       rect:
         serializedVersion: 2
-        x: 224
+        x: 414
         y: 0
-        width: 224
-        height: 229
+        width: 414.33334
+        height: 367
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BedroomAct-39_2
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 0
+        width: 414.33334
+        height: 367
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

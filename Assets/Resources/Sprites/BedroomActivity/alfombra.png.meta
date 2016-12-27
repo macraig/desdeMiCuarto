@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5a278157357357d498d2097ef2c30397
-timeCreated: 1482156621
+timeCreated: 1482865287
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,14 @@ TextureImporter:
     21300002: BedroomAct-42_1
     21300004: BedroomAct-42_2
     21300006: BedroomAct-42_3
+    21300008: alfombra_0
+    21300010: alfombra_1
+    21300012: alfombra_2
+    21300014: alfombra_3
+    21300016: alfombra_4
+    21300018: alfombra_5
+    21300020: alfombra_6
+    21300022: alfombra_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -57,52 +65,104 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BedroomAct-42_0
+      name: alfombra_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 334.5
-        height: 507
+        width: 346.375
+        height: 509
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-42_1
+      name: alfombra_1
       rect:
         serializedVersion: 2
-        x: 334
+        x: 346
         y: 0
-        width: 334.5
-        height: 507
+        width: 346.375
+        height: 509
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-42_2
+      name: alfombra_2
       rect:
         serializedVersion: 2
-        x: 668
+        x: 692
         y: 0
-        width: 334.5
-        height: 507
+        width: 346.375
+        height: 509
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BedroomAct-42_3
+      name: alfombra_3
       rect:
         serializedVersion: 2
-        x: 1002
+        x: 1038
         y: 0
-        width: 334.5
-        height: 507
+        width: 346.375
+        height: 509
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: alfombra_4
+      rect:
+        serializedVersion: 2
+        x: 1384
+        y: 0
+        width: 346.375
+        height: 509
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: alfombra_5
+      rect:
+        serializedVersion: 2
+        x: 1730
+        y: 0
+        width: 346.375
+        height: 509
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: alfombra_6
+      rect:
+        serializedVersion: 2
+        x: 2076
+        y: 0
+        width: 346.375
+        height: 509
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: alfombra_7
+      rect:
+        serializedVersion: 2
+        x: 2422
+        y: 0
+        width: 346.375
+        height: 509
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
