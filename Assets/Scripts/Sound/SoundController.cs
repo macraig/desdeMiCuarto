@@ -76,6 +76,16 @@ namespace Assets.Scripts.Sound{
 		PlaySFXSound (levelCompleteSound);
     }
 
+		public void PlayDragSound()
+		{
+			PlaySFXSound (dragSound);
+		}
+
+		public void PlayDropSound()
+		{
+			PlaySFXSound (dropSound);
+		}
+
 	public void PlaySFXSound(AudioClip clip){
 		if (SettingsController.GetController().SfxOn()) {
 			mySource.clip = levelCompleteSound;
