@@ -18,7 +18,7 @@ namespace Assets.Scripts.MainMenu
         private Image levelImage;
         [SerializeField]
         private Button playButton;
-      
+   
 
         private int leveLSelected;
 
@@ -30,20 +30,16 @@ namespace Assets.Scripts.MainMenu
             }
         }
 
-       
-
      
         internal void SetGameDescription(string description)
         {
             this.gameDescription.text = description.Replace("/n", "\n");
         }
 
-       
-
+     
         internal void SetImages(Sprite areaSprite)
         {
-            levelImage.sprite = areaSprite;
-          
+            levelImage.sprite = areaSprite;      
         }
 
         public void OnClickPlayBtn()
@@ -65,9 +61,7 @@ namespace Assets.Scripts.MainMenu
 
         public void OnClickLvlBtn(int level)
         {
-            leveLSelected = level;
-          	
-           
+            leveLSelected = level;     
             ClickSound();
         }
 

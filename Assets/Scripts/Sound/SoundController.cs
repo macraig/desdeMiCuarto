@@ -9,11 +9,15 @@ namespace Assets.Scripts.Sound{
 	    private static SoundController instance;
 
 
-	    public AudioClip failureSound;
-	    public AudioClip rightAnswerSound;
-	    public AudioClip levelCompleteSound;
-	    public AudioClip music;
-		public AudioClip clickSound,switchSound,typeSound;
+		[SerializeField]
+		private AudioClip failureSound,rightAnswerSound,dragSound,dropSound;
+		[SerializeField]
+		private AudioClip levelCompleteSound;
+		[SerializeField]
+		private AudioClip music;
+		[SerializeField]
+		private AudioClip clickSound,switchSound,typeSound;
+
 
 
 	    public AudioSource mySource;
@@ -46,59 +50,38 @@ namespace Assets.Scripts.Sound{
 	    mySource.clip = myClip;
 		mySource.Play();
     }
-
-        public void PlayFailureSound()
-    {
-			if (SettingsController.GetController().SfxOn()) {
-		    mySource.clip = failureSound;
-		    mySource.Play();
-	    }
-	
+			
+	public void PlayFailureSound()  {
+		PlaySFXSound (failureSound);
     }
 
-        public void PlayClickSound()
-    {
-			if (SettingsController.GetController().SfxOn()) {
-		    mySource.clip = clickSound;
-		    mySource.Play();
-	    }
-
+    public void PlayClickSound() {
+		PlaySFXSound (clickSound);
     }
-		public void PlaySwitchSound()
-		{
-			if (SettingsController.GetController ().SfxOn ()) {
-				mySource.clip = switchSound;
-				mySource.Play ();
-			}
-		}
+	public void PlaySwitchSound(){
+		PlaySFXSound (switchSound);
+	}
 
-		public void PlayTypingSound()
-		{
-			if (SettingsController.GetController ().SfxOn ()) {
-				mySource.clip = typeSound;
-				mySource.Play ();
-			}
-		}
+	public void PlayTypingSound()
+	{
+		PlaySFXSound (typeSound);
+	}
 
-
-
-		
-
-        public void PlayRightAnswerSound()
-    {
-			if (SettingsController.GetController().SfxOn()) {
-		    mySource.clip = rightAnswerSound;
-		    mySource.Play();
-	    }
+    public void PlayRightAnswerSound(){
+		PlaySFXSound (rightAnswerSound);
     }
 
     public void PlayLevelCompleteSound()
     {
-			if (SettingsController.GetController().SfxOn()) {
-		    mySource.clip = levelCompleteSound;
-		    mySource.Play();
-	    }
+		PlaySFXSound (levelCompleteSound);
     }
+
+	public void PlaySFXSound(AudioClip clip){
+		if (SettingsController.GetController().SfxOn()) {
+			mySource.clip = levelCompleteSound;
+			mySource.Play();
+		}
+	}
 
     public void PlayInstruction(int level, int language)
     {
