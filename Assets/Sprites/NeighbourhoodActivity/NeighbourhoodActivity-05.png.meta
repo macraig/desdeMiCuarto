@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6e8ad1fb8cdc00143b42e3e728e2568c
-timeCreated: 1483450705
+timeCreated: 1483622521
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -21,6 +21,12 @@ TextureImporter:
     21300028: NeighbourhoodActivity-05_14
     21300030: NeighbourhoodActivity-05_16
     21300032: NeighbourhoodActivity-05_18
+    21300034: NeighbourhoodActivity-05_15
+    21300036: NeighbourhoodActivity-05_17
+    21300038: NeighbourhoodActivity-05_19
+    21300040: NeighbourhoodActivity-05_20
+    21300042: NeighbourhoodActivity-05_22
+    21300044: NeighbourhoodActivity-05_24
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -99,11 +105,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 311
-        width: 156
-        height: 156
+        y: 155.5
+        width: 155.92308
+        height: 155.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -112,11 +118,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 155
-        y: 311.3333
-        width: 155.85715
-        height: 155.66669
+        y: 155.5
+        width: 155.92308
+        height: 155.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -125,11 +131,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 310
-        y: 311.3333
-        width: 155.85715
-        height: 155.66669
+        y: 155.5
+        width: 155.92308
+        height: 155.5
       alignment: 0
-      pivot: {x: 0.5000001, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -137,12 +143,12 @@ TextureImporter:
       name: NeighbourhoodActivity-05_3
       rect:
         serializedVersion: 2
-        x: 467
-        y: 311
-        width: 156
-        height: 156
+        x: 465
+        y: 155.5
+        width: 155.92308
+        height: 155.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -151,7 +157,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 623
-        y: 311
+        y: 155
         width: 156
         height: 156
       alignment: 0
@@ -164,7 +170,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 779
-        y: 311
+        y: 155
         width: 156
         height: 156
       alignment: 0
@@ -177,7 +183,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 935
-        y: 311
+        y: 155
         width: 156
         height: 156
       alignment: 0
@@ -189,12 +195,12 @@ TextureImporter:
       name: NeighbourhoodActivity-05_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 156.33333
-        width: 155.85715
-        height: 155.66667
+        x: 1091
+        y: 155
+        width: 156
+        height: 156
       alignment: 0
-      pivot: {x: 0.5, y: 0.49999994}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -202,12 +208,12 @@ TextureImporter:
       name: NeighbourhoodActivity-05_8
       rect:
         serializedVersion: 2
-        x: 155
-        y: 156.33333
-        width: 155.85715
-        height: 155.66667
+        x: 1247
+        y: 155
+        width: 156
+        height: 156
       alignment: 0
-      pivot: {x: 0.5, y: 0.49999994}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -215,12 +221,12 @@ TextureImporter:
       name: NeighbourhoodActivity-05_9
       rect:
         serializedVersion: 2
-        x: 310
-        y: 156.33333
-        width: 155.85715
-        height: 155.66667
+        x: 1403
+        y: 155
+        width: 156
+        height: 156
       alignment: 0
-      pivot: {x: 0.5000001, y: 0.49999994}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -228,8 +234,8 @@ TextureImporter:
       name: NeighbourhoodActivity-05_10
       rect:
         serializedVersion: 2
-        x: 467
-        y: 156
+        x: 1558
+        y: 155
         width: 156
         height: 156
       alignment: 0
@@ -241,8 +247,8 @@ TextureImporter:
       name: NeighbourhoodActivity-05_11
       rect:
         serializedVersion: 2
-        x: 623
-        y: 156
+        x: 1714
+        y: 154
         width: 156
         height: 156
       alignment: 0
@@ -254,8 +260,8 @@ TextureImporter:
       name: NeighbourhoodActivity-05_12
       rect:
         serializedVersion: 2
-        x: 779
-        y: 156
+        x: 1869
+        y: 155
         width: 156
         height: 156
       alignment: 0
@@ -267,8 +273,8 @@ TextureImporter:
       name: NeighbourhoodActivity-05_13
       rect:
         serializedVersion: 2
-        x: 935
-        y: 157
+        x: 0
+        y: 0
         width: 156
         height: 156
       alignment: 0
@@ -280,10 +286,23 @@ TextureImporter:
       name: NeighbourhoodActivity-05_14
       rect:
         serializedVersion: 2
-        x: 0
+        x: 155
+        y: 0.5
+        width: 155.9231
+        height: 155.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: NeighbourhoodActivity-05_15
+      rect:
+        serializedVersion: 2
+        x: 311
         y: 0
-        width: 311
-        height: 157
+        width: 156
+        height: 156
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -293,10 +312,23 @@ TextureImporter:
       name: NeighbourhoodActivity-05_16
       rect:
         serializedVersion: 2
-        x: 310
+        x: 466
         y: 0
-        width: 313
-        height: 157
+        width: 156
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: NeighbourhoodActivity-05_17
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 0
+        width: 156
+        height: 156
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -306,9 +338,61 @@ TextureImporter:
       name: NeighbourhoodActivity-05_18
       rect:
         serializedVersion: 2
-        x: 622
+        x: 779
         y: 0
-        width: 314
+        width: 156
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: NeighbourhoodActivity-05_19
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 0
+        width: 156
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: NeighbourhoodActivity-05_20
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 0
+        width: 308
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: NeighbourhoodActivity-05_22
+      rect:
+        serializedVersion: 2
+        x: 1404
+        y: 0
+        width: 308
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: NeighbourhoodActivity-05_24
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 0
+        width: 309
         height: 156
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
