@@ -40,7 +40,8 @@ namespace Assets.Scripts.Cover{
 
 		public void ShowOx()
         {
-            oxScreen.SetActive(true);
+			ClickSound ();
+			oxScreen.SetActive(true);
         }
 
 		public void OnClickStartBtn()
@@ -51,7 +52,9 @@ namespace Assets.Scripts.Cover{
 
 		public void ShowAbout()
         {
-            aboutScreen.SetActive(true);
+			ClickSound ();
+			aboutScreen.SetActive(true);
+
         }
 
         internal void ClickSound()

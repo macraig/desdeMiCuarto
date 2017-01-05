@@ -88,7 +88,7 @@ namespace Assets.Scripts.Sound{
 
 	public void PlaySFXSound(AudioClip clip){
 		if (SettingsController.GetController().SfxOn()) {
-			mySource.clip = levelCompleteSound;
+			mySource.clip = clip;
 			mySource.Play();
 		}
 	}

@@ -59,6 +59,11 @@ namespace Assets.Scripts.MainMenu {
      */
         }
 
+		public void OnClickBack(){
+			ClickSound();
+			MainMenuController.GetController().GoBack();
+		}
+
         public void OnClickSettings()
         {
             ClickSound();

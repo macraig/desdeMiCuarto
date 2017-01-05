@@ -9,7 +9,6 @@ namespace Assets.Scripts.Login
 
         public void OnIncorrectUserAnimationEnd()
         {
-            gameObject.GetComponent<Animation>().Stop();
             gameObject.SetActive(false);
             loginView.OnIncorrectInputAnimationEnd();
         }
@@ -17,7 +16,6 @@ namespace Assets.Scripts.Login
         internal void ShowIncorrecrUserAnimation()
         {
             gameObject.SetActive(true);
-            gameObject.GetComponent<Animation>().Play();
 
         }
 

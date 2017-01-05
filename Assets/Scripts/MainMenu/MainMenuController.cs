@@ -44,6 +44,9 @@ namespace Assets.Scripts.MainMenu
             AppController.GetController().PlayCurrentGame(level);
         }
       
+		internal void GoBack() {
+			ViewController.GetController().LoadLogin();
+		}
 
         internal void ShowPreviewGame(int id)
         {
