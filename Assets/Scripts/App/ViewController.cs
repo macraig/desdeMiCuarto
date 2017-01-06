@@ -121,16 +121,16 @@ namespace Assets.Scripts.App
 				game = "ClassroomActivity";
 				break;
 			case 4:
-				game = "BedroomActivity";
+				game = "SchoolActivity";
 				break;
 			case 5:
-				game = "BedroomActivity";
+				game = "TreasureActivity";
 				break;
 			case 6:
-				game = "BedroomActivity";
+				game = "NeighbourhoodActivity";
 				break;
 			case 7:
-				game = "BedroomActivity";
+				game = "PatternsActivity";
 				break;
 			}
 

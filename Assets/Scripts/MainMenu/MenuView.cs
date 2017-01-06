@@ -9,12 +9,7 @@ using Assets.Scripts.Common;
 namespace Assets.Scripts.MainMenu {
     public class MenuView : MonoBehaviour {
 
-        public Text numberingLabel;
-        public Text geometryLabel;
-        public Text abilityLabel;
-        public Text dataLabel;
-        public InputField searchInput;
-        public GameObject searchResultsPanel;
+
         public Scrollbar scrollbar;
         public GameObject buttonGamePrefab;
         // 0 numering, 1 geomtry, 2 ability, 3 data
