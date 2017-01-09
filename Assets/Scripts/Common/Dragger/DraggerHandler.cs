@@ -13,7 +13,7 @@ namespace Assets.Scripts.Common.Dragger {
 		public bool activeOnDrop;
 		private Vector3 startPosition;
 		private bool dropped;
-		private bool active = true;
+		public bool active;
 
 		public void SetActive(bool isActive){
 			active = isActive;
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Common.Dragger {
 
 		public void OnEndDrag(PointerEventData eventData) {
 			if (active) {
-				SoundController.GetController().PlayClickSound ();
+				//SoundController.GetController().PlayClickSound ();
 				itemBeingDragged = null;
 				GetComponent<CanvasGroup> ().blocksRaycasts = true;
 

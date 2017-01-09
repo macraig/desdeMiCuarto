@@ -15,9 +15,6 @@ namespace Assets.Scripts.Games
         // This method have to restart the view of the game to the initial state
         public abstract void RestartGame();
 
-        public abstract void OnCorrectAnswerAnimationEnd();
-        public abstract void OnWrongAnswerAnimationEnd();
-
         // This method have to be called when the user clicks menuButton
         public void OnClickMenuBtn(){
             PlaySoundClick();
