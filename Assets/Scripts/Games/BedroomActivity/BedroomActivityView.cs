@@ -17,7 +17,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		private int currentLvl;
 
 		public void Start(){
-			lvls = JSON.Parse(Resources.Load<Text>("BedroomActivity/bedroom.json").text).AsArray;
+			lvls = JSON.Parse(Resources.Load<TextAsset>("BedroomActivity/bedroom").text).AsObject["levels"].AsArray;
 			boards = Resources.LoadAll<Sprite>("Sprites/BedroomActivity/consignas");
 			Begin();
 		}
@@ -55,6 +55,8 @@ namespace Assets.Scripts.Games.BedroomActivity {
 				SetDrag(lvl, enabled);
 				break;
 			}
+
+			upperBoard.sprite = boards[currentLvl];
 		}
 
 		void SetDrag(JSONClass lvl, bool enabled) {
@@ -105,7 +107,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		#region implemented abstract members of DraggerView
 
 		public override void Dropped(DraggerHandler dropped, DraggerSlot where) {
-			
+			Next();
 		}
 
 		public void MuebleEnter(){

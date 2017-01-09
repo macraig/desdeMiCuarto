@@ -4,9 +4,6 @@
 		"object": ["crayonesImage"],
 		"target": "muebleButton"
 	}, {
-		"type": "CLICK",
-		"target": ["alfombraButton"]
-	}, {
 		"type": "TOGGLE",
 		"correct": "lampToggle",
 		"wrong": ["littleLamp1", "littleLamp2"],
