@@ -11,16 +11,70 @@ namespace Assets.Scripts.Games
     public abstract class LevelView : MonoBehaviour
     {
 //      
+		//Ingame Menu Panel
+		public GameObject menuPanel;
+		//Explanation Panel
+		public GameObject explanationPanel;
+
+		public void OnClickMenuBtn(){
+			PlaySoundClick();
+			ShowInGameMenu();
+		}
+
+		public void ShowInGameMenu(){
+			menuPanel.SetActive (true);
+		}
+
+		public void HideInGameMenu(){
+			PlaySoundClick ();
+			menuPanel.SetActive (false);
+		}
+
+		public void OnClickInstructionsButton(){
+			PlaySoundClick ();
+			HideInGameMenu ();
+			ShowExplanation ();
+
+		}
+
+		public void OnClickRestartButton(){
+			PlaySoundClick ();
+			HideInGameMenu ();
+			RestartGame ();
+
+		}
+
+		public void OnClickExitGameButton(){
+			PlaySoundClick ();
+			HideInGameMenu ();
+			ExitGame ();
+
+		}
+
+		internal void ShowExplanation(){
+			explanationPanel.SetActive(true);
+			//play al sonido de instructions
+		}
+
+
+		public void HideExplanation(){
+			PlaySoundClick ();
+			explanationPanel.SetActive (false);
+
+		}
+
+
+
+		internal void ExitGame(){
+//			MetricsController.GetController().DiscardCurrentMetrics();
+			ViewController.GetController().LoadMainMenu();
+		}
 
         // This method have to restart the view of the game to the initial state
         public abstract void RestartGame();
 
         // This method have to be called when the user clicks menuButton
-        public void OnClickMenuBtn(){
-            PlaySoundClick();
-            AppController.GetController().ShowInGameMenu();
-        }
-
+       
         public void OnClickSurrender()
         {
             PlaySoundClick();
@@ -43,8 +97,7 @@ namespace Assets.Scripts.Games
         {
             SoundController.GetController().PlayFailureSound();
         }
-
-        
+			
 
         public void OnClickNextButton()
         {

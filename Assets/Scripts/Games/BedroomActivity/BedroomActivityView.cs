@@ -10,7 +10,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 	public class BedroomActivityView : DraggerView {
 		public Image upperBoard;
 		public Button soundBtn;
-		public GameObject explanationPanel;
+
 
 		private Sprite[] boards, carpets;
 		private JSONArray lvls;
@@ -23,7 +23,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		}
 
 		public void Begin(){
-			explanationPanel.SetActive(true);
+			ShowExplanation ();
 			Next(true);
 		}
 
@@ -68,7 +68,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 			}
 		}
 
-		public void QuitExplanation(){ explanationPanel.SetActive(false); }
+
 
 		void SetToggle(JSONClass lvl, bool enabled) {
 			JSONArray target = lvl["correct"].AsArray;
