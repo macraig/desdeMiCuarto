@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a824da4f16e9f6644b34bddb9242b627
-timeCreated: 1482938776
+timeCreated: 1483958834
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -44,12 +44,60 @@ TextureImporter:
     21300074: TreasureActivity-02_37
     21300076: TreasureActivity-02_38
     21300078: TreasureActivity-02_39
-  serializedVersion: 2
+    21300080: figuras_0
+    21300082: figuras_1
+    21300084: figuras_2
+    21300086: figuras_3
+    21300088: figuras_4
+    21300090: figuras_5
+    21300092: figuras_6
+    21300094: figuras_7
+    21300096: figuras_8
+    21300098: figuras_9
+    21300100: figuras_10
+    21300102: figuras_11
+    21300104: figuras_12
+    21300106: figuras_13
+    21300108: figuras_14
+    21300110: figuras_15
+    21300112: figuras_16
+    21300114: figuras_17
+    21300116: figuras_18
+    21300118: figuras_19
+    21300120: figuras_20
+    21300122: figuras_21
+    21300124: figuras_22
+    21300126: figuras_23
+    21300128: figuras_24
+    21300130: figuras_25
+    21300132: figuras_26
+    21300134: figuras_27
+    21300136: figuras_28
+    21300138: figuras_29
+    21300140: figuras_30
+    21300142: figuras_31
+    21300144: figuras_32
+    21300146: figuras_33
+    21300148: figuras_34
+    21300150: figuras_35
+    21300152: figuras_36
+    21300154: figuras_37
+    21300156: figuras_38
+    21300158: figuras_39
+    21300160: figuras_40
+    21300162: figuras_41
+    21300164: figuras_42
+    21300166: figuras_43
+    21300168: figuras_44
+    21300170: figuras_45
+    21300172: figuras_46
+    21300174: figuras_47
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
     mipMapFadeDistanceStart: 1
@@ -61,10 +109,8 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
@@ -75,9 +121,7 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -85,528 +129,661 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TreasureActivity-02_0
+      name: figuras_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 898.4
+        y: 1123.3334
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_1
+      name: figuras_1
       rect:
         serializedVersion: 2
         x: 210
-        y: 898.4
+        y: 1123.3334
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_2
+      name: figuras_2
       rect:
         serializedVersion: 2
         x: 420
-        y: 898.4
+        y: 1123.3334
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_3
+      name: figuras_3
       rect:
         serializedVersion: 2
         x: 630
-        y: 898.4
+        y: 1123.3334
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_4
+      name: figuras_4
       rect:
         serializedVersion: 2
         x: 840
-        y: 898.4
+        y: 1123.3334
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_5
+      name: figuras_5
       rect:
         serializedVersion: 2
         x: 1050
-        y: 898.4
+        y: 1123.3334
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_6
+      name: figuras_6
       rect:
         serializedVersion: 2
         x: 1260
-        y: 898.4
+        y: 1123.3334
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_7
+      name: figuras_7
       rect:
         serializedVersion: 2
         x: 1470
-        y: 898.4
+        y: 1123.3334
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_8
+      name: figuras_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 674.4
+        y: 899.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_9
+      name: figuras_9
       rect:
         serializedVersion: 2
         x: 210
-        y: 674.4
+        y: 899.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_10
+      name: figuras_10
       rect:
         serializedVersion: 2
         x: 420
-        y: 674.4
+        y: 899.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_11
+      name: figuras_11
       rect:
         serializedVersion: 2
         x: 630
-        y: 674.4
+        y: 899.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_12
+      name: figuras_12
       rect:
         serializedVersion: 2
         x: 840
-        y: 674.4
+        y: 899.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_13
+      name: figuras_13
       rect:
         serializedVersion: 2
         x: 1050
-        y: 674.4
+        y: 899.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_14
+      name: figuras_14
       rect:
         serializedVersion: 2
         x: 1260
-        y: 674.4
+        y: 899.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_15
+      name: figuras_15
       rect:
         serializedVersion: 2
         x: 1470
-        y: 674.4
+        y: 899.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_16
+      name: figuras_16
       rect:
         serializedVersion: 2
         x: 0
-        y: 450.4
+        y: 675.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_17
+      name: figuras_17
       rect:
         serializedVersion: 2
         x: 210
-        y: 450.4
+        y: 675.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_18
+      name: figuras_18
       rect:
         serializedVersion: 2
         x: 420
-        y: 450.4
+        y: 675.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_19
+      name: figuras_19
       rect:
         serializedVersion: 2
         x: 630
-        y: 450.4
+        y: 675.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_20
+      name: figuras_20
       rect:
         serializedVersion: 2
         x: 840
-        y: 450.4
+        y: 675.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_21
+      name: figuras_21
       rect:
         serializedVersion: 2
         x: 1050
-        y: 450.4
+        y: 675.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_22
+      name: figuras_22
       rect:
         serializedVersion: 2
         x: 1260
-        y: 450.4
+        y: 675.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_23
+      name: figuras_23
       rect:
         serializedVersion: 2
         x: 1470
-        y: 450.4
+        y: 675.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_24
+      name: figuras_24
       rect:
         serializedVersion: 2
         x: 0
-        y: 226.4
+        y: 451.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_25
+      name: figuras_25
       rect:
         serializedVersion: 2
         x: 210
-        y: 226.4
+        y: 451.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_26
+      name: figuras_26
       rect:
         serializedVersion: 2
         x: 420
-        y: 226.4
+        y: 451.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_27
+      name: figuras_27
       rect:
         serializedVersion: 2
         x: 630
-        y: 226.4
+        y: 451.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_28
+      name: figuras_28
       rect:
         serializedVersion: 2
         x: 840
-        y: 226.4
+        y: 451.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_29
+      name: figuras_29
       rect:
         serializedVersion: 2
         x: 1050
-        y: 226.4
+        y: 451.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_30
+      name: figuras_30
       rect:
         serializedVersion: 2
         x: 1260
-        y: 226.4
+        y: 451.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_31
+      name: figuras_31
       rect:
         serializedVersion: 2
         x: 1470
-        y: 226.4
+        y: 451.3333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_32
+      name: figuras_32
       rect:
         serializedVersion: 2
         x: 0
-        y: 2.399994
+        y: 227.33333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_33
+      name: figuras_33
       rect:
         serializedVersion: 2
         x: 210
-        y: 2.399994
+        y: 227.33333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_34
+      name: figuras_34
       rect:
         serializedVersion: 2
         x: 420
-        y: 2.399994
+        y: 227.33333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_35
+      name: figuras_35
       rect:
         serializedVersion: 2
         x: 630
-        y: 2.399994
+        y: 227.33333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_36
+      name: figuras_36
       rect:
         serializedVersion: 2
         x: 840
-        y: 2.399994
+        y: 227.33333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_37
+      name: figuras_37
       rect:
         serializedVersion: 2
         x: 1050
-        y: 2.399994
+        y: 227.33333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_38
+      name: figuras_38
       rect:
         serializedVersion: 2
         x: 1260
-        y: 2.399994
+        y: 227.33333
         width: 210
-        height: 224.6
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TreasureActivity-02_39
+      name: figuras_39
       rect:
         serializedVersion: 2
         x: 1470
-        y: 2.399994
+        y: 227.33333
         width: 210
-        height: 224.6
+        height: 224.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: figuras_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3.3333282
+        width: 210
+        height: 224.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: figuras_41
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 3.3333282
+        width: 210
+        height: 224.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: figuras_42
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 3.3333282
+        width: 210
+        height: 224.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: figuras_43
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 3.3333282
+        width: 210
+        height: 224.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: figuras_44
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 3.3333282
+        width: 210
+        height: 224.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: figuras_45
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 3.3333282
+        width: 210
+        height: 224.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: figuras_46
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 3.3333282
+        width: 210
+        height: 224.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: figuras_47
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 3.3333282
+        width: 210
+        height: 224.66667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
