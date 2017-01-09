@@ -25,7 +25,7 @@ namespace Assets.Scripts.Metrics{
 
         internal void GameStarted()
         {
-            AppController appController = AppController.GetController();
+//            AppController appController = AppController.GetController();
 //            Game currentGame = appController.GetCurrentGame();
 //            currentMetric = new GameMetrics(appController.GetCurrentArea(), currentGame.GetId(), appController.GetCurrentLevel(), currentGame.GetExercisesBySubLevel());
         }
@@ -45,7 +45,7 @@ namespace Assets.Scripts.Metrics{
         {
             currentMetric.SetLapsedSeconds(lapsedSeconds);
             CalculateFinalScore(currentMetric, minSeconds, pointsPerSecond, pointsPerError);
-            CalculeteStars(currentMetric);
+            CalculateStars(currentMetric);
             SaveMetric(currentMetric);
         }
 
@@ -53,7 +53,7 @@ namespace Assets.Scripts.Metrics{
         {
             currentMetric.SetLapsedSeconds(lapsedSeconds);
             CalculateFinalScore(currentMetric, metricsTable);
-            CalculeteStars(currentMetric);
+            CalculateStars(currentMetric);
             SaveMetric(currentMetric);
         }
 
@@ -152,17 +152,17 @@ namespace Assets.Scripts.Metrics{
 
                     gameMetrics.SetScore(Mathf.RoundToInt(score));
                     gameMetrics.SetBonusTime(Mathf.RoundToInt(bonusFromTime));
-                    gameMetrics.SetRange(range);
+//                    gameMetrics.SetRange(range);
                     return;
                 }
             }
 
             gameMetrics.SetScore(500);
             gameMetrics.SetBonusTime(0);
-            gameMetrics.SetRange(Range.Rookie);
+//            gameMetrics.SetRange(Range.Rookie);
         }
 
-        private void CalculeteStars(GameMetrics gameMetrics)
+        private void CalculateStars(GameMetrics gameMetrics)
         {
             float percentage = (gameMetrics.GetScore() + 0f) / (MAX_SCORE + 0f);
             gameMetrics.SetStars(percentage > 0.85 ? 3 : percentage > 0.5 ? 2 : 1);

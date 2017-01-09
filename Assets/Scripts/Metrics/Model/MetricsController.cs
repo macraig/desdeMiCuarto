@@ -14,7 +14,7 @@ namespace Assets.Scripts.Metrics
         private static MetricsController metricsController;
         public MetricsModel metricsModel;
         // this list is to register the answers of the currentSublevel. It's is restarted
-        // when a sublevel change 
+        // when a sublevel changes 
         private List<List<bool>> actualBuffer;
 
         void Awake()

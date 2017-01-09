@@ -78,7 +78,7 @@ namespace Assets.Scripts.Games
         public void OnClickSurrender()
         {
             PlaySoundClick();
-            LevelController.GetLevelController().ResolveExercise();
+//            LevelController.GetLevelController().ResolveExercise();
 
             MetricsController.GetController().OnSurrender();
         }

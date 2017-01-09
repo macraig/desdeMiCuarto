@@ -142,21 +142,10 @@ namespace Assets.Scripts.App
             return appModel.GetCurrentArea();
         }
 
-        //internal IEnumerable<GameData> GetGameDatasByArea(int area)
-        //{
+		public AppModel GetAppModel(){
+			return appModel;
+		}
 
-        //    List<List<string>> gameNames = appModel.GetGameNames()[area];
-
-        //    List<GameData> datas = new List<GameData>();
-        //    int language = SettingsController.GetController().GetLanguage();
-
-        //    for (int level = 0; level < gameNames.Count; level++)
-        //    {
-        //        datas.Add(new GameData(gameNames[level][language], area, level));
-        //    }
-
-        //    return datas;
-        //}
         public void SetCurrentLevel(int level)
         {
             appModel.SetCurrentLevel(level);

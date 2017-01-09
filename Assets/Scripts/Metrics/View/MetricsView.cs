@@ -14,7 +14,7 @@ namespace Assets.Scripts.Metrics.View
         private static MetricsView metricsView;
 
         public DetailsView details;
-        public ResultsView results;
+//        public ResultsView results;
         [SerializeField]
         private List<Sprite> areaIcons;
 
@@ -26,18 +26,19 @@ namespace Assets.Scripts.Metrics.View
 
         void Start()
         {
-            ShowResults();
+			//UNCOMMENT
+//            ShowResults();
             HideDetails();
         }
-
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (details.isActiveAndEnabled) details.OnClickCrossBtn();            
-                else results.OnClickCrossBtn();                          
-            }
-        }
+		//UNCOMMENT
+//        void Update()
+//        {
+//            if (Input.GetKeyDown(KeyCode.Escape))
+//            {
+//                if (details.isActiveAndEnabled) details.OnClickCrossBtn();            
+//                else results.OnClickCrossBtn();                          
+//            }
+//        }
 
         private void HideDetails()
         {
@@ -52,10 +53,11 @@ namespace Assets.Scripts.Metrics.View
             details.ShowDetailsOf(AppController.GetController().GetGameName(idGame),SettingsController.GetController().GetUsername(), MetricsController.GetController().GetMetricsByLevel(idGame, level));
         }
 
-        internal void ShowResults()
-        {
-            results.gameObject.SetActive(true);
-        }
+		//UNCOMMENT
+//        internal void ShowResults()
+//        {
+//            results.gameObject.SetActive(true);
+//        }
 
         public static MetricsView GetMetricsView()
         {

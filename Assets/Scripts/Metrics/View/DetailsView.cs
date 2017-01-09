@@ -140,7 +140,7 @@ namespace Assets.Scripts.Metrics.View
         public void OnClickCrossBtn()
         {
             PlaySoundClick();
-            MetricsView.GetMetricsView().ShowResults();
+//            MetricsView.GetMetricsView().ShowResults();
             gameObject.SetActive(false);
         }
 

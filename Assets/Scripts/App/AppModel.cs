@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.App
 {
-    internal class AppModel
+    public class AppModel
     {
         private int currentArea;
         private int currentGame;

@@ -28,7 +28,7 @@ namespace Assets.Scripts.Games
         // This method have to restart the game. This includes model, view and metrics.
         // You must call MetricsController.GetController().GameStart(); in this method.
         public abstract void RestartGame();
-        public abstract void ResolveExercise();
+      
         
         /*
             You must call this method when the user realized an answer

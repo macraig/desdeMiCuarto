@@ -5,6 +5,7 @@ using Assets.Scripts.Settings;
 using Assets.Scripts.Sound;
 using Assets.Scripts.Games;
 using Assets.Scripts.Metrics;
+using Assets.Scripts.App;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.App

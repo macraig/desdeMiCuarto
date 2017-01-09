@@ -76,12 +76,6 @@ namespace Assets.Scripts.MainMenu
             ViewController.GetController().LoadSettings();
         }
 
-        internal void ShowMetrics()
-        {
-            ViewController.GetController().LoadMetrics();
-        }
-
-      
 
         internal List<Game> Search(List<int> areas, string text)
         {

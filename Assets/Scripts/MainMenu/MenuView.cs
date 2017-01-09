@@ -10,8 +10,7 @@ namespace Assets.Scripts.MainMenu {
     public class MenuView : MonoBehaviour {
 
 
-        public Scrollbar scrollbar;
-        public GameObject buttonGamePrefab;
+		public GameObject metricsPanel, detailsPanel;
         // 0 numering, 1 geomtry, 2 ability, 3 data
         public List<Toggle> filters;
 
@@ -68,8 +67,17 @@ namespace Assets.Scripts.MainMenu {
         public void OnClickMetrics()
         {
             ClickSound();
-            MainMenuController.GetController().ShowMetrics();
+           ShowMetrics();
         }
+
+		void ShowMetrics ()
+		{
+			metricsPanel.SetActive (true);
+		}
+
+		void HideMetrics(){
+			metricsPanel.SetActive (false);
+		}
 
         public void ClickSound()
         {
