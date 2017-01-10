@@ -2,47 +2,57 @@
 	levels: [{
 		"type": "DRAG",
 		"object": ["crayonesImage"],
-		"target": "muebleButton"
+		"target": "muebleButton",
+		"sound": ""
 	}, {
 		"type": "TOGGLE",
-		"correct": "lampToggle",
+		"correct": ["lampToggle"],
 		"wrong": ["littleLamp1", "littleLamp2"],
 		"sound": "lightClick"
 	}, {
 		"type": "TOGGLE",
-		"correct": "doorToggle",
+		"correct": ["doorToggle"],
+		"wrong": [],
 		"sound": "doorClick"
 	}, {
 		"type": "TOGGLE",
-		"correct": "baulToggle",
+		"correct": ["baulToggle"],
+		"wrong": [],
 		"sound": "baulClick"
 	}, {
 		"type": "DRAG",
 		"object": ["dinosaurImage", "bearImage"],
-		"target": "baulToggle"
+		"target": "baulToggle",
+		"sound": ""
 	}, {
 		"type": "DRAG",
 		"object": ["almohadonAmarilloImage", "almohadonRojoImage"],
-		"target": "bedButton"
+		"target": "bedButton",
+		"sound": ""
 	}, {
 		"type": "CLICK",
-		"target": ["pincel1Button", "pincel2Button", "pincel3Button"],
+		"correct": ["pincel1Button", "pincel2Button", "pincel3Button"],
+		"wrong": [],
 		"sound": "blop"
 	}, {
 		"type": "TOGGLE",
-		"correct": "windowToggle",
+		"correct": ["windowToggle"],
+		"wrong": [],
 		"sound": "windowClick"
 	}, {
 		"type": "DRAG",
-		"object": "bookImage",
-		"target": "muebleButton"
+		"object": ["bookImage"],
+		"target": "muebleButton",
+		"sound": ""
 	}, {
 		"type": "DRAG",
 		"object": ["papel1Image", "papel2Image", "papel3Image"],
-		"target": "tachoImage"
+		"target": "tachoImage",
+		"sound": ""
 	}, {
 		"type": "TOGGLE",
-		"correct": "doorToggle",
+		"correct": ["doorToggle"],
+		"wrong": [],
 		"sound": "doorClick"
 	}]
 }

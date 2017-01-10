@@ -1,8 +1,83 @@
 ﻿using System;
+using SimpleJSON;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Collections;
+using Assets.Scripts.Common.Dragger;
 
 namespace Assets.Scripts.Games.BedroomActivity {
-	public class BedroomActivityModel {
-		public BedroomActivityModel() {
+	public class BedroomActivityModel : LevelModel {
+		private int currentLvl;
+		private List<BedroomLevel> lvls;
+
+		#region implemented abstract members of LevelModel
+		public override void NextChallenge() { }
+		public override void InitGame() { }
+		public override void RestartGame() { }
+		#endregion
+
+		public void NextLvl(){
+			currentLvl++;
+		}
+
+		public bool GameEnded(){
+			return currentLvl == lvls.Count - 1;
+		}
+
+		public bool CanDropInSlot(DraggerSlot slot) {
+			return slot.gameObject == lvls[currentLvl].Target();
+		}
+
+		public int CurrentLvl(){
+			return currentLvl;
+		}
+
+		public bool ClickFinished() {
+			List<GameObject> targets = lvls[currentLvl].Correct();
+			foreach(GameObject t in targets) {
+				if(t.activeSelf) return false;
+			}
+			return true;
+		}
+
+		public void SetCurrentLevel(bool enabled) {
+			lvls[currentLvl].Set(enabled);
+		}
+
+		private BedroomActivityModel(List<BedroomLevel> lvls) {
+			this.lvls = lvls;
+			currentLvl = 0;
+		}
+
+		public static BedroomActivityModel StartFromJson(JSONArray lvls){
+			List<BedroomLevel> bedroomLvls = new List<BedroomLevel>();
+			foreach(JSONClass lvl in lvls) {
+				StageType type = (StageType) Enum.Parse(typeof(StageType), lvl["type"].Value);
+				string sound = lvl["sound"].Value;
+
+				switch(type) {
+				case StageType.CLICK:
+				case StageType.TOGGLE:
+					List<GameObject> correct = GameObjects(lvl["correct"].AsArray);
+					List<GameObject> wrong = GameObjects(lvl["wrong"].AsArray);
+
+					bedroomLvls.Add(BedroomLevel.FromClickOrToggle(type, correct, wrong, sound));
+					break;
+				case StageType.DRAG:
+					GameObject target = GameObject.Find(lvl["target"].Value);
+
+					List<GameObject> draggers = GameObjects(lvl["object"].AsArray);
+
+					bedroomLvls.Add(BedroomLevel.FromDrag(type, draggers, target, sound));
+					break;
+				}
+			}
+
+			return new BedroomActivityModel(bedroomLvls);
+		}
+
+		static List<GameObject> GameObjects(JSONArray lvl) {
+			return new List<JSONNode>(lvl.Childs).ConvertAll((JSONNode c) => GameObject.Find(c.Value));
 		}
 	}
 }

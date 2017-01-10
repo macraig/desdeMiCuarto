@@ -11,29 +11,27 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		public Image upperBoard;
 		public Button soundBtn;
 
-
-		private Sprite[] boards, carpets;
-		private JSONArray lvls;
-		private int currentLvl;
+		private Sprite[] boards;
+		private BedroomActivityModel model;
 
 		public void Start(){
-			lvls = JSON.Parse(Resources.Load<TextAsset>("BedroomActivity/bedroom").text).AsObject["levels"].AsArray;
+			model = BedroomActivityModel.StartFromJson(JSON.Parse(Resources.Load<TextAsset>("BedroomActivity/bedroom").text).AsObject["levels"].AsArray);
 			boards = Resources.LoadAll<Sprite>("Sprites/BedroomActivity/consignas");
 			Begin();
 		}
 
 		public void Begin(){
-			ShowExplanation ();
+			ShowExplanation();
 			Next(true);
 		}
 
 		public void Next(bool first = false){
 			if(!first){
 				SetCurrentLevel(false);
-				currentLvl++;
+				model.NextLvl();
 			}
 
-			if(currentLvl == lvls.Count - 1) EndGame();
+			if(model.GameEnded()) EndGame();
 			else SetCurrentLevel(true);
 		}
 
@@ -42,71 +40,13 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		}
 
 		private void SetCurrentLevel(bool enabled) {
-			JSONClass lvl = lvls[currentLvl].AsObject;
+			model.SetCurrentLevel(enabled);
 
-			switch((StageType) Enum.Parse(typeof(StageType), lvl["type"].Value)){
-			case StageType.CLICK:
-				SetClick(lvl, enabled);
-				break;
-			case StageType.TOGGLE:
-				SetToggle(lvl, enabled);
-				break;
-			case StageType.DRAG:
-				SetDrag(lvl, enabled);
-				break;
-			}
-
-			upperBoard.sprite = boards[currentLvl];
+			upperBoard.sprite = boards[model.CurrentLvl()];
 		}
-
-		void SetDrag(JSONClass lvl, bool enabled) {
-			JSONArray draggers = lvl["object"].AsArray;
-
-			foreach(JSONNode d in draggers) {
-				GameObject find = GameObject.Find(d.Value);
-				find.GetComponent<DraggerHandler>().SetActive(enabled);
-			}
-		}
-
-
-
-		void SetToggle(JSONClass lvl, bool enabled) {
-			JSONArray target = lvl["correct"].AsArray;
-			JSONArray wrong = lvl["wrong"].AsArray;
-			string sound = lvl["sound"].Value;
-
-			foreach(JSONNode t in target) {
-				GameObject find = GameObject.Find(t.Value);
-				find.GetComponent<Toggle>().enabled = enabled;
-			}
-
-			foreach(JSONNode w in wrong) {
-				GameObject find = GameObject.Find(w.Value);
-				//find.GetComponent<Button>().enabled = enabled;
-			}
-		}
-
-		void SetClick(JSONClass lvl, bool enabled){
-			JSONArray target = lvl["target"].AsArray;
-			JSONArray wrong = lvl["wrong"].AsArray;
-			string sound = lvl["sound"].Value;
-
-			foreach(JSONNode t in target) {
-				GameObject find = GameObject.Find(t.Value);
-				find.GetComponent<Button>().enabled = enabled;
-			}
-
-			foreach(JSONNode w in wrong) {
-				GameObject find = GameObject.Find(w.Value);
-				find.GetComponent<Button>().enabled = enabled;
-			}
-
-			//TODO sound?
-		}
-
-		#region implemented abstract members of DraggerView
 
 		public override void Dropped(DraggerHandler dropped, DraggerSlot where) {
+			//Check if it's over.
 			Next();
 		}
 
@@ -117,14 +57,12 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		}
 
 		public void MuebleLeave(){
-			
+			//Change mueble frame.
 		}
 
 		public override bool CanDropInSlot(DraggerHandler dropper, DraggerSlot slot) {
-			return slot.gameObject.name == lvls[currentLvl].AsObject["target"].Value;
+			return model.CanDropInSlot(slot);
 		}
-
-		#endregion
 
 		public void ClickTarget(GameObject target){
 			target.SetActive(false);
@@ -132,12 +70,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		}
 
 		bool CheckIfFinished() {
-			JSONArray targets = lvls[currentLvl].AsObject["target"].AsArray;
-			foreach(JSONNode t in targets) {
-				if(GameObject.Find(t.Value).activeSelf)
-					return false;
-			}
-			return true;
+			return model.ClickFinished();
 		}
 
 		public void ClickCorrect(){
@@ -148,8 +81,6 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 		}
 
-		public override void RestartGame(){
-			
-		}
+		public override void RestartGame(){ }
 	}
 }
