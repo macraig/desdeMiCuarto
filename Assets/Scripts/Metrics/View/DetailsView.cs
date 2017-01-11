@@ -41,19 +41,13 @@ namespace Assets.Scripts.Metrics.View
              
             this.activity.text = activity;
             this.username.text = username.ToUpper();
-            groupGames(metrics);
+//            groupGames(metrics);
             makeChart();
-            SetLevel(metricsPoints[0].GetLevel());
+//            SetLevel(metricsPoints[0].GetLevel());
             //joinPoints(points, metricsPoints.Count);
         }
 
-        private void SetLevel(int level)
-        {
-            for (int i = 0; i < levelImages.Count; i++)
-            {
-                levelImages[i].gameObject.SetActive(i <= level);
-            }    
-        }
+      
 
         private void joinPoints(List<Image> points, int count)
         {
@@ -97,30 +91,30 @@ namespace Assets.Scripts.Metrics.View
             return t;
         }               
 
-        private void groupGames(List<GameMetrics> metrics){
-            int gruopSize = (int)Math.Ceiling((metrics.Count + 0.0f) / (MAX_COLUMNS + 0.0f));
-            this.note.text = gruopSize + (SettingsController.GetController().GetLanguage() == 0 ? " en " : " in ") + "1";
-
-            for(int i = 0; i < Math.Ceiling((metrics.Count + 0.0f) / (gruopSize + 0.0f)); i++)
-            {
-                List<GameMetrics> currentGroup = metrics.GetRange(i * gruopSize, (i * gruopSize + gruopSize) <= metrics.Count ? gruopSize : metrics.Count - metricsPoints.Count * gruopSize);
-                GameMetrics currentMetric = new GameMetrics(currentGroup[0].GetArea(), currentGroup[0].GetIndex(), currentGroup[0].GetLevel());
-                currentMetric.SetDate(currentGroup[0].GetDate());
-                for(int j = 0; j < currentGroup.Count; j++)
-                {
-                    currentMetric.SetScore(currentMetric.GetScore() + currentGroup[j].GetScore());
-                    currentMetric.SetLapsedSeconds(currentMetric.GetLapsedSeconds() + currentGroup[j].GetLapsedSeconds());
-                    currentMetric.SetRightAnswers(currentMetric.GetRightAnswers() + currentGroup[j].GetRightAnswers());
-                    currentMetric.SetWrongAnswers(currentMetric.GetWrongAnswers() + currentGroup[j].GetWrongAnswers());
-                }
-                currentMetric.SetScore(Average(currentMetric.GetScore(), currentGroup.Count));
-                currentMetric.SetLapsedSeconds(Average(currentMetric.GetLapsedSeconds(), currentGroup.Count));
-                currentMetric.SetRightAnswers(Average(currentMetric.GetRightAnswers(), currentGroup.Count));
-                currentMetric.SetWrongAnswers(Average(currentMetric.GetWrongAnswers(), currentGroup.Count));
-
-                metricsPoints.Add(currentMetric);
-            }
-        }
+//        private void groupGames(List<GameMetrics> metrics){
+//            int gruopSize = (int)Math.Ceiling((metrics.Count + 0.0f) / (MAX_COLUMNS + 0.0f));
+//            this.note.text = gruopSize + (SettingsController.GetController().GetLanguage() == 0 ? " en " : " in ") + "1";
+//
+//            for(int i = 0; i < Math.Ceiling((metrics.Count + 0.0f) / (gruopSize + 0.0f)); i++)
+//            {
+//                List<GameMetrics> currentGroup = metrics.GetRange(i * gruopSize, (i * gruopSize + gruopSize) <= metrics.Count ? gruopSize : metrics.Count - metricsPoints.Count * gruopSize);
+//                GameMetrics currentMetric = new GameMetrics(currentGroup[0].GetIndex());
+//                currentMetric.SetDate(currentGroup[0].GetDate());
+//                for(int j = 0; j < currentGroup.Count; j++)
+//                {
+//                    currentMetric.SetScore(currentMetric.GetScore() + currentGroup[j].GetScore());
+//                    currentMetric.SetLapsedSeconds(currentMetric.GetLapsedSeconds() + currentGroup[j].GetLapsedSeconds());
+//                    currentMetric.SetRightAnswers(currentMetric.GetRightAnswers() + currentGroup[j].GetRightAnswers());
+//                    currentMetric.SetWrongAnswers(currentMetric.GetWrongAnswers() + currentGroup[j].GetWrongAnswers());
+//                }
+//                currentMetric.SetScore(Average(currentMetric.GetScore(), currentGroup.Count));
+//                currentMetric.SetLapsedSeconds(Average(currentMetric.GetLapsedSeconds(), currentGroup.Count));
+//                currentMetric.SetRightAnswers(Average(currentMetric.GetRightAnswers(), currentGroup.Count));
+//                currentMetric.SetWrongAnswers(Average(currentMetric.GetWrongAnswers(), currentGroup.Count));
+//
+//                metricsPoints.Add(currentMetric);
+//            }
+//        }
 
         private int Average(int number, int count)
         {

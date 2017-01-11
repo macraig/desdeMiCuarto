@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Assets.Scripts.Settings;
 using Assets.Scripts.App;
+using Assets.Scripts.Metrics.Model;
 
 namespace Assets.Scripts.Metrics.View
 {
@@ -45,12 +46,11 @@ namespace Assets.Scripts.Metrics.View
             details.gameObject.SetActive(false);
         }               
 
-        internal void ShowDetailsOf(int area, int idGame, int level)
+		internal void ShowDetailsOf(int idGame)
         {
             details.gameObject.SetActive(true);
-            //details.ShowDetailsOf(AppController.GetController().GetActivityName(area, idGame),SettingsController.GetController().GetUsername(), MetricsController.GetController().GetMetricsByLevel(area, idGame, level));
             Debug.Log("id: " + idGame);
-            details.ShowDetailsOf(AppController.GetController().GetGameName(idGame),SettingsController.GetController().GetUsername(), MetricsController.GetController().GetMetricsByLevel(idGame, level));
+			details.ShowDetailsOf(AppController.GetController().GetGameName(idGame),SettingsController.GetController().GetUsername(), MetricsController.GetController().GetGameMetrics(idGame));
         }
 
 		//UNCOMMENT

@@ -1,0 +1,47 @@
+﻿{
+	"games": [
+	{
+		"id": "1",
+		"icon": "0",
+		"name": "Mi cuarto",
+		"description": "Descripción genérica de la actividad",
+		"prefabName":"BedroomActivity"
+	}, {
+		"id": "2",
+		"icon": "1",
+		"name": "Mi casa",
+		"description": "Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa",
+		"prefabName":"HouseActivity"
+	}, {
+		"id": "3",
+		"icon": "2",
+		"name": "Mi aula",
+		"description": "Aula Aula Aula Aula Aula Aula Aula Aula Aula Aula Aula", 
+		"prefabName":"ClassroomActivity"
+	}, {
+		"id": "4",
+		"icon": "3",
+		"name": "Mi escuela",
+		"description": "Escuela Escuela Escuela Escuela Escuela Escuela Escuela",
+		"prefabName":"SchoolActivity"
+	}, {
+		"id": "5",
+		"icon": "4",
+		"name": "El tesoro",
+		"description": "El tesoro El tesoro El tesoro El tesoro El tesoro El tesoro El tesoro",
+		"prefabName":"TreasureActivity"
+	}, {
+		"id": "6",
+		"icon": "5",
+		"name": "Mi barrio",
+		"description": "Barrio Barrio Barrio Barrio Barrio Barrio Barrio Barrio Barrio Barrio Barrio",
+		"prefabName":"NeighbourhoodActivity"
+	}, {
+		"id": "7",
+		"icon": "6",
+		"name": "Patrones",
+		"description": "Patrones Patrones Patrones Patrones Patrones Patrones Patrones Patrones Patrones",
+		"prefabName":"PatternsActivity"
+	}
+]
+}

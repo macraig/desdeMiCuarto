@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.App;
 using Assets.Scripts.Metrics;
+using Assets.Scripts.Metrics.Model;
 using Assets.Scripts.Sound;
 using Assets.Scripts.Common;
 using UnityEngine;

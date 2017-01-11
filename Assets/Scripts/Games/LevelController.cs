@@ -53,11 +53,7 @@ namespace Assets.Scripts.Games
             ViewController.GetController().LoadLevelCompleted();
         }
 
-        public void EndGame(MetricsTable metricsTable)
-        {
-            MetricsController.GetController().GameFinished(metricsTable);
-            ViewController.GetController().LoadLevelCompleted();
-        }
+       
 
        
         /*

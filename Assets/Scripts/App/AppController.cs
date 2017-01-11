@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Assets.Scripts.Sound;
+using Assets.Scripts.Metrics.Model;
 using Assets.Scripts.Metrics;
 using Assets.Scripts.Settings;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace Assets.Scripts.App
     {
         private static AppController appController;
         private AppModel appModel;
+		[SerializeField]
+		private MetricsController metricsController;
         [SerializeField]
         private List<Game> games;
 
@@ -19,13 +22,22 @@ namespace Assets.Scripts.App
             else if (appController != this) Destroy(gameObject);     
             DontDestroyOnLoad(gameObject);
             appModel = new AppModel();
-            //InitModelFromJsonInfo();
+            
         }
 
         internal GameMetrics GetCurrentMetrics()
         {
-            return MetricsController.GetController().GetLastMetricOf(appModel.GetCurrentGame(), appModel.GetCurrentLevel());
+            return MetricsController.GetController().GetLastMetricOf(appModel.GetCurrentGame());
         }
+
+		public Game GetGameById (int idGame)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public MetricsController GetMetricsController(){
+			return metricsController;
+		}
 
         //private void InitModelFromJsonInfo()
         //{
@@ -69,7 +81,7 @@ namespace Assets.Scripts.App
         {
             for (int i = 0; i < games.Count; i++)
             {
-                if (games[i].GetId() == idGame) return games[i].GetNames()[SettingsController.GetController().GetLanguage()];
+				if (games[i].GetId() == idGame) return games[i].GetName();
 
             }
             return "Error";
@@ -103,7 +115,7 @@ namespace Assets.Scripts.App
             appModel.SetCurrentArea(area);
         }
 
-        internal void SetCurrentGame(int currentGame){
+        internal void SetCurrentGame(Game currentGame){
             appModel.SetCurrentGame(currentGame);
         }
 
