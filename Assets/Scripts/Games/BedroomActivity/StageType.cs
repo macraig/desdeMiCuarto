@@ -2,6 +2,6 @@
 
 namespace Assets.Scripts.Games.BedroomActivity {
 	public enum StageType {
-		DRAG, CLICK, TOGGLE
+		DRAG, CLICK, TOGGLE, CARPET_SCREEN
 	}
 }

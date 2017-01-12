@@ -5,6 +5,9 @@
 		"target": "muebleButton",
 		"sound": ""
 	}, {
+		"type": "CARPET_SCREEN",
+		"screenName": "alfombrasPanel"
+	}, {
 		"type": "TOGGLE",
 		"correct": ["lampToggle"],
 		"wrong": ["littleLamp1", "littleLamp2"],

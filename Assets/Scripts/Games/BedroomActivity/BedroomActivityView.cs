@@ -9,7 +9,8 @@ using Assets.Scripts.Common.Dragger;
 namespace Assets.Scripts.Games.BedroomActivity {
 	public class BedroomActivityView : DraggerView {
 		public Image upperBoard;
-		public Button soundBtn, muebleButton;
+		public Button soundBtn, muebleButton, carpetPanelOkButton, carpet;
+		public GameObject carpetPanel;
 
 		private Sprite[] boards;
 		private BedroomActivityModel model;
@@ -35,12 +36,35 @@ namespace Assets.Scripts.Games.BedroomActivity {
 			else SetCurrentLevel(true);
 		}
 
+		public void SelectCarpet(){
+			//PlaySoundSwitch();
+			carpetPanelOkButton.interactable = true;
+		}
+
+		public void CarpetOk(){
+			if(GameObject.Find("blueToggle").GetComponent<Toggle>().isOn){
+				model.Correct();
+				carpetPanel.SetActive(false);
+				PlayRightSound();
+
+				carpet.image.sprite = Resources.LoadAll<Sprite>("Sprites/BedroomActivity/alfombra")[4];
+
+				Next();
+			} else {
+				PlayWrongSound();
+				model.Wrong();
+			}
+		}
+
 		private void EndGame() {
 			
 		}
 
 		private void SetCurrentLevel(bool enabled) {
-			model.SetCurrentLevel(enabled);
+			if(!model.CurrentCarpet())
+				model.SetCurrentLevel(enabled);
+			else
+				carpetPanel.SetActive(true);
 
 			upperBoard.sprite = boards[model.CurrentLvl()];
 		}
@@ -70,8 +94,12 @@ namespace Assets.Scripts.Games.BedroomActivity {
 			if(model.IsLvlDone()) Next();
 		}
 
-		public void ClickCorrect(){
+		public void ClickToggle(string togglePath){
 			model.Correct();
+			Sprite[] spr = Resources.LoadAll<Sprite>(togglePath);
+
+			model.SetToggle(spr);
+
 			if(model.IsLvlDone()) Next();
 		}
 

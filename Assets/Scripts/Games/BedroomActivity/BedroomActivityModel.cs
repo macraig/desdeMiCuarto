@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 using Assets.Scripts.Common.Dragger;
+using Assets.Scripts.Metrics.Model;
 
 namespace Assets.Scripts.Games.BedroomActivity {
 	public class BedroomActivityModel : LevelModel {
@@ -40,6 +41,8 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		private BedroomActivityModel(List<BedroomLevel> lvls) {
 			this.lvls = lvls;
 			currentLvl = 0;
+			MetricsController.GetController().GameStart();
+
 		}
 
 		public static BedroomActivityModel StartFromJson(JSONArray lvls){
@@ -63,6 +66,9 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 					bedroomLvls.Add(BedroomLevel.FromDrag(type, draggers, target, sound));
 					break;
+				case StageType.CARPET_SCREEN:
+					bedroomLvls.Add(BedroomLevel.FromScreen(type));
+					break;
 				}
 			}
 
@@ -84,6 +90,14 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 		public void Wrong(){
 			LogAnswer(false);
+		}
+
+		public void SetToggle(Sprite[] spr) {
+			lvls[currentLvl].SetToggle(spr);
+		}
+
+		public bool CurrentCarpet() {
+			return lvls[currentLvl].IsCarpet();
 		}
 	}
 }

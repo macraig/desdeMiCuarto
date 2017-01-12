@@ -28,12 +28,21 @@ namespace Assets.Scripts.Games.BedroomActivity {
 			return new BedroomLevel(type, null, null, objects, target, sound);
 		}
 
+		public static BedroomLevel FromScreen(StageType type) {
+			return new BedroomLevel(type, null, null, null, null, null);
+		}
+
 		public GameObject Target() {
 			return target;
 		}
 
 		public List<GameObject> Correct() {
 			return type == StageType.DRAG ? objects : correct;
+		}
+
+		public void SetToggle(Sprite[] spr) {
+			Sprite sprite = correct[0].GetComponent<Image>().sprite;
+			correct[0].GetComponent<Image>().sprite = sprite == spr[0] ? spr[1] : spr[0];
 		}
 
 		public void Set(bool enabled) {
@@ -59,6 +68,10 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 				break;
 			}
+		}
+
+		public bool IsCarpet() {
+			return type == StageType.CARPET_SCREEN;
 		}
 	}
 }
