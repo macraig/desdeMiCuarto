@@ -33,10 +33,9 @@ namespace Assets.Scripts.Common.Dragger {
 				transform.position = Input.mousePosition;
 		}
 
-		public void OnEndDrag(PointerEventData eventData) {
+		public void OnEndDrag(PointerEventData eventData = null) {
 			if (active) {
 				//SoundController.GetController().PlayClickSound ();
-				//TODO this is not running, check it!
 				itemBeingDragged = null;
 				GetComponent<CanvasGroup> ().blocksRaycasts = true;
 

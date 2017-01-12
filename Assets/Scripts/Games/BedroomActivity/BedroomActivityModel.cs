@@ -7,7 +7,7 @@ using Assets.Scripts.Common.Dragger;
 
 namespace Assets.Scripts.Games.BedroomActivity {
 	public class BedroomActivityModel : LevelModel {
-		private int currentLvl;
+		private int currentLvl, lvlCorrect = 0;
 		private List<BedroomLevel> lvls;
 
 		#region implemented abstract members of LevelModel
@@ -18,6 +18,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 		public void NextLvl(){
 			currentLvl++;
+			lvlCorrect = 0;
 		}
 
 		public bool GameEnded(){
@@ -30,14 +31,6 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 		public int CurrentLvl(){
 			return currentLvl;
-		}
-
-		public bool ClickFinished() {
-			List<GameObject> targets = lvls[currentLvl].Correct();
-			foreach(GameObject t in targets) {
-				if(t.activeSelf) return false;
-			}
-			return true;
 		}
 
 		public void SetCurrentLevel(bool enabled) {
@@ -78,6 +71,19 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 		static List<GameObject> GameObjects(JSONArray lvl) {
 			return new List<JSONNode>(lvl.Childs).ConvertAll((JSONNode c) => GameObject.Find(c.Value));
+		}
+
+		public void Correct() {
+			LogAnswer(true);
+			lvlCorrect++;
+		}
+
+		public bool IsLvlDone(){
+			return lvlCorrect == lvls[currentLvl].Correct().Count;
+		}
+
+		public void Wrong(){
+			LogAnswer(false);
 		}
 	}
 }

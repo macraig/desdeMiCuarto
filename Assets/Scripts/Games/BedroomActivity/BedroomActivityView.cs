@@ -9,7 +9,7 @@ using Assets.Scripts.Common.Dragger;
 namespace Assets.Scripts.Games.BedroomActivity {
 	public class BedroomActivityView : DraggerView {
 		public Image upperBoard;
-		public Button soundBtn;
+		public Button soundBtn, muebleButton;
 
 		private Sprite[] boards;
 		private BedroomActivityModel model;
@@ -46,18 +46,18 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		}
 
 		public override void Dropped(DraggerHandler dropped, DraggerSlot where) {
-			//Check if it's over.
-			Next();
+			model.Correct();
+			if(model.IsLvlDone()) Next();
 		}
 
 		public void MuebleEnter(){
 			if(DraggerHandler.itemBeingDragged != null){
-				//change mueble frame.
+				muebleButton.image.sprite = Resources.LoadAll<Sprite>("Sprites/BedroomActivity/mueble")[1];
 			}
 		}
 
 		public void MuebleLeave(){
-			//Change mueble frame.
+			muebleButton.image.sprite = Resources.LoadAll<Sprite>("Sprites/BedroomActivity/mueble")[0];
 		}
 
 		public override bool CanDropInSlot(DraggerHandler dropper, DraggerSlot slot) {
@@ -66,19 +66,17 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 		public void ClickTarget(GameObject target){
 			target.SetActive(false);
-			if(CheckIfFinished()) Next();
-		}
-
-		bool CheckIfFinished() {
-			return model.ClickFinished();
+			model.Correct();
+			if(model.IsLvlDone()) Next();
 		}
 
 		public void ClickCorrect(){
-			Next();
+			model.Correct();
+			if(model.IsLvlDone()) Next();
 		}
 
 		public void ClickWrong(){
-
+			model.Wrong();
 		}
 
 		public override void RestartGame(){ }

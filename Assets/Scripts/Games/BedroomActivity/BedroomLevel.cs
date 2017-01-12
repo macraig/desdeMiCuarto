@@ -33,14 +33,14 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		}
 
 		public List<GameObject> Correct() {
-			return correct;
+			return type == StageType.DRAG ? objects : correct;
 		}
 
 		public void Set(bool enabled) {
 			switch(type) {
 			case StageType.TOGGLE:
 				foreach(GameObject c in correct) {
-					c.GetComponent<Toggle>().enabled = enabled;
+					c.GetComponent<Button>().enabled = enabled;
 				}
 				break;
 			case StageType.CLICK:
