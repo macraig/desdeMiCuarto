@@ -17,6 +17,13 @@ namespace Assets.Scripts.Metrics.Model{
 		public MetricsModel(List<Game> games){
 			TOTAL_GAMES = games.Count;
 			metrics = new  List<List<GameMetrics>> ();
+			/*TESTING ONLY*/
+			foreach (Game game in games) {
+				GameMetrics gameMetrics = new GameMetrics (game.GetId ());
+				List<GameMetrics> metricsList = new List<GameMetrics> ();
+				metricsList.Add (gameMetrics);
+				metrics.Add (metricsList);
+			}
 		}
 			
 
@@ -77,7 +84,7 @@ namespace Assets.Scripts.Metrics.Model{
             return max;
         }
       
-        internal void GameStarted(){
+        public void GameStarted(){
 			Game currentGame = AppController.GetController ().GetAppModel ().GetCurrentGame ();
 			GameMetrics newMetrics = new GameMetrics (currentGame.GetId());
 			currentGameMetrics = SearchMetricsByGame (currentGame.GetId());

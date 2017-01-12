@@ -12,17 +12,18 @@ namespace Assets.Scripts.Metrics.View
 {
 	public class ResultsView : MonoBehaviour
 	{
-		private const int MAX_ROWS = 6;
+		private const int MAX_ROWS = 4;
 
 		public GameObject resultsView;
 
 		public Button nextPageBtn;
 		public Button prevPageBtn;
 		public List<GameObject> viewRaws;
-		public Text title;
+		public Text username;
 		private List<MetricsRaw> raws;
 		private int currentPage;
 		private List<int> currentRawsToViewDetails;
+		public Text noGamesWarning;
 
 		public GameObject detailsView;
 		public Button goBackBtn;
@@ -36,28 +37,32 @@ namespace Assets.Scripts.Metrics.View
 			}
 
 			currentRawsToViewDetails = new List<int>(6);
+			UpdateUsername ();
 			updateArrows();
-			updateMetricRows();
+			UpdateMetricRows();
+		}
+
+		private void UpdateUsername(){
+			username.text = SettingsController.GetController ().GetUsername ().ToUpper ();
 		}
 
 		public void OnClicNextPageBtn(){
 			PlaySoundClick();
 			currentPage++;
-			updateMetricRows();
+			UpdateMetricRows();
 			updateArrows();
 		}
 
 		public void OnClicPrevPageBtn(){
 			PlaySoundClick();
 			currentPage--;
-			updateMetricRows();
+			UpdateMetricRows();
 			updateArrows();
 		}
 
 		public void OnClickCrossBtn(){
 			PlaySoundClick();
-
-			ViewController.GetController().LoadMainMenu();
+			gameObject.SetActive (false);
 		}
 
 		public void OnClickViewDetailsCrossBtn()
@@ -73,13 +78,15 @@ namespace Assets.Scripts.Metrics.View
 			SoundController.GetController().PlayClickSound();
 		}
 
-		private void updateMetricRows(){
+		private void UpdateMetricRows(){
 			currentRawsToViewDetails.RemoveAll(e => true);
 			List<int> activities = MetricsController.GetController().metricsModel.GetLevelIndexes(currentPage, MAX_ROWS);
 			currentRawsToViewDetails.AddRange(activities);
+			if (activities.Count != 0)
+				noGamesWarning.enabled = false;
 			int i = 0;
 			for (; i < MAX_ROWS && i < activities.Count; i++){
-				updateRow(MetricsController.GetController().metricsModel.GetBestMetric(activities[i]), i, activities[i]);
+				UpdateRow(MetricsController.GetController().metricsModel.GetBestMetric(activities[i]), i, activities[i]);
 				raws[i].Show();
 			}
 			for(; i < MAX_ROWS; i++){
@@ -87,7 +94,7 @@ namespace Assets.Scripts.Metrics.View
 			}        
 		}
 
-		private void updateRow(GameMetrics gameMetrics, int rowIndex, int activity){
+		private void UpdateRow(GameMetrics gameMetrics, int rowIndex, int activity){
 //			raws[rowIndex].setActivity(AppController.GetController().GetAppModel().GetTitleFromIndex(activity));
 //
 //			if (gameMetrics != null){
