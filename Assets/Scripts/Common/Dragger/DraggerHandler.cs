@@ -39,7 +39,10 @@ namespace Assets.Scripts.Common.Dragger {
 				itemBeingDragged = null;
 				GetComponent<CanvasGroup> ().blocksRaycasts = true;
 
-				transform.position = startPosition;
+				if(!dropped)
+					transform.position = startPosition;
+				else
+					SetActive(false);
 
 				if (dropped && !activeOnDrop) {
 					dropped = false;

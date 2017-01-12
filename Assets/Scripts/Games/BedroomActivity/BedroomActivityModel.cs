@@ -23,7 +23,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		}
 
 		public bool GameEnded(){
-			return currentLvl == lvls.Count - 1;
+			return currentLvl == lvls.Count;
 		}
 
 		public bool CanDropInSlot(DraggerSlot slot) {

@@ -9,8 +9,8 @@ using Assets.Scripts.Common.Dragger;
 namespace Assets.Scripts.Games.BedroomActivity {
 	public class BedroomActivityView : DraggerView {
 		public Image upperBoard;
-		public Button soundBtn, muebleButton, carpetPanelOkButton, carpet;
-		public GameObject carpetPanel;
+		public Button soundBtn, muebleButton, carpetPanelOkButton, carpet, photoButton;
+		public GameObject carpetPanel, photoPanel;
 
 		private Sprite[] boards;
 		private BedroomActivityModel model;
@@ -44,7 +44,6 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		public void CarpetOk(){
 			if(GameObject.Find("blueToggle").GetComponent<Toggle>().isOn){
 				model.Correct();
-				carpetPanel.SetActive(false);
 				PlayRightSound();
 
 				carpet.image.sprite = Resources.LoadAll<Sprite>("Sprites/BedroomActivity/alfombra")[4];
@@ -57,14 +56,22 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		}
 
 		private void EndGame() {
-			
+			Debug.Log("End game");
+			photoButton.gameObject.SetActive(true);
+			upperBoard.sprite = boards[boards.Length - 1];
+		}
+
+		public void PhotoClick(){
+			photoButton.gameObject.SetActive(false);
+			photoPanel.SetActive(true);
+			//playPhotoSound();
 		}
 
 		private void SetCurrentLevel(bool enabled) {
 			if(!model.CurrentCarpet())
 				model.SetCurrentLevel(enabled);
 			else
-				carpetPanel.SetActive(true);
+				carpetPanel.SetActive(enabled);
 
 			upperBoard.sprite = boards[model.CurrentLvl()];
 		}
