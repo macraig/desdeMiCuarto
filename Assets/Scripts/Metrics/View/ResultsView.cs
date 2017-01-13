@@ -14,7 +14,7 @@ namespace Assets.Scripts.Metrics.View
 	{
 		private const int MAX_ROWS = 4;
 
-		public GameObject resultsView;
+//		public GameObject resultsView;
 
 		public Button nextPageBtn;
 		public Button prevPageBtn;
@@ -74,7 +74,7 @@ namespace Assets.Scripts.Metrics.View
 			PlaySoundClick();
 			//			detailsView.ResetChart ();
 			detailsView.SetActive(false);
-			resultsView.SetActive(true);
+//			/resultsView.SetActive(true);
 		}
 
 		private void PlaySoundClick()
@@ -124,7 +124,7 @@ namespace Assets.Scripts.Metrics.View
 
 		private void ViewDetails(int v){
 			Debug.Log("View details of " + v);
-			resultsView.SetActive(false);
+//			resultsView.SetActive(false);
 			detailsView.SetActive(true);
 //			string activity = SettingsController.GetController().GetLanguage() = AppController.GetController().GetAppModel().GameTitles[v];
 //			((DetailsView)detailsView.GetComponent<DetailsView>()).ShowDetailsOf(activity, SettingsController.GetController().GetUsername(), MetricsController.GetController().GetMetricsByLevel(v));

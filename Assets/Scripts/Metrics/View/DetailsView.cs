@@ -15,11 +15,11 @@ namespace Assets.Scripts.Metrics.View
         public Text activity;
         public Text username;
         public Text date;
-        public Text score;
-        public Text time;
-        public Text correctQuantity;
-        public Text incorrectQuantity;
-        public Text note;
+//        public Text score;
+//        public Text time;
+//        public Text correctQuantity;
+//        public Text incorrectQuantity;
+//        public Text note;
         public List<Toggle> points;
         [SerializeField]
         private List<Image> levelImages;
@@ -48,29 +48,29 @@ namespace Assets.Scripts.Metrics.View
         }
 
       
-
-        private void joinPoints(List<Image> points, int count)
-        {
-            for(int i = 0; i < count && i - 1 < points.Count - 1 ; i++)
-            {
-                points[i].GetComponent<LineRenderer>().SetVertexCount(2);
-                Vector3 pos = points[i].transform.position;
-                pos.z = -10;
-
-                Vector3 pos1 = points[i+1].transform.position;
-                pos1.z = -10;
-
-
-                points[i].GetComponent<LineRenderer>().SetPosition(0, pos);
-                points[i].GetComponent<LineRenderer>().SetPosition(1, pos1);
-            }
-        }    
+//
+//        private void joinPoints(List<Image> points, int count)
+//        {
+//            for(int i = 0; i < count && i - 1 < points.Count - 1 ; i++)
+//            {
+//                points[i].GetComponent<LineRenderer>().SetVertexCount(2);
+//                Vector3 pos = points[i].transform.position;
+//                pos.z = -10;
+//
+//                Vector3 pos1 = points[i+1].transform.position;
+//                pos1.z = -10;
+//
+//
+//                points[i].GetComponent<LineRenderer>().SetPosition(0, pos);
+//                points[i].GetComponent<LineRenderer>().SetPosition(1, pos1);
+//            }
+//        }    
 
         private void makeChart()
         {         
             for (int i = 0; i < metricsPoints.Count; i++){
                 Vector3 pos = points[i].transform.position;
-                pos.y = calculateY(metricsPoints[i].GetScore(), MAX_Y, MIN_Y);
+				pos.y = calculateY(metricsPoints[i].GetStars(), MAX_Y, MIN_Y);
                 points[i].transform.position = pos;
                 points[i].gameObject.SetActive(true);
             }
@@ -83,11 +83,11 @@ namespace Assets.Scripts.Metrics.View
             points[metricsPoints.Count - 1].isOn = true;
         }
 
-        private float calculateY(int score, float MAX_Y, float MIN_Y)
+        private float calculateY(int stars, float MAX_Y, float MIN_Y)
         {
-            float SCORE_MAX = 10000;
-            float SCORE_MIN = 500;
-            float t = MIN_Y + (((score - SCORE_MIN) * (MAX_Y - MIN_Y)) / (SCORE_MAX - SCORE_MIN));
+            float SCORE_MAX = 5;
+            float SCORE_MIN = 0;
+			float t = MIN_Y + (((stars - SCORE_MIN) * (MAX_Y - MIN_Y)) / (SCORE_MAX - SCORE_MIN));
             return t;
         }               
 
@@ -125,10 +125,10 @@ namespace Assets.Scripts.Metrics.View
         {          
             GameMetrics currentMetric = metricsPoints[pointNumber];
             date.text = currentMetric.GetDate();
-            score.text = "" +currentMetric.GetScore();
-            time.text = "" + currentMetric.GetLapsedSeconds() + " s";
-            correctQuantity.text = "" + currentMetric.GetRightAnswers();
-            incorrectQuantity.text = "" + currentMetric.GetWrongAnswers();
+//            score.text = "" +currentMetric.GetScore();
+//            time.text = "" + currentMetric.GetLapsedSeconds() + " s";
+//            correctQuantity.text = "" + currentMetric.GetRightAnswers();
+//            incorrectQuantity.text = "" + currentMetric.GetWrongAnswers();
         }
 
         public void OnClickCrossBtn()
