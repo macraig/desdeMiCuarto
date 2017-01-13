@@ -1,0 +1,83 @@
+{
+	"grid": "4",
+	"maxColors": "6",
+	"patterns": 	[
+	{
+		"imageIndex": "0",
+		"usedColors":["GREEN","RED"],
+		"colorArray":["BLANK","BLANK","GREEN","GREEN",
+			"BLANK","RED","RED","GREEN",
+			"RED","RED","RED","BLANK",
+		"RED","RED","BLANK","BLANK"]
+	},
+	{
+		"imageIndex": "1",
+		"usedColors":["BLUE","PINK"],
+		"colorArray":["BLANK","BLANK","BLANK","BLANK",
+			"PINK","PINK","PINK","PINK",
+			"BLUE","PINK","PINK","BLUE",
+		"BLUE","PINK","PINK","BLUE"]
+	},
+	{
+		"imageIndex": "2",
+		"usedColors":["GREEN","RED"],
+		"colorArray":["BLANK","GREEN","GREEN","RED",
+			"BLANK","GREEN","GREEN","BLANK",
+			"GREEN","GREEN","GREEN","GREEN",
+		"RED","RED","RED","RED"]
+	},
+	{
+		"imageIndex": "3",
+		"usedColors":["BROWN","CYAN"],
+		"colorArray":["BROWN","BROWN","BROWN","BLANK",
+			"CYAN","CYAN","CYAN","CYAN",
+			"CYAN","CYAN","CYAN","BLANK",
+		"CYAN","CYAN","CYAN","BLANK"]
+	},
+	{
+		"imageIndex": "4",
+		"usedColors":["BLUE","YELLOW"],
+		"colorArray":["BLUE","BLANK","BLANK","BLANK",
+			"BLANK","BLUE","BLUE","YELLOW",
+			"BLANK","BLUE","BLUE","BLUE",
+			"BLUE","BLANK","BLUE","BLANK"]
+	},
+	{
+		"imageIndex": "5",
+		"usedColors":["RED","BROWN"],
+		"colorArray":["BLANK","RED","RED","BLANK",
+			"RED","RED","RED","RED",
+			"BROWN","BROWN","BROWN","BROWN",
+		"BROWN","BROWN","BROWN","BROWN"]
+	},
+	{
+		"imageIndex": "6",
+		"usedColors":["BROWN","RED","PINK"],
+		"colorArray":["BLANK","RED","RED","BLANK",
+			"PINK","PINK","PINK","PINK",
+			"PINK","PINK","PINK","PINK",
+		"BROWN","BROWN","BROWN","BROWN"]
+	},
+	{
+		"imageIndex": "7",
+		"usedColors":["YELLOW","BROWN","GREEN"],
+		"colorArray":["BLANK","BLANK","GREEN","BROWN",
+			"YELLOW","YELLOW","YELLOW","GREEN",
+			"YELLOW","YELLOW","YELLOW","BLANK",
+		"YELLOW","YELLOW","YELLOW","BLANK"]
+	},
+	
+	{
+		"imageIndex": "8",
+		"usedColors":["RED","BROWN","YELLOW"],
+		"colorArray":["BLANK","BROWN","GREEN","BLANK",
+			"RED","RED","RED","RED",
+			"RED","RED","RED","RED",
+		"BLANK","RED","RED","BLANK"]
+	
+	}
+
+
+
+]
+}

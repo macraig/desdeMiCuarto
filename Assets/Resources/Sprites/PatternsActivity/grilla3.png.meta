@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 296fea8efaf7caa4cbbb29d96cdf112c
-timeCreated: 1483623636
-licenseType: Free
+timeCreated: 1484338847
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: grilla3_0
@@ -96,6 +96,14 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -104,11 +112,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 358
-        width: 353
-        height: 353
+        y: 355.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -117,11 +125,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 359
-        y: 359
-        width: 355
-        height: 352
+        y: 355.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -130,11 +138,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 718
-        y: 358
-        width: 356
-        height: 353
+        y: 355.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -142,12 +150,12 @@ TextureImporter:
       name: grilla3_3
       rect:
         serializedVersion: 2
-        x: 1080
-        y: 358
-        width: 356
-        height: 353
+        x: 1077
+        y: 355.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -155,12 +163,12 @@ TextureImporter:
       name: grilla3_4
       rect:
         serializedVersion: 2
-        x: 1440
-        y: 358
-        width: 354
-        height: 353
+        x: 1436
+        y: 355.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -168,12 +176,12 @@ TextureImporter:
       name: grilla3_5
       rect:
         serializedVersion: 2
-        x: 1801
-        y: 357
-        width: 354
-        height: 354
+        x: 1795
+        y: 355.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -181,12 +189,12 @@ TextureImporter:
       name: grilla3_6
       rect:
         serializedVersion: 2
-        x: 2161
-        y: 359
-        width: 351
-        height: 352
+        x: 2154
+        y: 355.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -194,12 +202,12 @@ TextureImporter:
       name: grilla3_7
       rect:
         serializedVersion: 2
-        x: 2521
-        y: 356
-        width: 351
-        height: 355
+        x: 2513
+        y: 355.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -207,12 +215,12 @@ TextureImporter:
       name: grilla3_8
       rect:
         serializedVersion: 2
-        x: 2882
-        y: 356
-        width: 350
-        height: 355
+        x: 2872
+        y: 355.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -220,12 +228,12 @@ TextureImporter:
       name: grilla3_9
       rect:
         serializedVersion: 2
-        x: 3241
-        y: 357
-        width: 352
-        height: 354
+        x: 3231
+        y: 355.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -233,12 +241,12 @@ TextureImporter:
       name: grilla3_10
       rect:
         serializedVersion: 2
-        x: 3601
-        y: 358
-        width: 354
-        height: 353
+        x: 3590
+        y: 355.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -247,11 +255,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 355
-        height: 355
+        y: 0.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -259,12 +267,12 @@ TextureImporter:
       name: grilla3_12
       rect:
         serializedVersion: 2
-        x: 360
-        y: 0
-        width: 354
-        height: 355
+        x: 359
+        y: 0.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -272,12 +280,12 @@ TextureImporter:
       name: grilla3_13
       rect:
         serializedVersion: 2
-        x: 720
-        y: 0
-        width: 354
-        height: 353
+        x: 718
+        y: 0.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -285,12 +293,12 @@ TextureImporter:
       name: grilla3_14
       rect:
         serializedVersion: 2
-        x: 1080
-        y: 0
-        width: 357
-        height: 353
+        x: 1077
+        y: 0.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -298,12 +306,12 @@ TextureImporter:
       name: grilla3_15
       rect:
         serializedVersion: 2
-        x: 1441
-        y: 0
-        width: 353
-        height: 354
+        x: 1436
+        y: 0.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -311,12 +319,12 @@ TextureImporter:
       name: grilla3_16
       rect:
         serializedVersion: 2
-        x: 1801
-        y: 0
-        width: 354
-        height: 354
+        x: 1795
+        y: 0.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -324,12 +332,12 @@ TextureImporter:
       name: grilla3_17
       rect:
         serializedVersion: 2
-        x: 2161
-        y: 0
-        width: 355
-        height: 354
+        x: 2154
+        y: 0.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -337,12 +345,12 @@ TextureImporter:
       name: grilla3_18
       rect:
         serializedVersion: 2
-        x: 2521
-        y: 0
-        width: 352
-        height: 354
+        x: 2513
+        y: 0.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -350,12 +358,12 @@ TextureImporter:
       name: grilla3_19
       rect:
         serializedVersion: 2
-        x: 2881
-        y: 0
-        width: 350
-        height: 353
+        x: 2872
+        y: 0.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -363,12 +371,12 @@ TextureImporter:
       name: grilla3_20
       rect:
         serializedVersion: 2
-        x: 3242
-        y: 0
-        width: 351
-        height: 355
+        x: 3231
+        y: 0.5
+        width: 359.54544
+        height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -381,7 +389,7 @@ TextureImporter:
         width: 359.54544
         height: 355.5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
