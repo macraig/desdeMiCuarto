@@ -111,9 +111,10 @@ namespace Assets.Scripts.Metrics.Model
 
 				/*Could be implemented to wipe data from deprecated games*/
 //                metricsModel.UpdateGames(AppController.GetController().GetGames());
-            } else
-            {
-                metricsModel = new MetricsModel(AppController.GetController().GetGames());
+//            } else
+//            {
+//                metricsModel = new MetricsModel(AppController.GetController().GetGames());
+//				AppController.GetController ().GetMetricsController ().SetMetricsModel (metricsModel);
             }
         }
 

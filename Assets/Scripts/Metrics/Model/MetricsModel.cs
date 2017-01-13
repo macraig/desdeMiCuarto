@@ -20,6 +20,7 @@ namespace Assets.Scripts.Metrics.Model{
 			/*TESTING ONLY*/
 			foreach (Game game in games) {
 				GameMetrics gameMetrics = new GameMetrics (game.GetId ());
+				gameMetrics.SetStars (3);
 				List<GameMetrics> metricsList = new List<GameMetrics> ();
 				metricsList.Add (gameMetrics);
 				metrics.Add (metricsList);
@@ -62,7 +63,11 @@ namespace Assets.Scripts.Metrics.Model{
 
 	
 
-        internal List<int> GetLevelIndexes(int currentPage, int maxRows)
+        /*Returns indexes of the game metrics to be shown. 
+			Page 0 : 0,1,2,3
+			Page 1 : 4,5,6 
+		*/
+		internal List<int> GetLevelIndexes(int currentPage, int maxRows)
         {
             List<int> myList = new List<int>(maxRows);
             int initIndex = currentPage * maxRows;

@@ -24,6 +24,7 @@ namespace Assets.Scripts.Metrics.View
 		private int currentPage;
 		private List<int> currentRawsToViewDetails;
 		public Text noGamesWarning;
+		private Sprite star;
 
 		public GameObject detailsView;
 		public Button goBackBtn;
@@ -31,9 +32,12 @@ namespace Assets.Scripts.Metrics.View
 		// Use this for initialization
 		void Start(){
 			currentPage = 0;
+			star = Resources.Load<Sprite> ("Sprites/star");
+				
+
 			raws = new List<MetricsRaw>(viewRaws.Count);
 			for (int i = 0; i < viewRaws.Count; i++){
-				raws.Add(new MetricsRaw(viewRaws[i]));
+				raws.Add(new MetricsRaw(viewRaws[i],star));
 			}
 
 			currentRawsToViewDetails = new List<int>(6);
@@ -95,17 +99,21 @@ namespace Assets.Scripts.Metrics.View
 		}
 
 		private void UpdateRow(GameMetrics gameMetrics, int rowIndex, int activity){
-//			raws[rowIndex].setActivity(AppController.GetController().GetAppModel().GetTitleFromIndex(activity));
-//
-//			if (gameMetrics != null){
+			Game game = AppController.GetController ().GetAppModel ().GetGameById (gameMetrics.GetGameId ());
+			raws[rowIndex].setActivity(game.GetName());
+			raws [rowIndex].SetIcon (game.GetIcon());
+
+			if (gameMetrics != null){
 //				raws[rowIndex].setScore(gameMetrics.GetScore());
-//				raws[rowIndex].setStars(gameMetrics.GetStars());
-//				raws[rowIndex].getViewDetailsBtn().enabled = true;
-//			} else{
+				raws[rowIndex].setStars(gameMetrics.GetStars());
+				raws[rowIndex].getViewDetailsBtn().enabled = true;
+
+			} else{
 //				raws[rowIndex].setScore(0);
-//				raws[rowIndex].setStars(0);
-//				raws[rowIndex].getViewDetailsBtn().enabled = false;
-//			}          
+				raws[rowIndex].setStars(0);
+				raws[rowIndex].getViewDetailsBtn().enabled = false;
+
+			}          
 		}
 
 		public void OnClickViewDetails(int index){

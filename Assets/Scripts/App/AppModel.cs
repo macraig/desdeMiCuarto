@@ -37,8 +37,7 @@ namespace Assets.Scripts.App
 				newGame.SetIcon (icons[int.Parse(game ["icon"].Value)]);
 				games.Add (newGame);
 			}
-			AppController.GetController ();
-			AppController.GetController ().GetMetricsController ();
+
 			AppController.GetController ().GetMetricsController ().SetMetricsModel (new MetricsModel(games));
 		}
 

@@ -7,10 +7,16 @@ namespace Assets.Scripts.Metrics.Model{
 public class MetricsRaw {
 
     private GameObject fullObject;
+	//Index if images to be replaced in each Raw
+	public static int STAR_START_INDEX = 3;
+	public static int ICON_INDEX = 8;
+	private Sprite star;
 
-    public MetricsRaw(GameObject fullObject)
+
+	public MetricsRaw(GameObject fullObject,Sprite star )
     {
         this.fullObject = fullObject;
+		this.star = star;
     }
 
 	// Use this for initialization
@@ -30,12 +36,18 @@ public class MetricsRaw {
 
     public void setStars(int currentStars)
     {
-
-        for(int i = 0; i < fullObject.GetComponentsInChildren<Image>(true).Length; i++)
+			int endIndex = STAR_START_INDEX + currentStars;
+			for(int i = STAR_START_INDEX; i < endIndex; i++)
         {            
-            fullObject.GetComponentsInChildren<Image>(true)[i].gameObject.SetActive(i < currentStars);
+				Image starImage = fullObject.GetComponentsInChildren<Image> (true) [i];
+				starImage.sprite=star;
         }
     }
+
+		public void SetIcon (Sprite icon)
+		{
+			fullObject.GetComponentsInChildren<Image> (true) [ICON_INDEX].sprite=icon;
+		}
 
     public Button getViewDetailsBtn(){
         return fullObject.GetComponentInChildren<Button>();
