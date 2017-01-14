@@ -2,6 +2,7 @@
 using Assets.Scripts.Games;
 using UnityEngine;
 using Assets.Scripts.Common;
+using Assets.Scripts.Metrics.Model;
 
 namespace Assets.Scripts.Games.HouseActivity {
 	public class HouseActivityModel : LevelModel {
@@ -12,6 +13,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 		private int currentSector, stage;
 
 		public HouseActivityModel(){
+			MetricsController.GetController().GameStart();
 			currentDifficulty = Difficulty.EASY;
 			SetBoards();
 			sectorRandomizer = Randomizer.New(boards.Length - 1);

@@ -65,6 +65,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 		public Toggle shootToggle, left, right, up, down;
 
 		private int correctGhost;
+		private bool cleaning;
 
 		void StartPhantomScreen() {
 			phantomPanel.SetActive(true);
@@ -72,6 +73,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 
 			correctGhost = Randomizer.New(8).ExcludeNumbers(new List<int> { 4 }).Next();
 			ghosts[correctGhost].SetActive(true);
+			crosshairs[currentSlot].SetActive(true);
 
 			shootToggle.isOn = false;
 		}
@@ -91,21 +93,45 @@ namespace Assets.Scripts.Games.HouseActivity {
 				PlayWrongSound();
 			}
 
+			cleaning = true;
+			CleanUI();
+			cleaning = false;
+
 			model.NextStage();
 			Next();
 		}
 
+		void CleanUI() {
+			ghosts.ForEach((GameObject g) => {if(g != null) g.SetActive(false);});
+			arrows.ForEach((GameObject g) => g.SetActive(false));
+			crosshairs.ForEach((GameObject g) => g.SetActive(false));
+			shootToggle.isOn = false;
+
+			CleanToggles(left, right, up, down);
+		}
+
+		public void CleanToggles(params Toggle[] objects){
+			foreach(var o in objects) {
+				o.enabled = true;
+				o.interactable = true;
+				o.isOn = false;
+			}
+		}
+
 		public void DisableDirection(Toggle disable){
-			disable.interactable = false;
+			if(!cleaning) disable.interactable = false;
 		}
 
 		public void ClickDirection(Toggle dir){
+			if(cleaning) return;
+
 			PlaySoundClick();
 			dir.enabled = false;
 		}
 
 		//left -1, right +1, up -3, down +3
 		public void MoveSlots(int move){
+			if(cleaning) return;
 			crosshairs[currentSlot].SetActive(false);
 
 			currentSlot += move;
