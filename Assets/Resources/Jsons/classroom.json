@@ -1,0 +1,39 @@
+﻿{
+	levels: [{
+		"correct": "santiDesk",
+		"wrong": ["desk1", "desk2", "raulDesk", "desk4", "desk5", "desk6", "desk7", "florDesk"]
+	}, {
+		"correct": "crayonsButton1",
+		"wrong": ["crayonsButton", "crayonsButton2"]
+	}, {
+		"correct": "florDesk",
+		"wrong": ["desk1", "desk2", "raulDesk", "desk4", "desk5", "desk6", "desk7", "santiDesk"]
+	}, {
+		"correct": "teacherBooksButton",
+		"wrong": ["books1Button", "books2Button"]
+	}, {
+		"correct": "chalkButton",
+		"wrong": ["chalk1Button", "chalk2Button"]
+	}, {
+		"correct": "paperButton",
+		"wrong": ["paper1Button", "paper2Button"]
+	}, {
+		"correct": "bookButton",
+		"wrong": []
+	}, {
+		"correct": "pencilButton",
+		"wrong": ["pencil1Button", "pencil2Button"]
+	}, {
+		"correct": "drawing",
+		"wrong": ["drawing1", "drawing2"]
+	}, {
+		"correct": "raulDesk",
+		"wrong": ["desk1", "desk2", "florDesk", "desk4", "desk5", "desk6", "desk7", "santiDesk"]
+	}, {
+		"correct": "dinosaurButton",
+		"wrong": ["bearButton"]
+	}, {
+		"correct": "windowButton",
+		"wrong": []
+	}]
+}
