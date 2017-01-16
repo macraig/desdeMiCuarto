@@ -54,7 +54,7 @@ namespace Assets.Scripts.App
 
 		}			 
 
-        internal Game GetCurrentGame(){
+        public Game GetCurrentGame(){
             return currentGame;
         }
 

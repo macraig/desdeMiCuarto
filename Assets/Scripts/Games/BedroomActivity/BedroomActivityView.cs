@@ -32,7 +32,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 				model.NextLvl();
 			}
 
-			if(model.GameEnded()) EndGame();
+			if(model.GameEnded()) ShowPhotoButton();
 			else SetCurrentLevel(true);
 		}
 
@@ -55,7 +55,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 			}
 		}
 
-		private void EndGame() {
+		private void ShowPhotoButton() {
 			Debug.Log("End game");
 			photoButton.gameObject.SetActive(true);
 			upperBoard.sprite = boards[boards.Length - 1];
@@ -65,6 +65,15 @@ namespace Assets.Scripts.Games.BedroomActivity {
 			photoButton.gameObject.SetActive(false);
 			photoPanel.SetActive(true);
 			//playPhotoSound();
+		}
+
+		public void OnPhotoPanelClick(){
+//			5 ESTRELLAS: 0 ERRORES
+//			4 ESTRELLAS: 1 ERROR
+//			3 ESTRELLAS: 2 O 3 ERRORES
+//			2 ESTRELLAS: 4 ERRORES
+//			1 ESTRELLA: MAS DE 4 ERRORES
+			EndGame (6000,0,1600);
 		}
 
 		private void SetCurrentLevel(bool enabled) {
@@ -114,6 +123,6 @@ namespace Assets.Scripts.Games.BedroomActivity {
 			model.Wrong();
 		}
 
-		public override void RestartGame(){ }
+
 	}
 }

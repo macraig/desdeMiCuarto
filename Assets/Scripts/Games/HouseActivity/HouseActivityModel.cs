@@ -63,10 +63,6 @@ namespace Assets.Scripts.Games.HouseActivity {
 			return selected == currentSector;
 		}
 
-		#region implemented abstract members of LevelModel
-		public override void NextChallenge() { }
-		public override void InitGame() { }
-		public override void RestartGame() { }
-		#endregion
+
 	}
 }

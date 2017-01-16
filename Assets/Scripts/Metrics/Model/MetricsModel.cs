@@ -106,7 +106,7 @@ namespace Assets.Scripts.Metrics.Model{
 
         private void CalculateFinalScore(int lapsedSeconds, int minSeconds, int pointsPerSecond, int pointsPerError){
             int score = MAX_SCORE - GetCurrentMetrics().GetWrongAnswers() * pointsPerError;
-			if (GetCurrentMetrics().GetScore() < MIN_SCORE) score = MIN_SCORE;
+			if (score < MIN_SCORE) score = MIN_SCORE;
 			GetCurrentMetrics ().SetScore (score);
         }
 
@@ -117,18 +117,22 @@ namespace Assets.Scripts.Metrics.Model{
         private int CalculateStars(){
 			float percentage = (GetCurrentMetrics().GetScore() + 0f) / (MAX_SCORE + 0f);
 
-            if (percentage > 0.75)
+
+            if (percentage == 1)
             {
-                return 3;
-            } else if(percentage > 0.5)
+                return 5;
+			} else if(percentage > 0.74)
+			{
+				return 4;
+			
+			} else if(percentage > 49)
+			{
+				return 3;
+            } else if(percentage > 0.24)
             {
                 return 2;
-            } else if(percentage > 0.25)
-            {
+			} else{
                 return 1;
-            } else
-            {
-                return 0;
             }
         }
 

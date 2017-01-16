@@ -95,7 +95,9 @@ namespace Assets.Scripts.App
 
         internal void RestartCurrentGame()
         {
-            currentGameObject.GetComponent<LevelController>().RestartGame();
+			ChangeCurrentObject(LoadPrefab("Games/" + AppController.GetController().GetCurrentGame().GetPrefabName()));
+//            currentGameObject.GetComponent<LevelController>().RestartGame();
+
         }
 
         internal void LoadSettings()
@@ -154,10 +156,10 @@ namespace Assets.Scripts.App
             Destroy(instructionsScreen);
         }
 
-        internal void LoadLevelCompleted()
-        {
-            ChangeCurrentObject(LoadPrefab("LevelCompleted"));
-        }
+//        internal void LoadLevelCompleted()
+//        {
+//            ChangeCurrentObject(LoadPrefab("LevelCompleted"));
+//        }
 
 
         public static ViewController GetController()

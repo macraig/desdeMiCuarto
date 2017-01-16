@@ -6,9 +6,7 @@ using Assets.Scripts.Sound;
 
 namespace Assets.Scripts.Games.ClassroomActivity {
 	public class ClassroomActivityView : LevelView {
-		#region implemented abstract members of LevelView
-		public override void RestartGame() { }
-		#endregion
+		
 
 		public Image upperBoard;
 		public Button soundBtn;
@@ -37,15 +35,13 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 				model.NextLvl();
 			}
 
-			if(model.GameEnded()) EndGame();
+			if(model.GameEnded()) EndGame(60,0,1250);
 			else SetCurrentLevel(true);
 
 			SoundClick();
 		}
 
-		private void EndGame() {
-			Debug.Log("End game");
-		}
+
 
 		private void SetCurrentLevel(bool enabled) {
 			model.SetCurrentLevel(this, enabled);

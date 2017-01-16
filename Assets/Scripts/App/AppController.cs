@@ -25,7 +25,7 @@ namespace Assets.Scripts.App
             
         }
 
-        internal GameMetrics GetCurrentMetrics()
+		public GameMetrics GetCurrentMetrics()
         {
             return MetricsController.GetController().GetLastMetricOf(appModel.GetCurrentGame());
         }
@@ -124,14 +124,9 @@ namespace Assets.Scripts.App
             return appModel.GetCurrentLevel();
         }
 
-//        internal int GetCurrentGame(){
-//            for (int i = 0; i < games.Count; i++)
-//            {
-//                if (games[i].GetId() == appModel.GetCurrentGame()) return games[i];
-//               
-//            }
-//            return null;
-//        }
+        internal Game GetCurrentGame(){
+			return appModel.GetCurrentGame ();
+        }
 
         internal void ShowInGameMenu(){
             Timer.GetTimer().Pause();

@@ -6,11 +6,7 @@ using Assets.Scripts.Metrics.Model;
 
 namespace Assets.Scripts.Games.ClassroomActivity {
 	public class ClassroomActivityModel : LevelModel {
-		#region implemented abstract members of LevelModel
-		public override void NextChallenge() { }
-		public override void InitGame() { }
-		public override void RestartGame() { }
-		#endregion
+		
 
 		private int currentLvl;
 		private List<ClassroomLevel> lvls;

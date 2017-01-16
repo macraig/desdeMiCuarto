@@ -24,7 +24,12 @@ namespace Assets.Scripts.Games.HouseActivity {
 
 		void Next() {
 			if(model.IsFinished()) {
-				EndGame();
+//				5 ESTRELLAS: 0 ERRORES
+//				4 ESTRELLAS: 1ERROR
+//				3 ESTRELLAS: 2 o 3 ERRORES
+//				2 ESTRELLAS: 4 o 5 ERRORES
+//				1 ESTRELLA: MAS DE 5 ERRORES
+				EndGame(60,0,1250);
 				return;
 			}
 
@@ -35,9 +40,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 			SoundClick();
 		}
 
-		void EndGame() {
-			Debug.Log("End game.");
-		}
+	
 
 		public void SoundClick(){
 			SoundController.GetController().PlayClip(model.BoardClip());
@@ -139,8 +142,6 @@ namespace Assets.Scripts.Games.HouseActivity {
 			crosshairs[currentSlot].SetActive(true);
 		}
 
-		#region implemented abstract members of LevelView
-		public override void RestartGame() { }
-		#endregion
+
 	}
 }

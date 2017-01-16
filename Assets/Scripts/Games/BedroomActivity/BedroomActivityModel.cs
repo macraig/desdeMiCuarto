@@ -11,11 +11,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		private int currentLvl, lvlCorrect = 0;
 		private List<BedroomLevel> lvls;
 
-		#region implemented abstract members of LevelModel
-		public override void NextChallenge() { }
-		public override void InitGame() { }
-		public override void RestartGame() { }
-		#endregion
+	
 
 		public void NextLvl(){
 			currentLvl++;

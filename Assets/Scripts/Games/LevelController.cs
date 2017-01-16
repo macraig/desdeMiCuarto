@@ -48,10 +48,10 @@ namespace Assets.Scripts.Games
    You must call this method at the end of the game
    params minSeconds, pointsPerSecond and pointsPerError are defined in LevelModel
     */
-        public void EndGame(int minSeconds, int pointsPerSecond, int pointsPerError){
-            MetricsController.GetController().GameFinished(minSeconds, pointsPerSecond, pointsPerError);
-            ViewController.GetController().LoadLevelCompleted();
-        }
+//        public void EndGame(int minSeconds, int pointsPerSecond, int pointsPerError){
+//            MetricsController.GetController().GameFinished(minSeconds, pointsPerSecond, pointsPerError);
+//            ViewController.GetController().LoadLevelCompleted();
+//        }
 
        
 
