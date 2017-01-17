@@ -81,6 +81,9 @@ namespace Assets.Scripts.Metrics.View
 
             points[metricsPoints.Count - 1].isOn = false;
             points[metricsPoints.Count - 1].isOn = true;
+
+
+
         }
 
         private float calculateY(int stars, float MAX_Y, float MIN_Y)

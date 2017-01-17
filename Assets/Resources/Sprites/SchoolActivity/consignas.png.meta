@@ -1,15 +1,31 @@
 fileFormatVersion: 2
 guid: e06409a085576d24dbc14fe3b4198cb1
-timeCreated: 1482930707
-licenseType: Free
+timeCreated: 1484654999
+licenseType: Pro
 TextureImporter:
-  fileIDToRecycleName: {}
-  serializedVersion: 2
+  fileIDToRecycleName:
+    21300000: consignas_0
+    21300002: consignas_1
+    21300004: consignas_2
+    21300006: consignas_3
+    21300008: consignas_4
+    21300010: consignas_5
+    21300012: consignas_6
+    21300014: consignas_7
+    21300016: consignas_8
+    21300018: consignas_9
+    21300020: consignas_10
+    21300022: consignas_11
+    21300024: consignas_12
+    21300026: consignas_13
+    21300028: consignas_14
+    21300030: consignas_15
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
     mipMapFadeDistanceStart: 1
@@ -21,37 +37,278 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 96.49
+  alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: consignas_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1674.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1563.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1452.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1341.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1230.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1119.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1008.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 897.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 786.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 675.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 564.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 453.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 342.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 231.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9.375
+        width: 1369
+        height: 111.625
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

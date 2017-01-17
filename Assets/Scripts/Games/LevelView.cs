@@ -19,8 +19,12 @@ namespace Assets.Scripts.Games
 		public GameObject endGamePanel;
 		//Explanation Panel
 		public GameObject explanationPanel;
+		public AudioClip explanationSound;
+
 		public GameObject starPanel;
 		private Sprite star;
+
+
 
 
 		/*-----Functions for menuPanel panel-----*/
@@ -119,7 +123,7 @@ namespace Assets.Scripts.Games
 
 		internal void ShowExplanation(){
 			explanationPanel.SetActive(true);
-			//play al sonido de instructions
+			SoundController.GetController ().PlayClip (explanationSound);
 		}
 
 
