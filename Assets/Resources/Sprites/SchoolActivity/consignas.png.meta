@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: e06409a085576d24dbc14fe3b4198cb1
-timeCreated: 1484654999
-licenseType: Pro
+timeCreated: 1484666820
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: consignas_0
@@ -20,6 +20,8 @@ TextureImporter:
     21300026: consignas_13
     21300028: consignas_14
     21300030: consignas_15
+    21300032: consignas_16
+    21300034: consignas_17
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -106,9 +108,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1674.375
+        y: 1862.4445
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,9 +121,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1563.375
+        y: 1753.4445
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,9 +134,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1452.375
+        y: 1644.4445
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,9 +147,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1341.375
+        y: 1535.4445
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,9 +160,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1230.375
+        y: 1426.4445
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,9 +173,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1119.375
+        y: 1317.4445
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,9 +186,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1008.375
+        y: 1208.4445
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,9 +199,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 897.375
+        y: 1099.4445
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,9 +212,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 786.375
+        y: 990.44446
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,9 +225,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 675.375
+        y: 881.44446
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,9 +238,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 564.375
+        y: 772.44446
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -249,9 +251,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 453.375
+        y: 663.44446
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,9 +264,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 342.375
+        y: 554.44446
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,9 +277,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 231.375
+        y: 445.44446
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,9 +290,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 120.375
+        y: 336.44446
         width: 1369
-        height: 111.625
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,9 +303,35 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 9.375
+        y: 227.44444
         width: 1369
-        height: 111.625
+        height: 109.55556
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 118.44444
+        width: 1369
+        height: 109.55556
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9.444443
+        width: 1369
+        height: 109.55556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
