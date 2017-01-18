@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 401ef1fe859d95244a2f66de467fd878
-timeCreated: 1483706557
+timeCreated: 1484745840
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -88,11 +88,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 532.5
+        y: 539.1667
         width: 1060
-        height: 106.5
+        height: 107.83331
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5000003}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -101,11 +101,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 426.5
+        y: 432.16666
         width: 1060
-        height: 106.5
+        height: 107.83334
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.49999985}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -114,11 +114,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 320.5
+        y: 325.16666
         width: 1060
-        height: 106.5
+        height: 107.83334
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.49999985}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -127,11 +127,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 214.5
+        y: 216
         width: 1060
-        height: 106.5
+        height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -140,11 +140,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 108.5
+        y: 108
         width: 1060
-        height: 106.5
+        height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -153,11 +153,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2.5
+        y: 0
         width: 1060
-        height: 106.5
+        height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

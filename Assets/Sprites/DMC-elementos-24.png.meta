@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 1592eea0443e63147b62a0ed2b542ee7
-timeCreated: 1484748407
+guid: 3fed39ce1af97b74494154b56b2e2c39
+timeCreated: 1484750930
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: consignas_0
-    21300002: consignas_1
-    21300004: consignas_2
-    21300006: consignas_3
-    21300008: consignas_4
+  fileIDToRecycleName: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -39,7 +34,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -81,72 +76,7 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: consignas_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1351
-        width: 1636
-        height: 123
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: consignas_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1228
-        width: 1636
-        height: 123
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: consignas_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1105
-        width: 1636
-        height: 123
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: consignas_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 982
-        width: 1636
-        height: 123
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: consignas_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 859
-        width: 1636
-        height: 123
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
+    sprites: []
     outline: []
   spritePackingTag: 
   userData: 
