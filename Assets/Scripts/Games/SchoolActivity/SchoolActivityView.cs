@@ -9,6 +9,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 	public class SchoolActivityView : LevelView {
 		public List<Toggle> rooms;
 		public Button okBtn;
+		public List<GameObject> directionsImages;
 		public Image board;
 
 
@@ -32,7 +33,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 				EndGame(60,0,1250);
 				return;
 			}
-
+			CleanUI ();
 			okBtn.interactable = false;
 
 			model.SetSector();
@@ -105,7 +106,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 		void CleanUI() {
 //			ghosts.ForEach((GameObject g) => {if(g != null) g.SetActive(false);});
-//			arrows.ForEach((GameObject g) => g.SetActive(false));
+			directionsImages.ForEach((GameObject g) => g.SetActive(false));
 //			crosshairs.ForEach((GameObject g) => g.SetActive(false));
 //			shootToggle.isOn = false;
 

@@ -15,13 +15,13 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		private AudioClip[][] mediumAudios;
 
 
-		private const int ROOMS = 5;
+		private const int ROOMS = 6;
 		//Current sector index
 		private int currentSector,stage, streak;
 
 		public SchoolActivityModel(){
 			MetricsController.GetController().GameStart();
-			currentDifficulty = Difficulty.EASY;
+			currentDifficulty = Difficulty.HARD;
 			boards = Resources.LoadAll<Sprite>("Sprites/SchoolActivity/consignas");
 			boardAudios = Resources.LoadAll<AudioClip>("Audio/SchoolActivity/consignas");
 			InitBoards ();
@@ -35,18 +35,20 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			int i;
 			easyBoards = new Sprite[ROOMS];
 			easyAudios = new AudioClip[ROOMS];
-			mediumBoards = new Sprite[ROOMS][];
-			mediumAudios = new AudioClip[ROOMS][];
+			mediumBoards = new Sprite[2][];
+			mediumAudios = new AudioClip[2][];
+			mediumBoards [0] = new Sprite[ROOMS];
+			mediumBoards [1] = new Sprite[ROOMS];
+			mediumAudios [0] = new AudioClip[ROOMS];
+			mediumAudios [1] = new AudioClip[ROOMS];
 
 			for (i=0; i < ROOMS; i++) {
 				easyBoards [i] = boards [i];
 				easyAudios [i] = boardAudios [i];
-				mediumBoards [i] = new Sprite[2];
-				mediumBoards [i] [0] = boards [i + ROOMS];
-				mediumBoards [i] [1] = boards [i + ROOMS*2];
-				mediumAudios [i] = new AudioClip[2];
-				mediumAudios [i] [0] = boardAudios [i + ROOMS];
-				mediumAudios [i] [1] = boardAudios [i + ROOMS*2];
+				mediumBoards [0] [i] = boards [i + ROOMS];
+				mediumBoards [1] [i] = boards [i + ROOMS*2];
+				mediumAudios [0] [i] = boardAudios [i + ROOMS];
+				mediumAudios [1] [i] = boardAudios [i + ROOMS*2];
 			}
 
 		}
@@ -57,8 +59,8 @@ namespace Assets.Scripts.Games.SchoolActivity {
 				currentAudios = easyAudios;
 			} else {
 				bool randomBool = Randomizer.RandomBoolean ();
-				currentBoards = randomBool ? mediumBoards[0] : mediumBoards[1];
 				currentAudios = randomBool ? mediumAudios [0] : mediumAudios [1];
+				currentBoards = randomBool ? mediumBoards[0] : mediumBoards[1];
 			}
 		}
 
@@ -70,6 +72,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 		public AudioClip BoardClip() {
 			return currentAudios [currentSector];
+
 		}
 
 		public Sprite BoardSprite() {
