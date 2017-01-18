@@ -24,7 +24,7 @@ namespace Assets.Scripts.App
 		void loadGames ()
 		{
 
-			JSONArray gamesObj = JSON.Parse(Resources.Load<TextAsset>("games").text).AsObject["games"].AsArray;
+			JSONArray gamesObj = JSON.Parse(Resources.Load<TextAsset>("Jsons/games").text).AsObject["games"].AsArray;
 			icons = Resources.LoadAll<Sprite>("Sprites/icons");
 
 			games = new List<Game>();

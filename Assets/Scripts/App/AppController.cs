@@ -89,14 +89,11 @@ namespace Assets.Scripts.App
 
       
 
-        internal void PlayCurrentGame(int level)
+        internal void PlayCurrentGame()
         {
 //            SoundController.GetController().StopMusic();
-            appModel.SetCurrentLevel(level);
-			Debug.Log (level);
-			Debug.Log (GetCurrentLevel());
             // ViewController.GetController().StartGame(appModel.GetCurrentArea(), appModel.GetCurrentGame());
-			ViewController.GetController().StartGame(GetCurrentLevel());
+			ViewController.GetController().StartGame(GetCurrentGame());
       
         }
 

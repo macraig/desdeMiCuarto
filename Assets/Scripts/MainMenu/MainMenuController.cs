@@ -39,10 +39,7 @@ namespace Assets.Scripts.MainMenu
             menuView.gameObject.SetActive(true);
         }
 
-        internal void PlayCurrentGame(int level)
-        {
-            AppController.GetController().PlayCurrentGame(level);
-        }
+       
       
 		internal void GoBack() {
 			ViewController.GetController().LoadLogin();

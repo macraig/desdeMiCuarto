@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine.UI;
+
 using UnityEngine;
 using Assets.Scripts.Common;
 using Assets.Scripts.Sound;
@@ -64,11 +65,8 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 		// PHANTOM SCREEN ***************************************************************************************************
 
-//		public List<GameObject> arrows, ghosts, crosshairs;
-//		public List<Image> lifeGhosts;
 		public Toggle left, right, up, down;
 
-//		private int correctGhost;
 		private bool cleaning;
 
 		void StartPhantomScreen() {
@@ -105,43 +103,24 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		}
 
 		void CleanUI() {
-//			ghosts.ForEach((GameObject g) => {if(g != null) g.SetActive(false);});
 			directionsImages.ForEach((GameObject g) => g.SetActive(false));
-//			crosshairs.ForEach((GameObject g) => g.SetActive(false));
-//			shootToggle.isOn = false;
 
-			CleanToggles(left, right, up, down);
 		}
 
-		public void CleanToggles(params Toggle[] objects){
-			foreach(var o in objects) {
-				o.enabled = true;
-				o.interactable = true;
-				o.isOn = false;
+	
+		public void ClickDirection(string dir){
+			PlaySoundClick();
+			AddInstruction (dir);
+		}
+
+
+		void AddInstruction (string dir)
+		{
+			model.AddInstruction (dir);
+			foreach (GameObject dirImg in directionsImages) {
+//				if (dirImg.activeSelf ()) {
+//				}
 			}
 		}
-
-		public void DisableDirection(Toggle disable){
-			if(!cleaning) disable.interactable = false;
-		}
-
-		public void ClickDirection(Toggle dir){
-			if(cleaning) return;
-
-			PlaySoundClick();
-			dir.enabled = false;
-		}
-
-		//left -1, right +1, up -3, down +3
-		public void MoveSlots(int move){
-			if(cleaning) return;
-//			crosshairs[currentSlot].SetActive(false);
-
-			currentSlot += move;
-
-//			crosshairs[currentSlot].SetActive(true);
-		}
-
-
 	}
 }

@@ -58,7 +58,7 @@ namespace Assets.Scripts.MainMenu
         {
             ClickSound();
           
-			MainMenuController.GetController().PlayCurrentGame(AppController.GetController().GetCurrentLevel());
+			AppController.GetController().PlayCurrentGame();
         }
 
         public void OnClickBackBtn()

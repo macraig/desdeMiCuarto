@@ -110,34 +110,9 @@ namespace Assets.Scripts.App
 			ChangeCurrentObject(LoadPrefab("NameScreen"));
         }    
 
-        internal void StartGame(int level)
+        internal void StartGame(Game game)
         {
-			string game = "";
-			switch (level) {
-			case 1:
-				game = "BedroomActivity";
-				break;
-			case 2:
-				game = "HouseActivity";
-				break;
-			case 3:
-				game = "ClassroomActivity";
-				break;
-			case 4:
-				game = "SchoolActivity";
-				break;
-			case 5:
-				game = "TreasureActivity";
-				break;
-			case 6:
-				game = "NeighbourhoodActivity";
-				break;
-			case 7:
-				game = "PatternsActivity";
-				break;
-			}
-
-			ChangeCurrentObject(LoadPrefab("Games/" + game));
+			ChangeCurrentObject(LoadPrefab("Games/" + game.GetPrefabName()));
 //            SetCanvasScalerToCurrentGame();
         }
 

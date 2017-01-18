@@ -7,13 +7,15 @@ using Assets.Scripts.Metrics.Model;
 
 namespace Assets.Scripts.Games.SchoolActivity {
 	public class SchoolActivityModel : LevelModel {
+		
+		public const int MAX_INSTRUCTIONS = 7;
 		private Difficulty currentDifficulty;
 		private Randomizer sectorRandomizer;
 		private Sprite[] boards,currentBoards,easyBoards;
 		private Sprite[][] mediumBoards;
 		private AudioClip[] boardAudios, currentAudios, easyAudios;
 		private AudioClip[][] mediumAudios;
-
+		private List<string> instructions;
 
 		private const int ROOMS = 6;
 		//Current sector index
@@ -29,6 +31,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			sectorRandomizer = Randomizer.New(ROOMS - 1);
 			stage = 0;
 			streak = 0;
+			instructions = new List<string> ();
 		}
 
 		void InitBoards(){
@@ -107,5 +110,14 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		}
 
 
+		public void AddInstruction (string dir)
+		{
+			instructions.Add (dir);
+
+		}
+
+		public bool ReachedMaxInstructions(){
+			return instructions.Count >= MAX_INSTRUCTIONS;
+		}
 	}
 }
