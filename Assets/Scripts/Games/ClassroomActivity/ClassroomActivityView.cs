@@ -22,14 +22,14 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 
 		public void Begin(){
 			ShowExplanation();
-			Next(true);
+
 		}
 
 		public void SoundClick(){
 			SoundController.GetController().PlayClip(Resources.Load<AudioClip>("Audio/ClassroomActivity/Consignas/" + model.CurrentLvl()));
 		}
 
-		public void Next(bool first = false){
+		override public void Next(bool first = false){
 			if(!first){
 				SetCurrentLevel(false);
 				model.NextLvl();

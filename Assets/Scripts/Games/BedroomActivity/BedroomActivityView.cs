@@ -22,12 +22,11 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		}
 
 		public void Begin(){
-			ShowRightAnswerAnimation ();
-			//ShowExplanation();
-			Next(true);
+			ShowExplanation();
+
 		}
 
-		public void Next(bool first = false){
+		override public void Next(bool first = false){
 			if(!first){
 				SetCurrentLevel(false);
 				model.NextLvl();

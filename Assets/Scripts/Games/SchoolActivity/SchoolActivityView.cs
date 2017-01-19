@@ -24,7 +24,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			Next();
 		}
 
-		void Next() {
+		override public void Next(bool first = false) {
 			if(model.IsFinished()) {
 				//				5 ESTRELLAS: 0 ERRORES
 				//				4 ESTRELLAS: 1ERROR

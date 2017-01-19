@@ -28,6 +28,8 @@ namespace Assets.Scripts.Games
 		private Sprite star;
 
 
+		// This method is used as the game's loop
+		abstract public void Next(bool first = false);
 
 
 		/*-----Functions for menuPanel panel-----*/
@@ -133,11 +135,8 @@ namespace Assets.Scripts.Games
 		public void HideExplanation(){
 			PlaySoundClick ();
 			explanationPanel.SetActive (false);
-
+			Next (true);
 		}
-
-
-
 
 
 		internal void ExitGame(){
@@ -195,10 +194,12 @@ namespace Assets.Scripts.Games
 
 		internal void ShowRightAnswerAnimation(){
 			rightAnimation.GetComponent<AnswerAnimationScript>().ShowAnimation();
+			SoundController.GetController ().PlayRightAnswerSound ();
 		}
 
 		internal void ShowWrongAnswerAnimation(){
 			wrongAnimation.GetComponent<AnswerAnimationScript>().ShowAnimation();
+			SoundController.GetController ().PlayFailureSound ();
 		}
 
 		public void OnRightAnimationEnd(){
