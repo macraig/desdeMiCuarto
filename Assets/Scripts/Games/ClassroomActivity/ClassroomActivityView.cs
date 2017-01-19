@@ -50,13 +50,13 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 		}
 
 		public void ClickCorrect(){
-			PlayRightSound();
+			ShowRightAnswerAnimation ();
 			model.Correct();
-			Next();
+//			Next();
 		}
 
 		public void ClickWrong(){
-			PlayWrongSound();
+			ShowWrongAnswerAnimation ();
 			model.Wrong();
 		}
 		

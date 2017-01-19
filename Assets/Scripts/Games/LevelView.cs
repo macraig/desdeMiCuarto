@@ -203,13 +203,11 @@ namespace Assets.Scripts.Games
 		}
 
 		public void OnRightAnimationEnd(){
-			//todo
-			Debug.Log("Right answer ended");
+			Next ();
 		}
 
-		public void OnWrongAnimationEnd(){
-			//todo
-			Debug.Log("Wrong answer ended");
+		virtual public void OnWrongAnimationEnd(){
+			
 		}
     }
 }

@@ -48,7 +48,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 				carpet.image.sprite = Resources.LoadAll<Sprite>("Sprites/BedroomActivity/alfombra")[4];
 
-				Next();
+				ShowRightAnswerAnimation ();
 			} else {
 				PlayWrongSound();
 				model.Wrong();
@@ -87,7 +87,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 		public override void Dropped(DraggerHandler dropped, DraggerSlot where) {
 			model.Correct();
-			if(model.IsLvlDone()) Next();
+			if(model.IsLvlDone()) ShowRightAnswerAnimation ();
 		}
 
 		public void MuebleEnter(){
@@ -107,7 +107,8 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		public void ClickTarget(GameObject target){
 			target.SetActive(false);
 			model.Correct();
-			if(model.IsLvlDone()) Next();
+			if (model.IsLvlDone ())
+				ShowRightAnswerAnimation ();
 		}
 
 		public void ClickToggle(string togglePath){
@@ -116,7 +117,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 			model.SetToggle(spr);
 
-			if(model.IsLvlDone()) Next();
+			if(model.IsLvlDone()) ShowRightAnswerAnimation ();
 		}
 
 		public void ClickWrong(){

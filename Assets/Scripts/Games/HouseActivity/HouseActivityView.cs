@@ -90,18 +90,21 @@ namespace Assets.Scripts.Games.HouseActivity {
 			lifeGhosts[model.GetStage()].gameObject.SetActive(true);
 			lifeGhosts[model.GetStage()].GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Sprites/HouseActivity/ghost")[correct ? 2 : 1];
 
+			model.NextStage();
 			if(correct){
-				PlayRightSound();
+				ShowRightAnswerAnimation ();
 			} else {
-				PlayWrongSound();
+				ShowWrongAnswerAnimation ();
 			}
 
 			cleaning = true;
 			CleanUI();
 			cleaning = false;
 
-			model.NextStage();
-			Next();
+		}
+
+		override public void OnWrongAnimationEnd(){
+			Next ();
 		}
 
 		void CleanUI() {
