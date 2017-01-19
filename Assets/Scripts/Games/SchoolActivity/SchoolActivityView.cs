@@ -10,7 +10,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 	public class SchoolActivityView : LevelView {
 		public List<Toggle> rooms;
 		public Button okBtn;
-		public List<GameObject> directionsImages;
+		public List<GameObject> directionsListBtns;
 		public Image board;
 
 
@@ -103,23 +103,32 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		}
 
 		void CleanUI() {
-			directionsImages.ForEach((GameObject g) => g.SetActive(false));
+			directionsListBtns.ForEach((GameObject g) => g.SetActive(false));
 
 		}
 
 	
-		public void ClickDirection(string dir){
+		public void OnClickDirection(string dir){
 			PlaySoundClick();
 			AddInstruction (dir);
 		}
 
 
+		public void OnClickDirectionImage(Button dirBtn){
+			SoundController.GetController ().PlayDropSound ();
+			dirBtn.gameObject.SetActive (false);
+		}
+
+
 		void AddInstruction (string dir)
 		{
-			model.AddInstruction (dir);
-			foreach (GameObject dirImg in directionsImages) {
-//				if (dirImg.activeSelf ()) {
-//				}
+//			model.AddInstruction (dir);
+			foreach (GameObject dirImg in directionsListBtns) {
+				if (!dirImg.activeSelf) {
+					dirImg.SetActive (true);
+					dirImg.GetComponent<Image>().sprite = model.DirectionSprite (model.ParseToDirection(dir));
+					break;
+				}
 			}
 		}
 	}

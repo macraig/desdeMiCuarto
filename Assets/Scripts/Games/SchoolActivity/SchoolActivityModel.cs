@@ -11,7 +11,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		public const int MAX_INSTRUCTIONS = 7;
 		private Difficulty currentDifficulty;
 		private Randomizer sectorRandomizer;
-		private Sprite[] boards,currentBoards,easyBoards;
+		private Sprite[] boards,currentBoards,easyBoards,directionSprites;
 		private Sprite[][] mediumBoards;
 		private AudioClip[] boardAudios, currentAudios, easyAudios;
 		private AudioClip[][] mediumAudios;
@@ -23,8 +23,9 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 		public SchoolActivityModel(){
 			MetricsController.GetController().GameStart();
-			currentDifficulty = Difficulty.HARD;
+			currentDifficulty = Difficulty.EASY;
 			boards = Resources.LoadAll<Sprite>("Sprites/SchoolActivity/consignas");
+			directionSprites = Resources.LoadAll<Sprite>("Sprites/SchoolActivity/direcciones");
 			boardAudios = Resources.LoadAll<AudioClip>("Audio/SchoolActivity/consignas");
 			InitBoards ();
 			SetCurrentBoards();
@@ -82,6 +83,20 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			return currentBoards[currentSector];
 		}
 
+		public Sprite DirectionSprite(Direction dir){
+			switch (dir) {
+			case Direction.LEFT:
+				return directionSprites [0];
+			case Direction.UP:
+				return directionSprites [1];
+			case Direction.RIGHT:
+				return directionSprites [2];
+			case Direction.DOWN:
+				return directionSprites [3];
+			}
+			return null;
+		}
+
 		public void NextStage(){
 			stage++;
 			CheckDifficulty();
@@ -118,6 +133,20 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 		public bool ReachedMaxInstructions(){
 			return instructions.Count >= MAX_INSTRUCTIONS;
+		}
+
+		public Direction ParseToDirection(string dir){
+			switch (dir) {
+			case "UP":
+				return Direction.UP;
+			case "DOWN":
+				return Direction.DOWN;
+			case "LEFT":
+				return Direction.LEFT;
+			case "RIGHT":
+				return Direction.RIGHT;
+			}
+			return Direction.LEFT;
 		}
 	}
 }
