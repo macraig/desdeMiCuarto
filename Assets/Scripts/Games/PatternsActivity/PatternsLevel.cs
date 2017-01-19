@@ -35,12 +35,5 @@ namespace Assets.Scripts.Games.PatternsActivity {
 		public int GetImageIndex(){
 			return imageIndex;
 		}
-
-		public bool IsCorrect(PatternsTile[] tiles) {
-			for(int i = 0; i < colorArray.Count; i++) {
-				if(tiles[i].GetColor().name != colorArray[i]) return false;
-			}
-			return true;
-		}
 	}
 }

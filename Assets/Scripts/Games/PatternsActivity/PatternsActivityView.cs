@@ -17,6 +17,14 @@ namespace Assets.Scripts.Games.PatternsActivity {
 		override public void Next(bool first = false){
 			if(!first) model.NextLvl();
 
+			PatternsTile[] left = GetTiles(currentLeft);
+			PatternsTile[] right = GetTiles(currentRight);
+
+			for(int i = 0; i < left.Length; i++) {
+				left[i].SetColor(colors[0]);
+				right[i].SetColor(colors[0]);
+			}
+
 			colors.ForEach((PatternsColor c) => c.GetComponent<Toggle>().isOn = false);
 			currentColor = null;
 
@@ -25,12 +33,12 @@ namespace Assets.Scripts.Games.PatternsActivity {
 		}
 
 		public void ExchangeClick(){
-			model.ExchangeClick();
+			//model.ExchangeClick();
 			//TODO exchange left and right.
 		}
 
 		public void OkClick(){
-			if(model.IsCorrect(GetTiles(model.CanPaintLeft() ? currentRight : currentLeft))){
+			if(IsCorrect()){
 				ShowRightAnswerAnimation ();
 				model.Correct();
 				ChangeGrid(model.currentGridIndex());
@@ -38,6 +46,16 @@ namespace Assets.Scripts.Games.PatternsActivity {
 				ShowWrongAnswerAnimation();
 				model.Wrong();
 			}
+		}
+
+		bool IsCorrect() {
+			PatternsTile[] left = GetTiles(currentLeft);
+			PatternsTile[] right = GetTiles(currentRight);
+
+			for(int i = 0; i < left.Length; i++) {
+				if(left[i].GetColor().name != right[i].GetColor().name) return false;
+			}
+			return true;
 		}
 
 		void ChangeGrid(int gridIndex) {
@@ -86,7 +104,7 @@ namespace Assets.Scripts.Games.PatternsActivity {
 		}
 
 		public void ClickTile(PatternsTile tile){
-			if((tile.isLeft && !model.CanPaintLeft()) || (!tile.isLeft && model.CanPaintLeft())) return;
+			if((tile.isLeft && !model.CanPaintLeft()) || (!tile.isLeft && model.CanPaintLeft()) || currentColor == null) return;
 
 			tile.SetColor(currentColor);
 			tile.GetComponent<Image>().color = currentColor.color;
@@ -101,9 +119,10 @@ namespace Assets.Scripts.Games.PatternsActivity {
 		}
 
 		public void ColorChange(PatternsColor c){
-			if(c.GetComponent<Toggle>().isOn){
+			if(c.GetComponent<Toggle>().isOn) {
 				currentColor = c;
-			}
+			} else
+				currentColor = null;
 		}
 	}
 }

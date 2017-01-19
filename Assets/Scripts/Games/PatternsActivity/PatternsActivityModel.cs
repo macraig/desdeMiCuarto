@@ -62,10 +62,6 @@ namespace Assets.Scripts.Games.PatternsActivity {
 			lvlRandomizer = Randomizer.New(lvls.Count - 1);
 		}
 
-		public bool IsCorrect(PatternsTile[] tiles){
-			return lvl.IsCorrect(tiles);
-		}
-
 		public List<string> GetColors(List<string> colors){
 			return lvl.GetColors(colors, maxColors);
 		}
