@@ -20,6 +20,9 @@ namespace Assets.Scripts.Games
 		//Explanation Panel
 		public GameObject explanationPanel;
 		public AudioClip explanationSound;
+		//Right and wrong animations
+		public Image rightAnimation;
+		public Image wrongAnimation;
 
 		public GameObject starPanel;
 		private Sprite star;
@@ -190,5 +193,22 @@ namespace Assets.Scripts.Games
 			ShowEndPanel ();
 		}
 
+		internal void ShowRightAnswerAnimation(){
+			rightAnimation.GetComponent<AnswerAnimationScript>().ShowAnimation();
+		}
+
+		internal void ShowWrongAnswerAnimation(){
+			wrongAnimation.GetComponent<AnswerAnimationScript>().ShowAnimation();
+		}
+
+		public void OnRightAnimationEnd(){
+			//todo
+			Debug.Log("Right answer ended");
+		}
+
+		public void OnWrongAnimationEnd(){
+			//todo
+			Debug.Log("Wrong answer ended");
+		}
     }
 }

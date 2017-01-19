@@ -22,7 +22,8 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		}
 
 		public void Begin(){
-			ShowExplanation();
+			ShowRightAnswerAnimation ();
+			//ShowExplanation();
 			Next(true);
 		}
 
