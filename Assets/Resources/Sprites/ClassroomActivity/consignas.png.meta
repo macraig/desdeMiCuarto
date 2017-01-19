@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 1592eea0443e63147b62a0ed2b542ee7
-timeCreated: 1484748407
-licenseType: Free
+guid: 7f2258dc8816f4e44856450704b31852
+timeCreated: 1484865350
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: consignas_0
@@ -9,12 +9,19 @@ TextureImporter:
     21300004: consignas_2
     21300006: consignas_3
     21300008: consignas_4
-  serializedVersion: 4
+    21300010: consignas_5
+    21300012: consignas_6
+    21300014: consignas_7
+    21300016: consignas_8
+    21300018: consignas_9
+    21300020: consignas_10
+    21300022: consignas_11
+  serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
-    sRGBTexture: 1
+    enableMipMap: 1
     linearTexture: 0
+    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
     mipMapFadeDistanceStart: 1
@@ -26,19 +33,23 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 6
+  generateCubemap: 0
   cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: 1
+  textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -46,39 +57,10 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
-  alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
-  textureShape: 1
-  maxTextureSizeSet: 0
-  compressionQualitySet: 0
-  textureFormatSet: 0
-  platformSettings:
-  - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Standalone
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
+  buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -87,11 +69,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1351
+        y: 1351.1666
         width: 1636
-        height: 123
+        height: 122.833336
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -100,11 +82,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1228
+        y: 1229.1666
         width: 1636
-        height: 123
+        height: 122.833336
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -113,11 +95,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1105
+        y: 1107.1666
         width: 1636
-        height: 123
+        height: 122.833336
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -126,11 +108,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 982
+        y: 985.1667
         width: 1636
-        height: 123
+        height: 122.833336
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -139,11 +121,102 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 859
+        y: 863.1667
         width: 1636
-        height: 123
+        height: 122.833336
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 741.1667
+        width: 1636
+        height: 122.833336
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 619.1667
+        width: 1636
+        height: 122.833336
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 497.16666
+        width: 1636
+        height: 122.833336
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 375.16666
+        width: 1636
+        height: 122.833336
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 253.16666
+        width: 1636
+        height: 122.833336
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 131.16666
+        width: 1636
+        height: 122.833336
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: consignas_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9.166664
+        width: 1636
+        height: 122.833336
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
