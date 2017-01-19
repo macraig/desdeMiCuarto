@@ -3,55 +3,75 @@ using System.Collections.Generic;
 using SimpleJSON;
 using Assets.Scripts.Metrics.Model;
 using UnityEngine;
+using Assets.Scripts.Common;
 
 namespace Assets.Scripts.Games.PatternsActivity {
 	public class PatternsActivityModel : LevelModel {
-		private int currentLvl, difficulty;
+		private int currentLvl, difficulty, currentGrid, maxColors;
 		private List<PatternsLevel> lvls;
+		private PatternsLevel lvl;
+		private Randomizer lvlRandomizer;
+		private bool isCurrentLeft;
 
-		public void NextLvl(){
-			currentLvl++;
+		public bool CanPaintLeft(){
+			return isCurrentLeft;
+		}
+
+		public int currentGridIndex(){
+			return currentGrid == 3 ? 0 : currentGrid == 4 ? 1 : 2;
 		}
 
 		public bool GameEnded(){
-			return currentLvl == lvls.Count;
+			return currentLvl == 5;
 		}
 
 		public int CurrentLvl(){
 			return currentLvl;
 		}
 
-		public void SetCurrentLevel(PatternsActivityView view, bool enabled) {
-			lvls[currentLvl].Set(view, enabled);
+		public void NextLvl(){
+			currentLvl++;
 		}
 
-		private PatternsActivityModel(List<PatternsLevel> lvls) {
-			this.lvls = lvls;
+		public PatternsActivityModel() {
+			difficulty = 0;
 			currentLvl = 0;
+			isCurrentLeft = true;
+			StartFromJson();
 			MetricsController.GetController().GameStart();
 
 		}
 
-		public static PatternsActivityModel StartFromJson(JSONArray lvls){
-			List<PatternsLevel> classLevels = new List<PatternsLevel>();
-			foreach(JSONClass lvl in lvls) {
-				GameObject correct = OneGameObject(lvl["correct"]);
-				List<GameObject> wrong = GameObjects(lvl["wrong"].AsArray);
+		public void StartFromJson(){
+			JSONClass lvl = JSON.Parse(Resources.Load<TextAsset>("PatternsActivity/" + difficulty).text).AsObject;
 
-				classLevels.Add(new PatternsLevel(correct, wrong));
+			currentGrid = lvl["grid"].AsInt;
+			maxColors = lvl["maxColors"].AsInt;
+
+			JSONArray patterns = lvl["patterns"].AsArray;
+
+			lvls = new List<PatternsLevel>();
+			foreach(JSONClass pattern in patterns) {
+				int imageIndex = pattern["imageIndex"].AsInt;
+				List<string> usedColors = new List<JSONNode>(pattern["usedColors"].AsArray.Childs).ConvertAll((JSONNode node) => node.Value);
+				List<string> colorArray = new List<JSONNode>(pattern["colorArray"].AsArray.Childs).ConvertAll((JSONNode node) => node.Value);
+
+				lvls.Add(new PatternsLevel(imageIndex, usedColors, colorArray));
 			}
 
-			Debug.Log(classLevels.Count + " Levels");
-
-			return new PatternsActivityModel(classLevels);
+			lvlRandomizer = Randomizer.New(lvls.Count - 1);
 		}
 
-		static List<GameObject> GameObjects(JSONArray lvl) {
-			return new List<JSONNode>(lvl.Childs).ConvertAll(OneGameObject);
+		public bool IsCorrect(PatternsTile[] tiles){
+			return lvl.IsCorrect(tiles);
 		}
 
-		static GameObject OneGameObject(JSONNode lvl) {
-			return GameObject.Find(lvl.Value);
+		public List<string> GetColors(List<string> colors){
+			return lvl.GetColors(colors, maxColors);
+		}
+
+		public List<string> GetColorArray(){
+			return lvl.GetColorArray();
 		}
 
 		public void Correct() {
@@ -62,11 +82,19 @@ namespace Assets.Scripts.Games.PatternsActivity {
 
 		void NextDifficulty() {
 			difficulty++;
-
+			StartFromJson();
 		}
 
 		public void Wrong(){
 			LogAnswer(false);
+		}
+
+		public void ExchangeClick() {
+			isCurrentLeft = !isCurrentLeft;
+		}
+
+		public void RandomizeLvl() {
+			lvl = lvls[lvlRandomizer.Next()];
 		}
 	}
 }

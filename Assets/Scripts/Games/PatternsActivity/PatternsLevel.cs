@@ -2,30 +2,45 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Assets.Scripts.Common;
 
 namespace Assets.Scripts.Games.PatternsActivity {
 	public class PatternsLevel {
-		GameObject correct;
-		List<GameObject> wrong;
+		int imageIndex;
+		List<string> usedColors, colorArray;
 
-		public PatternsLevel(GameObject correct, List<GameObject> wrong){
-			this.wrong = wrong;
-			this.correct = correct;
+		public PatternsLevel(int imageIndex, List<string> usedColors, List<string> colorArray) {
+			this.imageIndex = imageIndex;
+			this.usedColors = usedColors;
+			this.colorArray = colorArray;
 		}
 
-		public void Set(PatternsActivityView view, bool enabled) {
-			Button c = correct.GetComponent<Button>();
-			c.enabled = enabled;
-			if(enabled) c.onClick.AddListener(view.ClickCorrect);
-			else c.onClick.RemoveAllListeners();
+		public List<string> GetColors(List<string> allColors, int maxColors) {
+			List<string> colors = new List<string>(usedColors);
 
-			foreach(GameObject w in wrong) {
-				Button wb = w.GetComponent<Button>();
-				wb.enabled = enabled;
+			if(!colors.Contains("BLANK")) colors.Add("BLANK");
 
-				if(enabled) wb.onClick.AddListener(view.ClickWrong);
-				else wb.onClick.RemoveAllListeners();
+			Randomizer colorRandomizer = Randomizer.New(allColors.Count - 1);
+			while(colors.Count < maxColors){
+				string c = allColors[colorRandomizer.Next()];
+				if(!colors.Contains(c)) colors.Add(c);
 			}
+			return colors;
+		}
+
+		public List<string> GetColorArray(){
+			return colorArray;
+		}
+
+		public int GetImageIndex(){
+			return imageIndex;
+		}
+
+		public bool IsCorrect(PatternsTile[] tiles) {
+			for(int i = 0; i < colorArray.Count; i++) {
+				if(tiles[i].GetColor().name != colorArray[i]) return false;
+			}
+			return true;
 		}
 	}
 }
