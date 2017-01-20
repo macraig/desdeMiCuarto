@@ -12,6 +12,9 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		public Button okBtn;
 		public List<GameObject> directionsListBtns;
 		public Image board;
+		[HideInInspector] public bool playersTurn = true;
+
+
 
 
 		private SchoolActivityModel model;
@@ -20,8 +23,6 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		public void Start(){
 			ShowExplanation();
 			model = new SchoolActivityModel();
-
-			Next();
 		}
 
 		override public void Next(bool first = false) {
@@ -57,72 +58,35 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			model.LogAnswer(correct);
 			if(correct) {
 				PlayRightSound();
-				StartPhantomScreen();
+//				StartPhantomScreen();
 			} else {
 				PlayWrongSound();
 			}
 		}
-
-		// PHANTOM SCREEN ***************************************************************************************************
-
-		public Toggle left, right, up, down;
-
-		private bool cleaning;
-
-		void StartPhantomScreen() {
-//			currentSlot = 4;
-
-//			correctGhost = Randomizer.New(8).ExcludeNumbers(new List<int> { 4 }).Next();
-//			ghosts[correctGhost].SetActive(true);
-//			crosshairs[currentSlot].SetActive(true);
-
-//			shootToggle.isOn = false;
-		}
-
+			
 		public void ShootToggle(){
-//			if(!shootToggle.isOn) return;
 
-//			bool correct = currentSlot == correctGhost;
-//			model.LogAnswer(correct);
-
-//			lifeGhosts[model.GetStage()].gameObject.SetActive(true);
-//			lifeGhosts[model.GetStage()].GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Sprites/HouseActivity/ghost")[correct ? 2 : 1];
-
-//			if(correct){
-//				PlayRightSound();
-//			} else {
-//				PlayWrongSound();
-//			}
-
-			cleaning = true;
 			CleanUI();
-			cleaning = false;
-
 			model.NextStage();
 			Next();
 		}
 
 		void CleanUI() {
 			directionsListBtns.ForEach((GameObject g) => g.SetActive(false));
-
 		}
-
-	
+			
 		public void OnClickDirection(string dir){
 			PlaySoundClick();
 			AddInstruction (dir);
 		}
-
-
+			
 		public void OnClickDirectionImage(Button dirBtn){
 			SoundController.GetController ().PlayDropSound ();
 			dirBtn.gameObject.SetActive (false);
 		}
-
-
+			
 		void AddInstruction (string dir)
 		{
-//			model.AddInstruction (dir);
 			foreach (GameObject dirImg in directionsListBtns) {
 				if (!dirImg.activeSelf) {
 					dirImg.SetActive (true);

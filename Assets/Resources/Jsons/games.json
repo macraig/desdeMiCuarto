@@ -27,7 +27,7 @@
 	}, {
 		"id": "5",
 		"icon": "4",
-		"name": "EL TESORO",
+		"name": "LA PLAZA",
 		"description": "¡A descifrar el código!\n\nARRASTRAMOS LAS PIEZAS PARA COPIAR EL PATRÓN.\n\nUsar e interpretar referencias para ubicar elementos en un plano. ",
 		"prefabName":"TreasureActivity"
 	}, {
