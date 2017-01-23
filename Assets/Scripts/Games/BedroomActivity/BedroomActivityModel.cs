@@ -10,6 +10,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 	public class BedroomActivityModel : LevelModel {
 		private int currentLvl, lvlCorrect = 0;
 		private List<BedroomLevel> lvls;
+		private AudioClip levelAudio;
 
 	
 
@@ -23,7 +24,22 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		}
 
 		public bool CanDropInSlot(DraggerSlot slot) {
-			return slot.gameObject == lvls[currentLvl].Target();
+			if (slot.gameObject == lvls [currentLvl].Target ())
+				return true;
+			
+			List<GameObject> falseTargets = lvls [currentLvl].FalseTargets ();
+			foreach (GameObject falseTarget in falseTargets) {
+				if (slot.gameObject == falseTarget)
+					return true;
+				
+			}
+			return false;
+
+		}
+
+		public bool TargetIsCorrect (DraggerSlot where)
+		{
+			return where.gameObject == lvls [currentLvl].Target ();
 		}
 
 		public int CurrentLvl(){
@@ -32,6 +48,11 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 		public void SetCurrentLevel(bool enabled) {
 			lvls[currentLvl].Set(enabled);
+			levelAudio = lvls [currentLvl].GetAudioClip ();
+		}
+
+		public AudioClip GetLevelSound(){
+			return levelAudio;
 		}
 
 		private BedroomActivityModel(List<BedroomLevel> lvls) {
@@ -57,10 +78,10 @@ namespace Assets.Scripts.Games.BedroomActivity {
 					break;
 				case StageType.DRAG:
 					GameObject target = GameObject.Find(lvl["target"].Value);
-
+					List<GameObject> falseTargets = GameObjects(lvl["wrong"].AsArray);
 					List<GameObject> draggers = GameObjects(lvl["object"].AsArray);
 
-					bedroomLvls.Add(BedroomLevel.FromDrag(type, draggers, target, sound));
+					bedroomLvls.Add(BedroomLevel.FromDrag(type, draggers, target,falseTargets, sound));
 					break;
 				case StageType.CARPET_SCREEN:
 					bedroomLvls.Add(BedroomLevel.FromScreen(type));

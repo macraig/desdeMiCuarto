@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Assets.Scripts.Sound;
 using Assets.Scripts.App;
+using Assets.Scripts.Sound;
 
 
 namespace Assets.Scripts.Common.Dragger {
@@ -21,7 +22,8 @@ namespace Assets.Scripts.Common.Dragger {
 
 		public void OnBeginDrag(PointerEventData eventData) {
 			if (active) {
-//				SoundManager.instance.PlayClickSound ();
+				SoundController.GetController().PlayDragSound ();
+				transform.SetAsLastSibling ();
 				itemBeingDragged = this;
 				startPosition = transform.position;
 				GetComponent<CanvasGroup> ().blocksRaycasts = false;
@@ -35,20 +37,25 @@ namespace Assets.Scripts.Common.Dragger {
 
 		public void OnEndDrag(PointerEventData eventData = null) {
 			if (active) {
-				//SoundController.GetController().PlayClickSound ();
+//				SoundController.GetController().PlayDropSound ();
 				itemBeingDragged = null;
 				GetComponent<CanvasGroup> ().blocksRaycasts = true;
 
-				if(!dropped)
-					transform.position = startPosition;
-				else
-					SetActive(false);
-
+//				if (!dropped) {
+					//Uncomment to send object back to starting point
+//					transform.position = startPosition;
+//				} else {
+//					SetActive (false);
+//				}
 				if (dropped && !activeOnDrop) {
 					dropped = false;
-					gameObject.SetActive (false);
+//					gameObject.SetActive (false);
 				}
 			}
+		}
+
+		public bool ActiveOnDrop(){
+			return activeOnDrop;
 		}
 
 		public void Dropped() {

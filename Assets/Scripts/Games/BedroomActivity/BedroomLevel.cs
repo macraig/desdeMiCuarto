@@ -8,24 +8,31 @@ namespace Assets.Scripts.Games.BedroomActivity {
 	public class BedroomLevel {
 		List<GameObject> correct, wrong, objects;
 		GameObject target;
-		string sound;
 		StageType type;
+		AudioClip soundClip;
+
 
 		private BedroomLevel(StageType type, List<GameObject> correct, List<GameObject> wrong, List<GameObject> objects, GameObject target, string sound) {
 			this.correct = correct;
 			this.wrong = wrong;
 			this.objects = objects;
 			this.target = target;
-			this.sound = sound;
+//			this.sound = sound;
 			this.type = type;
+			soundClip = Resources.Load<AudioClip>("Audio/BedroomActivity/SFX/"+sound);
+		}
+
+		public AudioClip GetAudioClip ()
+		{
+			return soundClip;
 		}
 
 		public static BedroomLevel FromClickOrToggle(StageType type, List<GameObject> correct, List<GameObject> wrong, string sound){
 			return new BedroomLevel(type, correct, wrong, null, null, sound);
 		}
 
-		public static BedroomLevel FromDrag(StageType type, List<GameObject> objects, GameObject target, string sound){
-			return new BedroomLevel(type, null, null, objects, target, sound);
+		public static BedroomLevel FromDrag(StageType type, List<GameObject> objects, GameObject target,List<GameObject> falseTargets, string sound){
+			return new BedroomLevel(type, null, falseTargets, objects, target, sound);
 		}
 
 		public static BedroomLevel FromScreen(StageType type) {
@@ -34,6 +41,10 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 		public GameObject Target() {
 			return target;
+		}
+
+		public List<GameObject> FalseTargets() {
+			return wrong;
 		}
 
 		public List<GameObject> Correct() {
@@ -51,6 +62,10 @@ namespace Assets.Scripts.Games.BedroomActivity {
 				foreach(GameObject c in correct) {
 					c.GetComponent<Button>().enabled = enabled;
 				}
+
+				foreach(GameObject w in wrong) {
+					w.GetComponent<Button>().enabled = enabled;
+				}
 				break;
 			case StageType.CLICK:
 				foreach(GameObject c in correct) {
@@ -65,7 +80,9 @@ namespace Assets.Scripts.Games.BedroomActivity {
 				foreach(GameObject d in objects) {
 					d.GetComponent<DraggerHandler>().SetActive(enabled);
 				}
-
+				foreach(GameObject w in wrong) {
+					w.GetComponent<Button>().enabled = enabled;
+				}
 				break;
 			}
 		}

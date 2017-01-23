@@ -1,7 +1,9 @@
 ﻿using System;
 using Assets.Scripts.App;
 using Assets.Scripts.Games;
+using Assets.Scripts.Sound;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using SimpleJSON;
 using Assets.Scripts.Common.Dragger;
@@ -13,11 +15,13 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		public GameObject carpetPanel, photoPanel;
 
 		private Sprite[] boards;
+		private AudioClip[] instructions;
 		private BedroomActivityModel model;
 
 		public void Start(){
 			model = BedroomActivityModel.StartFromJson(JSON.Parse(Resources.Load<TextAsset>("BedroomActivity/bedroom").text).AsObject["levels"].AsArray);
 			boards = Resources.LoadAll<Sprite>("Sprites/BedroomActivity/consignas");
+			instructions = Resources.LoadAll<AudioClip>("Audio/BedroomActivity/Consignas");
 			Begin();
 		}
 
@@ -37,20 +41,21 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		}
 
 		public void SelectCarpet(){
-			//PlaySoundSwitch();
+			SoundController.GetController ().PlaySwitchSound ();
 			carpetPanelOkButton.interactable = true;
 		}
 
 		public void CarpetOk(){
+			//Desactivar el eventTrigger del mueble. Lo pongo acá porque no sé donde más ponerlo :)
+			GameObject.Find("muebleButton").GetComponent<EventTrigger>().enabled = false;
+
 			if(GameObject.Find("blueToggle").GetComponent<Toggle>().isOn){
 				model.Correct();
-				PlayRightSound();
-
 				carpet.image.sprite = Resources.LoadAll<Sprite>("Sprites/BedroomActivity/alfombra")[4];
 
 				ShowRightAnswerAnimation ();
 			} else {
-				PlayWrongSound();
+				ShowWrongAnswerAnimation ();
 				model.Wrong();
 			}
 		}
@@ -59,12 +64,13 @@ namespace Assets.Scripts.Games.BedroomActivity {
 			Debug.Log("End game");
 			photoButton.gameObject.SetActive(true);
 			upperBoard.sprite = boards[boards.Length - 1];
+
 		}
 
 		public void PhotoClick(){
 			photoButton.gameObject.SetActive(false);
 			photoPanel.SetActive(true);
-			//playPhotoSound();
+			SoundController.GetController ().PlayClip (Resources.Load<AudioClip> ("Audio/BedroomActivity/SFX/takePicture"));
 		}
 
 		public void OnPhotoPanelClick(){
@@ -83,11 +89,27 @@ namespace Assets.Scripts.Games.BedroomActivity {
 				carpetPanel.SetActive(enabled);
 
 			upperBoard.sprite = boards[model.CurrentLvl()];
+			SoundController.GetController().PlayClip(instructions[model.CurrentLvl()]);
+
+		}
+
+		public void OnSoundButtonClick(){
+			SoundController.GetController().PlayClip(instructions[model.CurrentLvl()]);
 		}
 
 		public override void Dropped(DraggerHandler dropped, DraggerSlot where) {
-			model.Correct();
-			if(model.IsLvlDone()) ShowRightAnswerAnimation ();
+			if (model.TargetIsCorrect (where)) {
+				model.Correct ();
+				if(!dropped.ActiveOnDrop()) dropped.gameObject.SetActive (false);
+				if (model.GetLevelSound () != null)
+					SoundController.GetController ().PlayClip (model.GetLevelSound ());
+				if (model.IsLvlDone ()) {
+					Invoke ("ShowRightAnswerAnimation", 1f);
+				} 
+			} else {
+				model.Wrong ();
+				ShowWrongAnswerAnimation ();
+			}
 		}
 
 		public void MuebleEnter(){
@@ -107,8 +129,11 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		public void ClickTarget(GameObject target){
 			target.SetActive(false);
 			model.Correct();
-			if (model.IsLvlDone ())
-				ShowRightAnswerAnimation ();
+			if(model.GetLevelSound()!=null) SoundController.GetController ().PlayClip (model.GetLevelSound());
+			if (model.IsLvlDone ()) {
+				Invoke("ShowRightAnswerAnimation",1f);
+			}
+				
 		}
 
 		public void ClickToggle(string togglePath){
@@ -117,10 +142,14 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 			model.SetToggle(spr);
 
-			if(model.IsLvlDone()) ShowRightAnswerAnimation ();
+			if (model.IsLvlDone ()) {
+				if(model.GetLevelSound()!=null) SoundController.GetController ().PlayClip (model.GetLevelSound());
+				Invoke("ShowRightAnswerAnimation",1f);
+			}
 		}
 
 		public void ClickWrong(){
+			ShowWrongAnswerAnimation ();
 			model.Wrong();
 		}
 

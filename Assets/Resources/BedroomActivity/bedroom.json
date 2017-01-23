@@ -3,7 +3,8 @@
 		"type": "DRAG",
 		"object": ["crayonesImage"],
 		"target": "muebleButton",
-		"sound": ""
+		"wrong": ["baulToggle"],
+		"sound": "drawer"
 	}, {
 		"type": "CARPET_SCREEN",
 		"screenName": "alfombrasPanel"
@@ -16,46 +17,50 @@
 		"type": "TOGGLE",
 		"correct": ["doorToggle"],
 		"wrong": [],
-		"sound": "doorClick"
+		"sound": "openDoor"
 	}, {
 		"type": "TOGGLE",
 		"correct": ["baulToggle"],
 		"wrong": [],
-		"sound": "baulClick"
+		"sound": "drawer"
 	}, {
 		"type": "DRAG",
 		"object": ["dinosaurImage", "bearImage"],
 		"target": "baulToggle",
-		"sound": ""
+		"wrong": ["muebleButton"],
+		"sound": "drop"
 	}, {
 		"type": "DRAG",
 		"object": ["almohadonAmarilloImage", "almohadonRojoImage"],
 		"target": "bedButton",
-		"sound": ""
+		"wrong": ["alfombraButton"],
+		"sound": "drop"
 	}, {
 		"type": "CLICK",
 		"correct": ["pincel1Button", "pincel2Button", "pincel3Button"],
 		"wrong": [],
-		"sound": "blop"
+		"sound": "brushSound"
 	}, {
 		"type": "TOGGLE",
 		"correct": ["windowToggle"],
 		"wrong": [],
-		"sound": "windowClick"
+		"sound": "windowOpen"
 	}, {
 		"type": "DRAG",
 		"object": ["bookImage"],
 		"target": "muebleButton",
-		"sound": ""
+		"wrong": ["baulToggle"],
+		"sound": "bookDrop"
 	}, {
 		"type": "DRAG",
 		"object": ["papel1Image", "papel2Image", "papel3Image"],
 		"target": "tachoImage",
-		"sound": ""
+		"wrong": ["alfombraButton","baulToggle","muebleButton","bedButton"],
+		"sound": "paper"
 	}, {
 		"type": "TOGGLE",
 		"correct": ["doorToggle"],
 		"wrong": [],
-		"sound": "doorClick"
+		"sound": "closeDoor"
 	}]
 }

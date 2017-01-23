@@ -173,6 +173,16 @@ namespace Assets.Scripts.Games
         {
             SoundController.GetController().PlayFailureSound();
         }
+
+		internal void PlayDropSound()
+		{
+			SoundController.GetController().PlayDropSound();
+		}
+
+		internal void PlayDragSound()
+		{
+			SoundController.GetController().PlayDragSound();
+		}
 			
 
         public void OnClickNextButton()
@@ -193,11 +203,13 @@ namespace Assets.Scripts.Games
 		}
 
 		internal void ShowRightAnswerAnimation(){
+			rightAnimation.transform.SetAsLastSibling ();
 			rightAnimation.GetComponent<AnswerAnimationScript>().ShowAnimation();
 			SoundController.GetController ().PlayRightAnswerSound ();
 		}
 
 		internal void ShowWrongAnswerAnimation(){
+			wrongAnimation.transform.SetAsLastSibling ();
 			wrongAnimation.GetComponent<AnswerAnimationScript>().ShowAnimation();
 			SoundController.GetController ().PlayFailureSound ();
 		}
