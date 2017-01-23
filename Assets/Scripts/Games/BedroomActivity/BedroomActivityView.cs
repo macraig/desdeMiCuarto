@@ -65,10 +65,10 @@ namespace Assets.Scripts.Games.BedroomActivity {
 			Debug.Log("End game");
 			photoButton.gameObject.SetActive(true);
 			upperBoard.sprite = boards[boards.Length - 1];
-
 		}
 
 		public void PhotoClick(){
+			photoButton.transform.SetAsLastSibling ();
 			photoButton.gameObject.SetActive(false);
 			photoPanel.SetActive(true);
 			SoundController.GetController ().PlayClip (Resources.Load<AudioClip> ("Audio/BedroomActivity/SFX/takePicture"));
