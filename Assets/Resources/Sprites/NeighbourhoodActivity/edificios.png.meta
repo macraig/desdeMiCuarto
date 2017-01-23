@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6e8ad1fb8cdc00143b42e3e728e2568c
-timeCreated: 1483622521
+timeCreated: 1485196010
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -27,6 +27,28 @@ TextureImporter:
     21300040: NeighbourhoodActivity-05_20
     21300042: NeighbourhoodActivity-05_22
     21300044: NeighbourhoodActivity-05_24
+    21300046: edificios_0
+    21300048: edificios_1
+    21300050: edificios_2
+    21300052: edificios_3
+    21300054: edificios_4
+    21300056: edificios_5
+    21300058: edificios_6
+    21300060: edificios_7
+    21300062: edificios_8
+    21300064: edificios_9
+    21300066: edificios_10
+    21300068: edificios_11
+    21300070: edificios_12
+    21300072: edificios_13
+    21300074: edificios_14
+    21300076: edificios_15
+    21300078: edificios_16
+    21300080: edificios_17
+    21300082: edificios_18
+    21300084: edificios_19
+    21300086: edificios_20
+    21300088: edificios_21
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -101,59 +123,59 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_0
+      name: edificios_0
       rect:
         serializedVersion: 2
         x: 0
         y: 155.5
-        width: 155.92308
+        width: 155.90909
         height: 155.5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_1
+      name: edificios_1
       rect:
         serializedVersion: 2
         x: 155
         y: 155.5
-        width: 155.92308
+        width: 155.90909
         height: 155.5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_2
+      name: edificios_2
       rect:
         serializedVersion: 2
         x: 310
         y: 155.5
-        width: 155.92308
+        width: 155.90909
         height: 155.5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_3
+      name: edificios_3
       rect:
         serializedVersion: 2
-        x: 465
-        y: 155.5
-        width: 155.92308
-        height: 155.5
+        x: 467
+        y: 155
+        width: 156
+        height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_4
+      name: edificios_4
       rect:
         serializedVersion: 2
         x: 623
@@ -166,7 +188,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_5
+      name: edificios_5
       rect:
         serializedVersion: 2
         x: 779
@@ -179,7 +201,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_6
+      name: edificios_6
       rect:
         serializedVersion: 2
         x: 935
@@ -192,7 +214,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_7
+      name: edificios_7
       rect:
         serializedVersion: 2
         x: 1091
@@ -205,10 +227,10 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_8
+      name: edificios_8
       rect:
         serializedVersion: 2
-        x: 1247
+        x: 1246
         y: 155
         width: 156
         height: 156
@@ -218,7 +240,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_9
+      name: edificios_9
       rect:
         serializedVersion: 2
         x: 1403
@@ -231,10 +253,10 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_10
+      name: edificios_10
       rect:
         serializedVersion: 2
-        x: 1558
+        x: 1559
         y: 155
         width: 156
         height: 156
@@ -244,51 +266,12 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_11
-      rect:
-        serializedVersion: 2
-        x: 1714
-        y: 154
-        width: 156
-        height: 156
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: NeighbourhoodActivity-05_12
-      rect:
-        serializedVersion: 2
-        x: 1869
-        y: 155
-        width: 156
-        height: 156
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: NeighbourhoodActivity-05_13
+      name: edificios_11
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 156
-        height: 156
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: NeighbourhoodActivity-05_14
-      rect:
-        serializedVersion: 2
-        x: 155
         y: 0.5
-        width: 155.9231
+        width: 155.90909
         height: 155.5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -296,10 +279,36 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_15
+      name: edificios_12
       rect:
         serializedVersion: 2
-        x: 311
+        x: 155
+        y: 0.5
+        width: 155.90909
+        height: 155.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: edificios_13
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 0.5
+        width: 155.90909
+        height: 155.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: edificios_14
+      rect:
+        serializedVersion: 2
+        x: 467
         y: 0
         width: 156
         height: 156
@@ -309,20 +318,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_16
-      rect:
-        serializedVersion: 2
-        x: 466
-        y: 0
-        width: 156
-        height: 156
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: NeighbourhoodActivity-05_17
+      name: edificios_15
       rect:
         serializedVersion: 2
         x: 623
@@ -335,7 +331,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_18
+      name: edificios_16
       rect:
         serializedVersion: 2
         x: 779
@@ -348,10 +344,10 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_19
+      name: edificios_17
       rect:
         serializedVersion: 2
-        x: 934
+        x: 935
         y: 0
         width: 156
         height: 156
@@ -361,12 +357,12 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_20
+      name: edificios_18
       rect:
         serializedVersion: 2
-        x: 1092
+        x: 1091
         y: 0
-        width: 308
+        width: 156
         height: 156
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -374,12 +370,12 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_22
+      name: edificios_19
       rect:
         serializedVersion: 2
-        x: 1404
+        x: 1247
         y: 0
-        width: 308
+        width: 156
         height: 156
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -387,12 +383,25 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: NeighbourhoodActivity-05_24
+      name: edificios_20
       rect:
         serializedVersion: 2
-        x: 1716
+        x: 1403
         y: 0
-        width: 309
+        width: 156
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: edificios_21
+      rect:
+        serializedVersion: 2
+        x: 1559
+        y: 0
+        width: 156
         height: 156
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
