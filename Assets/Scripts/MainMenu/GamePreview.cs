@@ -34,7 +34,7 @@ namespace Assets.Scripts.MainMenu
      
         internal void SetGameDescription(string description)
         {
-            this.gameDescription.text = description.Replace("/n", "\n");
+			this.gameDescription.text = description.Replace("/n", "\n").ToUpper();
         }
 
 		internal void SetGameNumber(string gameId)

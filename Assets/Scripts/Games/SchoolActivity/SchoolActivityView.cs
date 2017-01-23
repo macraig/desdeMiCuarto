@@ -12,6 +12,8 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		public Button okBtn;
 		public List<GameObject> directionsListBtns;
 		public Image board;
+		public Player santi;
+		List<Direction> instructions;
 		[HideInInspector] public bool playersTurn = true;
 
 
@@ -22,6 +24,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 		public void Start(){
 			ShowExplanation();
+			instructions = new List<Direction> ();
 			model = new SchoolActivityModel();
 		}
 
@@ -54,22 +57,32 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		}
 
 		public void OkClick(){
-			bool correct = model.IsCorrectSector(rooms.FindIndex((Toggle t) => t.isOn));
-			model.LogAnswer(correct);
-			if(correct) {
-				PlayRightSound();
-//				StartPhantomScreen();
-			} else {
-				PlayWrongSound();
-			}
+			GetInstructions ();
+			santi.MoveSequence (ParseInstructions (instructions));
 		}
-			
-		public void ShootToggle(){
 
-			CleanUI();
-			model.NextStage();
-			Next();
+		private List<Direction> GetInstructions(){
+			instructions.Clear ();
+
+			foreach (GameObject dirImg in directionsListBtns) {
+				if (dirImg.activeSelf) {
+					instructions.Add(model.ParseFromSprite(dirImg.GetComponent<Image>().sprite));
+				}
+			}
+			return instructions;
+
 		}
+
+		Vector2[] ParseInstructions (List<Direction> instructions)
+		{
+			Vector2[] vectorArray = new Vector2[instructions.Count];
+			for (int i = 0; i < instructions.Count; i++) {
+				vectorArray [i] = model.ParseInstruction (instructions [i]); 
+			}
+			return vectorArray;
+		}
+
+				
 
 		void CleanUI() {
 			directionsListBtns.ForEach((GameObject g) => g.SetActive(false));

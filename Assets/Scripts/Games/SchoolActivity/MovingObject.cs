@@ -16,12 +16,12 @@ public abstract class MovingObject : MonoBehaviour {
 	protected virtual void Start () {
 			boxCollider = GetComponent<BoxCollider2D> ();
 			rb2D = GetComponent<Rigidbody2D> ();
-			inverseMoveTime = 1f/moveTime;
+			inverseMoveTime = 10f/moveTime;
 	}
 
 	protected bool Move(int xDir, int yDir, out RaycastHit2D hit){
 			Vector2 start = transform.position;
-			Vector2 end = start + new Vector2 (xDir*10, yDir*100);
+			Vector2 end = start + new Vector2 (xDir, yDir);
 
 			//Disable the boxCollider so that linecast doesn't hit this object's own collider.
 			boxCollider.enabled = false;
@@ -78,6 +78,7 @@ public abstract class MovingObject : MonoBehaviour {
 				//Return and loop until sqrRemainingDistance is close enough to zero to end the function
 				yield return null;
 			}	
+
 	}
 
 	

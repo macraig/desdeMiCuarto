@@ -97,6 +97,8 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			return null;
 		}
 
+
+
 		public void NextStage(){
 			stage++;
 			CheckDifficulty();
@@ -148,5 +150,40 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			}
 			return Direction.LEFT;
 		}
+
+		public Direction ParseFromSprite (Sprite sprite)
+		{
+			if (sprite == directionSprites [0])
+				return Direction.LEFT;
+			else if (sprite == directionSprites [1])
+				return Direction.UP;
+			else if (sprite == directionSprites [2])
+				return Direction.RIGHT;
+			else
+				return Direction.DOWN;
+			
+
+		}
+
+
+		public Vector2 ParseInstruction (Direction direction)
+		{
+			switch (direction) {
+				case Direction.UP:
+					return new Vector2(0,-1);
+				case Direction.DOWN:
+					return new Vector2(0,1);
+				case Direction.LEFT:
+					return new Vector2(-1,0);
+				case Direction.RIGHT:
+					return new Vector2(1,0);
+			}
+			return new Vector2(0,0);
+
+		}
+
 	}
+
+
+
 }
