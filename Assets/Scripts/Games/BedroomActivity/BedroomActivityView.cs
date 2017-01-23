@@ -33,6 +33,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		override public void Next(bool first = false){
 			if(!first){
 				SetCurrentLevel(false);
+				if(model.CurrentLvl()==5) GameObject.Find("baulToggle").GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Sprites/BedroomActivity/baul")[0];
 				model.NextLvl();
 			}
 
@@ -121,6 +122,11 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		public void MuebleLeave(){
 			muebleButton.image.sprite = Resources.LoadAll<Sprite>("Sprites/BedroomActivity/mueble")[0];
 		}
+
+
+
+
+
 
 		public override bool CanDropInSlot(DraggerHandler dropper, DraggerSlot slot) {
 			return model.CanDropInSlot(slot);
