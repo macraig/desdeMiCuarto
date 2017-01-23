@@ -40,6 +40,7 @@ namespace Assets.Scripts.Games
 		}
 
 		public void ShowInGameMenu(){
+			menuPanel.transform.SetAsLastSibling ();
 			menuPanel.SetActive (true);
 		}
 
@@ -92,6 +93,7 @@ namespace Assets.Scripts.Games
 
 
 		public void ShowEndPanel(){
+			endGamePanel.transform.SetAsLastSibling ();
 			endGamePanel.SetActive (true);
 			SoundController.GetController ().PlayLevelCompleteSound ();
 			ShowStars ();
@@ -127,6 +129,7 @@ namespace Assets.Scripts.Games
 
 
 		internal void ShowExplanation(){
+			explanationPanel.transform.SetAsLastSibling ();
 			explanationPanel.SetActive(true);
 			SoundController.GetController ().PlayClip (explanationSound);
 		}

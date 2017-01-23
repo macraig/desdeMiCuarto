@@ -16,6 +16,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 		public void NextLvl(){
 			currentLvl++;
+
 			lvlCorrect = 0;
 		}
 
