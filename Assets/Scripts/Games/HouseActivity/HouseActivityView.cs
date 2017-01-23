@@ -10,15 +10,18 @@ namespace Assets.Scripts.Games.HouseActivity {
 		public List<Toggle> rooms;
 		public Button okBtn;
 		public Image board;
+		public Material[] roomTextures;
 
 		public GameObject phantomPanel;
+
 
 		private HouseActivityModel model;
 		private int currentSlot;
 
 		public void Start(){
 			model = new HouseActivityModel();
-
+			roomTextures = Resources.LoadAll<Material> ("Sprites/HouseActivity/Materials");
+			vacuumSprites = Resources.LoadAll<Sprite> ("Sprites/HouseActivity/aspiradora");
 			ShowExplanation ();
 		}
 
@@ -34,13 +37,12 @@ namespace Assets.Scripts.Games.HouseActivity {
 			}
 
 			okBtn.interactable = false;
+			shootToggle.interactable = false;
 			phantomPanel.SetActive(false);
 			model.SetSector();
 			board.sprite = model.BoardSprite();
 			SoundClick();
 		}
-
-	
 
 		public void SoundClick(){
 			SoundController.GetController().PlayClip(model.BoardClip());
@@ -51,14 +53,23 @@ namespace Assets.Scripts.Games.HouseActivity {
 		}
 
 		public void OkClick(){
-			bool correct = model.IsCorrectSector(rooms.FindIndex((Toggle t) => t.isOn));
+			int toggleIndex = rooms.FindIndex ((Toggle t) => t.isOn);
+			bool correct = model.IsCorrectSector(toggleIndex);
+
+
+
 			model.LogAnswer(correct);
 			if(correct) {
-				PlayRightSound();
-				StartPhantomScreen();
+				PlayRightSound ();
+				StartPhantomScreen(toggleIndex);
 			} else {
-				PlayWrongSound();
+				PlayWrongSound ();
+				Next ();
+
+
+
 			}
+			rooms.ForEach((Toggle t) => {if(t.isOn) t.isOn=false;});
 		}
 
 		// PHANTOM SCREEN ***************************************************************************************************
@@ -66,12 +77,16 @@ namespace Assets.Scripts.Games.HouseActivity {
 		public List<GameObject> arrows, ghosts, crosshairs;
 		public List<Image> lifeGhosts;
 		public Toggle shootToggle, left, right, up, down;
+		public Image phantomBackground, vacuumCleaner;
+		private Sprite[] vacuumSprites;
+
 
 		private int correctGhost;
 		private bool cleaning;
 
-		void StartPhantomScreen() {
+		void StartPhantomScreen(int roomIndex) {
 			phantomPanel.SetActive(true);
+			phantomBackground.material = roomTextures[roomIndex];
 			currentSlot = 4;
 
 			correctGhost = Randomizer.New(8).ExcludeNumbers(new List<int> { 4 }).Next();
@@ -81,8 +96,17 @@ namespace Assets.Scripts.Games.HouseActivity {
 			shootToggle.isOn = false;
 		}
 
+
+
 		public void ShootToggle(){
 			if(!shootToggle.isOn) return;
+
+			if (vacuumCleaner.sprite == vacuumSprites [0])
+				vacuumCleaner.sprite = vacuumSprites [1];
+			else if(vacuumCleaner.sprite == vacuumSprites[2])
+				vacuumCleaner.sprite = vacuumSprites [2];
+			else if(vacuumCleaner.sprite == vacuumSprites[3])
+				vacuumCleaner.sprite = vacuumSprites [3];
 
 			bool correct = currentSlot == correctGhost;
 			model.LogAnswer(correct);
@@ -97,22 +121,32 @@ namespace Assets.Scripts.Games.HouseActivity {
 				ShowWrongAnswerAnimation ();
 			}
 
-			cleaning = true;
-			CleanUI();
-			cleaning = false;
-
 		}
 
 		override public void OnWrongAnimationEnd(){
 			Next ();
+			cleaning = true;
+			CleanUI();
+			cleaning = false;
+		}
+
+
+
+		override public void OnRightAnimationEnd(){
+			Next ();
+			cleaning = true;
+			CleanUI ();
+			cleaning = false;
+
 		}
 
 		void CleanUI() {
+			vacuumCleaner.sprite = vacuumSprites [0];
 			ghosts.ForEach((GameObject g) => {if(g != null) g.SetActive(false);});
 			arrows.ForEach((GameObject g) => g.SetActive(false));
 			crosshairs.ForEach((GameObject g) => g.SetActive(false));
 			shootToggle.isOn = false;
-
+			shootToggle.interactable = false;
 			CleanToggles(left, right, up, down);
 		}
 
@@ -125,7 +159,10 @@ namespace Assets.Scripts.Games.HouseActivity {
 		}
 
 		public void DisableDirection(Toggle disable){
-			if(!cleaning) disable.interactable = false;
+			if (!cleaning) {
+				disable.interactable = false;
+				shootToggle.interactable = true;
+			}
 		}
 
 		public void ClickDirection(Toggle dir){
@@ -145,6 +182,51 @@ namespace Assets.Scripts.Games.HouseActivity {
 			crosshairs[currentSlot].SetActive(true);
 		}
 
+		public void ShowArrow(string dir){
+			if(cleaning) return;
+
+			if (dir == "LEFT")
+				vacuumCleaner.sprite = vacuumSprites [2];
+			else if (dir == "RIGHT")
+				vacuumCleaner.sprite = vacuumSprites [3];
+
+
+			switch (dir) {
+			case "UP":
+				if (left.IsInteractable () && right.IsInteractable ())
+					arrows [0].SetActive (true);
+				else if (left.isOn)
+					arrows [7].SetActive (true);
+				else
+					arrows [10].SetActive (true);
+				break;
+			case "DOWN":
+				if (left.IsInteractable () && right.IsInteractable ())
+					arrows [3].SetActive (true);
+				else if (left.isOn)
+					arrows [8].SetActive (true);
+				else
+					arrows [11].SetActive (true);
+				break;
+			case "LEFT":
+				if (up.IsInteractable () && down.IsInteractable ())
+					arrows [6].SetActive (true);
+				else if (up.isOn)
+					arrows [1].SetActive (true);
+				else
+					arrows [4].SetActive (true);
+				break;
+			case "RIGHT":
+				if (up.IsInteractable () && down.IsInteractable ())
+					arrows [9].SetActive (true);
+				else if (up.isOn)
+					arrows [2].SetActive (true);
+				else
+					arrows [5].SetActive (true);
+				break;
+			}
+
+		}
 
 	}
 }

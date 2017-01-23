@@ -23,27 +23,27 @@ public class Player : MovingObject {
 	
 	// Update is called once per frame
 	void Update () {
-//			if (!view.playersTurn)
-//				return;
-//
-//			int horizontal = 0;
-//			int vertical = 0;
-//
-//			horizontal = (int)Input.GetAxisRaw ("Horizontal");
-//			vertical = (int)Input.GetAxisRaw ("Vertical");
-//
-//			if (horizontal != 0) {
-//				horizontal = horizontal * MOVE_X;
-//				vertical = 0;
-//			}
-//
-//			if (vertical != 0) {
-//				vertical = vertical * MOVE_Y;
-//			}
-//				
-//
-//			if (horizontal != 0 || vertical != 0)
-//				AttemptMove<BoxCollider2D> (horizontal,vertical);
+			if (!view.playersTurn)
+				return;
+
+			int horizontal = 0;
+			int vertical = 0;
+
+			horizontal = (int)Input.GetAxisRaw ("Horizontal");
+			vertical = (int)Input.GetAxisRaw ("Vertical");
+
+			if (horizontal != 0) {
+				horizontal = horizontal * MOVE_X;
+				vertical = 0;
+			}
+
+			if (vertical != 0) {
+				vertical = vertical * MOVE_Y;
+			}
+				
+
+			if (horizontal != 0 || vertical != 0)
+				AttemptMove<BoxCollider2D> (horizontal,vertical);
 	}
 		public void MoveSequence(Vector2[] instructions){
 			for (int i = 0; i < instructions.Length; i++) {

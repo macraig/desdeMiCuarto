@@ -217,7 +217,7 @@ namespace Assets.Scripts.Games
 			SoundController.GetController ().PlayFailureSound ();
 		}
 
-		public void OnRightAnimationEnd(){
+		virtual public void OnRightAnimationEnd(){
 			Next ();
 		}
 
