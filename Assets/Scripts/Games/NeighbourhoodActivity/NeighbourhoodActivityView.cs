@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Sound;
 
 namespace Assets.Scripts.Games.NeighbourhoodActivity {
 	public class NeighbourhoodActivityView : LevelView {
@@ -27,6 +28,10 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		}
 
 		public void SoundClick(){
+			SoundController.GetController().ConcatenateAudios(model.GetAudios(), EndSoundMethod);
+		}
+
+		public void EndSoundMethod(){
 			
 		}
 

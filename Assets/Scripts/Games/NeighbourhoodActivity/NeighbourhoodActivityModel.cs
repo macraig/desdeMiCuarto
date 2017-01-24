@@ -26,6 +26,10 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			return result;
 		}
 
+		public List<AudioClip> GetAudios() {
+			return lvls[currentLvl].GetAudios();
+		}
+
 		public string GetText() {
 			return lvls[currentLvl].GetText(grid);
 		}
@@ -96,7 +100,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		public void CreateLevels() {
 			lvls = new List<NeighbourhoodLevel>();
 			foreach(Building o in options) {
-				lvls.Add(NeighbourhoodLevel.CreateLevel(grid, o));
+				lvls.Add(NeighbourhoodLevel.CreateLevel(grid, o, audios));
 			}
 		}
 
@@ -190,8 +194,17 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		}
 
 		void InitAudios() {
+			audios = new Dictionary<string, AudioClip>();
 
-			//TODO audios.
+			foreach(AudioClip a in Resources.LoadAll<AudioClip>("Audio/NeighbourhoodActivity/Edificios")) {
+				audios.Add(a.name, a);
+			}
+			foreach(AudioClip a in Resources.LoadAll<AudioClip>("Audio/NeighbourhoodActivity/EdificiosFinal")) {
+				audios.Add(a.name, a);
+			}
+			foreach(AudioClip a in Resources.LoadAll<AudioClip>("Audio/NeighbourhoodActivity/Consignas")) {
+				audios.Add(a.name, a);
+			}
 		}
 
 		void InitNames() {

@@ -3,6 +3,7 @@ using Assets.Scripts.Games.NeighbourhoodActivity;
 using System.Collections.Generic;
 using Assets.Scripts.Common;
 using UnityEngine;
+using Assets.Scripts.Sound;
 
 namespace Assets.Scripts.Games.NeighbourhoodActivity {
 	public class NeighbourhoodLevel {
@@ -11,11 +12,101 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		Possibilities p;
 		List<AudioClip> audios;
 
-		private NeighbourhoodLevel(Building correct, int row, int column, Possibilities p){
+		private NeighbourhoodLevel(Building correct, int row, int column, Possibilities p, Dictionary<string, AudioClip> audios, List<List<Building>> grid){
 			this.column = column;
 			this.row = row;
 			this.correct = correct;
 			this.p = p;
+			SetAudios(audios, grid);
+		}
+
+		public List<AudioClip> GetAudios() {
+			return audios;
+		}
+
+		void SetAudios(Dictionary<string, AudioClip> a, List<List<Building>> grid) {
+			audios = new List<AudioClip>();
+
+			//primer audio -> "la escuela"
+			audios.Add(a[correct.GetName()]);
+
+			//switch con todas las posibilidades.... Again, horrible.
+			switch(p) {
+			case Possibilities.BEHIND:
+				audios.Add(a["detras"]);
+				audios.Add(a[grid[row + 1][column].GetName() + "Final"]);
+
+				break;
+			case Possibilities.BEHIND_STREET:
+				audios.Add(a["detras"]);
+				audios.Add(a[grid[row + 2][column].GetName() + "Final"]);
+				audios.Add(a["cruzandoLaCalle"]);
+
+				break;
+			case Possibilities.BETWEEN_VERTICAL:
+				Building upperB = grid[row - 1][column];
+				Building downB = grid[row + 1][column];
+
+				audios.Add(a["entre"]);
+				audios.Add(a[upperB.GetName()]);
+				audios.Add(a["y"]);
+				audios.Add(a[downB.GetName()]);
+
+				break;
+			case Possibilities.BETWEEN_HORIZONTAL:
+				Building leftB = grid[row][column - 1];
+				Building rightB = grid[row][column + 1];
+
+				audios.Add(a["entre"]);
+				audios.Add(a[leftB.GetName()]);
+				audios.Add(a["y"]);
+				audios.Add(a[rightB.GetName()]);
+
+				break;
+			case Possibilities.IN_FRONT:
+				audios.Add(a["frente"]);
+				audios.Add(a[grid[row - 1][column].GetName() + "Final"]);
+
+				break;
+			case Possibilities.IN_FRONT_SCHOOL_STREET:
+				audios.Add(a["frenteALaEscuela"]);
+				audios.Add(a["cruzandoLaCalle"]);
+
+				break;
+			case Possibilities.IN_FRONT_STREET:
+				audios.Add(a["frente"]);
+				audios.Add(a[grid[row - 2][column].GetName() + "Final"]);
+				audios.Add(a["cruzandoLaCalle"]);
+
+				break;
+			case Possibilities.LEFT:
+				audios.Add(a["izquierda"]);
+				audios.Add(a[grid[row][column + 1].GetName() + "Final"]);
+				break;
+			case Possibilities.LEFT_SCHOOL_STREET:
+				audios.Add(a["izquierdaDeLaEscuela"]);
+				audios.Add(a["cruzandoLaCalle"]);
+				break;
+			case Possibilities.LEFT_STREET:
+				audios.Add(a["izquierda"]);
+				audios.Add(a[grid[row][column + 2].GetName() + "Final"]);
+				audios.Add(a["cruzandoLaCalle"]);
+				break;
+			case Possibilities.RIGHT:
+				audios.Add(a["derecha"]);
+				audios.Add(a[grid[row][column - 1].GetName() + "Final"]);
+				break;
+			case Possibilities.RIGHT_SCHOOL_STREET:
+				audios.Add(a["derechaDeLaEscuela"]);
+				audios.Add(a["cruzandoLaCalle"]);
+				break;
+			case Possibilities.RIGHT_STREET:
+				audios.Add(a["derecha"]);
+				audios.Add(a[grid[row][column - 2].GetName() + "Final"]);
+				audios.Add(a["cruzandoLaCalle"]);
+
+				break;
+			}
 		}
 
 		public List<Building> GetChoices(List<Building> simpleBuildings) {
@@ -46,9 +137,6 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			case Possibilities.BEHIND:
 				result = result + " está atrás " + grid[row + 1][column].GetTextNameEnd();
 				break;
-			case Possibilities.BEHIND_SCHOOL:
-				//no puede ir ninguno aca porque es ambiguo. Si estoy atras de la escuela puedo estar en cualquiera de los dos lugares libres.
-				break;
 			case Possibilities.BEHIND_STREET:
 				result = result + " está atrás " + grid[row + 2][column].GetTextNameEnd() + ", cruzando la calle";
 				break;
@@ -75,16 +163,16 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 				result = result + " está a la izquierda " + grid[row][column + 1].GetTextNameEnd();
 				break;
 			case Possibilities.LEFT_SCHOOL_STREET:
-				result = result + " está a la izquierda de la escuela";
+				result = result + " está a la izquierda de la escuela, cruzando la calle";
 				break;
 			case Possibilities.LEFT_STREET:
-				result = result + " está a la izquierda " + grid[row][column + 2].GetTextNameEnd();
+				result = result + " está a la izquierda " + grid[row][column + 2].GetTextNameEnd() + ", cruzando la calle";
 				break;
 			case Possibilities.RIGHT:
 				result = result + " está a la derecha " + grid[row][column - 1].GetTextNameEnd();
 				break;
 			case Possibilities.RIGHT_SCHOOL_STREET:
-				result = result + " está a la derecha de la escuela";
+				result = result + " está a la derecha de la escuela, cruzando la calle";
 				break;
 			case Possibilities.RIGHT_STREET:
 				result = result + " está a la derecha " + grid[row][column - 2].GetTextNameEnd() + ", cruzando la calle";
@@ -96,7 +184,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 		// LEVEL CREATION ******************************************************************************************************************
 
-		public static NeighbourhoodLevel CreateLevel(List<List<Building>> grid, Building correct){
+		public static NeighbourhoodLevel CreateLevel(List<List<Building>> grid, Building correct, Dictionary<string, AudioClip> audios){
 			Possibilities p = Possibilities.EMPTY;
 			Array values = Enum.GetValues(typeof(Possibilities));
 			List<Vector2> freeSpaces = FreeSpaces(grid);
@@ -116,7 +204,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 				if(p != Possibilities.EMPTY) {
 					grid[row][column] = correct;
-					return new NeighbourhoodLevel(correct, row, column, p);
+					return new NeighbourhoodLevel(correct, row, column, p, audios, grid);
 				}
 			}
 		}
@@ -131,15 +219,12 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 				if(spot != null && !spot.IsStreet() && spot.GetName() != "escuela")
 					return true;
 				break;
-			case Possibilities.BEHIND_SCHOOL:
-				//no puede ir ninguno aca porque es ambiguo. Si estoy atras de la escuela puedo estar en cualquiera de los dos lugares libres.
-				return false;
 			case Possibilities.BEHIND_STREET:
 				if(row >= 4)
 					return false;
 				streetSpot = grid[row + 1][column];
 				spot = grid[row + 2][column];
-				if(spot != null && streetSpot != null && !spot.IsStreet() && streetSpot.IsStreet())
+				if(spot != null && streetSpot != null && !spot.IsStreet() && streetSpot.IsStreet() && !spot.IsDouble())
 					return true;
 				break;
 			case Possibilities.BETWEEN_VERTICAL:
@@ -175,7 +260,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 					return false;
 				streetSpot = grid[row - 1][column];
 				spot = grid[row - 2][column];
-				if(spot != null && streetSpot != null && !spot.IsStreet() && streetSpot.IsStreet())
+				if(spot != null && streetSpot != null && !spot.IsStreet() && streetSpot.IsStreet() && spot.GetName() != "escuela")
 					return true;
 				break;
 			case Possibilities.LEFT:
@@ -183,7 +268,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 				if(column == 5)
 					return false;
 				spot = grid[row][column + 1];
-				if(column < 5 && spot != null && !spot.IsStreet())
+				if(column < 5 && spot != null && !spot.IsStreet() && !spot.IsDouble())
 					return true;
 				break;
 			case Possibilities.LEFT_SCHOOL_STREET:
@@ -193,14 +278,14 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 					return false;
 				streetSpot = grid[row][column + 1];
 				spot = grid[row][column + 2];
-				if(spot != null && streetSpot != null && !spot.IsStreet() && streetSpot.IsStreet())
+				if(spot != null && streetSpot != null && !spot.IsStreet() && streetSpot.IsStreet() && spot.GetName() != "escuela")
 					return true;
 				break;
 			case Possibilities.RIGHT:
 				if(column == 0)
 					return false;
 				spot = grid[row][column - 1];
-				if(spot != null && !spot.IsStreet())
+				if(spot != null && !spot.IsStreet() && spot.GetName() != "escuela")
 					return true;
 				break;
 			case Possibilities.RIGHT_SCHOOL_STREET:
@@ -210,7 +295,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 					return false;
 				streetSpot = grid[row][column - 1];
 				spot = grid[row][column - 2];
-				if(spot != null && streetSpot != null && !spot.IsStreet() && streetSpot.IsStreet())
+				if(spot != null && streetSpot != null && !spot.IsStreet() && streetSpot.IsStreet() && spot.GetName() != "escuela")
 					return true;
 				break;
 			}
