@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Assets.Scripts.Common;
 using Assets.Scripts.Metrics.Model;
-using System.Globalization;
+using UnityEngine;
 
 namespace Assets.Scripts.Games.TreasureActivity {
 	public class TreasureActivityModel : LevelModel {
@@ -26,7 +25,9 @@ namespace Assets.Scripts.Games.TreasureActivity {
 		public TreasureActivityModel() {
 			difficulty = 0;
 			currentLvl = 0;
-			MetricsController.GetController().GameStart();
+            pattern = new List<Figure>();
+            choices = new List<Figure>();
+            MetricsController.GetController().GameStart();
 
 		}
 
@@ -53,9 +54,59 @@ namespace Assets.Scripts.Games.TreasureActivity {
 		}
 
 		// Horrible y cableadisimo porque no entendi nada del doc :)
-		public void SetLevel(){
-			pattern = new List<Figure>();
-			choices = new List<Figure>();
+
+	    public void SetLevel()
+	    {
+	        pattern.Clear();
+            choices.Clear();
+            Randomizer shapeRand = Randomizer.New(SHAPES - 1);
+            Randomizer secondShapeRand = Randomizer.New(SHAPES - 1);
+            Randomizer colorRand = Randomizer.New(COLORS - 1);
+            Randomizer secondColorRand = Randomizer.New(COLORS - 1);
+
+            switch (currentLvl)
+	        {
+              
+	            case 0:
+	                for (int i = 3; i >= 0; i--)
+	                {
+	                    Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next());
+	                    figure.Size(false);
+	                    pattern.Add(figure);
+                        choices.Add(figure);
+                    }
+	                Utils.Shuffle(pattern);
+	                Utils.Shuffle(choices);
+                    
+                    break;
+
+                case 1:
+                    for (int i = 3; i >= 0; i--)
+                    {
+                        Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next());
+                        pattern.Add(figure);
+                        choices.Add(figure);
+                    }
+	                int target;
+	                int source;
+                    do
+	                {
+                        target = Random.Range(2, 4);
+	                    source = Random.Range(0, 4);
+	                } while (target == source);
+
+	                pattern[target].Color(pattern[source].GetColor());
+	                pattern[target].Shape(pattern[source].GetShape());                              
+                    Utils.Shuffle(choices);
+                    break;
+            }
+	    }
+
+
+
+		/*public void SetLevel(){
+			pattern.Clear();
+			choices.Clear();
 
 			Randomizer shapeRand = Randomizer.New(SHAPES - 1);
 			Randomizer secondShapeRand = Randomizer.New(SHAPES - 1);
@@ -168,7 +219,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 			}
 
 			choices = Randomizer.RandomizeList(choices);
-		}
+		}*/
 
 		void CopyChoices() {
 			if(pattern.Count == 4) choices = new List<Figure>(pattern);

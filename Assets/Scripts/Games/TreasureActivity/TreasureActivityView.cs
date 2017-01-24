@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.Sound;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Games.TreasureActivity {
 	public class TreasureActivityView : LevelView {
 		public List<Image> pattern;
-		public Button soundBtn, okBtn;
+		public Button soundBtn, okBtn, NextButton;
 		public List<Button> droppers;
 		public List<Image> draggers;
 
@@ -14,15 +15,19 @@ namespace Assets.Scripts.Games.TreasureActivity {
 		private TreasureActivityModel model;
 
 		override public void Next(bool first = false){
-			if(!first) model.NextLvl();
+            if(!first) PlaySoundClick();
 			model.SetLevel();
-
-			if(model.GameEnded()) EndGame(60,0,1250);
-			else SetCurrentLevel();
+		    okBtn.enabled = true;
+            NextButton.gameObject.SetActive(false);
+            okBtn.gameObject.SetActive(true);
+            okBtn.enabled = true;
+			SetCurrentLevel();
 		}
 
-		public void OkClick(){
-			if(IsCorrect()){
+		public void OkClick()
+		{
+		    okBtn.enabled = false;
+            if (IsCorrect()){
 				ShowRightAnswerAnimation ();
 				model.Correct();
 			} else {
@@ -31,9 +36,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 			}
 		}
 
-		public void SoundClick(){
-			
-		}
+	
 
 		bool IsCorrect() {
 			for(int i = 0; i < pattern.Count; i++) {
@@ -46,7 +49,10 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
 		public void EraseDropper(Button dropper){
 			dropper.image.sprite = null;
-			okBtn.interactable = false;
+            dropper.image.color = new Color32(0,0,0,1);
+
+            okBtn.interactable = false;
+            SoundController.GetController().PlayClickSound();
 		}
 
 		public void Start(){
@@ -61,18 +67,25 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
 		private void SetCurrentLevel() {
 			CleanDroppers();
-
 			SetPattern(model.GetPattern());
 			SetOptions(model.GetOptions());
-
 			CheckOk();
 		}
 
-		void SetOptions(List<Figure> o) {
-			for(int i = 0; i < draggers.Count; i++) {
-				draggers[i].sprite = GetFigure(o[i]);
+		void SetOptions(List<Figure> o)
+		{
+		    int i = 0;
+            for (; i < o.Count; i++) {
+                draggers[i].gameObject.SetActive(true);
+
+                draggers[i].sprite = GetFigure(o[i]);
 			}
-		}
+            for (; i < draggers.Count; i++)
+            {
+                draggers[i].gameObject.SetActive(false);
+            }
+
+        }
 
 		void SetPattern(List<Figure> p) {
 			for(int i = 0; i < pattern.Count; i++) {
@@ -100,5 +113,23 @@ namespace Assets.Scripts.Games.TreasureActivity {
 			}
 			return true;
 		}
+
+	    public override void OnRightAnimationEnd()
+	    {
+
+            model.NextLvl();
+            if (model.GameEnded()) EndGame(60, 0, 1250);
+            else
+            {
+                NextButton.gameObject.SetActive(true);
+                okBtn.gameObject.SetActive(false);
+            }
+        }
+
+	    public override void OnWrongAnimationEnd()
+	    {
+	        okBtn.enabled = true;
+
+	    }
 	}
 }
