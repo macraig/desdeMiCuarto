@@ -23,28 +23,67 @@ public class Player : MovingObject {
 	
 	// Update is called once per frame
 	void Update () {
-//			if (!view.playersTurn)
-//				return;
-//
-//			int horizontal = 0;
-//			int vertical = 0;
-//
-//			horizontal = (int)Input.GetAxisRaw ("Horizontal");
-//			vertical = (int)Input.GetAxisRaw ("Vertical");
-//
-//			if (horizontal != 0) {
-//				horizontal = horizontal * MOVE_X;
-//				vertical = 0;
-//			}
-//
-//			if (vertical != 0) {
-//				vertical = vertical * MOVE_Y;
-//			}
-//				
-//
+			if (!view.playersTurn)
+				return;
+
+			Vector2 horizontal;
+			Vector2 vertical;
+
+			if (Input.GetKeyDown (KeyCode.RightArrow)) {
+				horizontal = new Vector2 (1, 0);
+			} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+				horizontal = new Vector2 (-1, 0);
+			} else {
+				horizontal = new Vector2 (0, 0);
+			}
+
+			if (Input.GetKeyDown (KeyCode.UpArrow)) {
+				vertical = new Vector2 (0, 1);
+			} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+				vertical = new Vector2 (0, -1);
+			} else {
+				vertical = new Vector2 (0,0 );
+			}
+
+
+			if (horizontal.magnitude != 0) {
+				Debug.Log(ThrowRaycast (horizontal));
+			}
+
+			/*
+			horizontal = (int)Input.GetAxisRaw ("Horizontal");
+			vertical = (int)Input.GetAxisRaw ("Vertical");
+
+			if (horizontal != 0) {
+				horizontal = horizontal * MOVE_X;
+				vertical = 0;
+			}
+
+			if (vertical != 0) {
+				vertical = vertical * MOVE_Y;
+			}
+				*/
+
 //			if (horizontal != 0 || vertical != 0)
 //				AttemptMove<BoxCollider2D> (horizontal,vertical);
 	}
+
+		public bool ThrowRaycast(Vector2 direction){
+
+			var layerMask = (1 << 9);
+			layerMask = ~layerMask;
+			RaycastHit2D hit = Physics2D.Raycast(transform.position, direction,1000f,layerMask);
+
+			if (hit!=null) {
+				Debug.Log (hit.distance);
+				return true;
+
+			}
+
+			return false;
+		}
+
+
 		public void MoveSequence(Vector2[] instructions){
 			for (int i = 0; i < instructions.Length; i++) {
 				MoveSanti (instructions [i]);

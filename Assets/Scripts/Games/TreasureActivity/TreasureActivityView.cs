@@ -13,6 +13,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
 		private Sprite[] figureSprites;
 		private TreasureActivityModel model;
+		public AudioClip ingameExplanationSound;
 
 		override public void Next(bool first = false){
             EnableDropers(true);
@@ -39,7 +40,9 @@ namespace Assets.Scripts.Games.TreasureActivity {
 			}
 		}
 
-	
+		public void OnSoundButtonClick(){
+			SoundController.GetController ().PlayClip (ingameExplanationSound);
+		}
 
 		bool IsCorrect() {
 			for(int i = 0; i < pattern.Count; i++) {

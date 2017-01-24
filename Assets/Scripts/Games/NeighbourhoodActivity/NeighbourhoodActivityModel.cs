@@ -76,7 +76,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			InitGrid();
 			//inicia el sprite de cada edificio con su nombre.
 			InitSprites();
-			//inicia los audios con sus nombres (edificios y consignas).
+			//inicia los audios con sus nombres consignas.
 			InitAudios();
 			//inicia los objetos de los edificios simples.
 			InitSimpleBuildings();
@@ -190,7 +190,6 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		}
 
 		void InitAudios() {
-			audios = new Dictionary<string, AudioClip>();
 
 			//TODO audios.
 		}
