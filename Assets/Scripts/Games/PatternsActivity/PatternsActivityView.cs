@@ -47,7 +47,9 @@ namespace Assets.Scripts.Games.PatternsActivity {
             EnableGridButtons(currentLeft, model.CanPaintLeft());
         }
 
-		public void ExchangeClick(){
+		public void ExchangeClick()
+		{
+		    ExchangeButton.enabled = false;
             SoundController.GetController().PlayClickSound();
             model.ExchangeClick();
             
@@ -75,7 +77,15 @@ namespace Assets.Scripts.Games.PatternsActivity {
             }
             EnableGridButtons(currentRight, !model.CanPaintLeft());
             EnableGridButtons(currentLeft, model.CanPaintLeft());
+            Invoke("EnableExchangeButton", 0.8f);
+            
         }
+
+	    private void EnableExchangeButton()
+	    {
+	        ExchangeButton.enabled = true;
+
+	    }
 
         public void OkClick()
         {

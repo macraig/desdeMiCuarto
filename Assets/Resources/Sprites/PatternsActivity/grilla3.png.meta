@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 296fea8efaf7caa4cbbb29d96cdf112c
-timeCreated: 1484338847
-licenseType: Pro
+timeCreated: 1485256907
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: grilla3_0
@@ -104,6 +104,14 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -112,9 +120,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 355.5
-        width: 359.54544
-        height: 355.5
+        y: 739.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,10 +132,10 @@ TextureImporter:
       name: grilla3_1
       rect:
         serializedVersion: 2
-        x: 359
-        y: 355.5
-        width: 359.54544
-        height: 355.5
+        x: 748
+        y: 739.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,10 +145,10 @@ TextureImporter:
       name: grilla3_2
       rect:
         serializedVersion: 2
-        x: 718
-        y: 355.5
-        width: 359.54544
-        height: 355.5
+        x: 1496
+        y: 739.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,10 +158,10 @@ TextureImporter:
       name: grilla3_3
       rect:
         serializedVersion: 2
-        x: 1077
-        y: 355.5
-        width: 359.54544
-        height: 355.5
+        x: 2244
+        y: 739.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,10 +171,10 @@ TextureImporter:
       name: grilla3_4
       rect:
         serializedVersion: 2
-        x: 1436
-        y: 355.5
-        width: 359.54544
-        height: 355.5
+        x: 2992
+        y: 739.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +184,10 @@ TextureImporter:
       name: grilla3_5
       rect:
         serializedVersion: 2
-        x: 1795
-        y: 355.5
-        width: 359.54544
-        height: 355.5
+        x: 3740
+        y: 739.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,10 +197,10 @@ TextureImporter:
       name: grilla3_6
       rect:
         serializedVersion: 2
-        x: 2154
-        y: 355.5
-        width: 359.54544
-        height: 355.5
+        x: 4488
+        y: 739.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,10 +210,10 @@ TextureImporter:
       name: grilla3_7
       rect:
         serializedVersion: 2
-        x: 2513
-        y: 355.5
-        width: 359.54544
-        height: 355.5
+        x: 5236
+        y: 739.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,10 +223,10 @@ TextureImporter:
       name: grilla3_8
       rect:
         serializedVersion: 2
-        x: 2872
-        y: 355.5
-        width: 359.54544
-        height: 355.5
+        x: 5984
+        y: 739.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,10 +236,10 @@ TextureImporter:
       name: grilla3_9
       rect:
         serializedVersion: 2
-        x: 3231
-        y: 355.5
-        width: 359.54544
-        height: 355.5
+        x: 6732
+        y: 739.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,10 +249,10 @@ TextureImporter:
       name: grilla3_10
       rect:
         serializedVersion: 2
-        x: 3590
-        y: 355.5
-        width: 359.54544
-        height: 355.5
+        x: 7480
+        y: 739.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,8 +264,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0.5
-        width: 359.54544
-        height: 355.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,10 +275,10 @@ TextureImporter:
       name: grilla3_12
       rect:
         serializedVersion: 2
-        x: 359
+        x: 748
         y: 0.5
-        width: 359.54544
-        height: 355.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,10 +288,10 @@ TextureImporter:
       name: grilla3_13
       rect:
         serializedVersion: 2
-        x: 718
+        x: 1496
         y: 0.5
-        width: 359.54544
-        height: 355.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -293,10 +301,10 @@ TextureImporter:
       name: grilla3_14
       rect:
         serializedVersion: 2
-        x: 1077
+        x: 2244
         y: 0.5
-        width: 359.54544
-        height: 355.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -306,10 +314,10 @@ TextureImporter:
       name: grilla3_15
       rect:
         serializedVersion: 2
-        x: 1436
+        x: 2992
         y: 0.5
-        width: 359.54544
-        height: 355.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,10 +327,10 @@ TextureImporter:
       name: grilla3_16
       rect:
         serializedVersion: 2
-        x: 1795
+        x: 3740
         y: 0.5
-        width: 359.54544
-        height: 355.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -332,10 +340,10 @@ TextureImporter:
       name: grilla3_17
       rect:
         serializedVersion: 2
-        x: 2154
+        x: 4488
         y: 0.5
-        width: 359.54544
-        height: 355.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -345,10 +353,10 @@ TextureImporter:
       name: grilla3_18
       rect:
         serializedVersion: 2
-        x: 2513
+        x: 5236
         y: 0.5
-        width: 359.54544
-        height: 355.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -358,10 +366,10 @@ TextureImporter:
       name: grilla3_19
       rect:
         serializedVersion: 2
-        x: 2872
+        x: 5984
         y: 0.5
-        width: 359.54544
-        height: 355.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -371,10 +379,10 @@ TextureImporter:
       name: grilla3_20
       rect:
         serializedVersion: 2
-        x: 3231
+        x: 6732
         y: 0.5
-        width: 359.54544
-        height: 355.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -384,10 +392,10 @@ TextureImporter:
       name: grilla3_21
       rect:
         serializedVersion: 2
-        x: 3590
+        x: 7480
         y: 0.5
-        width: 359.54544
-        height: 355.5
+        width: 748.7273
+        height: 739.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

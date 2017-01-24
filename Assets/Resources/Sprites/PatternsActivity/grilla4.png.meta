@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b242f669d81e2df4e877d5484bd0438a
-timeCreated: 1483547345
+timeCreated: 1485257387
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -94,6 +94,22 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -102,9 +118,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 357
-        width: 359.5
-        height: 357
+        y: 743
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,10 +130,10 @@ TextureImporter:
       name: grilla4_1
       rect:
         serializedVersion: 2
-        x: 359
-        y: 357
-        width: 359.5
-        height: 357
+        x: 748
+        y: 743
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,10 +143,10 @@ TextureImporter:
       name: grilla4_2
       rect:
         serializedVersion: 2
-        x: 718
-        y: 357
-        width: 359.5
-        height: 357
+        x: 1496
+        y: 743
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +156,10 @@ TextureImporter:
       name: grilla4_3
       rect:
         serializedVersion: 2
-        x: 1077
-        y: 357
-        width: 359.5
-        height: 357
+        x: 2244
+        y: 743
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +169,10 @@ TextureImporter:
       name: grilla4_4
       rect:
         serializedVersion: 2
-        x: 1436
-        y: 357
-        width: 359.5
-        height: 357
+        x: 2992
+        y: 743
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +182,10 @@ TextureImporter:
       name: grilla4_5
       rect:
         serializedVersion: 2
-        x: 1795
-        y: 357
-        width: 359.5
-        height: 357
+        x: 3740
+        y: 743
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,10 +195,10 @@ TextureImporter:
       name: grilla4_6
       rect:
         serializedVersion: 2
-        x: 2154
-        y: 357
-        width: 359.5
-        height: 357
+        x: 4488
+        y: 743
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,10 +208,10 @@ TextureImporter:
       name: grilla4_7
       rect:
         serializedVersion: 2
-        x: 2513
-        y: 357
-        width: 359.5
-        height: 357
+        x: 5236
+        y: 743
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +221,10 @@ TextureImporter:
       name: grilla4_8
       rect:
         serializedVersion: 2
-        x: 2872
-        y: 357
-        width: 359.5
-        height: 357
+        x: 5984
+        y: 743
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +234,10 @@ TextureImporter:
       name: grilla4_9
       rect:
         serializedVersion: 2
-        x: 3231
-        y: 357
-        width: 359.5
-        height: 357
+        x: 6732
+        y: 743
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,8 +249,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 359.5
-        height: 357
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,10 +260,10 @@ TextureImporter:
       name: grilla4_11
       rect:
         serializedVersion: 2
-        x: 359
+        x: 748
         y: 0
-        width: 359.5
-        height: 357
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,10 +273,10 @@ TextureImporter:
       name: grilla4_12
       rect:
         serializedVersion: 2
-        x: 718
+        x: 1496
         y: 0
-        width: 359.5
-        height: 357
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,10 +286,10 @@ TextureImporter:
       name: grilla4_13
       rect:
         serializedVersion: 2
-        x: 1077
+        x: 2244
         y: 0
-        width: 359.5
-        height: 357
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,10 +299,10 @@ TextureImporter:
       name: grilla4_14
       rect:
         serializedVersion: 2
-        x: 1436
+        x: 2992
         y: 0
-        width: 359.5
-        height: 357
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,10 +312,10 @@ TextureImporter:
       name: grilla4_15
       rect:
         serializedVersion: 2
-        x: 1795
+        x: 3740
         y: 0
-        width: 359.5
-        height: 357
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,10 +325,10 @@ TextureImporter:
       name: grilla4_16
       rect:
         serializedVersion: 2
-        x: 2154
+        x: 4488
         y: 0
-        width: 359.5
-        height: 357
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,10 +338,10 @@ TextureImporter:
       name: grilla4_17
       rect:
         serializedVersion: 2
-        x: 2513
+        x: 5236
         y: 0
-        width: 359.5
-        height: 357
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -335,10 +351,10 @@ TextureImporter:
       name: grilla4_18
       rect:
         serializedVersion: 2
-        x: 2872
+        x: 5984
         y: 0
-        width: 359.5
-        height: 357
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -348,10 +364,10 @@ TextureImporter:
       name: grilla4_19
       rect:
         serializedVersion: 2
-        x: 3231
+        x: 6732
         y: 0
-        width: 359.5
-        height: 357
+        width: 748.6
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
