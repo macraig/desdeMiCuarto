@@ -44,8 +44,6 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 
 		}
 
-
-
 		private void SetCurrentLevel(bool enabled) {
 			model.SetCurrentLevel(this, enabled);
 

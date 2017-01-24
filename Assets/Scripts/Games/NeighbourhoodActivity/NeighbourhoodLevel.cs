@@ -40,58 +40,58 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		// TEXT CREATION *******************************************************************************************************************
 
 		public string GetText(List<List<Building>> grid){
-			string result = correct.GetName();
+			string result = correct.GetTextNameStart();
 
 			switch(p) {
 			case Possibilities.BEHIND:
-				result = result + " atras de " + grid[row + 1][column].GetName();
+				result = result + " está atrás " + grid[row + 1][column].GetTextNameEnd();
 				break;
 			case Possibilities.BEHIND_SCHOOL:
 				//no puede ir ninguno aca porque es ambiguo. Si estoy atras de la escuela puedo estar en cualquiera de los dos lugares libres.
 				break;
 			case Possibilities.BEHIND_STREET:
-				result = result + " atras de " + grid[row + 2][column].GetName() + ", cruzando la calle";
+				result = result + " está atrás " + grid[row + 2][column].GetTextNameEnd() + ", cruzando la calle";
 				break;
 			case Possibilities.BETWEEN_VERTICAL:
 				Building upperB = grid[row - 1][column];
 				Building downB = grid[row + 1][column];
-				result = result + " entre " + upperB.GetName() + " y " + downB.GetName();
+				result = result + " está entre " + upperB.GetTextNameStart() + " y " + downB.GetTextNameStart();
 				break;
 			case Possibilities.BETWEEN_HORIZONTAL:
 				Building leftB = grid[row][column - 1];
 				Building rightB = grid[row][column + 1];
-				result = result + " entre " + leftB.GetName() + " y " + rightB.GetName();
+				result = result + " está entre " + leftB.GetTextNameStart() + " y " + rightB.GetTextNameStart();
 				break;
 			case Possibilities.IN_FRONT:
-				result = result + " frente a " + grid[row - 1][column].GetName();
+				result = result + " está en frente " + grid[row - 1][column].GetTextNameEnd();
 				break;
 			case Possibilities.IN_FRONT_SCHOOL_STREET:
-				result = result + " frente a la escuela, cruzando la calle";
+				result = result + " está frente a la escuela, cruzando la calle";
 				break;
 			case Possibilities.IN_FRONT_STREET:
-				result = result + " frente a " + grid[row - 2][column].GetName() + ", cruzando la calle";
+				result = result + " está en frente " + grid[row - 2][column].GetTextNameEnd() + ", cruzando la calle";
 				break;
 			case Possibilities.LEFT:
-				result = result + " a la izquierda de " + grid[row][column + 1].GetName();
+				result = result + " está a la izquierda " + grid[row][column + 1].GetTextNameEnd();
 				break;
 			case Possibilities.LEFT_SCHOOL_STREET:
-				result = result + " a la izquierda de la escuela";
+				result = result + " está a la izquierda de la escuela";
 				break;
 			case Possibilities.LEFT_STREET:
-				result = result + " a la izquierda de " + grid[row][column + 2].GetName();
+				result = result + " está a la izquierda " + grid[row][column + 2].GetTextNameEnd();
 				break;
 			case Possibilities.RIGHT:
-				result = result + " a la derecha de " + grid[row][column - 1].GetName();
+				result = result + " está a la derecha " + grid[row][column - 1].GetTextNameEnd();
 				break;
 			case Possibilities.RIGHT_SCHOOL_STREET:
-				result = result + " a la derecha de la escuela";
+				result = result + " está a la derecha de la escuela";
 				break;
 			case Possibilities.RIGHT_STREET:
-				result = result + " a la derecha de " + grid[row][column - 2].GetName() + ", cruzando la calle";
+				result = result + " está a la derecha " + grid[row][column - 2].GetTextNameEnd() + ", cruzando la calle";
 				break;
 			}
 
-			return result;
+			return result.ToUpper();
 		}
 
 		// LEVEL CREATION ******************************************************************************************************************

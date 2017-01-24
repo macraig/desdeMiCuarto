@@ -4,24 +4,34 @@ using System.Collections.Generic;
 
 namespace Assets.Scripts.Games.NeighbourhoodActivity {
 	public class Building : IEquatable<Building> {
-		string name;
+		string name, textNameStart,textNameEnd;
 		bool isDouble;
 		bool isStreet;
 		bool isLeft;
 
-		private Building(string name, bool isDouble = false, bool isStreet = false, bool isLeft = false) {
+		private Building(string name, string textNameStart,string textNameEnd, bool isDouble = false, bool isStreet = false, bool isLeft = false) {
 			this.isLeft = isLeft;
 			this.isStreet = isStreet;
 			this.isDouble = isDouble;
 			this.name = name;
+			this.textNameStart = textNameStart;
+			this.textNameEnd = textNameEnd;
 		}
 
-		public static Building B(string name, bool isDouble = false, bool isStreet = false, bool isLeft = false){
-			return new Building(name, isDouble, isStreet, isLeft);
+		public static Building B(string name,string textNameStart,string textNameEnd, bool isDouble = false, bool isStreet = false, bool isLeft = false){
+			return new Building(name,textNameStart, textNameEnd, isDouble, isStreet, isLeft);
 		}
 
 		public string GetName(){
 			return name;
+		}
+
+		public string GetTextNameStart(){
+			return textNameStart;
+		}
+
+		public string GetTextNameEnd(){
+			return textNameEnd;
 		}
 
 		public bool IsDouble(){
@@ -36,8 +46,8 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			return isLeft;
 		}
 
-		public Sprite GetSprite(Dictionary<string, Sprite> buildingSprites) {
-			return buildingSprites[GetName() + (isDouble ? (isLeft ? "Left" : "Right") : "")];
+		public Sprite GetSprite(Dictionary<string, Sprite> spriteDictionary) {
+			return spriteDictionary[GetName() + (isDouble ? (isLeft ? "Left" : "Right") : "")];
 		}
 
 		#region IEquatable implementation
