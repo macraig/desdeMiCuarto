@@ -78,7 +78,7 @@ namespace Assets.Scripts.Games.PatternsActivity {
 
 		void NextDifficulty() {
 			difficulty++;
-			StartFromJson();
+			
 		}
 
 		public void Wrong(){
@@ -92,5 +92,15 @@ namespace Assets.Scripts.Games.PatternsActivity {
 		public void RandomizeLvl() {
 			lvl = lvls[lvlRandomizer.Next()];
 		}
+
+	    public int GetCurrentGridSize()
+	    {
+	        return currentGrid;
+	    }
+
+	    public PatternsLevel GetCurrentLevel()
+	    {
+	        return lvl;
+	    }
 	}
 }

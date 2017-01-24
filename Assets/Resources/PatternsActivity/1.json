@@ -69,8 +69,8 @@
 	
 	{
 		"imageIndex": "8",
-		"usedColors":["RED","BROWN","YELLOW"],
-		"colorArray":["BLANK","BROWN","GREEN","BLANK",
+		"usedColors":["RED","BROWN","GREEN"],
+		"colorArray":["BLANK","GREEN","BROWN","BLANK",
 			"RED","RED","RED","RED",
 			"RED","RED","RED","RED",
 		"BLANK","RED","RED","BLANK"]
