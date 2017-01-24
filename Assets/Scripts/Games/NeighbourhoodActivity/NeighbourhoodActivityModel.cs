@@ -7,7 +7,8 @@ using Assets.Scripts.Common;
 namespace Assets.Scripts.Games.NeighbourhoodActivity {
 	public class NeighbourhoodActivityModel : LevelModel {
 		public static Building STREET = Building.B("street","","", false, true);
-		public static int SIMPLE_BUILDINGS = 13;
+		public static int SIMPLE_BUILDINGS = 14;
+		public static int ROUNDS = 9;
 		private int currentLvl;
 
 		private Dictionary<string, Sprite> buildingSprites, referencesSprites;
@@ -60,7 +61,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		}
 
 		public bool GameEnded(){
-			return currentLvl == 5;
+			return currentLvl == ROUNDS;
 		}
 
 		public int CurrentLvl(){
@@ -103,7 +104,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			options = new List<Building>();
 			Randomizer r = Randomizer.New(simpleBuildings.Count - 1);
 
-			while(options.Count < 5){
+			while(options.Count < ROUNDS){
 				options.Add(simpleBuildings[r.Next()]);
 			}
 		}
