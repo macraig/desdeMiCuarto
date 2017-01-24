@@ -75,8 +75,106 @@
 			"RED","RED","RED","RED",
 		"BLANK","RED","RED","BLANK"]
 	
+	},
+	{
+		"imageIndex": "9",
+		"usedColors":["YELLOW","GREEN"],
+		"colorArray":["GREEN","GREEN","GREEN","GREEN",
+			"GREEN","YELLOW","YELLOW","GREEN",
+			"GREEN","GREEN","GREEN","GREEN",
+		"GREEN","GREEN","GREEN","GREEN"]
+	
+	},
+	{
+		"imageIndex": "10",
+		"usedColors":["YELLOW","BROWN"],
+		"colorArray":["BLANK","BROWN","BROWN","BLANK",
+			"BLANK","BROWN","BROWN","BLANK",
+			"YELLOW","YELLOW","YELLOW","YELLOW",
+		"BROWN","BROWN","BROWN","BROWN"]
+	
+	},
+	{
+		"imageIndex": "11",
+		"usedColors":["PINK","BLUE"],
+		"colorArray":["PINK","PINK","BLANK","BLANK",
+			"PINK","PINK","PINK","PINK",
+			"PINK","PINK","PINK","PINK",
+		"BLUE","BLUE","BLUE","BLUE"]
+	
+	},
+	{
+		"imageIndex": "12",
+		"usedColors":["PINK","BROWN"],
+		"colorArray":["BROWN","BROWN","BROWN","BROWN",
+			"PINK","PINK","PINK","PINK",
+			"PINK","PINK","PINK","PINK",
+		"BROWN","BROWN","BROWN","BROWN"]
+	
+	},
+	{
+		"imageIndex": "13",
+		"usedColors":["PINK","BROWN","CYAN","YELLOW"],
+		"colorArray":["BLANK","CYAN","CYAN","BLANK",
+			"PINK","PINK","YELLOW","YELLOW",
+			"BROWN","BROWN","BROWN","BROWN",
+		"BLANK","BROWN","BROWN","BLANK"]
+	
+	},
+	{
+		"imageIndex": "14",
+		"usedColors":["RED"],
+		"colorArray":["RED","BLANK","BLANK","RED",
+			"BLANK","RED","RED","BLANK",
+			"RED","RED","RED","RED",
+		"RED","BLANK","BLANK","RED"]
+	
+	},
+	{
+		"imageIndex": "15",
+		"usedColors":["CYAN","BROWN","YELLOW"],
+		"colorArray":["YELLOW","CYAN","CYAN","YELLOW",
+			"YELLOW","BROWN","BROWN","YELLOW",
+			"YELLOW","CYAN","CYAN","YELLOW",
+		"YELLOW","CYAN","CYAN","YELLOW"]
+	
+	},
+	{
+		"imageIndex": "16",
+		"usedColors":["GREEN","BROWN"],
+		"colorArray":["BLANK","GREEN","GREEN","GREEN",
+			"BLANK","GREEN","GREEN","GREEN",
+			"GREEN","GREEN","BROWN","BROWN",
+		"BROWN","BLANK","BROWN","BROWN"]
+	
+	},
+	{
+		"imageIndex": "17",
+		"usedColors":["GREEN","YELLOW"],
+		"colorArray":["BLANK","YELLOW","YELLOW","BLANK",
+			"YELLOW","YELLOW","YELLOW","YELLOW",
+			"BLANK","GREEN","GREEN","BLANK",
+		"BLANK","GREEN","GREEN","BLANK"]
+	
+	},
+	{
+		"imageIndex": "18",
+		"usedColors":["CYAN","BROWN"],
+		"colorArray":["BROWN","BROWN","BROWN","BROWN",
+			"BLANK","CYAN","CYAN","BLANK",
+			"BLANK","CYAN","CYAN","BLANK",
+		"BROWN","BROWN","BROWN","BROWN"]
+	
+	},
+	{
+		"imageIndex": "19",
+		"usedColors":["BROWN"],
+		"colorArray":["BLANK","BLANK","BROWN","BLANK",
+			"BROWN","BROWN","BROWN","BROWN",
+			"BROWN","BROWN","BROWN","BROWN",
+		"BLANK","BROWN","BLANK","BLANK"]
+	
 	}
-
 
 ]
 }

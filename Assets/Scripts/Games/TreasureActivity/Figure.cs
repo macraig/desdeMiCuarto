@@ -50,7 +50,9 @@ namespace Assets.Scripts.Games.TreasureActivity {
 		}
 
 		public int SpriteNumber() {
-			return shape + (8 * color) + (isBig ? 4 : 0);
+			return shape + (8 * color) + (!isBig ? 4 : 0);
 		}
+
+	  
 	}
 }

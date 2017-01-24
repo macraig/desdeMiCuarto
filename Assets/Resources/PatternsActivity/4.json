@@ -1,6 +1,6 @@
 {
 	"grid": "5",
-	"maxColors": "7",
+	"maxColors": "5",
 	"patterns": 	[
 	{
 		"imageIndex": "0",
@@ -82,6 +82,106 @@
 			"GREEN","GREEN","GREEN","GREEN","GREEN",
 			"GREEN","BROWN","BROWN","BROWN","GREEN",
 		"GREEN","GREEN","GREEN","GREEN","GREEN"]
+	},
+	{
+		"imageIndex": "9",
+		"usedColors":["CYAN","PINK"],
+		"colorArray":["PINK","PINK","PINK","BLANK","BLANK",
+			"PINK","CYAN","PINK","BLANK","BLANK",
+			"PINK","PINK","PINK","BLANK","BLANK",
+			"BLANK","BLANK","BLANK","PINK","BLANK",
+		"BLANK","BLANK","BLANK","BLANK","PINK"]
+	},
+	{
+		"imageIndex": "10",
+		"usedColors":["YELLOW"],
+		"colorArray":["BLANK","BLANK","BLANK","BLANK","YELLOW",
+			"BLANK","YELLOW","BLANK","YELLOW","YELLOW",
+			"YELLOW","YELLOW","YELLOW","YELLOW","YELLOW",
+			"BLANK","YELLOW","BLANK","YELLOW","YELLOW",
+		"BLANK","BLANK","BLANK","BLANK","YELLOW"]
+	},
+	{
+		"imageIndex": "11",
+		"usedColors":["BROWN","GREEN","RED"],
+		"colorArray":["BLANK","BLANK","RED","BLANK","BLANK",
+			"BLANK","RED","RED","RED","BLANK",
+			"RED","RED","RED","RED","RED",
+			"BLANK","BLANK","BROWN","BLANK","BLANK",
+		"GREEN","GREEN","GREEN","GREEN","GREEN"]
+	},
+	{
+		"imageIndex": "12",
+		"usedColors":["BROWN","RED"],
+		"colorArray":["RED","RED","BLANK","BLANK","BLANK",
+			"RED","RED","BLANK","BROWN","BROWN",
+			"BLANK","BLANK","BROWN","BLANK","BLANK",
+			"RED","RED","BLANK","BROWN","BROWN",
+		"RED","RED","BLANK","BLANK","BLANK"]
+	},
+	{
+		"imageIndex": "13",
+		"usedColors":["CYAN","RED"],
+		"colorArray":["BLANK","BLANK","RED","BLANK","BLANK",
+			"BLANK","CYAN","CYAN","CYAN","BLANK",
+			"BLANK","CYAN","CYAN","CYAN","BLANK",
+			"BLANK","CYAN","CYAN","CYAN","BLANK",
+		"BLANK","CYAN","CYAN","CYAN","BLANK"]
+	},
+	{
+		"imageIndex": "14",
+		"usedColors":["BROWN","RED"],
+		"colorArray":["BLANK","BLANK","BLANK","RED","RED",
+			"BLANK","BLANK","BLANK","RED","RED",
+			"BLANK","BLANK","RED","BLANK","BLANK",
+			"BLANK","BROWN","BLANK","BLANK","BLANK",
+		"BROWN","BLANK","BLANK","BLANK","BLANK"]
+	},
+	{
+		"imageIndex": "15",
+		"usedColors":["BROWN","CYAN"],
+		"colorArray":["BLANK","BROWN","BLANK","BROWN","BLANK",
+			"BROWN","BROWN","BROWN","BROWN","BROWN",
+			"BROWN","CYAN","CYAN","CYAN","BROWN",
+			"BROWN","CYAN","CYAN","CYAN","BROWN",
+		"BROWN","BROWN","BROWN","BROWN","BROWN"]
+	},
+	{
+		"imageIndex": "16",
+		"usedColors":["YELLOW","BLUE"],
+		"colorArray":["BLANK","BLUE","BLUE","BLUE","BLANK",
+			"BLANK","YELLOW","BLUE","YELLOW","BLANK",
+			"YELLOW","BLANK","BLANK","BLANK","YELLOW",
+			"YELLOW","BLANK","BLANK","BLANK","YELLOW",
+		"YELLOW","YELLOW","YELLOW","YELLOW","YELLOW"]
+	},
+	{
+		"imageIndex": "17",
+		"usedColors":["PINK","CYAN"],
+		"colorArray":["BLANK","PINK","PINK","PINK","BLANK",
+			"BLANK","CYAN","PINK","CYAN","BLANK",
+			"PINK","PINK","PINK","PINK","PINK",
+			"PINK","BLANK","PINK","BLANK","PINK",
+		"PINK","BLANK","PINK","BLANK","PINK"]
+	},
+	{
+		"imageIndex": "18",
+		"usedColors":["BLUE","CYAN"],
+		"colorArray":["BLUE","BLUE","BLUE","BLUE","BLUE",
+			"BLUE","BLUE","BLUE","BLUE","BLUE",
+			"BLUE","BLUE","BLANK","BLUE","BLUE",
+			"BLUE","BLUE","BLANK","BLUE","BLUE",
+		"CYAN","CYAN","BLANK","CYAN","CYAN"]
+	},
+	{
+		"imageIndex": "19",
+		"usedColors":["BROWN","CYAN"],
+		"colorArray":["CYAN","BLANK","CYAN","BLANK","BLANK",
+			"BLANK","CYAN","BLANK","BLANK","BROWN",
+			"BROWN","BROWN","BROWN","BROWN","BLANK",
+			"BROWN","BROWN","BLANK","BLANK","BLANK",
+		"BLANK","BLANK","BLANK","BLANK","BLANK"]
 	}
+	
 ]
 }

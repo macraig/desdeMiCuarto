@@ -67,23 +67,24 @@ namespace Assets.Scripts.Games.TreasureActivity {
             switch (currentLvl)
 	        {
               
-	            case 0:
-	                for (int i = 3; i >= 0; i--)
-	                {
-	                    Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next());
-	                    figure.Size(false);
-	                    pattern.Add(figure);
-                        choices.Add(figure);
-                    }
-	                Utils.Shuffle(pattern);
-	                Utils.Shuffle(choices);
-                    
+	            case 0:              
+                     for (int i = 3; i >= 0; i--)
+                     {
+                         Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next());
+                         figure.Size(false);
+                         pattern.Add(figure);
+                         choices.Add(figure);
+                     }
+                     Utils.Shuffle(pattern);
+                     Utils.Shuffle(choices);
+
                     break;
 
                 case 1:
                     for (int i = 3; i >= 0; i--)
                     {
                         Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next());
+                        figure.Size(false);
                         pattern.Add(figure);
                         choices.Add(figure);
                     }
@@ -91,20 +92,139 @@ namespace Assets.Scripts.Games.TreasureActivity {
 	                int source;
                     do
 	                {
-                        target = Random.Range(2, 4);
+                        target = Random.Range(1, 3);
 	                    source = Random.Range(0, 4);
 	                } while (target == source);
 
-	                pattern[target].Color(pattern[source].GetColor());
-	                pattern[target].Shape(pattern[source].GetShape());                              
+	                pattern[target] = pattern[source];
                     Utils.Shuffle(choices);
+                    break;
+
+
+                case 2:
+                    do
+                    {
+                        pattern.Clear();
+                        choices.Clear();
+                        for (int i = 3; i >= 0; i--)
+                        {
+                            Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next()).Size(Randomizer.RandomBoolean());
+                            pattern.Add(figure);
+                            choices.Add(figure);
+                        }
+                    } while (!choices.Exists(e => e.IsBig()) || !choices.Exists(e => !e.IsBig()) || AreTwoFiguresEquals(choices));
+
+                    // palindrome
+                    pattern[3] = pattern[0];
+
+                    if (Randomizer.RandomBoolean())
+                    {
+                        pattern[2] = pattern[1];
+                    }
+                    Utils.Shuffle(choices);
+                    break;
+
+                case 3:
+                    do
+                    {
+                        pattern.Clear();
+                        choices.Clear();
+                        for (int i = 5; i >= 0; i--)
+                        {
+                            Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next()).Size(Randomizer.RandomBoolean());
+                            if (pattern.Count < 4) pattern.Add(figure);
+                            choices.Add(figure);
+                        }
+                    } while (choices.FindAll(e => e.IsBig()).Count < 1 || choices.FindAll(e => !e.IsBig()).Count < 1 || AreTwoFiguresEquals(choices));
+
+	                do
+	                {
+	                    Utils.Shuffle(choices);
+	                    Utils.Shuffle(pattern);
+	                } while (choices[0].Equals(pattern[0]) && choices[1].Equals(pattern[1]) &&
+	                         choices[2].Equals(pattern[2]));
+
+                    break;
+                case 4:
+                    do
+                    {
+                        pattern.Clear();
+                        choices.Clear();
+                        for (int i = 5; i >= 0; i--)
+                        {
+                            Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next()).Size(Randomizer.RandomBoolean());
+                            if(pattern.Count < 4) pattern.Add(figure);
+                            choices.Add(figure);
+                        }
+                    } while (choices.FindAll(e => e.IsBig()).Count < 1 || choices.FindAll(e => !e.IsBig()).Count < 1 || AreTwoFiguresEquals(choices));
+
+
+                    int aTarget;
+                    int aSource;
+                    do
+                    {
+                        aTarget = Random.Range(1, 3);
+                        aSource = Random.Range(0, 4);
+                    } while (aTarget == aSource);
+
+                    pattern[aTarget] = pattern[aSource];
+
+                    do
+                    {
+                        Utils.Shuffle(choices);
+                        Utils.Shuffle(pattern);
+                    } while (choices[0].Equals(pattern[0]) && choices[1].Equals(pattern[1]) &&
+                             choices[2].Equals(pattern[2]));
+
+                    break;
+                case 5:
+                    do
+                    {
+                        pattern.Clear();
+                        choices.Clear();
+                        for (int i = 5; i >= 0; i--)
+                        {
+                            Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next()).Size(Randomizer.RandomBoolean());
+                            if (pattern.Count < 4) pattern.Add(figure);
+                            choices.Add(figure);
+                        }
+                    } while (choices.FindAll(e => e.IsBig()).Count < 1 || choices.FindAll(e => !e.IsBig()).Count < 1 || AreTwoFiguresEquals(choices));
+
+
+                    // palindrome
+                    pattern[3] = pattern[0];
+
+                    if (Randomizer.RandomBoolean())
+                    {
+                        pattern[2] = pattern[1];
+                    }
+
+                    do
+                    {
+                        Utils.Shuffle(choices);
+                        Utils.Shuffle(pattern);
+                    } while (choices[0].Equals(pattern[0]) && choices[1].Equals(pattern[1]) &&
+                             choices[2].Equals(pattern[2]));
+
                     break;
             }
 	    }
 
+	    private bool AreTwoFiguresEquals(List<Figure> figures)
+	    {
+	        for (int i = figures.Count - 1; i >= 0; i--)
+	        {
+	            for (int j = figures.Count - 1; j >= 0; j--)
+	            {
+	                if(j == i) continue;
+	                if (figures[i].Equals(figures[j])) return true;
+	            }
+	        }
+            return false;
+        }
 
 
-		/*public void SetLevel(){
+	    /*public void SetLevel(){
 			pattern.Clear();
 			choices.Clear();
 

@@ -27,14 +27,14 @@
 	}, {
 		"id": "5",
 		"icon": "4",
-		"name": "LA PLAZA",
-		"description": "¡A descifrar el código!\n\nARRASTRAMOS LAS PIEZAS PARA COPIAR EL PATRÓN.\n\nUsar e interpretar referencias para ubicar elementos en un plano. ",
+		"name": "MISTERIO EN LA PLAZA",
+		"description": "¡A descifrar el código!\n\nARRASTRAMOS LAS PIEZAS PARA COPIAR EL PATRÓN.\n\nIdentificar patrones y representarlos gráficamente. ",
 		"prefabName":"TreasureActivity"
 	}, {
 		"id": "6",
 		"icon": "5",
 		"name": "MI BARRIO",
-		"description": "¡Armamos el barrio de Santi!\n\nSEGUIMOS LAS INDICACIONES PARA UBICAR LOS EDIFICIOS.\n\nDesarrollar las nociones espaciales para ubicar elementos en relación a otros.",
+		"description": "¡Armamos el barrio de Santi!\n\nSEGUIMOS LAS INDICACIONES PARA UBICAR LOS EDIFICIOS EN EL BARRIO.\n\nUsar e interpretar referencias para ubicar elementos en un plano.",
 		"prefabName":"NeighbourhoodActivity"
 	}, {
 		"id": "7",
