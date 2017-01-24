@@ -23,6 +23,10 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 			return currentLvl;
 		}
 
+		public AudioClip GetLevelSound(){
+			return lvls [currentLvl].GetAudioClip ();
+		}
+
 		public void SetCurrentLevel(ClassroomActivityView view, bool enabled) {
 			lvls[currentLvl].Set(view, enabled);
 		}
@@ -40,7 +44,7 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 				GameObject correct = OneGameObject(lvl["correct"]);
 				List<GameObject> wrong = GameObjects(lvl["wrong"].AsArray);
 
-				classLevels.Add(new ClassroomLevel(correct, wrong));
+				classLevels.Add(new ClassroomLevel(correct, wrong,lvl["sound"]));
 			}
 
 			Debug.Log(classLevels.Count + " Levels");

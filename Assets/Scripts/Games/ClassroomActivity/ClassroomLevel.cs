@@ -7,10 +7,17 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 	public class ClassroomLevel {
 		GameObject correct;
 		List<GameObject> wrong;
+		AudioClip sound;
 
-		public ClassroomLevel(GameObject correct, List<GameObject> wrong){
+		public ClassroomLevel(GameObject correct, List<GameObject> wrong,string soundName){
 			this.wrong = wrong;
 			this.correct = correct;
+			sound = Resources.Load<AudioClip> ("Audio/ClassroomActivity/SFX/" + soundName);
+		}
+
+		public AudioClip GetAudioClip ()
+		{
+			return sound;
 		}
 
 		public void Set(ClassroomActivityView view, bool enabled) {
