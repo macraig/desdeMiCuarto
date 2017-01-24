@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts.Games.NeighbourhoodActivity {
 	public class NeighbourhoodActivityView : LevelView {
@@ -19,6 +20,9 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		public void Begin(){
 			ShowExplanation();
 			SetGrid(model.GetGrid());
+
+			//create levels after setting the initial grid.
+			model.CreateLevels();
 		}
 
 		public void SoundClick(){
@@ -36,6 +40,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 		private void SetCurrentLevel() {
 			SetChoices(model.GetChoices());
+			upperBoard.text = model.GetText();
 		}
 
 		void SetChoices(List<Building> choices) {
@@ -46,13 +51,17 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 		void SetGrid(List<Building> grid) {
 			for(int i = 0; i < grid.Count; i++) {
-				viewGrid[i].sprite = model.GetSprite(grid[i]);
+				if(grid[i] != null && !grid[i].IsStreet()) {
+					viewGrid[i].sprite = model.GetSprite(grid[i]);
+					Debug.Log("BUILDING: " + grid[i].GetName());
+				}
 			}
 		}
 
 		//validate on drop.
 		public void Dropped(NeighbourhoodDragger dragger, NeighbourhoodSlot slot, int row, int column) {
 			if(IsCorrect(dragger, slot, row, column)){
+				slot.GetComponent<Image>().sprite = dragger.GetComponent<Image>().sprite;
 				ShowRightAnswerAnimation ();
 				model.Correct();
 			} else {

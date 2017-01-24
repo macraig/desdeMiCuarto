@@ -25,6 +25,10 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			return result;
 		}
 
+		public string GetText() {
+			return lvls[currentLvl].GetText(grid);
+		}
+
 		public bool IsCorrectDragger(Sprite dragger) {
 			return lvls[currentLvl].IsCorrectDragger(dragger, buildingSprites);
 		}
@@ -75,13 +79,11 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			//mete los 5 random en la grilla y los borra de simpleBuildings.
 			SetSimpleBuildingsInGrid();
 
-			//armar cada nivel y su consigna.
-			CreateLevels();
-
 			MetricsController.GetController().GameStart();
 		}
 
-		void CreateLevels() {
+		//create each level, modifying the grid to create the next level.
+		public void CreateLevels() {
 			lvls = new List<NeighbourhoodLevel>();
 			foreach(Building o in options) {
 				lvls.Add(NeighbourhoodLevel.CreateLevel(grid, o));
@@ -100,7 +102,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		Building GetSimpleBuilding() {
 			Randomizer r = Randomizer.New(simpleBuildings.Count - 1);
 			Building b = null;
-			while(b == null && options.Contains(b)){
+			while(b == null || options.Contains(b)){
 				b = simpleBuildings[r.Next()];
 			}
 
@@ -139,24 +141,26 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		void SetDoubleBuildingsInGrid() {
 			bool doubleRandom = Randomizer.RandomBoolean();
 
-			Building up = doubleRandom ? Building.B("hospital", true) : Building.B("plaza", true);
-			Building down = doubleRandom ? Building.B("plaza", true) : Building.B("hospital", true);
+			Building upLeft = doubleRandom ? Building.B("hospital", true, false, true) : Building.B("plaza", true, false, true);
+			Building upRight = doubleRandom ? Building.B("hospital", true) : Building.B("plaza", true);
+			Building downLeft = doubleRandom ? Building.B("plaza", true, false, true) : Building.B("hospital", true, false, true);
+			Building downRight = doubleRandom ? Building.B("plaza", true) : Building.B("hospital", true);
 
 			bool middleRandom = Randomizer.RandomBoolean();
 			bool left = Randomizer.RandomBoolean();
 
 			if(middleRandom){
-				grid[0][3] = up;
-				grid[0][4] = up;
+				grid[0][3] = upLeft;
+				grid[0][4] = upRight;
 
-				grid[5][left ? 0 : 2] = down;
-				grid[5][left ? 1 : 3] = down;
+				grid[5][left ? 0 : 2] = downLeft;
+				grid[5][left ? 1 : 3] = downRight;
 			} else {
-				grid[0][left ? 2 : 4] = up;
-				grid[0][left ? 3 : 5] = up;
+				grid[0][left ? 2 : 4] = upLeft;
+				grid[0][left ? 3 : 5] = upRight;
 
-				grid[5][1] = down;
-				grid[5][2] = down;
+				grid[5][1] = downLeft;
+				grid[5][2] = downRight;
 			}
 		}
 
@@ -216,15 +220,13 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		}
 
 		void InitGrid() {
-			Building escuela = Building.B("escuela", true);
-
 			grid = new List<List<Building>>();
-			grid[0] = new List<Building>{ null, STREET, null, null, null, null };
-			grid[1] = new List<Building>{ null, STREET, STREET, STREET, STREET, STREET };
-			grid[2] = new List<Building>{ null, STREET, null, null, STREET, null };
-			grid[3] = new List<Building>{ null, STREET, escuela, escuela, STREET, null };
-			grid[4] = new List<Building>{ STREET, STREET, STREET, STREET, STREET, null };
-			grid[5] = new List<Building>{ null, null, null, null, STREET, null };
+			grid.Add(new List<Building>{ null, STREET, null, null, null, null });
+			grid.Add(new List<Building>{ null, STREET, STREET, STREET, STREET, STREET });
+			grid.Add(new List<Building>{ null, STREET, null, null, STREET, null });
+			grid.Add(new List<Building>{ null, STREET, Building.B("escuela", true, false, true), Building.B("escuela", true), STREET, null });
+			grid.Add(new List<Building>{ STREET, STREET, STREET, STREET, STREET, null });
+			grid.Add(new List<Building>{ null, null, null, null, STREET, null });
 		}
 	}
 }

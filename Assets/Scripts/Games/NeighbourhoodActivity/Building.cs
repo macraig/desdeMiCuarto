@@ -43,6 +43,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		#region IEquatable implementation
 
 		public bool Equals(Building other) {
+			if(other == null) return false;
 			return name == other.name && isDouble == other.isDouble && isStreet == other.isStreet;
 		}
 

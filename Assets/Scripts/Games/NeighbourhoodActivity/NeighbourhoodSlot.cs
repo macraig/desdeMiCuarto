@@ -11,7 +11,6 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		public void OnDrop(PointerEventData eventData) {
 			NeighbourhoodDragger target = NeighbourhoodDragger.itemBeingDragged;
 			if(target != null) {
-				GetComponent<Image>().sprite = target.GetComponent<Image>().sprite;
 				view.Dropped(target, this, row, column);
 			}
 		}
