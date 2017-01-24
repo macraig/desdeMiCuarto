@@ -1,10 +1,13 @@
 ﻿using System;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Games.NeighbourhoodActivity {
 	public class NeighbourhoodActivityView : LevelView {
-		public Image upperBoard;
+		public Text upperBoard;
 		public Button soundBtn;
+
+		public List<Image> viewGrid, viewChoices;
 
 		private NeighbourhoodActivityModel model;
 
@@ -15,7 +18,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 		public void Begin(){
 			ShowExplanation();
-
+			SetGrid(model.GetGrid());
 		}
 
 		public void SoundClick(){
@@ -23,31 +26,49 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		}
 
 		override public void Next(bool first = false){
-			if(!first){
-				SetCurrentLevel(false);
-				model.NextLvl();
-			}
+			if(!first) model.NextLvl();
 
 			if(model.GameEnded()) EndGame(60,0,1250);
-			else SetCurrentLevel(true);
+			else SetCurrentLevel();
 
 			SoundClick();
 		}
 
-
-
-		private void SetCurrentLevel(bool enabled) {
-			
+		private void SetCurrentLevel() {
+			SetChoices(model.GetChoices());
 		}
 
-		public void ClickCorrect(){
-			ShowRightAnswerAnimation ();
-			model.Correct();
+		void SetChoices(List<Building> choices) {
+			for(int i = 0; i < choices.Count; i++) {
+				viewChoices[i].sprite = model.GetSprite(choices[i]);
+			}
 		}
 
-		public void ClickWrong(){
-			ShowWrongAnswerAnimation ();
-			model.Wrong();
+		void SetGrid(List<Building> grid) {
+			for(int i = 0; i < grid.Count; i++) {
+				viewGrid[i].sprite = model.GetSprite(grid[i]);
+			}
+		}
+
+		//validate on drop.
+		public void Dropped(NeighbourhoodDragger dragger, NeighbourhoodSlot slot, int row, int column) {
+			if(IsCorrect(dragger, slot, row, column)){
+				ShowRightAnswerAnimation ();
+				model.Correct();
+			} else {
+				ShowWrongAnswerAnimation ();
+				model.Wrong();
+			}
+		}
+
+		bool IsCorrect(NeighbourhoodDragger dragger, NeighbourhoodSlot slot, int row, int column) {
+			if(!model.IsCorrectDragger(dragger.GetComponent<Image>().sprite))
+				return false;
+
+			if(!model.IsCorrectSlot(row, column))
+				return false;
+
+			return true;
 		}
 	}
 }
