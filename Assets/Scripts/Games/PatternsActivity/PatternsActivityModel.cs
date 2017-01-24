@@ -8,12 +8,27 @@ using Assets.Scripts.Common;
 namespace Assets.Scripts.Games.PatternsActivity {
 	public class PatternsActivityModel : LevelModel {
 		private int currentLvl, difficulty, currentGrid, maxColors;
+	    private int _exercisesDone;
 		private List<PatternsLevel> lvls;
 		private PatternsLevel lvl;
 		private Randomizer lvlRandomizer;
 		private bool isCurrentLeft;
+        private Boolean _lastCorrect;
 
-		public bool CanPaintLeft(){
+
+        public bool LastCorrect
+        {
+            get { return _lastCorrect; }
+            set { _lastCorrect = value; }
+        }
+
+	    public int ExercisesDone
+	    {
+	        get { return _exercisesDone; }
+	        set { _exercisesDone = value; }
+	    }
+
+	    public bool CanPaintLeft(){
 			return isCurrentLeft;
 		}
 
@@ -22,7 +37,7 @@ namespace Assets.Scripts.Games.PatternsActivity {
 		}
 
 		public bool GameEnded(){
-			return currentLvl == 5;
+			return ExercisesDone == 5;
 		}
 
 		public int CurrentLvl(){
@@ -33,7 +48,10 @@ namespace Assets.Scripts.Games.PatternsActivity {
 			currentLvl++;
 		}
 
-		public PatternsActivityModel() {
+		public PatternsActivityModel()
+		{
+		    ExercisesDone = 0;
+            _lastCorrect = true;
 			difficulty = 0;
 			currentLvl = 0;
 			isCurrentLeft = true;
@@ -72,8 +90,9 @@ namespace Assets.Scripts.Games.PatternsActivity {
 
 		public void Correct() {
 			LogAnswer(true);
+		    ExercisesDone++;
 
-			NextDifficulty();
+            if (_lastCorrect) NextDifficulty();
 		}
 
 		void NextDifficulty() {

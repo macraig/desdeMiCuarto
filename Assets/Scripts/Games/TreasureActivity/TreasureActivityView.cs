@@ -15,7 +15,9 @@ namespace Assets.Scripts.Games.TreasureActivity {
 		private TreasureActivityModel model;
 
 		override public void Next(bool first = false){
-            if(!first) PlaySoundClick();
+            EnableDropers(true);
+
+            if (!first) PlaySoundClick();
 			model.SetLevel();
 		    okBtn.enabled = true;
             NextButton.gameObject.SetActive(false);
@@ -26,10 +28,11 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
 		public void OkClick()
 		{
-		    okBtn.enabled = false;
+            EnableDropers(false);
+            okBtn.enabled = false;
             if (IsCorrect()){
-				ShowRightAnswerAnimation ();
-				model.Correct();
+                model.Correct();
+                ShowRightAnswerAnimation();
 			} else {
 				ShowWrongAnswerAnimation();
 				model.Wrong();
@@ -117,7 +120,14 @@ namespace Assets.Scripts.Games.TreasureActivity {
 	    public override void OnRightAnimationEnd()
 	    {
 
-            model.NextLvl();
+	        if (model.LastCorrect)
+	        {
+	            model.NextLvl();
+	        }
+	        else
+	        {
+                model.LastCorrect = true;
+	        }
             if (model.GameEnded()) EndGame(60, 0, 1250);
             else
             {
@@ -128,8 +138,23 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
 	    public override void OnWrongAnimationEnd()
 	    {
-	        okBtn.enabled = true;
+            model.LastCorrect = false;
+            EnableDropers(true);
+
+            okBtn.enabled = true;
 
 	    }
+
+	    private void EnableDropers(bool value)
+	    {
+            foreach (Button dropper in droppers)
+            {
+                dropper.enabled = value;
+            }
+	        foreach (Image dragger in draggers)
+	        {
+	            dragger.gameObject.GetComponent<TreasureDragger>().enabled = value;
+	        }
+        }
 	}
 }

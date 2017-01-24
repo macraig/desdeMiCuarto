@@ -38,17 +38,12 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
 		public void OnEndDrag(PointerEventData eventData = null) {
 			if (active) {
+                SoundController.GetController().PlayDropSound();
                 itemBeingDragged = null;
 				GetComponent<CanvasGroup> ().blocksRaycasts = true;
-
-/*
-				transform.position = startPosition;
-*/
 			    this.transform.SetParent(ParentGameObject.transform);
                 this.transform.SetSiblingIndex(order);
-
                 ParentGameObject.GetComponent<GridLayoutGroup>().enabled = true;
-
             }
         }
 	}

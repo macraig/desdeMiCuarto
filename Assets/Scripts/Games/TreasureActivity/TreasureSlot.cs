@@ -16,7 +16,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 			    image.sprite = target.GetComponent<Image>().sprite;
 				view.Dropped();
 			    GetComponent<Button>().enabled = false;
-                Invoke("EnableButton", 1);
+                Invoke("EnableButton", 0.5f);
 			}
 
 

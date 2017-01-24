@@ -1,17 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.Scripts.Common;
 using Assets.Scripts.Metrics.Model;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.Games.TreasureActivity {
 	public class TreasureActivityModel : LevelModel {
-		private int currentLvl, difficulty;
+		private int currentLvl, exercisesDone;
 		private List<Figure> pattern, choices;
+        private Boolean _lastCorrect;
 
-		private static int SHAPES = 4, COLORS = 5;
+        private static int SHAPES = 4, COLORS = 5;
 
-		public bool GameEnded(){
-			return currentLvl == 6;
+	    public bool LastCorrect
+	    {
+	        get { return _lastCorrect; }
+	        set { _lastCorrect = value; }
+	    }
+
+	   
+
+	    public bool GameEnded(){
+			return exercisesDone == 6;
 		}
 
 		public int CurrentLvl(){
@@ -22,8 +33,10 @@ namespace Assets.Scripts.Games.TreasureActivity {
 			currentLvl++;
 		}
 
-		public TreasureActivityModel() {
-			difficulty = 0;
+		public TreasureActivityModel()
+		{
+            _lastCorrect = true;
+            exercisesDone = 0;
 			currentLvl = 0;
             pattern = new List<Figure>();
             choices = new List<Figure>();
@@ -34,11 +47,11 @@ namespace Assets.Scripts.Games.TreasureActivity {
 		public void Correct() {
 			LogAnswer(true);
 
-			NextDifficulty();
+            AddExerciseDOne();
 		}
 
-		void NextDifficulty() {
-			difficulty++;
+		void AddExerciseDOne() {
+			exercisesDone++;
 		}
 
 		public void Wrong(){
@@ -63,6 +76,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
             Randomizer secondShapeRand = Randomizer.New(SHAPES - 1);
             Randomizer colorRand = Randomizer.New(COLORS - 1);
             Randomizer secondColorRand = Randomizer.New(COLORS - 1);
+            Debug.Log("Current lvl:" + currentLvl);
 
             switch (currentLvl)
 	        {
@@ -108,11 +122,11 @@ namespace Assets.Scripts.Games.TreasureActivity {
                         choices.Clear();
                         for (int i = 3; i >= 0; i--)
                         {
-                            Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next()).Size(Randomizer.RandomBoolean());
+                            Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next());
                             pattern.Add(figure);
                             choices.Add(figure);
                         }
-                    } while (!choices.Exists(e => e.IsBig()) || !choices.Exists(e => !e.IsBig()) || AreTwoFiguresEquals(choices));
+                    } while (AreTwoFiguresEquals(choices));
 
                     // palindrome
                     pattern[3] = pattern[0];
@@ -135,12 +149,11 @@ namespace Assets.Scripts.Games.TreasureActivity {
                             if (pattern.Count < 4) pattern.Add(figure);
                             choices.Add(figure);
                         }
-                    } while (choices.FindAll(e => e.IsBig()).Count < 1 || choices.FindAll(e => !e.IsBig()).Count < 1 || AreTwoFiguresEquals(choices));
+                    } while (choices.FindAll(e => e.IsBig()).Count < 2 || choices.FindAll(e => !e.IsBig()).Count < 2 || AreTwoFiguresEquals(choices));
 
 	                do
 	                {
 	                    Utils.Shuffle(choices);
-	                    Utils.Shuffle(pattern);
 	                } while (choices[0].Equals(pattern[0]) && choices[1].Equals(pattern[1]) &&
 	                         choices[2].Equals(pattern[2]));
 
@@ -156,7 +169,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
                             if(pattern.Count < 4) pattern.Add(figure);
                             choices.Add(figure);
                         }
-                    } while (choices.FindAll(e => e.IsBig()).Count < 1 || choices.FindAll(e => !e.IsBig()).Count < 1 || AreTwoFiguresEquals(choices));
+                    } while (choices.FindAll(e => e.IsBig()).Count < 2 || choices.FindAll(e => !e.IsBig()).Count < 2 || AreTwoFiguresEquals(choices));
 
 
                     int aTarget;
@@ -172,7 +185,6 @@ namespace Assets.Scripts.Games.TreasureActivity {
                     do
                     {
                         Utils.Shuffle(choices);
-                        Utils.Shuffle(pattern);
                     } while (choices[0].Equals(pattern[0]) && choices[1].Equals(pattern[1]) &&
                              choices[2].Equals(pattern[2]));
 
@@ -188,7 +200,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
                             if (pattern.Count < 4) pattern.Add(figure);
                             choices.Add(figure);
                         }
-                    } while (choices.FindAll(e => e.IsBig()).Count < 1 || choices.FindAll(e => !e.IsBig()).Count < 1 || AreTwoFiguresEquals(choices));
+                    } while (choices.FindAll(e => e.IsBig()).Count < 2 || choices.FindAll(e => !e.IsBig()).Count < 2 || AreTwoFiguresEquals(choices));
 
 
                     // palindrome
@@ -202,7 +214,6 @@ namespace Assets.Scripts.Games.TreasureActivity {
                     do
                     {
                         Utils.Shuffle(choices);
-                        Utils.Shuffle(pattern);
                     } while (choices[0].Equals(pattern[0]) && choices[1].Equals(pattern[1]) &&
                              choices[2].Equals(pattern[2]));
 

@@ -226,7 +226,14 @@ namespace Assets.Scripts.Games.PatternsActivity {
 
 	    public override void OnRightAnimationEnd()
 	    {
-            model.NextLvl();
+            if (model.LastCorrect)
+            {
+                model.NextLvl();
+            }
+            else
+            {
+                model.LastCorrect = true;
+            }
 	        if (model.GameEnded()) EndGame(60, 0, 1250);
 	        else
 	        {
@@ -240,6 +247,7 @@ namespace Assets.Scripts.Games.PatternsActivity {
 
         public override void OnWrongAnimationEnd()
 	    {
+            model.LastCorrect = false;
             ExchangeButton.enabled = true;
             OkButton.enabled = true;
         }
