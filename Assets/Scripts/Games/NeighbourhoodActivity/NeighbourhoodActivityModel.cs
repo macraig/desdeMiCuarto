@@ -6,15 +6,15 @@ using Assets.Scripts.Common;
 
 namespace Assets.Scripts.Games.NeighbourhoodActivity {
 	public class NeighbourhoodActivityModel : LevelModel {
-		public static Building STREET = Building.B("street", false, true);
+		public static Building STREET = Building.B("street","","", false, true);
 		public static int SIMPLE_BUILDINGS = 13;
 		private int currentLvl;
 
-		private Dictionary<string, Sprite> buildingSprites;
+		private Dictionary<string, Sprite> buildingSprites, referencesSprites;
 		private Dictionary<string, AudioClip> audios;
 		private List<List<Building>> grid;
 		private List<Building> simpleBuildings, options;
-		private string[] names;
+		private string[] names,textNamesStart,textNamesEnd;
 		private List<NeighbourhoodLevel> lvls;
 
 		public List<Building> GetGrid() {
@@ -44,6 +44,15 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 		public Sprite GetSprite(Building b){
 			return b.GetSprite(buildingSprites);
+		}
+
+		public Sprite GetReferenceSprite(Building b){
+			return b.GetSprite(referencesSprites);
+		}
+
+		public string GetBuildingTextName (Building b)
+		{
+			return b.GetTextNameStart().Substring(3).ToUpper();
 		}
 
 		public void NextLvl(){
@@ -141,10 +150,10 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		void SetDoubleBuildingsInGrid() {
 			bool doubleRandom = Randomizer.RandomBoolean();
 
-			Building upLeft = doubleRandom ? Building.B("hospital", true, false, true) : Building.B("plaza", true, false, true);
-			Building upRight = doubleRandom ? Building.B("hospital", true) : Building.B("plaza", true);
-			Building downLeft = doubleRandom ? Building.B("plaza", true, false, true) : Building.B("hospital", true, false, true);
-			Building downRight = doubleRandom ? Building.B("plaza", true) : Building.B("hospital", true);
+			Building upLeft = doubleRandom ? Building.B("hospital","el hospital","del hospital", true, false, true) : Building.B("plaza","la plaza","de la plaza", true, false, true);
+			Building upRight = doubleRandom ? Building.B("hospital","el hospital","del hospital", true) : Building.B("plaza","la plaza","de la plaza", true);
+			Building downLeft = doubleRandom ? Building.B("plaza","la plaza","de la plaza", true, false, true) : Building.B("hospital","el hospital","del hospital", true, false, true);
+			Building downRight = doubleRandom ? Building.B("plaza","la plaza","de la plaza", true) : Building.B("hospital","el hospital","del hospital", true);
 
 			bool middleRandom = Randomizer.RandomBoolean();
 			bool left = Randomizer.RandomBoolean();
@@ -175,7 +184,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		void InitSimpleBuildings() {
 			simpleBuildings = new List<Building>();
 			for(int i = 0; i < SIMPLE_BUILDINGS; i++) {
-				simpleBuildings.Add(Building.B(names[i]));
+				simpleBuildings.Add(Building.B(names[i],textNamesStart[i],textNamesEnd[i]));
 			}
 		}
 
@@ -194,7 +203,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 				"biblioteca",
 				"policia",
 				"verduleria",
-				"kiosko",
+				"kiosco",
 				"carniceria",
 				"casaBlanca",
 				"estacionDeServicio",
@@ -208,6 +217,54 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 				"escuelaLeft",
 				"escuelaRight"
 			};
+
+			textNamesStart = new string[] {
+				"la heladería",
+				"el banco",
+				"el correo",
+				"la florería",
+				"la biblioteca",
+				"la policía",
+				"la verdulería",
+				"el kiosco",
+				"la carnicería",
+				"la casa blanca",
+				"la estación de servicio",
+				"la casa amarilla",
+				"el supermercado",
+				"el cine",
+				"la plaza",
+				"la plaza",
+				"el hospital",
+				"el hospital",
+				"la escuela",
+				"la escuela"
+			};
+
+			textNamesEnd = new string[] {
+				"de la heladería",
+				"del banco",
+				"del correo",
+				"de la florería",
+				"de la biblioteca",
+				"de la policía",
+				"de la verdulería",
+				"del kiosco",
+				"de la carnicería",
+				"de la casa blanca",
+				"de la estación de servicio",
+				"de la casa amarilla",
+				"del supermercado",
+				"del cine",
+				"de la plaza",
+				"de la plaza",
+				"del hospital",
+				"del hospital",
+				"de la escuela",
+				"de la escuela"
+			};
+
+
 		}
 
 		void InitSprites() {
@@ -217,6 +274,14 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			for(int i = 0; i < names.Length; i++) {
 				buildingSprites.Add(names[i], sprites[i]);
 			}
+
+			referencesSprites = new Dictionary<string, Sprite>();
+			Sprite[] refSprites = Resources.LoadAll<Sprite>("Sprites/NeighbourhoodActivity/referencias");
+
+			for(int j = 0; j < SIMPLE_BUILDINGS; j++) {
+				referencesSprites.Add(names[j], refSprites[j]);
+			}
+
 		}
 
 		void InitGrid() {
@@ -224,7 +289,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			grid.Add(new List<Building>{ null, STREET, null, null, null, null });
 			grid.Add(new List<Building>{ null, STREET, STREET, STREET, STREET, STREET });
 			grid.Add(new List<Building>{ null, STREET, null, null, STREET, null });
-			grid.Add(new List<Building>{ null, STREET, Building.B("escuela", true, false, true), Building.B("escuela", true), STREET, null });
+			grid.Add(new List<Building>{ null, STREET, Building.B("escuela","la escuela","de la escuela", true, false, true), Building.B("escuela","la escuela","de la escuela", true), STREET, null });
 			grid.Add(new List<Building>{ STREET, STREET, STREET, STREET, STREET, null });
 			grid.Add(new List<Building>{ null, null, null, null, STREET, null });
 		}

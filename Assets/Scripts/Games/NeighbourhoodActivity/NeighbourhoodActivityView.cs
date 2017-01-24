@@ -7,10 +7,11 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 	public class NeighbourhoodActivityView : LevelView {
 		public Text upperBoard;
 		public Button soundBtn;
-
-		public List<Image> viewGrid, viewChoices;
+		public List<Text> refTexts;
+		public List<Image> viewGrid, viewChoices,refImages;
 
 		private NeighbourhoodActivityModel model;
+
 
 		public void Start(){
 			model = new NeighbourhoodActivityModel();
@@ -40,12 +41,20 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 		private void SetCurrentLevel() {
 			SetChoices(model.GetChoices());
+			SetReferences (model.GetChoices ());
 			upperBoard.text = model.GetText();
 		}
 
 		void SetChoices(List<Building> choices) {
 			for(int i = 0; i < choices.Count; i++) {
 				viewChoices[i].sprite = model.GetSprite(choices[i]);
+			}
+		}
+
+		void SetReferences(List<Building> choices) {
+			for(int i = 0; i < choices.Count; i++) {
+				refImages[i].sprite = model.GetReferenceSprite(choices[i]);
+				refTexts [i].text = model.GetBuildingTextName (choices[i]);
 			}
 		}
 
