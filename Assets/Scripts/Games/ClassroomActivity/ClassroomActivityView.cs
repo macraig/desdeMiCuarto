@@ -35,10 +35,13 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 				model.NextLvl();
 			}
 
-			if(model.GameEnded()) EndGame(60,0,1250);
-			else SetCurrentLevel(true);
+			if (model.GameEnded ()) {
+				EndGame (60, 0, 1250);
+			} else {
+				SetCurrentLevel (true);
+				SoundClick();
+			}
 
-			SoundClick();
 		}
 
 
@@ -50,9 +53,9 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 		}
 
 		public void ClickCorrect(){
-			ShowRightAnswerAnimation ();
+			SoundController.GetController ().PlayClip (model.GetLevelSound ());
+			Invoke ("ShowRightAnswerAnimation", 0.5f);
 			model.Correct();
-//			Next();
 		}
 
 		public void ClickWrong(){

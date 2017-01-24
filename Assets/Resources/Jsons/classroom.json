@@ -1,39 +1,56 @@
 ﻿{
 	levels: [{
 		"correct": "santiDesk",
-		"wrong": ["desk1", "desk2", "raulDesk", "desk4", "desk5", "desk6", "desk7", "florDesk"]
+		"wrong": ["desk1", "desk2", "raulDesk", "desk4", "desk5", "desk6", "desk7", "florDesk"],
+		"sound":"click"
 	}, {
 		"correct": "crayonsButton1",
-		"wrong": ["crayonsButton", "crayonsButton2"]
+		"wrong": ["crayonsButton", "crayonsButton2","pencilButton","pencil1Button","pencil2Button","pencil3Button","chalkButton","chalk1Button","chalk2Button"],
+		"sound":"click"
 	}, {
 		"correct": "florDesk",
-		"wrong": ["desk1", "desk2", "raulDesk", "desk4", "desk5", "desk6", "desk7", "santiDesk"]
+		"wrong": ["desk1", "desk2", "raulDesk", "desk4", "desk5", "desk6", "desk7", "santiDesk"],
+		"sound":"click"
 	}, {
 		"correct": "teacherBooksButton",
-		"wrong": ["books1Button", "books2Button"]
+		"wrong": ["books1Button", "books2Button","closedBookButton"],
+		"sound":"click"
 	}, {
 		"correct": "chalkButton",
-		"wrong": ["chalk1Button", "chalk2Button"]
+		"wrong": ["chalk1Button", "chalk2Button","pencilButton","pencil1Button","pencil2Button","pencil3Button"],
+		"sound":"click"
 	}, {
 		"correct": "paperButton",
-		"wrong": ["paper1Button", "paper2Button"]
-	}, {
-		"correct": "bookButton",
-		"wrong": []
-	}, {
+		"wrong": ["paper1Button", "paper2Button","drawing","drawing2","teacherBooksButton"],
+		"sound":"click"
+	},
+	{
 		"correct": "pencilButton",
-		"wrong": ["pencil1Button", "pencil2Button"]
-	}, {
-		"correct": "drawing",
-		"wrong": ["drawing1", "drawing2"]
-	}, {
+		"wrong": ["pencil1Button", "pencil2Button","pencil3Button","chalkButton","chalk2Button","chalk1Button"],
+		"sound":"click"
+	},
+	{
 		"correct": "raulDesk",
-		"wrong": ["desk1", "desk2", "florDesk", "desk4", "desk5", "desk6", "desk7", "santiDesk"]
-	}, {
+		"wrong": ["desk1", "desk2", "florDesk", "desk4", "desk5", "desk6", "desk7", "santiDesk"],
+		"sound":"click"
+	},
+	{
 		"correct": "dinosaurButton",
-		"wrong": ["bearButton"]
-	}, {
+		"wrong": ["bearButton"],
+		"sound":"click"
+	},
+	{
+		"correct": "drawing",
+		"wrong": ["drawing1", "drawing2"],
+		"sound":"click"
+	},
+	 {
+		"correct": "bookButton",
+		"wrong": ["closedBookButton","teacherBooksButton","books1Button"],
+		"sound":"click"
+	},     {
 		"correct": "windowButton",
-		"wrong": []
+		"wrong": ["puerta"],
+		"sound":"click"
 	}]
 }
