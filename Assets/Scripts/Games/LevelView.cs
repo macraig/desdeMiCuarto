@@ -145,6 +145,7 @@ namespace Assets.Scripts.Games
 		internal void ExitGame(){
 //			MetricsController.GetController().DiscardCurrentMetrics();
 			ViewController.GetController().LoadMainMenu();
+			SoundController.GetController ().PlayMusic ();
 		}
 
         // This method have to restart the view of the game to the initial state

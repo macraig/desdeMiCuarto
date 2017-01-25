@@ -35,6 +35,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 //				3 ESTRELLAS: 2 o 3 ERRORES
 //				2 ESTRELLAS: 4 o 5 ERRORES
 //				1 ESTRELLA: MAS DE 5 ERRORES
+				phantomPanel.SetActive(false);
 				EndGame(60,0,1250);
 				return;
 			}
@@ -61,6 +62,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 			bool correct = model.IsCorrectSector(toggleIndex);
 
 			model.LogAnswer(correct);
+			rooms.ForEach((Toggle t) => {if(t.isOn) t.isOn=false;});
 			if(correct) {
 				ShowRightGhostAnimation ();
 
@@ -68,7 +70,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 				ShowWrongGhostAnimation ();
 
 			}
-			rooms.ForEach((Toggle t) => {if(t.isOn) t.isOn=false;});
+
 		}
 
 		// PHANTOM SCREEN ***************************************************************************************************
@@ -102,7 +104,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 
 		public void ShootToggle(){
 			if(!shootToggle.isOn) return;
-
+			shootToggle.interactable = false;
 			if (vacuumCleaner.sprite == vacuumSprites [1])
 				vacuumCleaner.sprite = vacuumSprites [0];
 			else if(vacuumCleaner.sprite == vacuumSprites[3])
@@ -130,6 +132,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 			cleaning = true;
 			CleanUI();
 			cleaning = false;
+			shootToggle.interactable = true;
 		}
 
 
@@ -139,6 +142,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 			cleaning = true;
 			CleanUI ();
 			cleaning = false;
+			shootToggle.interactable = true;
 
 		}
 
@@ -231,15 +235,17 @@ namespace Assets.Scripts.Games.HouseActivity {
 		}
 
 		internal void ShowRightGhostAnimation(){
+			SoundController.GetController ().PlayClip (ghostRightSound);
 			rightGhostAnimation.transform.SetAsLastSibling ();
 			rightGhostAnimation.GetComponent<GhostAnimationScript>().ShowAnimation();
-			SoundController.GetController ().PlayClip (ghostRightSound);
+
 		}
 
 		internal void ShowWrongGhostAnimation(){
+			SoundController.GetController ().PlayClip (ghostWrongSound);
 			wrongGhostAnimation.transform.SetAsLastSibling ();
 			wrongGhostAnimation.GetComponent<GhostAnimationScript>().ShowAnimation();
-			SoundController.GetController ().PlayClip (ghostWrongSound);
+
 		}
 
 

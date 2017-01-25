@@ -34,6 +34,7 @@ namespace Assets.Scripts.App
             //StartGame(AppController.GetController().GetCurrentGame());
             //LoadMainMenu();
             LoadCover();
+			SoundController.GetController ().PlayMusic ();
 		}
 
         internal void LoadMainMenu()

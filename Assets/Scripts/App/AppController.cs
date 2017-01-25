@@ -22,6 +22,7 @@ namespace Assets.Scripts.App
             else if (appController != this) Destroy(gameObject);     
             DontDestroyOnLoad(gameObject);
             appModel = new AppModel();
+
             
         }
 
@@ -93,6 +94,7 @@ namespace Assets.Scripts.App
         {
 //            SoundController.GetController().StopMusic();
             // ViewController.GetController().StartGame(appModel.GetCurrentArea(), appModel.GetCurrentGame());
+			SoundController.GetController ().StopMusic();
 			ViewController.GetController().StartGame(GetCurrentGame());
       
         }
