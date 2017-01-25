@@ -13,7 +13,8 @@ namespace Assets.Scripts.Games.HouseActivity {
 		public Material[] roomTextures;
 
 		public GameObject phantomPanel;
-
+		private AudioClip ghostRightSound, ghostWrongSound;
+		private int  toggleIndex;
 
 		private HouseActivityModel model;
 		private int currentSlot;
@@ -22,6 +23,8 @@ namespace Assets.Scripts.Games.HouseActivity {
 			model = new HouseActivityModel();
 			roomTextures = Resources.LoadAll<Material> ("Sprites/HouseActivity/Materials");
 			vacuumSprites = Resources.LoadAll<Sprite> ("Sprites/HouseActivity/aspiradora");
+			ghostRightSound = Resources.Load<AudioClip> ("Audio/HouseActivity/boo");
+			ghostWrongSound = Resources.Load<AudioClip> ("Audio/HouseActivity/laugh");
 			ShowExplanation ();
 		}
 
@@ -53,20 +56,15 @@ namespace Assets.Scripts.Games.HouseActivity {
 		}
 
 		public void OkClick(){
-			int toggleIndex = rooms.FindIndex ((Toggle t) => t.isOn);
+			toggleIndex = rooms.FindIndex ((Toggle t) => t.isOn);
 			bool correct = model.IsCorrectSector(toggleIndex);
-
-
 
 			model.LogAnswer(correct);
 			if(correct) {
-				PlayRightSound ();
-				StartPhantomScreen(toggleIndex);
+				ShowRightGhostAnimation ();
+
 			} else {
-				PlayWrongSound ();
-				Next ();
-
-
+				ShowWrongGhostAnimation ();
 
 			}
 			rooms.ForEach((Toggle t) => {if(t.isOn) t.isOn=false;});
@@ -79,6 +77,9 @@ namespace Assets.Scripts.Games.HouseActivity {
 		public Toggle shootToggle, left, right, up, down;
 		public Image phantomBackground, vacuumCleaner;
 		private Sprite[] vacuumSprites;
+		//Right and wrong animations
+		public GameObject rightGhostAnimation;
+		public GameObject wrongGhostAnimation;
 
 
 		private int correctGhost;
@@ -226,6 +227,27 @@ namespace Assets.Scripts.Games.HouseActivity {
 				break;
 			}
 
+		}
+
+		internal void ShowRightGhostAnimation(){
+			rightGhostAnimation.transform.SetAsLastSibling ();
+			rightGhostAnimation.GetComponent<GhostAnimationScript>().ShowAnimation();
+			SoundController.GetController ().PlayClip (ghostRightSound);
+		}
+
+		internal void ShowWrongGhostAnimation(){
+			wrongGhostAnimation.transform.SetAsLastSibling ();
+			wrongGhostAnimation.GetComponent<GhostAnimationScript>().ShowAnimation();
+			SoundController.GetController ().PlayClip (ghostWrongSound);
+		}
+
+
+		 public void OnRightGhostAnimationEnd(){
+			StartPhantomScreen(toggleIndex);
+		}
+
+		 public void OnWrongGhostAnimationEnd(){
+			Next ();
 		}
 
 	}

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Audio/NeighbourhoodActivity/EdificiosFinal/escuela.mp3.meta
 guid: 095b0cd904dd0c54bac2605872611751
+=======
+guid: d6bc1bd4f8fc84d51949fe54641a7dbb
+>>>>>>> 46ebc14c172c5dd8b766802339f397dfba047edc:Assets/Resources/Audio/NeighbourhoodActivity/EdificiosFinal/escuelaFinal.mp3.meta
 timeCreated: 1485198803
 licenseType: Pro
 AudioImporter:

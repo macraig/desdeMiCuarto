@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 11c69cf43cd47d54689034729e85d040
-timeCreated: 1485172209
+timeCreated: 1485338720
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,12 @@ TextureImporter:
     21300002: HouseActivity-22_1
     21300004: HouseActivity-22_2
     21300006: HouseActivity-22_3
+    21300008: aspiradora_0
+    21300010: aspiradora_1
+    21300012: aspiradora_2
+    21300014: aspiradora_3
+    21300016: aspiradora_4
+    21300018: aspiradora_5
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -82,12 +88,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HouseActivity-22_0
+      name: aspiradora_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 253.5
+        width: 253.33333
         height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -95,12 +101,12 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HouseActivity-22_1
+      name: aspiradora_1
       rect:
         serializedVersion: 2
         x: 253
         y: 0
-        width: 253.5
+        width: 253.33333
         height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -108,12 +114,12 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HouseActivity-22_2
+      name: aspiradora_2
       rect:
         serializedVersion: 2
         x: 506
         y: 0
-        width: 253.5
+        width: 253.33333
         height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -121,12 +127,38 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HouseActivity-22_3
+      name: aspiradora_3
       rect:
         serializedVersion: 2
         x: 759
         y: 0
-        width: 253.5
+        width: 253.33333
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aspiradora_4
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 0
+        width: 253.33333
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aspiradora_5
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 0
+        width: 253.33333
         height: 330
       alignment: 0
       pivot: {x: 0, y: 0}

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Audio/NeighbourhoodActivity/EdificiosFinal/plaza.mp3.meta
 guid: 8483b0e47184b6540a121d4e281b5c9a
+=======
+guid: 378b8fd3e2b8e497f8ddeb655644423d
+>>>>>>> 46ebc14c172c5dd8b766802339f397dfba047edc:Assets/Resources/Audio/NeighbourhoodActivity/EdificiosFinal/bibliotecaFinal.mp3.meta
 timeCreated: 1485198802
 licenseType: Pro
 AudioImporter:

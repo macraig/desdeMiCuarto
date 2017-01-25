@@ -13,6 +13,7 @@ namespace Assets.Scripts.Games.PatternsActivity {
 		private GameObject currentLeft, currentRight;
 		public Button OkButton, NextButton;
 		public Button ExchangeButton;
+		public AudioClip ingameExplanationSound;
 
 		private PatternsColor currentColor;
 
@@ -46,6 +47,10 @@ namespace Assets.Scripts.Games.PatternsActivity {
             EnableGridButtons(currentRight, !model.CanPaintLeft());
             EnableGridButtons(currentLeft, model.CanPaintLeft());
         }
+
+		public void OnSoundButtonClick(){
+			SoundController.GetController ().PlayClip (ingameExplanationSound);
+		}
 
 		public void ExchangeClick()
 		{

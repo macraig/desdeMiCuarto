@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Sound;
 
 namespace Assets.Scripts.Games.NeighbourhoodActivity {
 	public class NeighbourhoodActivityView : LevelView {
@@ -27,6 +28,10 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		}
 
 		public void SoundClick(){
+			SoundController.GetController().ConcatenateAudios(model.GetAudios(), EndSoundMethod);
+		}
+
+		public void EndSoundMethod(){
 			
 		}
 
@@ -40,8 +45,9 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		}
 
 		private void SetCurrentLevel() {
-			SetChoices(model.GetChoices());
-			SetReferences (model.GetChoices ());
+			List<Building> choices = model.GetChoices ();
+			SetChoices(choices);
+			SetReferences (choices);
 			upperBoard.text = model.GetText();
 		}
 
@@ -67,7 +73,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			}
 		}
 
-		//validate on drop.
+		//validate on drop
 		public void Dropped(NeighbourhoodDragger dragger, NeighbourhoodSlot slot, int row, int column) {
 			if(IsCorrect(dragger, slot, row, column)){
 				slot.GetComponent<Image>().sprite = dragger.GetComponent<Image>().sprite;
