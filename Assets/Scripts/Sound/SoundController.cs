@@ -143,6 +143,10 @@ namespace Assets.Scripts.Sound{
 			Invoke ("PlayCurrentAudios", 0.1f);
 		}
 
+		public void SetConcatenatingAudios(bool concatenating){
+			concatenatingAudios = concatenating;
+		}
+
 		public void PlayCurrentAudios(){
 			if (concatenatingAudios) {
 				if (currentAudio == null) {

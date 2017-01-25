@@ -38,10 +38,15 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		override public void Next(bool first = false){
 			if(!first) model.NextLvl();
 
-			if(model.GameEnded()) EndGame(60,0,1250);
-			else SetCurrentLevel();
+			if (model.GameEnded ()) {
+				EndGame (60, 0, 1250);
 
-			SoundClick();
+			}else{
+				SetCurrentLevel();
+				SoundClick();
+			}
+
+
 		}
 
 		private void SetCurrentLevel() {
@@ -77,9 +82,11 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		public void Dropped(NeighbourhoodDragger dragger, NeighbourhoodSlot slot, int row, int column) {
 			if(IsCorrect(dragger, slot, row, column)){
 				slot.GetComponent<Image>().sprite = dragger.GetComponent<Image>().sprite;
+				SoundController.GetController ().SetConcatenatingAudios (false);
 				ShowRightAnswerAnimation ();
 				model.Correct();
 			} else {
+				SoundController.GetController ().SetConcatenatingAudios (false);
 				ShowWrongAnswerAnimation ();
 				model.Wrong();
 			}

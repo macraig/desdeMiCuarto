@@ -30,7 +30,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			//primer audio -> "la escuela"
 			audios.Add(a[correct.GetName()]);
 
-			//switch con todas las posibilidades.... Again, horrible.
+			//switch con todas las posibilidades
 			switch(p) {
 			case Possibilities.BEHIND:
 				audios.Add(a["detras"]);
@@ -117,7 +117,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 				Building b = simpleBuildings[r.Next()];
 				if(!choices.Contains(b)) choices.Add(b);
 			}
-			return choices;
+			return Randomizer.RandomizeList(choices);
 		}
 
 		public bool IsCorrectDragger(Sprite dragger, Dictionary<string, Sprite> buildingSprites) {

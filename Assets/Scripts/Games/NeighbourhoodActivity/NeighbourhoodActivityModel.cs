@@ -44,7 +44,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 		//randomizo 5 cualquiera 
 		public List<Building> GetChoices() {
-			return lvls[currentLvl].GetChoices(simpleBuildings);
+			return lvls [currentLvl].GetChoices (simpleBuildings);
 		}
 
 		public Sprite GetSprite(Building b){
@@ -85,7 +85,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			//inicia los objetos de los edificios simples.
 			InitSimpleBuildings();
 
-			//randomiza las 5 respuestas correctas.
+			//randomiza las respuestas correctas.
 			RandomizeOptions();
 
 			//mete la plaza y el hospital en la grilla.
