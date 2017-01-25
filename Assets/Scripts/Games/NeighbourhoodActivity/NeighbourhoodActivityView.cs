@@ -9,6 +9,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		public Text upperBoard;
 		public Button soundBtn;
 		public List<Text> refTexts;
+
 		public List<Image> viewGrid, viewChoices,refImages;
 
 		private NeighbourhoodActivityModel model;
@@ -28,11 +29,12 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		}
 
 		public void SoundClick(){
+			soundBtn.interactable = false;
 			SoundController.GetController().ConcatenateAudios(model.GetAudios(), EndSoundMethod);
 		}
 
 		public void EndSoundMethod(){
-			
+			soundBtn.interactable = true;
 		}
 
 		override public void Next(bool first = false){
@@ -83,10 +85,12 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			if(IsCorrect(dragger, slot, row, column)){
 				slot.GetComponent<Image>().sprite = dragger.GetComponent<Image>().sprite;
 				SoundController.GetController ().SetConcatenatingAudios (false);
+				soundBtn.interactable = true;
 				ShowRightAnswerAnimation ();
 				model.Correct();
 			} else {
 				SoundController.GetController ().SetConcatenatingAudios (false);
+				soundBtn.interactable = true;
 				ShowWrongAnswerAnimation ();
 				model.Wrong();
 			}

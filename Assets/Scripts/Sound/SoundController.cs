@@ -140,7 +140,7 @@ namespace Assets.Scripts.Sound{
 			action = f;
 			currentAudio = null;
 			playingAudios = audios;
-			Invoke ("PlayCurrentAudios", 0.1f);
+			Invoke ("PlayCurrentAudios", 0.05f);
 		}
 
 		public void SetConcatenatingAudios(bool concatenating){

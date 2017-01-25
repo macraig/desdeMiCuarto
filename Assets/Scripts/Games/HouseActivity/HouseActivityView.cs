@@ -52,6 +52,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 		}
 
 		public void HouseSectorSelected(){
+			SoundController.GetController ().PlayDropSound ();
 			okBtn.interactable = true;
 		}
 
@@ -102,12 +103,12 @@ namespace Assets.Scripts.Games.HouseActivity {
 		public void ShootToggle(){
 			if(!shootToggle.isOn) return;
 
-			if (vacuumCleaner.sprite == vacuumSprites [0])
-				vacuumCleaner.sprite = vacuumSprites [1];
-			else if(vacuumCleaner.sprite == vacuumSprites[2])
-				vacuumCleaner.sprite = vacuumSprites [2];
+			if (vacuumCleaner.sprite == vacuumSprites [1])
+				vacuumCleaner.sprite = vacuumSprites [0];
 			else if(vacuumCleaner.sprite == vacuumSprites[3])
-				vacuumCleaner.sprite = vacuumSprites [3];
+				vacuumCleaner.sprite = vacuumSprites [2];
+			else if(vacuumCleaner.sprite == vacuumSprites[5])
+				vacuumCleaner.sprite = vacuumSprites [4];
 
 			bool correct = currentSlot == correctGhost;
 			model.LogAnswer(correct);
@@ -142,7 +143,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 		}
 
 		void CleanUI() {
-			vacuumCleaner.sprite = vacuumSprites [0];
+			vacuumCleaner.sprite = vacuumSprites [1];
 			ghosts.ForEach((GameObject g) => {if(g != null) g.SetActive(false);});
 			arrows.ForEach((GameObject g) => g.SetActive(false));
 			crosshairs.ForEach((GameObject g) => g.SetActive(false));
@@ -187,9 +188,9 @@ namespace Assets.Scripts.Games.HouseActivity {
 			if(cleaning) return;
 
 			if (dir == "LEFT")
-				vacuumCleaner.sprite = vacuumSprites [2];
-			else if (dir == "RIGHT")
 				vacuumCleaner.sprite = vacuumSprites [3];
+			else if (dir == "RIGHT")
+				vacuumCleaner.sprite = vacuumSprites [5];
 
 
 			switch (dir) {
