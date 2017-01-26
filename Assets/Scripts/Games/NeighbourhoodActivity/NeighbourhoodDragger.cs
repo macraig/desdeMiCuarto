@@ -1,22 +1,31 @@
 ﻿using System;
+using Assets.Scripts.Sound;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
 namespace Assets.Scripts.Games.NeighbourhoodActivity {
 	public class NeighbourhoodDragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 		public static NeighbourhoodDragger itemBeingDragged;
-		private Vector3 startPosition;
-		public bool active;
+		public NeighbourhoodActivityView view;
+		public Vector3 originPosition;
+		private Vector3 newPosition;
+		public bool active,first = true;
 
 		public void SetActive(bool isActive){
 			active = isActive;
 		}
 
+
 		public void OnBeginDrag(PointerEventData eventData) {
 			if (active) {
-				//				SoundManager.instance.PlayClickSound ();
+				SoundController.GetController().PlayDragSound ();
 				itemBeingDragged = this;
-				startPosition = transform.position;
+				if (first) {
+					originPosition = transform.position;
+					first = false;
+				}
+
+				newPosition = transform.position;
 				GetComponent<CanvasGroup> ().blocksRaycasts = false;
 			}
 		}
@@ -28,12 +37,24 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 		public void OnEndDrag(PointerEventData eventData = null) {
 			if (active) {
-				//SoundController.GetController().PlayClickSound ();
+				SoundController.GetController().PlayDropSound ();
 				itemBeingDragged = null;
 				GetComponent<CanvasGroup> ().blocksRaycasts = true;
-
-				transform.position = startPosition;
+				transform.position = newPosition;
+//				view.ActivateDraggers (false);
 			}
+
+		}
+
+		public void SetPosition (Vector3 position)
+		{
+			newPosition = position;
+		}
+
+
+		public void ReturnToOriginalPosition(){
+//			transform.parent = GameObject.Find("buildingsPlaca").transform;
+			transform.position = originPosition;
 		}
 	}
 }

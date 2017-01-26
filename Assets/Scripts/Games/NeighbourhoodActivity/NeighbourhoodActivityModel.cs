@@ -17,6 +17,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		private List<Building> simpleBuildings, options;
 		private string[] names,textNamesStart,textNamesEnd;
 		private List<NeighbourhoodLevel> lvls;
+		private bool answerIsCorrect;
 
 		public List<Building> GetGrid() {
 			List<Building> result = new List<Building>();
@@ -32,6 +33,16 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 		public string GetText() {
 			return lvls[currentLvl].GetText(grid);
+		}
+
+		public bool IsCorrect ()
+		{
+			return answerIsCorrect;
+		}
+
+		public void SetCorrect (bool answer)
+		{
+			answerIsCorrect = answer;
 		}
 
 		public bool IsCorrectDragger(Sprite dragger) {
@@ -124,7 +135,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			return b;
 		}
 
-		// Recontra mega ultra hiper cableado :)
+		// Cableado siguiendo lógica pedida
 		void SetSimpleBuildingsInGrid() {
 			Building a = GetSimpleBuilding();
 			bool up = Randomizer.RandomBoolean();

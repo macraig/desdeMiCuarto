@@ -189,11 +189,7 @@ namespace Assets.Scripts.Games
 		}
 			
 
-        public void OnClickNextButton()
-        {
-            PlaySoundClick();
-            LevelController.GetLevelController().NextChallenge();
-        }
+       
 
         void Update()
         {

@@ -7,13 +7,15 @@ using Assets.Scripts.Sound;
 namespace Assets.Scripts.Games.NeighbourhoodActivity {
 	public class NeighbourhoodActivityView : LevelView {
 		public Text upperBoard;
-		public Button soundBtn;
+		public Button soundBtn, okButton;
 		public List<Text> refTexts;
-
-		public List<Image> viewGrid, viewChoices,refImages;
+		private NeighbourhoodSlot takenSlot;
+		private NeighbourhoodDragger takenDragger;
+		public List<NeighbourhoodDragger> viewChoices;
+		public List<Image> viewGrid, refImages;
+		public Sprite baseTileSprite;
 
 		private NeighbourhoodActivityModel model;
-
 
 		public void Start(){
 			model = new NeighbourhoodActivityModel();
@@ -40,6 +42,9 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		override public void Next(bool first = false){
 			if(!first) model.NextLvl();
 
+//			ActivateDraggers (true);
+		
+
 			if (model.GameEnded ()) {
 				EndGame (60, 0, 1250);
 
@@ -60,7 +65,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 		void SetChoices(List<Building> choices) {
 			for(int i = 0; i < choices.Count; i++) {
-				viewChoices[i].sprite = model.GetSprite(choices[i]);
+				viewChoices[i].GetComponent<Image>().sprite = model.GetSprite(choices[i]);
 			}
 		}
 
@@ -75,25 +80,39 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			for(int i = 0; i < grid.Count; i++) {
 				if(grid[i] != null && !grid[i].IsStreet()) {
 					viewGrid[i].sprite = model.GetSprite(grid[i]);
-					Debug.Log("BUILDING: " + grid[i].GetName());
+					DisableSlot (viewGrid[i].GetComponent<NeighbourhoodSlot>());
+
 				}
 			}
 		}
 
-		//validate on drop
+		//Le saca los componentes de interactividad a los slots que ya tienen edificio
+		void DisableSlot (NeighbourhoodSlot slot)
+		{
+			slot.GetComponent<NeighbourhoodSlot> ().enabled=false;
+
+		}
+
+		//ESTO SOLO ES CUANDO CAES EN UN SLOT, NO AFUERA
 		public void Dropped(NeighbourhoodDragger dragger, NeighbourhoodSlot slot, int row, int column) {
+			
 			if(IsCorrect(dragger, slot, row, column)){
-				slot.GetComponent<Image>().sprite = dragger.GetComponent<Image>().sprite;
-				SoundController.GetController ().SetConcatenatingAudios (false);
-				soundBtn.interactable = true;
-				ShowRightAnswerAnimation ();
-				model.Correct();
+				model.SetCorrect (true);
 			} else {
-				SoundController.GetController ().SetConcatenatingAudios (false);
-				soundBtn.interactable = true;
-				ShowWrongAnswerAnimation ();
-				model.Wrong();
+				model.SetCorrect (false);
 			}
+			slot.GetComponent<Image>().sprite = dragger.GetComponent<Image>().sprite;
+			dragger.SetPosition (slot.transform.position);
+			dragger.GetComponent<Button> ().interactable = true;
+			takenDragger = dragger;
+			if (takenSlot) {
+					ClearTakenSlot ();
+			}else{
+				ActivateDraggers (dragger,false);
+			}
+			takenSlot = slot;
+			okButton.interactable = true;
+
 		}
 
 		bool IsCorrect(NeighbourhoodDragger dragger, NeighbourhoodSlot slot, int row, int column) {
@@ -104,6 +123,49 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 				return false;
 
 			return true;
+		}
+
+		public void OkClick(){
+			
+			if (model.IsCorrect ()) {
+				SoundController.GetController ().SetConcatenatingAudios (false);
+				soundBtn.interactable = true;
+				ShowRightAnswerAnimation ();
+				model.Correct();
+				DisableSlot (takenSlot);
+				takenSlot = null;
+
+			} else {
+				SoundController.GetController ().SetConcatenatingAudios (false);
+				soundBtn.interactable = true;
+				ShowWrongAnswerAnimation ();
+				model.Wrong();
+				ActivateDraggers (takenDragger,true);
+				ClearTakenSlot ();
+			}
+
+			okButton.interactable = false;
+		}
+
+		public void ClearTakenSlot(){
+			if(takenSlot)
+				takenSlot.GetComponent<Image> ().sprite = baseTileSprite;
+		}
+
+		public void OnSelectedSlotClick(NeighbourhoodDragger dragger){
+			SoundController.GetController ().PlayDropSound ();
+			ClearTakenSlot ();
+			dragger.ReturnToOriginalPosition ();
+			ActivateDraggers (takenDragger,true);
+		}
+
+		public void ActivateDraggers(NeighbourhoodDragger dragger, bool activate){
+			for(int i = 0; i < viewChoices.Count; i++) {
+				if (dragger != viewChoices [i]) {
+					viewChoices [i].GetComponent<NeighbourhoodDragger> ().enabled = activate;
+					viewChoices [i].GetComponent<Button> ().interactable = activate;
+				}
+			}
 		}
 	}
 }
