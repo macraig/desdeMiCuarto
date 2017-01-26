@@ -260,7 +260,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 					return false;
 				streetSpot = grid[row - 1][column];
 				spot = grid[row - 2][column];
-				if(spot != null && streetSpot != null && !spot.IsStreet() && streetSpot.IsStreet() && spot.GetName() != "escuela")
+				if(spot != null && streetSpot != null && !spot.IsStreet() && streetSpot.IsStreet() && spot.GetName() != "escuela" && !spot.IsDouble())
 					return true;
 				break;
 			case Possibilities.LEFT:

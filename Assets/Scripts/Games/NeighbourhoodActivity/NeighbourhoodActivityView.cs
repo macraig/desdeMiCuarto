@@ -41,19 +41,21 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 		override public void Next(bool first = false){
 			if(!first) model.NextLvl();
-
-//			ActivateDraggers (true);
 		
 
 			if (model.GameEnded ()) {
 				EndGame (60, 0, 1250);
 
-			}else{
-				SetCurrentLevel();
-				SoundClick();
+			} else {
+				
+				SetCurrentLevel ();
+				SoundClick ();
+				ActivateDraggers (takenDragger,true);
+				if (takenDragger) {
+					takenDragger.ReturnToOriginalPosition ();
+					takenDragger = null;
+				}
 			}
-
-
 		}
 
 		private void SetCurrentLevel() {
@@ -90,7 +92,6 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		void DisableSlot (NeighbourhoodSlot slot)
 		{
 			slot.GetComponent<NeighbourhoodSlot> ().enabled=false;
-
 		}
 
 		//ESTO SOLO ES CUANDO CAES EN UN SLOT, NO AFUERA
@@ -140,8 +141,6 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 				soundBtn.interactable = true;
 				ShowWrongAnswerAnimation ();
 				model.Wrong();
-				ActivateDraggers (takenDragger,true);
-				ClearTakenSlot ();
 			}
 
 			okButton.interactable = false;
@@ -154,21 +153,27 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 		public void OnSelectedSlotClick(NeighbourhoodDragger dragger){
 			if (dragger.WasDragged ()) {
+				SoundController.GetController ().SetConcatenatingAudios (false);
 				SoundController.GetController ().PlayDropSound ();
 				ClearTakenSlot ();
 				dragger.ReturnToOriginalPosition ();
 				ActivateDraggers (takenDragger,true);
+				takenSlot = null;
+				okButton.interactable = false;
 			}
 
 		}
 
 		public void ActivateDraggers(NeighbourhoodDragger dragger, bool activate){
-			for(int i = 0; i < viewChoices.Count; i++) {
-				if (dragger != viewChoices [i]) {
-					viewChoices [i].GetComponent<NeighbourhoodDragger> ().enabled = activate;
-					viewChoices [i].GetComponent<Button> ().interactable = activate;
+			if (dragger) {
+				for(int i = 0; i < viewChoices.Count; i++) {
+					if (dragger != viewChoices [i]) {
+						viewChoices [i].GetComponent<NeighbourhoodDragger> ().enabled = activate;
+						viewChoices [i].GetComponent<Button> ().interactable = activate;
+					}
 				}
 			}
+
 		}
 	}
 }

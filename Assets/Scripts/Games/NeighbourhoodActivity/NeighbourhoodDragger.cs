@@ -18,6 +18,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 
 		public void OnBeginDrag(PointerEventData eventData) {
 			if (active) {
+				SoundController.GetController ().SetConcatenatingAudios (false);
 				SoundController.GetController().PlayDragSound ();
 				itemBeingDragged = this;
 				if (first) {
