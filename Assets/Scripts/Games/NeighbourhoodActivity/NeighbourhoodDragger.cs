@@ -56,5 +56,9 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 //			transform.parent = GameObject.Find("buildingsPlaca").transform;
 			transform.position = originPosition;
 		}
+
+		public bool WasDragged(){
+			return !first;
+		}
 	}
 }

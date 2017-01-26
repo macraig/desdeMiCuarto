@@ -153,10 +153,13 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		}
 
 		public void OnSelectedSlotClick(NeighbourhoodDragger dragger){
-			SoundController.GetController ().PlayDropSound ();
-			ClearTakenSlot ();
-			dragger.ReturnToOriginalPosition ();
-			ActivateDraggers (takenDragger,true);
+			if (dragger.WasDragged ()) {
+				SoundController.GetController ().PlayDropSound ();
+				ClearTakenSlot ();
+				dragger.ReturnToOriginalPosition ();
+				ActivateDraggers (takenDragger,true);
+			}
+
 		}
 
 		public void ActivateDraggers(NeighbourhoodDragger dragger, bool activate){
