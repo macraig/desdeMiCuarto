@@ -9,7 +9,8 @@ public class SantiAnimationScript : MonoBehaviour {
 
 		public void OnSantiAnimationEnd()
 		{
-			levelView.NextMove();
+			levelView.EndMove();
+			gameObject.SetActive (false);
 		}
 
 }

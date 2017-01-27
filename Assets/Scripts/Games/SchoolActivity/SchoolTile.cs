@@ -14,7 +14,7 @@ public class SchoolTile : MonoBehaviour {
 		}
 
 		public void ShowSanti(bool show){
-			santi.SetActive (true);
+			santi.SetActive (show);
 		}
 
 		public void MoveSantiLeft(){

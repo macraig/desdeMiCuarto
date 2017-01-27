@@ -11,9 +11,12 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		public List<Toggle> rooms;
 		public Button okBtn;
 		public List<GameObject> directionsListBtns;
+		public List<Button> controlButtons;
+		public Button soundButton,menuButton;
 		public Image board;
 		public Player santi;
 		List<Direction> instructions;
+
 		[HideInInspector] public bool playersTurn = true;
 
 
@@ -22,8 +25,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 
 		private SchoolActivityModel model;
-		private bool canMove;
-		private int currentSlot;
+		private List<Direction> currentInstructions;
 
 		public void Start(){
 			ShowExplanation();
@@ -31,6 +33,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			model = new SchoolActivityModel();
 			CreateViewGrid ();
 			ShowSanti ();
+
 		}
 
 		override public void Next(bool first = false) {
@@ -43,7 +46,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 				EndGame(60,0,1250);
 				return;
 			}
-			CleanUI ();
+
 //			okBtn.interactable = false;
 
 			model.SetSector();
@@ -51,6 +54,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			SoundClick();
 		}
 
+	
 
 
 		public void SoundClick(){
@@ -80,54 +84,90 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 		public void OkClick(){
 			GetInstructions ();
-//			//todo: bloquear acciones del user hasta que termine de moverse
-			MoveSequence (ParseInstructions (instructions));
+			//todo: bloquear acciones del user hasta que termine de moverse
+			currentInstructions = GetInstructions ();
+			DisableAllButtons ();
+			NextMove ();
 		}
 
-		private void MoveSequence(Vector2[] instructionArray){
-			for (int i = 0; i < instructionArray.Length; i++) {
-				 canMove = model.AnalizeMovement (instructionArray[i]);
+		private void NextMove(){
+			if (currentInstructions.Count > 0) {
+				Vector2 instructionVector = model.ParseInstruction(currentInstructions[0]);
+
+				bool canMove = model.AnalizeMovement (instructionVector);
 				if (canMove) {
-					MoveSanti (instructionArray [i]);
+					MoveSanti (currentInstructions[0]);
 				} else {
-					//ShowWrongAnimation
-					break;					
+					ShowWrongAnswerAnimation ();						
 				}
-				// ver que hay en ese casillero:
-				//si hay pared, break y chau turno
-				//si hay vacio, me muevo (actualizar santi pos)
-				//si hay un trigger me muevo y veo si esta bien o mal (actualizar santi pos)
+				currentInstructions.RemoveAt (0);
+			}else{
+				CleanUI ();
+				EnableAllButtons ();
+			}
+				 
+		}
 
+		void EnableAllButtons ()
+		{
+			controlButtons.ForEach((Button b) => b.interactable=true);
+			directionsListBtns.ForEach((GameObject g) => g.GetComponent<Button>().interactable=true);
+			soundButton.interactable = true;
+			menuButton.interactable = true;
+			okBtn.interactable = true;
+
+		}
+
+		void DisableAllButtons ()
+		{
+			controlButtons.ForEach((Button b) => b.interactable=false);
+			directionsListBtns.ForEach((GameObject g) => g.GetComponent<Button>().interactable=false);
+			soundButton.interactable = false;
+			okBtn.interactable = false;
+			menuButton.interactable = false;
+
+		}
+
+
+		private void MoveSanti(Direction moveTo){
+			SchoolTile currentTile = viewGrid [(int)model.GetSantiPos ().x] [(int)model.GetSantiPos ().y];
+			switch (moveTo) {
+			case Direction.DOWN:
+				currentTile.MoveSantiDown ();
+				break;
+			case Direction.UP:
+				currentTile.MoveSantiUp ();
+				break;
+			case Direction.LEFT:
+				currentTile.MoveSantiLeft ();
+				break;
+			case Direction.RIGHT:
+				currentTile.MoveSantiRight ();
+				break;
 			}
 
-			//todo: desbloquear acciones del user para que siga jugando
-			//borrar todas las instrucciones que ya puso el player
 		}
 
-		public void NextMove(){
-			//todo
-		}
-
-		private void MoveSanti(Vector2 moveTo){
-			Vector2 newPosition = model.GetSantiPos () + moveTo;
-			viewGrid[(int)model.GetSantiPos().x][(int)model.GetSantiPos().y].ShowSanti(false);
-			viewGrid[(int)newPosition.x][(int)newPosition.y].ShowSanti(false);
+		public void EndMove(){
+			Vector2 newPosition = model.GetNewPosition ();
+//			Vector2 santiPos = new Vector2 ((int)model.GetSantiPos ().x, (int) model.GetSantiPos ().y);
+//			viewGrid[(int)santiPos.x][(int)santiPos.y].ShowSanti(false);
+			viewGrid[(int)newPosition.x][(int)newPosition.y].ShowSanti(true);
 			model.UpdateSantiPosition (newPosition);
-			Invoke ("OnTrigger", 1f);
-		}
-
-		private void OnTrigger(){
-			Tile tile = model.GetCurrentTile ();
-			if (tile == Tile.EMPTY)
-				return;
-			if(model.IsCorrectSector()){
-				//showAnimationCorrect
-				//nextTurn
+			if (model.OnTrigger ()) {
+				if (model.IsCorrectSector ()) {
+					ShowRightAnswerAnimation ();
+				} else {
+					ShowWrongAnswerAnimation ();
+				}
+			} else {
+				NextMove ();
 			}
-			canMove = false;
+		
 
-			
 		}
+
+
 
 		private List<Direction> GetInstructions(){
 			instructions.Clear ();
@@ -138,14 +178,13 @@ namespace Assets.Scripts.Games.SchoolActivity {
 				}
 			}
 			return instructions;
-
 		}
 
-		Vector2[] ParseInstructions (List<Direction> instructions)
+		List<Vector2> ParseInstructions (List<Direction> instructions)
 		{
-			Vector2[] vectorArray = new Vector2[instructions.Count];
+			List<Vector2> vectorArray = new List<Vector2> ();
 			for (int i = 0; i < instructions.Count; i++) {
-				vectorArray [i] = model.ParseInstruction (instructions [i]); 
+				vectorArray.Add(model.ParseInstruction (instructions [i])); 
 			}
 			return vectorArray;
 		}
@@ -176,6 +215,18 @@ namespace Assets.Scripts.Games.SchoolActivity {
 				}
 			}
 		}
+
+		override public void OnWrongAnimationEnd(){
+			CleanUI ();
+			EnableAllButtons ();
+		}
+
+		override public void OnRightAnimationEnd(){
+			CleanUI ();
+			EnableAllButtons ();
+			Next ();
+		}
+
 
 
 	}

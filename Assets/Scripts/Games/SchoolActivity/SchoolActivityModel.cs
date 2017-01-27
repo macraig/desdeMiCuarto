@@ -23,6 +23,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 		private int[][] schoolGrid;
 		private Vector2 santiPos = new Vector2(3,4);
+		private Vector2 newPosition;
 
 		private const int ROOMS = 6;
 		//Current sector index
@@ -48,7 +49,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		}
 
 		public bool AnalizeMovement (Vector2 moveVector){
-			Vector2 newPosition = santiPos + moveVector;
+			 newPosition = santiPos + moveVector;
 			//Check if newPosition in within the grid
 			if (newPosition.x < 0 || newPosition.y < 0 || newPosition.x >= ROWS || newPosition.y >= COLS)
 				return false;
@@ -66,6 +67,14 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 		public void UpdateSantiPosition(Vector2 newPosition){
 			santiPos = newPosition;
+		}
+
+		public void AddStreak (bool correctAnswer)
+		{
+			if (correctAnswer)
+				streak++;
+			else
+				streak--;
 		}
 
 		void InitBoards(){
@@ -231,13 +240,13 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			*/
 			schoolGrid = new int[ROWS][];
 			schoolGrid[0] = new int[COLS]{0,0,0,1,0,1,0,0,1,0};
-			schoolGrid[1] = new int[COLS]{0,0,0,2,0,3,0,0,1,0};
+			schoolGrid[1] = new int[COLS]{0,0,0,6,0,3,0,0,1,0};
 			schoolGrid[2] = new int[COLS]{1,1,1,1,0,1,1,1,1,1};
 			schoolGrid[3] = new int[COLS]{0,0,0,0,0,0,0,0,0,5};
 			schoolGrid[4] = new int[COLS]{1,4,1,1,0,1,8,1,1,1};
-			schoolGrid[5] = new int[COLS]{0,0,0,1,0,7,0,0,0,0};
+			schoolGrid[5] = new int[COLS]{0,0,0,1,0,2,0,0,0,0};
 			schoolGrid[6] = new int[COLS]{0,0,0,1,0,1,0,0,0,0};
-			schoolGrid[7] = new int[COLS]{0,0,1,6,0,1,0,0,0,0};
+			schoolGrid[7] = new int[COLS]{0,0,1,7,0,1,0,0,0,0};
 
 		}
 
@@ -249,7 +258,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			case 1:
 				return Tile.WALL;
 			case 2:
-				return Tile.CLASS;
+				return Tile.LUNCH;
 			case 3:
 				return Tile.LAB;
 			case 4:
@@ -257,6 +266,8 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			case 5:
 				return Tile.PLAYGROUND;
 			case 6:
+				return Tile.CLASS;
+			case 7:
 				return Tile.ENTRANCE;
 			case 8:
 				return Tile.BATHROOM;
@@ -281,7 +292,13 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			return COLS;
 		}
 	
-		
+		public Vector2 GetNewPosition(){
+			return newPosition;
+		}
+
+		public bool OnTrigger(){
+			return currentTile != Tile.EMPTY;
+		}
 
 	}
 
