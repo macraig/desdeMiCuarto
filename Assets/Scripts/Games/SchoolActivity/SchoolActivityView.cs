@@ -17,15 +17,20 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		[HideInInspector] public bool playersTurn = true;
 
 
+		public List<SchoolTile> allTiles;
+		private List<List<SchoolTile>> viewGrid;
 
 
 		private SchoolActivityModel model;
+		private bool canMove;
 		private int currentSlot;
 
 		public void Start(){
 			ShowExplanation();
 			instructions = new List<Direction> ();
 			model = new SchoolActivityModel();
+			CreateViewGrid ();
+			ShowSanti ();
 		}
 
 		override public void Next(bool first = false) {
@@ -39,7 +44,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 				return;
 			}
 			CleanUI ();
-			okBtn.interactable = false;
+//			okBtn.interactable = false;
 
 			model.SetSector();
 			board.sprite = model.BoardSprite();
@@ -52,13 +57,76 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			SoundController.GetController().PlayClip(model.BoardClip());
 		}
 
-		public void HouseSectorSelected(){
-			okBtn.interactable = true;
+		void CreateViewGrid ()
+		{
+			viewGrid = new List<List<SchoolTile>> ();
+			int k = 0;
+			for (int i = 0; i< model.GetRows (); i++) {
+				List<SchoolTile> rowList = new List<SchoolTile> ();
+				for (int j = 0; j < model.GetCols (); j++) {
+					
+					rowList.Add (allTiles[k]);
+					k++;
+				}
+				viewGrid.Add (rowList);
+			}
+		}
+
+		void ShowSanti ()
+		{
+			Vector2 santiPos = model.GetSantiPos ();
+			viewGrid[(int)santiPos.x] [(int)santiPos.y].ShowSanti(true);
 		}
 
 		public void OkClick(){
 			GetInstructions ();
-			santi.MoveSequence (ParseInstructions (instructions));
+//			//todo: bloquear acciones del user hasta que termine de moverse
+			MoveSequence (ParseInstructions (instructions));
+		}
+
+		private void MoveSequence(Vector2[] instructionArray){
+			for (int i = 0; i < instructionArray.Length; i++) {
+				 canMove = model.AnalizeMovement (instructionArray[i]);
+				if (canMove) {
+					MoveSanti (instructionArray [i]);
+				} else {
+					//ShowWrongAnimation
+					break;					
+				}
+				// ver que hay en ese casillero:
+				//si hay pared, break y chau turno
+				//si hay vacio, me muevo (actualizar santi pos)
+				//si hay un trigger me muevo y veo si esta bien o mal (actualizar santi pos)
+
+			}
+
+			//todo: desbloquear acciones del user para que siga jugando
+			//borrar todas las instrucciones que ya puso el player
+		}
+
+		public void NextMove(){
+			//todo
+		}
+
+		private void MoveSanti(Vector2 moveTo){
+			Vector2 newPosition = model.GetSantiPos () + moveTo;
+			viewGrid[(int)model.GetSantiPos().x][(int)model.GetSantiPos().y].ShowSanti(false);
+			viewGrid[(int)newPosition.x][(int)newPosition.y].ShowSanti(false);
+			model.UpdateSantiPosition (newPosition);
+			Invoke ("OnTrigger", 1f);
+		}
+
+		private void OnTrigger(){
+			Tile tile = model.GetCurrentTile ();
+			if (tile == Tile.EMPTY)
+				return;
+			if(model.IsCorrectSector()){
+				//showAnimationCorrect
+				//nextTurn
+			}
+			canMove = false;
+
+			
 		}
 
 		private List<Direction> GetInstructions(){
@@ -108,5 +176,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 				}
 			}
 		}
+
+
 	}
 }
