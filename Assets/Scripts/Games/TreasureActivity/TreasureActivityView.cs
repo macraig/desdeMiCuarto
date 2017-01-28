@@ -8,6 +8,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 	public class TreasureActivityView : LevelView {
 		public List<Image> pattern;
 		public Button soundBtn, okBtn, NextButton;
+		public List<Image> DropBackgroundImages;
 		public List<Button> droppers;
 		public List<Image> draggers;
 

@@ -9,7 +9,8 @@ namespace Assets.Scripts.Games.TreasureActivity {
 	public class TreasureActivityModel : LevelModel {
 		private int currentLvl, exercisesDone;
 		private List<Figure> pattern, choices;
-        private Boolean _lastCorrect;
+	    private int _tableSize;
+        private bool _lastCorrect;
 
         private static int SHAPES = 4, COLORS = 5;
 
@@ -19,7 +20,12 @@ namespace Assets.Scripts.Games.TreasureActivity {
 	        set { _lastCorrect = value; }
 	    }
 
-	   
+	    public int TableSize
+	    {
+	        get { return _tableSize; }
+	        set { _tableSize = value; }
+	    }
+
 
 	    public bool GameEnded(){
 			return exercisesDone == 6;
@@ -73,16 +79,13 @@ namespace Assets.Scripts.Games.TreasureActivity {
 	        pattern.Clear();
             choices.Clear();
             Randomizer shapeRand = Randomizer.New(SHAPES - 1);
-            Randomizer secondShapeRand = Randomizer.New(SHAPES - 1);
             Randomizer colorRand = Randomizer.New(COLORS - 1);
-            Randomizer secondColorRand = Randomizer.New(COLORS - 1);
-            Debug.Log("Current lvl:" + currentLvl);
-
             switch (currentLvl)
-	        {
-              
-	            case 0:              
-                     for (int i = 3; i >= 0; i--)
+	        {        
+	            case 0:
+                    TableSize = 4;
+
+                    for (int i = 3; i >= 0; i--)
                      {
                          Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next());
                          figure.Size(false);
@@ -95,6 +98,171 @@ namespace Assets.Scripts.Games.TreasureActivity {
                     break;
 
                 case 1:
+                    TableSize = 4;
+
+	                do
+	                {
+	                    for (int i = 5; i >= 0; i--)
+	                    {
+	                        Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next());
+	                        figure.Size(false);
+	                        if (pattern.Count < 4) pattern.Add(figure);
+	                        choices.Add(figure);
+	                    }
+	                } while (AreTwoFiguresEquals(choices));
+                    
+	                int target;
+	                int source;
+                    do
+	                {
+                        target = Random.Range(1, 3);
+	                    source = Random.Range(0, 4);
+	                } while (target == source);
+
+	                pattern[target] = pattern[source];
+	                if (choices.FindAll(e => e.GetColor() == pattern[target].GetColor()).Count < 2 )
+	                {
+	                    choices.Find(e => e.GetColor() != pattern[target].GetColor()).Color(pattern[target].GetColor());
+	                }
+                    Utils.Shuffle(choices);
+                    break;
+
+
+                case 2:
+                    TableSize = 4;
+
+                    do
+                    {
+                        pattern.Clear();
+                        choices.Clear();
+                        for (int i = 5; i >= 0; i--)
+                        {
+                            colorRand.Restart();
+                            Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next()).Size(Randomizer.RandomBoolean());
+                            if (pattern.Count < 4) pattern.Add(figure);
+                            choices.Add(figure);
+                        }
+                    } while (choices.FindAll(e => e.IsBig()).Count < 2 || choices.FindAll(e => !e.IsBig()).Count < 2 || AreTwoFiguresEquals(choices) || pattern.FindAll(e => e.IsBig()).Count < 1 || pattern.FindAll(e => !e.IsBig()).Count < 1);
+
+               
+                    Utils.Shuffle(choices);
+                    break;
+
+                case 3:
+                    TableSize = 8;
+
+                    do
+                    {
+                        pattern.Clear();
+                        choices.Clear();
+                        bool isBig = Randomizer.RandomBoolean();
+                        for (int i = 5; i >= 0; i--)
+                        {
+                            Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next()).Size(isBig);
+                            if (pattern.Count < 4) pattern.Add(figure);
+                            choices.Add(figure);
+                        }
+                    } while (AreTwoFiguresEquals(choices));
+
+                    choices[0] = Figure.F().Color(choices[0].GetColor()).Shape(choices[0].GetShape()).Size(!choices[0].IsBig());
+                    // el color debe ser de una de las del patrón? 
+                    choices[1] = Figure.F().Color(choices[2].GetColor()).Shape(choices[1].GetShape()).Size(choices[2].IsBig());
+
+	                do
+	                {
+	                    Utils.Shuffle(choices);
+	                } while (choices[0].Equals(pattern[0]) && choices[1].Equals(pattern[1]) &&
+	                         choices[2].Equals(pattern[2]));
+
+                    break;
+                case 4:
+                    TableSize = 8;
+
+                    do
+                    {
+                        pattern.Clear();
+                        choices.Clear();
+                        for (int i = 5; i >= 0; i--)
+                        {
+                            colorRand.Restart();
+                            Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next()).Size(Randomizer.RandomBoolean());
+                            if(pattern.Count < 4) pattern.Add(figure);
+                            choices.Add(figure);
+                        }
+                    } while (choices.FindAll(e => e.IsBig()).Count < 2 || choices.FindAll(e => !e.IsBig()).Count < 2 || AreTwoFiguresEquals(choices));
+
+
+                    // repeticion de figura
+                    int aTarget;
+                    int aSource;
+                    do
+                    {
+                        aTarget = Random.Range(1, 3);
+                        aSource = Random.Range(0, 4);
+                    } while (aTarget == aSource);
+
+                    pattern[aTarget] = pattern[aSource];
+
+                    do
+                    {
+                        Utils.Shuffle(choices);
+                    } while (choices[0].Equals(pattern[0]) && choices[1].Equals(pattern[1]) &&
+                             choices[2].Equals(pattern[2]));
+
+                    break;
+                case 5:
+                    // 
+                    TableSize = 8;
+
+                    do
+                    {
+                        pattern.Clear();
+                        choices.Clear();
+                        for (int i = 5; i >= 0; i--)
+                        {
+                            Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next()).Size(Randomizer.RandomBoolean());
+                            if (pattern.Count < 4) pattern.Add(figure);
+                            choices.Add(figure);
+                        }
+                    } while (choices.FindAll(e => e.IsBig()).Count < 2 || choices.FindAll(e => !e.IsBig()).Count < 2 || AreTwoFiguresEquals(choices));
+
+
+                    // palindrome
+                    pattern[3] = pattern[0];
+
+                    if (Randomizer.RandomBoolean())
+                    {
+                        pattern[2] = pattern[1];
+                    }
+
+                    do
+                    {
+                        Utils.Shuffle(choices);
+                    } while (choices[0].Equals(pattern[0]) && choices[1].Equals(pattern[1]) &&
+                             choices[2].Equals(pattern[2]));
+
+                    break;
+            }
+            
+            // old cases without table size 
+            /*  switch (currentLvl)
+	        {        
+	            case 0:
+
+                    for (int i = 3; i >= 0; i--)
+                     {
+                         Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next());
+                         figure.Size(false);
+                         pattern.Add(figure);
+                         choices.Add(figure);
+                     }
+                     Utils.Shuffle(pattern);
+                     Utils.Shuffle(choices);
+
+                    break;
+
+                case 1:
+
                     for (int i = 3; i >= 0; i--)
                     {
                         Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next());
@@ -116,6 +284,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
 
                 case 2:
+
                     do
                     {
                         pattern.Clear();
@@ -139,6 +308,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
                     break;
 
                 case 3:
+
                     do
                     {
                         pattern.Clear();
@@ -159,6 +329,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
                     break;
                 case 4:
+
                     do
                     {
                         pattern.Clear();
@@ -190,6 +361,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
                     break;
                 case 5:
+
                     do
                     {
                         pattern.Clear();
@@ -218,7 +390,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
                              choices[2].Equals(pattern[2]));
 
                     break;
-            }
+            }*/
 	    }
 
 	    private bool AreTwoFiguresEquals(List<Figure> figures)
