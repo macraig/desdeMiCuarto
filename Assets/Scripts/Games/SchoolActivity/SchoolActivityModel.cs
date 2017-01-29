@@ -144,7 +144,6 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		}
 
 
-
 		public void NextStage(){
 			stage++;
 			CheckDifficulty();

@@ -23,6 +23,8 @@ namespace Assets.Scripts.Games
 		//Right and wrong animations
 		public Image rightAnimation;
 		public Image wrongAnimation;
+		//First turn
+		private bool first = true;
 
 		public GameObject starPanel;
 		private Sprite star;
@@ -90,39 +92,39 @@ namespace Assets.Scripts.Games
 
 		/*-----Functions for finalResult panel-----*/
 	
-
-
-		public void ShowEndPanel(){
-			endGamePanel.transform.SetAsLastSibling ();
-			endGamePanel.SetActive (true);
-			SoundController.GetController ().PlayLevelCompleteSound ();
-			ShowStars ();
-		}
-
-		void ShowStars ()
-		{
-			star = Resources.Load<Sprite> ("Sprites/star");
-			int stars = AppController.GetController ().GetCurrentMetrics ().GetStars ();
-			for(int i = 0; i < stars; i++)
-			{            
-				Image starImage = starPanel.GetComponentsInChildren<Image> (true) [i+1];
-				starImage.sprite=star;
-			}
-		}			
-
-		public void OnEndHoverRestartButton(){
-			endGamePanel.GetComponentInChildren<Text> ().text = "VOLVER A JUGAR";
-
-		}
-
-		public void OnEndHoverQuitButton(){
-			endGamePanel.GetComponentInChildren<Text> ().text = "VOLVER AL MENÚ";
-
-		}
-
-		public void OnEndExitHover(){
-			endGamePanel.GetComponentInChildren<Text> ().text = "";
-		}
+//
+//
+//		public void ShowEndPanel(){
+//			endGamePanel.transform.SetAsLastSibling ();
+//			endGamePanel.SetActive (true);
+//			SoundController.GetController ().PlayLevelCompleteSound ();
+//			ShowStars ();
+//		}
+//
+//		void ShowStars ()
+//		{
+//			star = Resources.Load<Sprite> ("Sprites/star");
+//			int stars = AppController.GetController ().GetCurrentMetrics ().GetStars ();
+//			for(int i = 0; i < stars; i++)
+//			{            
+//				Image starImage = starPanel.GetComponentsInChildren<Image> (true) [i+1];
+//				starImage.sprite=star;
+//			}
+//		}			
+//
+//		public void OnEndHoverRestartButton(){
+//			endGamePanel.GetComponentInChildren<Text> ().text = "VOLVER A JUGAR";
+//
+//		}
+//
+//		public void OnEndHoverQuitButton(){
+//			endGamePanel.GetComponentInChildren<Text> ().text = "VOLVER AL MENÚ";
+//
+//		}
+//
+//		public void OnEndExitHover(){
+//			endGamePanel.GetComponentInChildren<Text> ().text = "";
+//		}
 
 		/*------------------------------------------*/
 
@@ -138,7 +140,10 @@ namespace Assets.Scripts.Games
 		public void HideExplanation(){
 			PlaySoundClick ();
 			explanationPanel.SetActive (false);
-			Next (true);
+			if (first) {
+				Next (true);
+				first = false;
+			}
 		}
 
 
@@ -199,7 +204,8 @@ namespace Assets.Scripts.Games
 
 		public void EndGame(int minSeconds, int pointsPerSecond, int pointsPerError){
 			MetricsController.GetController().GameFinished(minSeconds, pointsPerSecond, pointsPerError);
-			ShowEndPanel ();
+//			ShowEndPanel ();
+			ViewController.GetController ().LoadEndPanel ();
 		}
 
 		internal void ShowRightAnswerAnimation(){

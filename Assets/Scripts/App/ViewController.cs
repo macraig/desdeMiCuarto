@@ -40,8 +40,6 @@ namespace Assets.Scripts.App
         internal void LoadMainMenu()
         {
             ChangeCurrentObject(LoadPrefab("MainMenu"));
-//            if (!SettingsController.GetController().GetMusic()) SoundController.GetController().StopMusic();
-//            else SoundController.GetController().PlayMusic();
         }    
 
         private GameObject LoadPrefab(string name)
@@ -54,6 +52,11 @@ namespace Assets.Scripts.App
         {
             ChangeCurrentObject(LoadPrefab("Cover"));
         }
+
+		internal void LoadEndPanel()
+		{
+			ChangeCurrentObject(LoadPrefab("finalResult"));
+		}
 
      
         internal void LoadMetrics()

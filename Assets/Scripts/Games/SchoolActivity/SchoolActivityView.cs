@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine.UI;
-
+using DG.Tweening;
 using UnityEngine;
 using Assets.Scripts.Common;
 using Assets.Scripts.Sound;
@@ -14,16 +14,10 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		public List<Button> controlButtons;
 		public Button soundButton,menuButton;
 		public Image board;
-		public Player santi;
+		public Image santi;
 		List<Direction> instructions;
-
-		[HideInInspector] public bool playersTurn = true;
-
-
-		public List<SchoolTile> allTiles;
-		private List<List<SchoolTile>> viewGrid;
-
-
+		public List<GameObject> allTiles;
+		private List<List<GameObject>> viewGrid;
 		private SchoolActivityModel model;
 		private List<Direction> currentInstructions;
 
@@ -32,11 +26,10 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			instructions = new List<Direction> ();
 			model = new SchoolActivityModel();
 			CreateViewGrid ();
-			ShowSanti ();
-
 		}
 
 		override public void Next(bool first = false) {
+			
 			if(model.IsFinished()) {
 				//				5 ESTRELLAS: 0 ERRORES
 				//				4 ESTRELLAS: 1ERROR
@@ -55,18 +48,16 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		}
 
 	
-
-
 		public void SoundClick(){
 			SoundController.GetController().PlayClip(model.BoardClip());
 		}
 
 		void CreateViewGrid ()
 		{
-			viewGrid = new List<List<SchoolTile>> ();
+			viewGrid = new List<List<GameObject>> ();
 			int k = 0;
 			for (int i = 0; i< model.GetRows (); i++) {
-				List<SchoolTile> rowList = new List<SchoolTile> ();
+				List<GameObject> rowList = new List<GameObject> ();
 				for (int j = 0; j < model.GetCols (); j++) {
 					
 					rowList.Add (allTiles[k]);
@@ -75,16 +66,10 @@ namespace Assets.Scripts.Games.SchoolActivity {
 				viewGrid.Add (rowList);
 			}
 		}
-
-		void ShowSanti ()
-		{
-			Vector2 santiPos = model.GetSantiPos ();
-			viewGrid[(int)santiPos.x] [(int)santiPos.y].ShowSanti(true);
-		}
-
+			
 		public void OkClick(){
+			
 			GetInstructions ();
-			//todo: bloquear acciones del user hasta que termine de moverse
 			currentInstructions = GetInstructions ();
 			DisableAllButtons ();
 			NextMove ();
@@ -98,6 +83,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 				if (canMove) {
 					MoveSanti (currentInstructions[0]);
 				} else {
+//					FailMoveSanti (currentInstructions [0]);
 					ShowWrongAnswerAnimation ();						
 				}
 				currentInstructions.RemoveAt (0);
@@ -130,19 +116,31 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 
 		private void MoveSanti(Direction moveTo){
-			SchoolTile currentTile = viewGrid [(int)model.GetSantiPos ().x] [(int)model.GetSantiPos ().y];
+			GameObject currentTile = viewGrid [(int)model.GetNewPosition ().x] [(int)model.GetNewPosition ().y];
 			switch (moveTo) {
 			case Direction.DOWN:
-				currentTile.MoveSantiDown ();
-				break;
 			case Direction.UP:
-				currentTile.MoveSantiUp ();
+				santi.transform.DOMoveY(currentTile.transform.position.y,1).OnComplete(EndMove);
 				break;
 			case Direction.LEFT:
-				currentTile.MoveSantiLeft ();
-				break;
 			case Direction.RIGHT:
-				currentTile.MoveSantiRight ();
+				santi.transform.DOMoveX(currentTile.transform.position.x,1).OnComplete(EndMove);
+				break;
+			}
+
+		}
+
+		private void FailMoveSanti(Direction moveTo){
+			GameObject currentTile = viewGrid [(int)model.GetNewPosition ().x] [(int)model.GetNewPosition ().y];
+			RectTransform rt = (RectTransform)currentTile.transform;
+			switch (moveTo) {
+			case Direction.DOWN:
+			case Direction.UP:
+				santi.transform.DOMoveY((currentTile.transform.position.y)-rt.rect.height*0.3f,1).OnComplete(ShowWrongAnswerAnimation);
+				break;
+			case Direction.LEFT:
+			case Direction.RIGHT:
+				santi.transform.DOMoveX((currentTile.transform.position.x)/3,1).OnComplete(ShowWrongAnswerAnimation);
 				break;
 			}
 
@@ -150,14 +148,13 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 		public void EndMove(){
 			Vector2 newPosition = model.GetNewPosition ();
-//			Vector2 santiPos = new Vector2 ((int)model.GetSantiPos ().x, (int) model.GetSantiPos ().y);
-//			viewGrid[(int)santiPos.x][(int)santiPos.y].ShowSanti(false);
-			viewGrid[(int)newPosition.x][(int)newPosition.y].ShowSanti(true);
 			model.UpdateSantiPosition (newPosition);
 			if (model.OnTrigger ()) {
 				if (model.IsCorrectSector ()) {
+					model.AddStreak (true);
 					ShowRightAnswerAnimation ();
 				} else {
+					model.AddStreak (true);
 					ShowWrongAnswerAnimation ();
 				}
 			} else {
@@ -224,6 +221,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		override public void OnRightAnimationEnd(){
 			CleanUI ();
 			EnableAllButtons ();
+			model.NextStage ();
 			Next ();
 		}
 
