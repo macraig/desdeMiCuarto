@@ -105,11 +105,12 @@ namespace Assets.Scripts.Games
 
         // This method have to restart the view of the game to the initial state
 		virtual public  void RestartGame(){
-			ViewController.GetController ().RestartCurrentGame ();
+			HideInGameMenu ();
+			first = true;
+
 		}
 
         // This method have to be called when the user clicks menuButton
-       
         public void OnClickSurrender()
         {
             PlaySoundClick();
