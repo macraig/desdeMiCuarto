@@ -37,7 +37,7 @@ namespace Assets.Scripts.Games
 			ShowInGameMenu();
 		}
 
-		public void ShowInGameMenu(){
+		virtual public void ShowInGameMenu(){
 			menuPanel.transform.SetAsLastSibling ();
 			menuPanel.SetActive (true);
 		}
