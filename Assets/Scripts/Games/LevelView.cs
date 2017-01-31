@@ -12,11 +12,10 @@ namespace Assets.Scripts.Games
     // recieve whatever it needs
     public abstract class LevelView : MonoBehaviour
     {
-//      
+      
 		//Ingame Menu Panel
 		public GameObject menuPanel;
-		//End Game Panel
-		public GameObject endGamePanel;
+		public Button menuBtn,soundBtn;
 		//Explanation Panel
 		public GameObject explanationPanel;
 		public AudioClip explanationSound;
@@ -24,10 +23,7 @@ namespace Assets.Scripts.Games
 		public Image rightAnimation;
 		public Image wrongAnimation;
 		//First turn
-		private bool first = true;
-
-		public GameObject starPanel;
-		private Sprite star;
+		protected bool first = true;
 
 
 		// This method is used as the game's loop
@@ -55,7 +51,6 @@ namespace Assets.Scripts.Games
 			PlaySoundClick ();
 			HideInGameMenu ();
 			ShowExplanation ();
-
 		}
 
 		public void OnHoverInstructionsButton(){
@@ -64,12 +59,10 @@ namespace Assets.Scripts.Games
 
 		public void OnHoverRestartButton(){
 			menuPanel.GetComponentInChildren<Text> ().text = "VOLVER A JUGAR";
-
 		}
 
 		public void OnHoverQuitButton(){
 			menuPanel.GetComponentInChildren<Text> ().text = "VOLVER AL MENÚ";
-
 		}
 
 		public void OnExitHover(){
@@ -78,58 +71,15 @@ namespace Assets.Scripts.Games
 
 		public void OnClickRestartButton(){
 			PlaySoundClick ();
-//			HideInGameMenu ();
 			RestartGame ();
-
 		}
 
 		public void OnClickExitGameButton(){
 			PlaySoundClick ();
 //			HideInGameMenu ();
 			ExitGame ();
-
 		}
-
-		/*-----Functions for finalResult panel-----*/
-	
-//
-//
-//		public void ShowEndPanel(){
-//			endGamePanel.transform.SetAsLastSibling ();
-//			endGamePanel.SetActive (true);
-//			SoundController.GetController ().PlayLevelCompleteSound ();
-//			ShowStars ();
-//		}
-//
-//		void ShowStars ()
-//		{
-//			star = Resources.Load<Sprite> ("Sprites/star");
-//			int stars = AppController.GetController ().GetCurrentMetrics ().GetStars ();
-//			for(int i = 0; i < stars; i++)
-//			{            
-//				Image starImage = starPanel.GetComponentsInChildren<Image> (true) [i+1];
-//				starImage.sprite=star;
-//			}
-//		}			
-//
-//		public void OnEndHoverRestartButton(){
-//			endGamePanel.GetComponentInChildren<Text> ().text = "VOLVER A JUGAR";
-//
-//		}
-//
-//		public void OnEndHoverQuitButton(){
-//			endGamePanel.GetComponentInChildren<Text> ().text = "VOLVER AL MENÚ";
-//
-//		}
-//
-//		public void OnEndExitHover(){
-//			endGamePanel.GetComponentInChildren<Text> ().text = "";
-//		}
-
-		/*------------------------------------------*/
-
-
-
+			
 		internal void ShowExplanation(){
 			explanationPanel.transform.SetAsLastSibling ();
 			explanationPanel.SetActive(true);
@@ -154,7 +104,7 @@ namespace Assets.Scripts.Games
 		}
 
         // This method have to restart the view of the game to the initial state
-		public  void RestartGame(){
+		virtual public  void RestartGame(){
 			ViewController.GetController ().RestartCurrentGame ();
 		}
 
@@ -164,7 +114,6 @@ namespace Assets.Scripts.Games
         {
             PlaySoundClick();
 //            LevelController.GetLevelController().ResolveExercise();
-
             MetricsController.GetController().OnSurrender();
         }
         // This method have to be called when the user clicks a button
@@ -192,9 +141,7 @@ namespace Assets.Scripts.Games
 		{
 			SoundController.GetController().PlayDragSound();
 		}
-			
 
-       
 
         void Update()
         {
@@ -221,11 +168,20 @@ namespace Assets.Scripts.Games
 		}
 
 		virtual public void OnRightAnimationEnd(){
+			EnableComponents (true);
 			Next ();
 		}
 
 		virtual public void OnWrongAnimationEnd(){
-			
+			EnableComponents (true);
 		}
+
+		//Override to deactivate or activate components before and after right/wrong animations
+		virtual public void EnableComponents(bool enable){
+			menuBtn.interactable = enable;
+			soundBtn.interactable = enable;
+		}
+
+
     }
 }

@@ -37,7 +37,6 @@ namespace Assets.Scripts.Common.Dragger {
 
 		public void OnEndDrag(PointerEventData eventData = null) {
 			if (active) {
-//				SoundController.GetController().PlayDropSound ();
 				itemBeingDragged = null;
 				GetComponent<CanvasGroup> ().blocksRaycasts = true;
 
@@ -49,7 +48,6 @@ namespace Assets.Scripts.Common.Dragger {
 //				}
 				if (dropped && !activeOnDrop) {
 					dropped = false;
-//					gameObject.SetActive (false);
 				}
 			}
 		}
