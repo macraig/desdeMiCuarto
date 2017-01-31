@@ -9,15 +9,17 @@ namespace Assets.Scripts.Games.HouseActivity {
 	public class HouseActivityView : LevelView {
 		public List<Toggle> rooms;
 		public Button okBtn;
-		public Image board;
+		public GameObject board;
 		public Material[] roomTextures;
 
 		public GameObject phantomPanel;
-		private AudioClip ghostRightSound, ghostWrongSound;
+		private AudioClip ghostRightSound, ghostWrongSound,vacuumSound;
 		private int  toggleIndex;
 
 		private HouseActivityModel model;
 		private int currentSlot;
+		private bool firstPhantom = true;
+		private AudioClip currentSound;
 
 		public void Start(){
 			model = new HouseActivityModel();
@@ -25,8 +27,15 @@ namespace Assets.Scripts.Games.HouseActivity {
 			vacuumSprites = Resources.LoadAll<Sprite> ("Sprites/HouseActivity/aspiradora");
 			ghostRightSound = Resources.Load<AudioClip> ("Audio/HouseActivity/boo");
 			ghostWrongSound = Resources.Load<AudioClip> ("Audio/HouseActivity/laugh");
+			vacuumSound =  Resources.Load<AudioClip> ("Audio/HouseActivity/aspiradora");
+
+			phantomInstructionSounds = Resources.LoadAll<AudioClip> ("Audio/HouseActivity/PhantomConsignas"); 
+			phantomInstructions = new string[]{"Ahí veo el fantasma, rápido usen las flechas para atraparlo","¡Ahí esta!","¡Cuidado!","¡Atrápenlo antes de que se vaya" };
+			allToggles = new List<Toggle> (){ left,right,up,down,shootToggle};
 			ShowExplanation ();
 		}
+
+
 
 		override public void Next(bool first = false) {
 			if(model.IsFinished()) {
@@ -35,21 +44,22 @@ namespace Assets.Scripts.Games.HouseActivity {
 //				3 ESTRELLAS: 2 o 3 ERRORES
 //				2 ESTRELLAS: 4 o 5 ERRORES
 //				1 ESTRELLA: MAS DE 5 ERRORES
-				phantomPanel.SetActive(false);
+				ActivatePhantomPanel(false);
 				EndGame(60,0,1250);
 				return;
 			}
 
 			okBtn.interactable = false;
 			shootToggle.interactable = false;
-			phantomPanel.SetActive(false);
+			ActivatePhantomPanel (false);
 			model.SetSector();
-			board.sprite = model.BoardSprite();
+			board.GetComponentsInChildren<Image>()[1].sprite = model.BoardSprite();
+			currentSound = model.BoardClip ();
 			SoundClick();
 		}
 
 		public void SoundClick(){
-			SoundController.GetController().PlayClip(model.BoardClip());
+			SoundController.GetController().PlayClip(currentSound);
 		}
 
 		public void HouseSectorSelected(){
@@ -78,18 +88,33 @@ namespace Assets.Scripts.Games.HouseActivity {
 		public List<GameObject> arrows, ghosts, crosshairs;
 		public List<Image> lifeGhosts;
 		public Toggle shootToggle, left, right, up, down;
+		private List<Toggle> allToggles;
 		public Image phantomBackground, vacuumCleaner;
 		private Sprite[] vacuumSprites;
 		//Right and wrong animations
 		public GameObject rightGhostAnimation;
 		public GameObject wrongGhostAnimation;
 
+		private string[] phantomInstructions;
+		private AudioClip[] phantomInstructionSounds;
 
 		private int correctGhost;
 		private bool cleaning;
 
 		void StartPhantomScreen(int roomIndex) {
-			phantomPanel.SetActive(true);
+
+			ActivatePhantomPanel (true);
+
+			if (firstPhantom) {
+				board.GetComponentInChildren<Text> ().text = phantomInstructions[0].ToUpper();
+				currentSound = phantomInstructionSounds [0];
+				firstPhantom = false;
+			} else {
+				int randomIndex = Randomizer.RandomInRange (phantomInstructions.Length - 1, 1);
+				board.GetComponentInChildren<Text> ().text = phantomInstructions[randomIndex].ToUpper();
+				currentSound = phantomInstructionSounds [randomIndex];
+			}
+			SoundClick ();
 			phantomBackground.material = roomTextures[roomIndex];
 			currentSlot = 4;
 
@@ -100,7 +125,12 @@ namespace Assets.Scripts.Games.HouseActivity {
 			shootToggle.isOn = false;
 		}
 
-
+		public void ActivatePhantomPanel (bool activate)
+		{
+			phantomPanel.SetActive(activate);
+			board.GetComponentInChildren<Text> ().enabled = activate;
+			board.GetComponentsInChildren<Image>()[1].enabled = !activate;
+		}
 
 		public void ShootToggle(){
 			if(!shootToggle.isOn) return;
@@ -119,12 +149,21 @@ namespace Assets.Scripts.Games.HouseActivity {
 			lifeGhosts[model.GetStage()].GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("Sprites/HouseActivity/ghost")[correct ? 2 : 1];
 
 			model.NextStage();
+			SoundController.GetController ().PlayClip (vacuumSound);
+			EnableComponents (false);
+		
 			if(correct){
-				ShowRightAnswerAnimation ();
+				Invoke ("ShowRightAnswerAnimation",1f);
 			} else {
-				ShowWrongAnswerAnimation ();
+				Invoke ("ShowWrongAnswerAnimation",1f);
 			}
 
+		}
+
+		override public void EnableComponents(bool enabled){
+			allToggles.ForEach ((Toggle t) => t.interactable=enabled);
+			menuBtn.interactable = enabled;
+			soundBtn.interactable = enabled;
 		}
 
 		override public void OnWrongAnimationEnd(){
@@ -132,18 +171,15 @@ namespace Assets.Scripts.Games.HouseActivity {
 			cleaning = true;
 			CleanUI();
 			cleaning = false;
-			shootToggle.interactable = true;
+			EnableComponents (true);
 		}
-
-
 
 		override public void OnRightAnimationEnd(){
 			Next ();
 			cleaning = true;
 			CleanUI ();
 			cleaning = false;
-			shootToggle.interactable = true;
-
+			EnableComponents (true);
 		}
 
 		void CleanUI() {
@@ -164,23 +200,61 @@ namespace Assets.Scripts.Games.HouseActivity {
 			}
 		}
 
-		public void DisableDirection(Toggle disable){
+		public void EnableDirection(Toggle opposite,bool enable){
 			if (!cleaning) {
-				disable.interactable = false;
+				opposite.interactable = enable;
 				shootToggle.interactable = true;
 			}
 		}
 
 		public void ClickDirection(Toggle dir){
 			if(cleaning) return;
-
 			PlaySoundClick();
-			dir.enabled = false;
+
+			Toggle opposite = GetOppositeToggle(dir);
+			EnableDirection(opposite,!dir.isOn);
+
+			int move = GetToggleMove(dir);
+
+
+			if (dir.isOn) {
+				ShowArrow (dir);
+				MoveSlots (move);
+			} else {
+				RefreshArrow (dir);
+				MoveSlots (move * -1);
+			}
+//			dir.enabled = false;
+		}
+
+		private Toggle GetOppositeToggle(Toggle dir){
+			if (dir == left)
+				return right;
+			else if (dir == right)
+				return left;
+			else if (dir == up)
+				return down;
+			else
+				return up;
+			
+		}
+
+		int GetToggleMove (Toggle dir)
+		{
+			if (dir == left)
+				return -1;
+			else if (dir == right)
+				return 1;
+			else if (dir == up)
+				return -3;
+			else
+				return 3;
 		}
 
 		//left -1, right +1, up -3, down +3
 		public void MoveSlots(int move){
 			if(cleaning) return;
+
 			crosshairs[currentSlot].SetActive(false);
 
 			currentSlot += move;
@@ -188,16 +262,37 @@ namespace Assets.Scripts.Games.HouseActivity {
 			crosshairs[currentSlot].SetActive(true);
 		}
 
-		public void ShowArrow(string dir){
+		//Clean all arrows, redraw the one that's left
+		void RefreshArrow (Toggle dir)
+		{
+			arrows.ForEach((GameObject g) => g.SetActive(false));
+			if (dir == left || dir == right) {
+				vacuumCleaner.sprite = vacuumSprites [1];
+
+				if (up.isOn)
+					ShowArrow (up);
+				else if(down.isOn)
+					ShowArrow (down);
+			} else {
+				if (left.isOn)
+					ShowArrow (left);
+				else if(right.isOn)
+					ShowArrow (right);
+			}
+		}
+
+		public void ShowArrow(Toggle dir){
 			if(cleaning) return;
 
-			if (dir == "LEFT")
+			if (dir == left)
 				vacuumCleaner.sprite = vacuumSprites [3];
-			else if (dir == "RIGHT")
+			else if (dir == right)
 				vacuumCleaner.sprite = vacuumSprites [5];
+			
 
+			string writtenDir = GetStringDirection (dir);
 
-			switch (dir) {
+			switch (writtenDir) {
 			case "UP":
 				if (left.IsInteractable () && right.IsInteractable ())
 					arrows [0].SetActive (true);
@@ -234,6 +329,18 @@ namespace Assets.Scripts.Games.HouseActivity {
 
 		}
 
+		string GetStringDirection (Toggle dir)
+		{
+			if (dir == left)
+				return "LEFT";
+			else if (dir == right)
+				return "RIGHT";
+			else if (dir == up)
+				return "UP";
+			else 
+				return "DOWN";
+		}
+
 		internal void ShowRightGhostAnimation(){
 			SoundController.GetController ().PlayClip (ghostRightSound);
 			rightGhostAnimation.transform.SetAsLastSibling ();
@@ -257,5 +364,20 @@ namespace Assets.Scripts.Games.HouseActivity {
 			Next ();
 		}
 
+
+		/* -------------------------RESTART GAME----------------------- */
+		override public  void RestartGame(){
+			HideInGameMenu ();
+
+			first = true;
+			firstPhantom = true;
+			CleanUI ();
+			ActivatePhantomPanel (false);
+			lifeGhosts.ForEach((Image im) => im.gameObject.SetActive(false));
+			model = new HouseActivityModel();
+
+			ShowExplanation ();
+		}
+
 	}
-}
+} 
