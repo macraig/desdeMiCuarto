@@ -7,7 +7,7 @@ using Assets.Scripts.Sound;
 namespace Assets.Scripts.Games.NeighbourhoodActivity {
 	public class NeighbourhoodActivityView : LevelView {
 		public Text upperBoard;
-		public Button soundBtn, okButton;
+		public Button okButton;
 		public List<Text> refTexts;
 		private NeighbourhoodSlot takenSlot;
 		private NeighbourhoodDragger takenDragger;
@@ -25,14 +25,27 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		public void Begin(){
 			ShowExplanation();
 			SetGrid(model.GetGrid());
-
+			okButton.interactable = false;
 			//create levels after setting the initial grid.
 			model.CreateLevels();
+		}
+
+		override public  void RestartGame(){
+			base.RestartGame ();
+			ResetGrid (model.GetGrid());
+			Start ();
+
 		}
 
 		public void SoundClick(){
 			soundBtn.interactable = false;
 			SoundController.GetController().ConcatenateAudios(model.GetAudios(), EndSoundMethod);
+		}
+
+		override public void ShowInGameMenu(){
+			base.ShowInGameMenu ();
+			SoundController.GetController ().SetConcatenatingAudios (false);
+			soundBtn.interactable = true;
 		}
 
 		public void EndSoundMethod(){
@@ -82,16 +95,27 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			for(int i = 0; i < grid.Count; i++) {
 				if(grid[i] != null && !grid[i].IsStreet()) {
 					viewGrid[i].sprite = model.GetSprite(grid[i]);
-					DisableSlot (viewGrid[i].GetComponent<NeighbourhoodSlot>());
+					EnableSlot (viewGrid[i].GetComponent<NeighbourhoodSlot>(),false);
 
 				}
 			}
 		}
 
+		void ResetGrid(List<Building> grid) {
+			for(int i = 0; i < grid.Count; i++) {
+				if(grid[i] != null && !grid[i].IsStreet() && grid[i].GetName()!="escuela") {
+					viewGrid[i].sprite = baseTileSprite;
+					EnableSlot (viewGrid[i].GetComponent<NeighbourhoodSlot>(),true);
+
+				}
+			}
+		}
+
+
 		//Le saca los componentes de interactividad a los slots que ya tienen edificio
-		void DisableSlot (NeighbourhoodSlot slot)
+		void EnableSlot (NeighbourhoodSlot slot,bool enable)
 		{
-			slot.GetComponent<NeighbourhoodSlot> ().enabled=false;
+			slot.GetComponent<NeighbourhoodSlot> ().enabled=enable;
 		}
 
 		//ESTO SOLO ES CUANDO CAES EN UN SLOT, NO AFUERA
@@ -131,14 +155,16 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 			if (model.IsCorrect ()) {
 				SoundController.GetController ().SetConcatenatingAudios (false);
 				soundBtn.interactable = true;
+				EnableComponents (false);
+				EnableSlot (takenSlot,false);
 				ShowRightAnswerAnimation ();
 				model.Correct();
-				DisableSlot (takenSlot);
 				takenSlot = null;
 
 			} else {
 				SoundController.GetController ().SetConcatenatingAudios (false);
 				soundBtn.interactable = true;
+				EnableComponents (false);
 				ShowWrongAnswerAnimation ();
 				model.Wrong();
 			}
@@ -154,6 +180,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		public void OnSelectedSlotClick(NeighbourhoodDragger dragger){
 			if (dragger.WasDragged ()) {
 				SoundController.GetController ().SetConcatenatingAudios (false);
+				soundBtn.interactable = true;
 				SoundController.GetController ().PlayDropSound ();
 				ClearTakenSlot ();
 				dragger.ReturnToOriginalPosition ();

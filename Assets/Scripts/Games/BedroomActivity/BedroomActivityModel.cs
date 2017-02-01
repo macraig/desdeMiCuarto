@@ -52,6 +52,10 @@ namespace Assets.Scripts.Games.BedroomActivity {
 			levelAudio = lvls [currentLvl].GetAudioClip ();
 		}
 
+		public void EnableLevelComponents(bool enabled){
+			lvls[currentLvl].Set(enabled);
+		}
+
 		public AudioClip GetLevelSound(){
 			return levelAudio;
 		}
@@ -116,6 +120,10 @@ namespace Assets.Scripts.Games.BedroomActivity {
 
 		public bool CurrentCarpet() {
 			return lvls[currentLvl].IsCarpet();
+		}
+
+		public void RestartGame(){
+			
 		}
 	}
 }

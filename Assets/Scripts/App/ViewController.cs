@@ -29,10 +29,6 @@ namespace Assets.Scripts.App
         }  
 
 		void Start(){
-            //AppController.GetController().SetCurrentGame(3); // Bottle distribution
-            //AppController.GetController().SetCurrentLevel(2);
-            //StartGame(AppController.GetController().GetCurrentGame());
-            //LoadMainMenu();
             LoadCover();
 			SoundController.GetController ().PlayMusic ();
 		}
@@ -42,11 +38,7 @@ namespace Assets.Scripts.App
             ChangeCurrentObject(LoadPrefab("MainMenu"));
         }    
 
-        private GameObject LoadPrefab(string name)
-        {
-
-            return Resources.Load<GameObject>("Prefabs/" + name);
-        }
+       
 
         internal void LoadCover()
         {
@@ -68,13 +60,25 @@ namespace Assets.Scripts.App
 
         }
 
+		internal void RestartCurrentGame()
+		{
+//			ChangeCurrentObject(LoadPrefab("oading");
+			ChangeCurrentObject(LoadPrefab("Games/" + AppController.GetController().GetCurrentGame().GetPrefabName()));
+
+		}
+
+		private GameObject LoadPrefab(string name)
+		{
+			return Resources.Load<GameObject>("Prefabs/" + name);
+		}
+
         private void ChangeCurrentObject(GameObject newObject)
         {
-//            SetCanvasScaler(0.5f);
+//          SetCanvasScaler(0.5f);
             GameObject child = Instantiate(newObject);
             FitObjectTo(child, viewPanel);
-            Destroy(currentGameObject);
-            currentGameObject = child;            
+			Destroy(currentGameObject);
+			currentGameObject = child;            
         }
 
         internal void ShowInGameMenu()
@@ -97,12 +101,7 @@ namespace Assets.Scripts.App
             child.transform.localScale = Vector3.one;
         }
 
-        internal void RestartCurrentGame()
-        {
-			ChangeCurrentObject(LoadPrefab("Games/" + AppController.GetController().GetCurrentGame().GetPrefabName()));
-//            currentGameObject.GetComponent<LevelController>().RestartGame();
-
-        }
+       
 
         internal void LoadSettings()
         {

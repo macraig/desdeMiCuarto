@@ -17,6 +17,7 @@ namespace Assets.Scripts.App
         [SerializeField]
         private List<Game> games;
 
+
         void Awake(){
             if (appController == null) appController = this;
             else if (appController != this) Destroy(gameObject);     
@@ -25,6 +26,8 @@ namespace Assets.Scripts.App
 
             
         }
+
+
 
 		public GameMetrics GetCurrentMetrics()
         {
@@ -40,42 +43,7 @@ namespace Assets.Scripts.App
 			return metricsController;
 		}
 
-        //private void InitModelFromJsonInfo()
-        //{
-
-        //    TextAsset JSONstring = Resources.Load("gamesInfo") as TextAsset;
-        //    JSONNode data = JSON.Parse(JSONstring.text);
-        //    JSONNode calculandox = data["calculandox"];
-
-        //    List<List<List<List<string>>>> gamesInfo = new List<List<List<List<string>>>>(calculandox.Count);
-        //    List<List<int>> gamesLevels = new List<List<int>>(calculandox.Count);
-
-        //    for (int area = 0; area < calculandox.Count; area++)
-        //    {
-        //        gamesInfo.Add(new List<List<List<string>>>(calculandox[area]["games"].Count));
-        //        gamesLevels.Add(new List<int>(calculandox[area]["games"].Count));
-
-        //        for (int game = 0; game < calculandox[area]["games"].Count; game++)
-        //        {
-        //            gamesInfo[area].Add(new List<List<string>>(2)); // name and description
-        //            gamesInfo[area][game].Add(new List<string>(2)); // english and spanish name
-        //            gamesInfo[area][game].Add(new List<string>(2)); // english and spanish description
-
-        //            for (int languageData = 0; languageData < calculandox[area]["games"][game]["name"].Count; languageData++)
-        //            {
-        //                gamesInfo[area][game][0].Add(calculandox[area]["games"][game]["name"][languageData].Value);
-        //                gamesInfo[area][game][1].Add(calculandox[area]["games"][game]["description"][languageData].Value);
-        //            }
-
-        //            gamesLevels[area].Add(calculandox[area]["games"][game]["levels"].AsInt);
-        //        }
-
-        //    }
-
-
-        //    ViewController viewController = ViewController.GetController();
-        //    appModel = new AppModel(new List<int> { viewController.GetNumberingGames().Count, viewController.GetGeometryGames().Count, viewController.GetAbilityGames().Count, viewController.GetDataGames().Count }, gamesInfo, gamesLevels);
-        //}
+     
 
 
         internal string GetGameName(int idGame)
@@ -98,6 +66,13 @@ namespace Assets.Scripts.App
 			ViewController.GetController().StartGame(GetCurrentGame());
       
         }
+
+		internal void PlayNextGame()
+		{
+			ViewController.GetController().StartGame(GetNextGame());
+
+		}
+
 
         internal void BackToGame()
         {
@@ -126,6 +101,10 @@ namespace Assets.Scripts.App
         internal Game GetCurrentGame(){
 			return appModel.GetCurrentGame ();
         }
+
+		internal Game GetNextGame(){
+			return appModel.GetNextGame ();
+		}
 
         internal void ShowInGameMenu(){
             Timer.GetTimer().Pause();

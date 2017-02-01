@@ -9,7 +9,6 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 		
 
 		public Image upperBoard;
-		public Button soundBtn;
 
 		private Sprite[] boards;
 		private ClassroomActivityModel model;
@@ -17,12 +16,16 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 		public void Start(){
 			model = ClassroomActivityModel.StartFromJson(JSON.Parse(Resources.Load<TextAsset>("Jsons/classroom").text).AsObject["levels"].AsArray);
 			boards = Resources.LoadAll<Sprite>("Sprites/ClassroomActivity/consignas");
-			Begin();
+			ShowExplanation ();
 		}
 
-		public void Begin(){
-			ShowExplanation();
 
+
+		override public void RestartGame(){
+			base.RestartGame ();
+			SetCurrentLevel (false);
+			model = ClassroomActivityModel.StartFromJson(JSON.Parse(Resources.Load<TextAsset>("Jsons/classroom").text).AsObject["levels"].AsArray);
+			ShowExplanation ();
 		}
 
 		public void SoundClick(){
@@ -31,7 +34,6 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 
 		override public void Next(bool first = false){
 			if(!first){
-				SetCurrentLevel(false);
 				model.NextLvl();
 			}
 
@@ -52,13 +54,22 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 
 		public void ClickCorrect(){
 			SoundController.GetController ().PlayClip (model.GetLevelSound ());
+			SetCurrentLevel(false);
+			EnableComponents (false);
 			Invoke ("ShowRightAnswerAnimation", 0.5f);
 			model.Correct();
 		}
 
 		public void ClickWrong(){
+			SetCurrentLevel(false);
+			EnableComponents (false);
 			ShowWrongAnswerAnimation ();
 			model.Wrong();
+		}
+
+		override public void OnWrongAnimationEnd(){
+			base.OnWrongAnimationEnd ();
+			SetCurrentLevel(true);
 		}
 		
 	}

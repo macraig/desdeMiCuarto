@@ -52,9 +52,22 @@ public class EndGameView : MonoBehaviour {
 
 		}
 
+		public void OnClickNextGameButton(){
+			PlaySoundClick ();
+			NextGame ();
+
+		}
+
 		internal void ExitGame(){
 			ViewController.GetController().LoadMainMenu();
 			SoundController.GetController ().PlayMusic ();
+		}
+
+		internal void NextGame(){
+			PlaySoundClick ();
+
+			AppController.GetController().PlayNextGame();
+
 		}
 
 		public void OnEndHoverRestartButton(){
@@ -64,6 +77,11 @@ public class EndGameView : MonoBehaviour {
 
 		public void OnEndHoverQuitButton(){
 			gameObject.GetComponentInChildren<Text> ().text = "VOLVER AL MENÚ";
+
+		}
+
+		public void OnEndHoverNextButton(){
+			gameObject.GetComponentInChildren<Text> ().text = "SIGUIENTE JUEGO";
 
 		}
 
