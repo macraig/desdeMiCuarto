@@ -48,6 +48,12 @@ namespace Assets.Scripts.Games.PatternsActivity {
             EnableGridButtons(currentLeft, model.CanPaintLeft());
         }
 
+		override public  void RestartGame(){
+			ChangeGrid (0);
+			base.RestartGame ();
+			Start ();
+		}
+
 		public void OnSoundButtonClick(){
 			SoundController.GetController ().PlayClip (ingameExplanationSound);
 		}
