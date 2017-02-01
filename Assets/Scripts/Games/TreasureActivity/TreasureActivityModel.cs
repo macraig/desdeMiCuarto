@@ -72,7 +72,6 @@ namespace Assets.Scripts.Games.TreasureActivity {
 			return choices;
 		}
 
-		// Horrible y cableadisimo porque no entendi nada del doc :)
 
 	    public void SetLevel()
 	    {
@@ -84,7 +83,6 @@ namespace Assets.Scripts.Games.TreasureActivity {
 	        {        
 	            case 0:
                     TableSize = 4;
-
                     for (int i = 3; i >= 0; i--)
                      {
                          Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next());
@@ -92,14 +90,15 @@ namespace Assets.Scripts.Games.TreasureActivity {
                          pattern.Add(figure);
                          choices.Add(figure);
                      }
-                     Utils.Shuffle(pattern);
-                     Utils.Shuffle(choices);
-
+                    do
+                    {
+                        Utils.Shuffle(choices);
+                    } while (choices[0].Equals(pattern[0]) && choices[1].Equals(pattern[1]) &&
+                             choices[2].Equals(pattern[2]));
                     break;
 
                 case 1:
                     TableSize = 4;
-
 	                do
 	                {
 	                    for (int i = 5; i >= 0; i--)
@@ -150,7 +149,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
                 case 3:
                     TableSize = 8;
-
+               
                     do
                     {
                         pattern.Clear();
@@ -158,15 +157,17 @@ namespace Assets.Scripts.Games.TreasureActivity {
                         bool isBig = Randomizer.RandomBoolean();
                         for (int i = 5; i >= 0; i--)
                         {
+                            colorRand.Restart();
                             Figure figure = Figure.F().Color(colorRand.Next()).Shape(shapeRand.Next()).Size(isBig);
                             if (pattern.Count < 4) pattern.Add(figure);
                             choices.Add(figure);
                         }
-                    } while (AreTwoFiguresEquals(choices));
+                        Figure toChangeSize = choices[0];
+                        choices[4] = Figure.F().Color(toChangeSize.GetColor()).Shape(toChangeSize.GetShape()).Size(!toChangeSize.IsBig());
+                        Figure toChangeShape = choices[1];
+                        choices[5] = Figure.F().Color(toChangeShape.GetColor()).Shape(GetDifferntShape(toChangeShape.GetShape())).Size(toChangeShape.IsBig());
 
-                    choices[0] = Figure.F().Color(choices[0].GetColor()).Shape(choices[0].GetShape()).Size(!choices[0].IsBig());
-                    // el color debe ser de una de las del patrón? 
-                    choices[1] = Figure.F().Color(choices[2].GetColor()).Shape(choices[1].GetShape()).Size(choices[2].IsBig());
+                    } while (AreTwoFiguresEquals(choices));
 
 	                do
 	                {
@@ -391,6 +392,18 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
                     break;
             }*/
+	    }
+
+	    private int GetDifferntShape(int getShape)
+	    {
+            Randomizer shapeRand = Randomizer.New(SHAPES - 1);
+	        int shapeToReturn;
+	        do
+	        {
+	            shapeToReturn = shapeRand.Next();
+	        } while (shapeToReturn == getShape);
+
+	        return shapeToReturn;
 	    }
 
 	    private bool AreTwoFiguresEquals(List<Figure> figures)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Sound;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +10,8 @@ namespace Assets.Scripts.Games.TreasureActivity {
 		public List<Image> pattern;
 		public Button soundBtn, okBtn, NextButton;
 		public List<Image> DropBackgroundImages;
-		public List<Button> droppers;
 		public List<Image> draggers;
+	    public GameObject[] DropperTables;
 
 		private Sprite[] figureSprites;
 		private TreasureActivityModel model;
@@ -21,6 +22,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
             if (!first) PlaySoundClick();
 			model.SetLevel();
+		    ShowCurrentDropTable();
 		    okBtn.enabled = true;
             NextButton.gameObject.SetActive(false);
             okBtn.gameObject.SetActive(true);
@@ -28,7 +30,18 @@ namespace Assets.Scripts.Games.TreasureActivity {
 			SetCurrentLevel();
 		}
 
-		public void OkClick()
+	    private void ShowCurrentDropTable()
+	    {
+            DropperTables[0].gameObject.SetActive(model.TableSize == 4);
+            DropperTables[1].gameObject.SetActive(model.TableSize == 8);            
+	    }
+
+	    private GameObject GetCurrentDropperTable()
+	    {
+	        return DropperTables[model.TableSize == 4 ? 0 : 1];
+	    }
+
+	    public void OkClick()
 		{
             EnableDropers(false);
             okBtn.enabled = false;
@@ -47,14 +60,19 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
 		bool IsCorrect() {
 			for(int i = 0; i < pattern.Count; i++) {
-				if(droppers[i].image.sprite != pattern[i].sprite) return false;
-				if(droppers[i + 4].image.sprite != pattern[i].sprite) return false;
+				if(GetDroppers()[i].image.sprite != pattern[i].sprite) return false;
+				if(GetDroppers()[i + 4].image.sprite != pattern[i].sprite) return false;
 			}
 
 			return true;
 		}
 
-		public void EraseDropper(Button dropper){
+	    private List<Button> GetDroppers()
+	    {
+	        return GetCurrentDropperTable().GetComponentsInChildren<Button>().ToList();
+	    }
+
+	    public void EraseDropper(Button dropper){
 			dropper.image.sprite = null;
             dropper.image.color = new Color32(0,0,0,1);
 
@@ -105,7 +123,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 		}
 
 		void CleanDroppers() {
-			droppers.ForEach(EraseDropper);
+            GetDroppers().ForEach(EraseDropper);
 		}
 
 		public void Dropped() { CheckOk(); }
@@ -115,7 +133,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 		}
 
 		bool CanSubmit() {
-			foreach(Button dropper in droppers) {
+			foreach(Button dropper in GetDroppers()) {
 				if(dropper.image.sprite == null) return false;
 			}
 			return true;
@@ -151,7 +169,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
 	    private void EnableDropers(bool value)
 	    {
-            foreach (Button dropper in droppers)
+            foreach (Button dropper in GetDroppers())
             {
                 dropper.enabled = value;
             }
