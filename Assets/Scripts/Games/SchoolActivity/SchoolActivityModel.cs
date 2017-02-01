@@ -10,7 +10,8 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		
 		public static int MAX_INSTRUCTIONS = 7;
 		public const int ROWS = 8, COLS = 10;
-
+		private static Vector2 STARTING_POINT = new Vector2 (3,4);
+		private const int ROOMS = 6;
 
 		private Difficulty currentDifficulty;
 		private Randomizer sectorRandomizer;
@@ -20,19 +21,17 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		private AudioClip[][] mediumAudios;
 		private List<string> instructions;
 		private Tile currentTile;
-
 		private int[][] schoolGrid;
-		private Vector2 santiPos = new Vector2(3,4);
-		private Vector2 newPosition;
+		private Vector2 santiPos,newPosition;
 
-		private const int ROOMS = 6;
+
 		//Current sector index
 		private int currentSector,stage, streak;
 
 		public SchoolActivityModel(){
 			MetricsController.GetController().GameStart();
 			currentDifficulty = Difficulty.EASY;
-
+			santiPos = STARTING_POINT;
 			boards = Resources.LoadAll<Sprite>("Sprites/SchoolActivity/consignas");
 			directionSprites = Resources.LoadAll<Sprite>("Sprites/SchoolActivity/direcciones");
 			boardAudios = Resources.LoadAll<AudioClip>("Audio/SchoolActivity/consignas");

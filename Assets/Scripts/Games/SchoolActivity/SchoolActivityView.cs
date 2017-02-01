@@ -8,6 +8,9 @@ using Assets.Scripts.Sound;
 
 namespace Assets.Scripts.Games.SchoolActivity {
 	public class SchoolActivityView : LevelView {
+		private static Color32 SELECTED_COLOR = new Color32 (238,212,63,255);
+		public  int BOUNCE = 20;
+
 		public List<Toggle> rooms;
 		public Button okBtn;
 		public List<GameObject> directionsListBtns;
@@ -20,12 +23,18 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		private List<List<GameObject>> viewGrid;
 		private SchoolActivityModel model;
 		private List<Direction> currentInstructions;
+		private int directionCounter;
+		private Vector3 santiInitPos;
+		private GameObject currentTile;
+
 
 		public void Start(){
-			ShowExplanation();
+				
+			ShowExplanation ();
 			instructions = new List<Direction> ();
-			model = new SchoolActivityModel();
+			model = new SchoolActivityModel ();
 			CreateViewGrid ();
+			santiInitPos = santi.transform.position;
 		}
 
 		override public void Next(bool first = false) {
@@ -47,7 +56,16 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			SoundClick();
 		}
 
-	
+
+		override public  void RestartGame(){
+			base.RestartGame ();
+			CleanUI ();
+			santi.transform.position  = santiInitPos;
+			Start ();
+
+
+		}
+
 		public void SoundClick(){
 			SoundController.GetController().PlayClip(model.BoardClip());
 		}
@@ -72,6 +90,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			GetInstructions ();
 			currentInstructions = GetInstructions ();
 			DisableAllButtons ();
+			directionCounter = 0;
 			NextMove ();
 		}
 
@@ -79,12 +98,16 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			if (currentInstructions.Count > 0) {
 				Vector2 instructionVector = model.ParseInstruction(currentInstructions[0]);
 
+				directionsListBtns [directionCounter].GetComponent<Image> ().color = SELECTED_COLOR;
+				directionsListBtns [directionCounter].GetComponent<Button> ().interactable = true;
+				directionsListBtns [directionCounter].GetComponent<Button> ().enabled = false;
+				directionCounter++;
+
 				bool canMove = model.AnalizeMovement (instructionVector);
 				if (canMove) {
 					MoveSanti (currentInstructions[0]);
 				} else {
-//					FailMoveSanti (currentInstructions [0]);
-					ShowWrongAnswerAnimation ();						
+					FailMoveSanti (currentInstructions [0]);						
 				}
 				currentInstructions.RemoveAt (0);
 			}else{
@@ -116,7 +139,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 
 		private void MoveSanti(Direction moveTo){
-			GameObject currentTile = viewGrid [(int)model.GetNewPosition ().x] [(int)model.GetNewPosition ().y];
+			 currentTile = viewGrid [(int)model.GetNewPosition ().x] [(int)model.GetNewPosition ().y];
 			switch (moveTo) {
 			case Direction.DOWN:
 			case Direction.UP:
@@ -131,20 +154,32 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		}
 
 		private void FailMoveSanti(Direction moveTo){
-			GameObject currentTile = viewGrid [(int)model.GetNewPosition ().x] [(int)model.GetNewPosition ().y];
+			currentTile = viewGrid [(int)model.GetNewPosition ().x] [(int)model.GetNewPosition ().y];
 			RectTransform rt = (RectTransform)currentTile.transform;
 			switch (moveTo) {
 			case Direction.DOWN:
+				santi.transform.DOMoveY ((currentTile.transform.position.y) + BOUNCE, 0.5f).OnComplete (EndFailMove);
+				break;
 			case Direction.UP:
-				santi.transform.DOMoveY((currentTile.transform.position.y)-rt.rect.height*0.3f,1).OnComplete(ShowWrongAnswerAnimation);
+				santi.transform.DOMoveY ((currentTile.transform.position.y) - BOUNCE, 0.5f).OnComplete (EndFailMove);
 				break;
 			case Direction.LEFT:
+				santi.transform.DOMoveX((currentTile.transform.position.x) + BOUNCE, 0.5f).OnComplete(EndFailMove);
+				break;
 			case Direction.RIGHT:
-				santi.transform.DOMoveX((currentTile.transform.position.x)/3,1).OnComplete(ShowWrongAnswerAnimation);
+				santi.transform.DOMoveX((currentTile.transform.position.x) - BOUNCE, 0.5f).OnComplete(EndFailMove);
 				break;
 			}
 
 		}
+
+		private void EndFailMove(){
+			currentTile = viewGrid [(int)model.GetSantiPos ().x] [(int)model.GetSantiPos ().y];
+			santi.transform.DOMoveY(currentTile.transform.position.y,1);
+			santi.transform.DOMoveX(currentTile.transform.position.x,1).OnComplete(ShowWrongAnswerAnimation);
+		}
+
+
 
 		public void EndMove(){
 			Vector2 newPosition = model.GetNewPosition ();
@@ -154,11 +189,14 @@ namespace Assets.Scripts.Games.SchoolActivity {
 					model.AddStreak (true);
 					ShowRightAnswerAnimation ();
 				} else {
-					model.AddStreak (true);
+					model.AddStreak (false);
 					ShowWrongAnswerAnimation ();
 				}
 			} else {
-				NextMove ();
+				directionsListBtns [directionCounter-1].GetComponent<Image> ().color = Color.white;
+				directionsListBtns [directionCounter-1].GetComponent<Button> ().enabled = true;
+				directionsListBtns [directionCounter-1].GetComponent<Button> ().interactable = false;
+				Invoke ("NextMove", 0.1f);
 			}
 		
 
@@ -189,7 +227,11 @@ namespace Assets.Scripts.Games.SchoolActivity {
 				
 
 		void CleanUI() {
-			directionsListBtns.ForEach((GameObject g) => g.SetActive(false));
+			foreach (GameObject button in directionsListBtns) {
+				button.GetComponent<Image> ().color = Color.white;
+				button.SetActive (false);
+			}
+//			directionsListBtns.ForEach((GameObject g) => g.SetActive(false));
 		}
 			
 		public void OnClickDirection(string dir){
