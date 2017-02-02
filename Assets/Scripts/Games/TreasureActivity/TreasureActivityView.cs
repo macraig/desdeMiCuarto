@@ -61,7 +61,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 		bool IsCorrect() {
 			for(int i = 0; i < pattern.Count; i++) {
 				if(GetDroppers()[i].image.sprite != pattern[i].sprite) return false;
-				if(GetDroppers()[i + 4].image.sprite != pattern[i].sprite) return false;
+				if(model.TableSize == 8 && GetDroppers()[i + 4].image.sprite != pattern[i].sprite) return false;
 			}
 
 			return true;
