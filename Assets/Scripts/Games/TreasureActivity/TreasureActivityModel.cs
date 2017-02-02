@@ -52,7 +52,6 @@ namespace Assets.Scripts.Games.TreasureActivity {
 
 		public void Correct() {
 			LogAnswer(true);
-
             AddExerciseDOne();
 		}
 
@@ -148,6 +147,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
                     break;
 
                 case 3:
+					
                     TableSize = 8;
                
                     do

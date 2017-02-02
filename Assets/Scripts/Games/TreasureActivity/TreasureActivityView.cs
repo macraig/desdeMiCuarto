@@ -12,16 +12,43 @@ namespace Assets.Scripts.Games.TreasureActivity {
 		public List<Image> DropBackgroundImages;
 		public List<Image> draggers;
 	    public GameObject[] DropperTables;
+		public Text gameText;
 
+		private string[] gameTexts;
 		private Sprite[] figureSprites;
 		private TreasureActivityModel model;
 		public AudioClip ingameExplanationSound;
+		public bool switchToHard = false;
+
+
+		public void Start(){
+			model = new TreasureActivityModel();
+			figureSprites = Resources.LoadAll<Sprite>("Sprites/TreasureActivity/figuras");
+			ingameExplanationSound = Resources.Load<AudioClip> ("Audio/TreasureActivity/ingameExplanation");
+			gameTexts = new string[2]{"AYÚDENME A DESCIFRAR EL CÓDIGO SIGUIENDO\nEL PATRÓN DEL JUEGO.","UY, ¡SE PUSO MÁS DIFÍCIL! AHORA TENGO QUE ARMARLO DOS VECES."};
+			gameText.text = gameTexts[0];
+			ShowExplanation();
+		}
+			
+
+		override public void RestartGame(){
+			base.RestartGame ();
+			switchToHard = false;
+			model = new TreasureActivityModel();
+			ShowExplanation ();
+		}
 
 		override public void Next(bool first = false){
             EnableDropers(true);
 
             if (!first) PlaySoundClick();
 			model.SetLevel();
+			if (LevelDifficultyHasSwitched ()) {
+				switchToHard = true;
+				ingameExplanationSound = Resources.Load<AudioClip> ("Audio/TreasureActivity/ingameExplanation2");
+				OnSoundButtonClick ();
+				gameText.text = gameTexts[1];
+			} 
 		    ShowCurrentDropTable();
 		    okBtn.enabled = true;
             NextButton.gameObject.SetActive(false);
@@ -30,11 +57,18 @@ namespace Assets.Scripts.Games.TreasureActivity {
 			SetCurrentLevel();
 		}
 
+		bool LevelDifficultyHasSwitched ()
+		{
+			return model.TableSize==8&&!switchToHard;
+		}
+
 	    private void ShowCurrentDropTable()
 	    {
             DropperTables[0].gameObject.SetActive(model.TableSize == 4);
             DropperTables[1].gameObject.SetActive(model.TableSize == 8);            
 	    }
+
+
 
 	    private GameObject GetCurrentDropperTable()
 	    {
@@ -80,16 +114,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
             okBtn.interactable = false;
             SoundController.GetController().PlayClickSound();
 		}
-
-		public void Start(){
-			model = new TreasureActivityModel();
-			figureSprites = Resources.LoadAll<Sprite>("Sprites/TreasureActivity/figuras");
-			Begin();
-		}
-
-		public void Begin(){
-			ShowExplanation();
-		}
+			
 
 		private void SetCurrentLevel() {
 			CleanDroppers();
@@ -157,13 +182,14 @@ namespace Assets.Scripts.Games.TreasureActivity {
                 NextButton.gameObject.SetActive(true);
                 okBtn.gameObject.SetActive(false);
             }
+			EnableComponents (true);
         }
 
 	    public override void OnWrongAnimationEnd()
 	    {
             model.LastCorrect = false;
             EnableDropers(true);
-
+			EnableComponents (true);
             okBtn.enabled = true;
 
 	    }

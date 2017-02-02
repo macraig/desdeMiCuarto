@@ -30,7 +30,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 			vacuumSound =  Resources.Load<AudioClip> ("Audio/HouseActivity/aspiradora");
 
 			phantomInstructionSounds = Resources.LoadAll<AudioClip> ("Audio/HouseActivity/PhantomConsignas"); 
-			phantomInstructions = new string[]{"Ahí veo el fantasma, rápido usen las flechas para atraparlo","¡Ahí esta!","¡Cuidado!","¡Atrápenlo antes de que se vaya" };
+			phantomInstructions = new string[]{"¡El fantasma está ahí! Atrápenlo con las flechas. ¡Rápido!","¡Ahí está!","¡Cuidado!","¡Atrápenlo antes de que se vaya!" };
 			allToggles = new List<Toggle> (){ left,right,up,down,shootToggle};
 			ShowExplanation ();
 		}
