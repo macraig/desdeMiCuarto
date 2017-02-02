@@ -35,13 +35,15 @@ namespace Assets.Scripts.Games.TreasureActivity {
 			base.RestartGame ();
 			switchToHard = false;
 			model = new TreasureActivityModel();
+			ingameExplanationSound = Resources.Load<AudioClip> ("Audio/TreasureActivity/ingameExplanation");
+			gameText.text = gameTexts[0];
 			ShowExplanation ();
 		}
 
 		override public void Next(bool first = false){
             EnableDropers(true);
 
-            if (!first) PlaySoundClick();
+			if (!first) OnSoundButtonClick();
 			model.SetLevel();
 			if (LevelDifficultyHasSwitched ()) {
 				switchToHard = true;
