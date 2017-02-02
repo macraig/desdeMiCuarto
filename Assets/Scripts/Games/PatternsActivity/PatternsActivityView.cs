@@ -237,6 +237,7 @@ namespace Assets.Scripts.Games.PatternsActivity {
 
 	    public override void OnRightAnimationEnd()
 	    {
+			EnableComponents (true);
             if (model.LastCorrect)
             {
                 model.NextLvl();
@@ -258,6 +259,7 @@ namespace Assets.Scripts.Games.PatternsActivity {
 
         public override void OnWrongAnimationEnd()
 	    {
+			EnableComponents (true);
             model.LastCorrect = false;
             ExchangeButton.enabled = true;
             OkButton.enabled = true;

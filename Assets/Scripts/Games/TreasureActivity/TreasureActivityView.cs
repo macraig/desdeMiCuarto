@@ -45,6 +45,7 @@ namespace Assets.Scripts.Games.TreasureActivity {
 		{
             EnableDropers(false);
             okBtn.enabled = false;
+			EnableComponents (false);
             if (IsCorrect()){
                 model.Correct();
                 ShowRightAnswerAnimation();
