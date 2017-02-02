@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace Assets.Scripts.Games.TreasureActivity {
 	public class TreasureActivityView : LevelView {
 		public List<Image> pattern;
-		public Button soundBtn, okBtn, NextButton;
+		public Button okBtn, NextButton;
 		public List<Image> DropBackgroundImages;
 		public List<Image> draggers;
 	    public GameObject[] DropperTables;
