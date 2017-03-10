@@ -57,7 +57,7 @@ namespace Assets.Scripts.Games.NeighbourhoodActivity {
 		
 
 			if (model.GameEnded ()) {
-				EndGame (60, 0, 1250);
+				EndGame (0, 0, 800);
 
 			} else {
 				
