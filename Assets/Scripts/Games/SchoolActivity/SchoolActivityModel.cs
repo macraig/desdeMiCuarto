@@ -50,7 +50,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 		public bool AnalizeMovement (Vector2 moveVector){
 			 newPosition = santiPos + moveVector;
 			//Check if newPosition in within the grid
-			if (newPosition.x < 0 || newPosition.y < 0 || newPosition.x >= ROWS || newPosition.y >= COLS)
+			if (MovementEscapesGrid())
 				return false;
 			
 			int tile = schoolGrid [(int)newPosition.x] [(int)newPosition.y];
@@ -62,6 +62,10 @@ namespace Assets.Scripts.Games.SchoolActivity {
 				return true;
 			}
 			return false;
+		}
+
+		public bool MovementEscapesGrid(){
+			return (newPosition.x < 0 || newPosition.y < 0 || newPosition.x >= ROWS || newPosition.y >= COLS);
 		}
 
 		public void UpdateSantiPosition(Vector2 newPosition){

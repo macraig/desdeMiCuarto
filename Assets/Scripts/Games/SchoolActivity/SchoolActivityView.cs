@@ -45,7 +45,7 @@ namespace Assets.Scripts.Games.SchoolActivity {
 				//				3 ESTRELLAS: 2 o 3 ERRORES
 				//				2 ESTRELLAS: 4 o 5 ERRORES
 				//				1 ESTRELLA: MAS DE 5 ERRORES
-				EndGame(60,0,1250);
+				EndGame(0,0,800);
 				return;
 			}
 
@@ -107,7 +107,10 @@ namespace Assets.Scripts.Games.SchoolActivity {
 				if (canMove) {
 					MoveSanti (currentInstructions[0]);
 				} else {
-					FailMoveSanti (currentInstructions [0]);						
+					if (!model.MovementEscapesGrid ())
+						FailMoveSanti (currentInstructions [0]);
+					else
+						OutOfGridMove ();
 				}
 				currentInstructions.RemoveAt (0);
 			}else{
@@ -173,10 +176,21 @@ namespace Assets.Scripts.Games.SchoolActivity {
 
 		}
 
+
+
 		private void EndFailMove(){
 			currentTile = viewGrid [(int)model.GetSantiPos ().x] [(int)model.GetSantiPos ().y];
 			santi.transform.DOMoveY(currentTile.transform.position.y,1);
 			santi.transform.DOMoveX(currentTile.transform.position.x,1).OnComplete(ShowWrongAnswerAnimation);
+		}
+
+		private void OutOfGridMove(){
+			santi.transform.DOShakeRotation (0.5f).OnComplete (EndOutOfGridMove);
+		}
+
+		private void EndOutOfGridMove(){
+			currentTile = viewGrid [(int)model.GetSantiPos ().x] [(int)model.GetSantiPos ().y];
+			ShowWrongAnswerAnimation ();
 		}
 
 
