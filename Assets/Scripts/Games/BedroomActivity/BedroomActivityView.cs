@@ -77,7 +77,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 		private void ShowPhotoButton() {
 			photoButton.gameObject.SetActive(true);
 			upperBoard.sprite = boards[boards.Length - 1];
-			SoundController.GetController().PlayClip(instructions[12]);
+			SoundController.GetController().PlayClip(instructions[instructions.Length - 1]);
 		}
 
 		public void PhotoClick(){
@@ -103,6 +103,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 				carpetPanel.transform.SetAsLastSibling ();
 				carpetPanel.SetActive (enabled);
 			}
+
 			upperBoard.sprite = boards[model.CurrentLvl()];
 			SoundController.GetController().PlayClip(instructions[model.CurrentLvl()]);
 
