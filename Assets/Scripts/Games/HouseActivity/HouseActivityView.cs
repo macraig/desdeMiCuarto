@@ -45,7 +45,7 @@ namespace Assets.Scripts.Games.HouseActivity {
 //				2 ESTRELLAS: 4 o 5 ERRORES
 //				1 ESTRELLA: MAS DE 5 ERRORES
 				ActivatePhantomPanel(false);
-				EndGame(60,0,1250);
+				EndGame(0,0,800);
 				return;
 			}
 

@@ -38,7 +38,7 @@ namespace Assets.Scripts.Games.ClassroomActivity {
 			}
 
 			if (model.GameEnded ()) {
-				EndGame (60, 0, 1250);
+				EndGame (0, 0, 800);
 			} else {
 				SetCurrentLevel (true);
 				SoundClick();
