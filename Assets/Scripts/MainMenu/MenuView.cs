@@ -11,16 +11,15 @@ namespace Assets.Scripts.MainMenu {
 
 
 		public GameObject metricsPanel, detailsPanel;
+		public List<Button> gameButtons;
         // 0 numering, 1 geomtry, 2 ability, 3 data
         public List<Toggle> filters;
-
         private List<GameButton> currentGames;
 
 
         void Start() {
-            
             currentGames = new List<GameButton>();
-           
+			EnableGames (AppController.GetController().GetAppModel().GetGamesStatus());
         }
 
         void Update()
@@ -31,7 +30,11 @@ namespace Assets.Scripts.MainMenu {
             }
         }
 
-       
+		public void EnableGames(List<bool> gamesStatus){
+			for (int i = 0; i < gameButtons.Count; i++) {
+					gameButtons [i].interactable = gamesStatus [i];
+			}	
+		}
 
         public void OnClickGame(int game)
         {
