@@ -93,7 +93,7 @@ namespace Assets.Scripts.Games.BedroomActivity {
 //			3 ESTRELLAS: 2 O 3 ERRORES
 //			2 ESTRELLAS: 4 ERRORES
 //			1 ESTRELLA: MAS DE 4 ERRORES
-			EndGame (6000,0,1600);
+			EndGame (0,0,800);
 		}
 
 		private void SetCurrentLevel(bool enabled) {

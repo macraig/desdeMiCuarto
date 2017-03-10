@@ -1,5 +1,5 @@
 ﻿{
-	"levels": [{
+	levels: [{
 		"type": "DRAG",
 		"object": ["crayonesImage"],
 		"target": "muebleButton",
@@ -40,6 +40,11 @@
 		"correct": ["pincel1Button", "pincel2Button", "pincel3Button"],
 		"wrong": [],
 		"sound": "brushSound"
+	}, {
+		"type": "TOGGLE",
+		"correct": ["windowToggle"],
+		"wrong": [],
+		"sound": "windowOpen"
 	}, {
 		"type": "DRAG",
 		"object": ["bookImage"],
