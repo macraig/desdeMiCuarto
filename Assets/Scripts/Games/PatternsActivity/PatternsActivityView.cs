@@ -204,7 +204,7 @@ namespace Assets.Scripts.Games.PatternsActivity {
 		}
 
 		static PatternsTile[] GetTiles(GameObject grid) {
-			return grid.transform.FindChild("gridTiles").GetComponentsInChildren<PatternsTile>();
+			return grid.transform.Find("gridTiles").GetComponentsInChildren<PatternsTile>();
 		}
 
 		public void ClickTile(PatternsTile tile){

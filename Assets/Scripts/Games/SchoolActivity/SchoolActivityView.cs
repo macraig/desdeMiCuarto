@@ -255,7 +255,24 @@ namespace Assets.Scripts.Games.SchoolActivity {
 			
 		public void OnClickDirectionImage(Button dirBtn){
 			SoundController.GetController ().PlayDropSound ();
-			dirBtn.gameObject.SetActive (false);
+			Debug.Log ("clicking!");
+			int btnIndex = directionsListBtns.IndexOf (dirBtn.gameObject);
+			int instructionEndIndex = GetInstructionEndIndex ();
+
+			for (int i = btnIndex; i < instructionEndIndex; i++) {
+				directionsListBtns [i].GetComponent<Image> ().sprite = directionsListBtns [i+1].GetComponent<Image> ().sprite;
+			}
+			directionsListBtns[instructionEndIndex].gameObject.SetActive (false);
+
+		}
+
+		int GetInstructionEndIndex(){
+			for (int i=0;i<directionsListBtns.Count;i++) {
+				if (!directionsListBtns[i].activeSelf) {
+					return i-1;
+				}
+			}
+			return -1;
 		}
 			
 		void AddInstruction (string dir)

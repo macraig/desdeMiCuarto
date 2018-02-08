@@ -29,3 +29,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
